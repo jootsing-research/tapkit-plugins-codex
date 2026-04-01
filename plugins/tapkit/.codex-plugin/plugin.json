@@ -1,0 +1,43 @@
+{
+  "name": "tapkit",
+  "version": "0.1.0",
+  "description": "Control a physical iPhone from Codex through TapKit MCP tools and reusable iOS app skills.",
+  "author": {
+    "name": "Jootsing Research",
+    "email": "tj@jootsing.ai",
+    "url": "https://jootsing.ai"
+  },
+  "homepage": "https://tapkit.ai",
+  "repository": "https://github.com/Jootsing-Research/tapkit-plugins-codex",
+  "license": "MIT",
+  "keywords": [
+    "ios",
+    "iphone",
+    "automation",
+    "tapkit",
+    "mobile",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Tap Kit",
+    "shortDescription": "Control a real iPhone from Codex.",
+    "longDescription": "Bundle TapKit iPhone automation with reusable skills for common iOS apps and workflows.",
+    "developerName": "Jootsing Research",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://tapkit.ai",
+    "brandColor": "#4164DE",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png",
+    "defaultPrompt": [
+      "What phones can you see with TapKit right now?",
+      "What's on my phone right now?"
+    ]
+  }
+}
