@@ -61,11 +61,10 @@ When you change plugin files in this repo, restart Codex again so the local inst
 
 ### Install After Cloning
 
-Use this flow when you want to install Tap Kit from a local clone instead of loading the repo-local marketplace directly from this repository.
+Codex doesn't officially support community plugins yet — only personal plugins you install yourself. The TapKit plugin is open source and ready to install, you just need to add it manually.
 
-1. Clone this repository somewhere under your home directory, for example `~/Dev/tapkit-plugins-codex`.
-2. Create or update your personal marketplace at `~/.agents/plugins/marketplace.json`.
-3. Add a marketplace entry like this:
+1. Clone this repository to a location of your choice. Remember where you clone it — you'll need the path in the next step.
+2. Create the marketplace file at `~/.agents/plugins/marketplace.json`:
 
 ```json
 {
@@ -78,7 +77,7 @@ Use this flow when you want to install Tap Kit from a local clone instead of loa
       "name": "tapkit",
       "source": {
         "source": "local",
-        "path": "./Dev/tapkit-plugins-codex/plugins/tapkit"
+        "path": "<path-to-cloned-repo>/plugins/tapkit"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -90,24 +89,18 @@ Use this flow when you want to install Tap Kit from a local clone instead of loa
 }
 ```
 
-4. Update `source.path` so it matches where you cloned the repo. The path should point to `plugins/tapkit` and should be written relative to your home directory.
-5. Restart Codex.
-6. Open the plugin directory UI.
-7. Find the marketplace `Tap Kit`.
-8. Install `tapkit`.
-9. Run the same default prompts to verify that TapKit can enumerate devices and inspect the current phone screen.
+> **Update the path!** Replace `<path-to-cloned-repo>` with the actual path to where you cloned the repo, relative to your home directory. It must point to the `plugins/tapkit` subdirectory inside the cloned repo.
+>
+> For example, if you cloned to `~/Dev/tapkit-plugins-codex`, the path would be `./Dev/tapkit-plugins-codex/plugins/tapkit`.
 
-If you update the clone later, restart Codex so the install picks up the updated plugin files.
+3. **Install the plugin** — restart Codex, then run `/plugin`. Find TapKit in the list and install it.
+4. **Authenticate** — once the plugin is loaded, the TapKit MCP server will prompt you to sign in via your browser.
+5. **Verify it works:**
+   ```
+   Take a screenshot of my phone
+   ```
+   If a phone is connected via the Mac app, you'll see the screenshot.
 
 ## Codex Notes
 
-Codex plugin docs recommend a repo-local marketplace at `.agents/plugins/marketplace.json` for curated plugin lists. This repo follows that layout so it can grow beyond the initial `tapkit` plugin later.
-
-For the current manual install flow, use `~/.agents/plugins/marketplace.json`. The `source.path` value should point at your cloned repo's `plugins/tapkit` directory and should be written relative to your home directory. For example, if the repo lives at `~/Dev/tapkit-plugins-codex`, use `./Dev/tapkit-plugins-codex/plugins/tapkit`.
-
-The current marketplace entry uses:
-
-- `policy.installation: AVAILABLE`
-- `policy.authentication: ON_INSTALL`
-
-The plugin manifest now includes the provided Tap Kit PNG logo asset. Screenshots, privacy-policy links, and terms links are still pending.
+This repo includes a repo-local marketplace at `.agents/plugins/marketplace.json` so it can grow beyond the initial `tapkit` plugin later. For end-user installs, use the personal marketplace at `~/.agents/plugins/marketplace.json` as described above.
