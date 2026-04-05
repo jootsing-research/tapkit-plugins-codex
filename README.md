@@ -64,7 +64,7 @@ When you change plugin files in this repo, restart Codex again so the local inst
 Use this flow when you want to install Tap Kit from a local clone instead of loading the repo-local marketplace directly from this repository.
 
 1. Clone this repository somewhere under your home directory, for example `~/Dev/tapkit-plugins-codex`.
-2. Create or update your personal marketplace at `~/.dotagents/plugins/marketplace.json`.
+2. Create or update your personal marketplace at `~/.agents/plugins/marketplace.json`.
 3. Add a marketplace entry like this:
 
 ```json
@@ -103,7 +103,7 @@ If you update the clone later, restart Codex so the install picks up the updated
 
 Codex plugin docs recommend a repo-local marketplace at `.agents/plugins/marketplace.json` for curated plugin lists. This repo follows that layout so it can grow beyond the initial `tapkit` plugin later.
 
-For the current manual install flow, use `~/.dotagents/plugins/marketplace.json`. The `source.path` value should point at your cloned repo's `plugins/tapkit` directory and should be written relative to your home directory. For example, if the repo lives at `~/Dev/tapkit-plugins-codex`, use `./Dev/tapkit-plugins-codex/plugins/tapkit`.
+For the current manual install flow, use `~/.agents/plugins/marketplace.json`. The `source.path` value should point at your cloned repo's `plugins/tapkit` directory and should be written relative to your home directory. For example, if the repo lives at `~/Dev/tapkit-plugins-codex`, use `./Dev/tapkit-plugins-codex/plugins/tapkit`.
 
 The current marketplace entry uses:
 
