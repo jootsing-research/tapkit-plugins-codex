@@ -12,7 +12,7 @@ As of March 31, 2026, the OpenAI Codex plugin docs describe:
 - personal marketplaces at `~/.agents/plugins/marketplace.json`
 - an official Plugin Directory powered by a curated marketplace
 
-This repository is set up for the repo-local marketplace flow.
+This repository includes a repo-local marketplace for development, but the currently verified install flow is a manual personal-marketplace setup after cloning the repo.
 
 As of March 31, 2026, the current docs describe local testing and a curated official Plugin Directory, but they do not document a self-serve public publishing path for third-party plugin marketplaces. In practice, this repo is currently structured for local or curated distribution.
 
@@ -59,31 +59,26 @@ Use this flow when you want Codex to load the marketplace directly from this che
 
 When you change plugin files in this repo, restart Codex again so the local install picks up the updated files.
 
-### Test Outside This Repo
+### Install After Cloning
 
-Use this flow when you want to test the plugin from your personal Codex marketplace instead of from this repository.
+Use this flow when you want to install Tap Kit from a local clone instead of loading the repo-local marketplace directly from this repository.
 
-1. Copy the plugin folder into your Codex plugin area:
-
-```bash
-mkdir -p ~/.codex/plugins
-cp -R /absolute/path/to/tapkit-plugins-codex/plugins/tapkit ~/.codex/plugins/tapkit
-```
-
-2. Create or update your personal marketplace at `~/.agents/plugins/marketplace.json`:
+1. Clone this repository somewhere under your home directory, for example `~/Dev/tapkit-plugins-codex`.
+2. Create or update your personal marketplace at `~/.agents/plugins/marketplace.json`.
+3. Add a marketplace entry like this:
 
 ```json
 {
-  "name": "tapkit-local",
+  "name": "tapkit",
   "interface": {
-    "displayName": "Tap Kit Local"
+    "displayName": "Tap Kit"
   },
   "plugins": [
     {
       "name": "tapkit",
       "source": {
         "source": "local",
-        "path": "./.codex/plugins/tapkit"
+        "path": "./Dev/tapkit-plugins-codex/plugins/tapkit"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -95,19 +90,20 @@ cp -R /absolute/path/to/tapkit-plugins-codex/plugins/tapkit ~/.codex/plugins/tap
 }
 ```
 
-3. Restart Codex.
-4. Open the plugin directory UI.
-5. Find the marketplace `Tap Kit Local`.
-6. Install `tapkit`.
-7. Run the same default prompts to verify that TapKit can enumerate devices and inspect the current phone screen.
+4. Update `source.path` so it matches where you cloned the repo. The path should point to `plugins/tapkit` and should be written relative to your home directory.
+5. Restart Codex.
+6. Open the plugin directory UI.
+7. Find the marketplace `Tap Kit`.
+8. Install `tapkit`.
+9. Run the same default prompts to verify that TapKit can enumerate devices and inspect the current phone screen.
 
-If you update the plugin later, copy the plugin folder again to `~/.codex/plugins/tapkit` and restart Codex.
+If you update the clone later, restart Codex so the install picks up the updated plugin files.
 
 ## Codex Notes
 
 Codex plugin docs recommend a repo-local marketplace at `.agents/plugins/marketplace.json` for curated plugin lists. This repo follows that layout so it can grow beyond the initial `tapkit` plugin later.
 
-For personal testing outside a repository, Codex also supports `~/.agents/plugins/marketplace.json`. The `source.path` value is resolved relative to the marketplace root, not relative to the `.agents/plugins/` directory.
+For the current manual install flow, use `~/.agents/plugins/marketplace.json`. The `source.path` value should point at your cloned repo's `plugins/tapkit` directory and should be written relative to your home directory. For example, if the repo lives at `~/Dev/tapkit-plugins-codex`, use `./Dev/tapkit-plugins-codex/plugins/tapkit`.
 
 The current marketplace entry uses:
 
