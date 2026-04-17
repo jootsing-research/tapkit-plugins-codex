@@ -1,6 +1,6 @@
 {
   "name": "tapkit",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "Control a physical iPhone from Codex through TapKit MCP tools and reusable iOS app skills.",
   "author": {
     "name": "Jootsing Research",
