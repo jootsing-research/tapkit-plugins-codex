@@ -7,6 +7,10 @@ description: This skill should be used when the user wants to use Hinge, swipe o
 
 Hinge is a dating app focused on meaningful connections. Users browse profiles, like or pass, add comments to specific photos/prompts, and message matches. This skill teaches you Hinge's UI layout and interaction patterns.
 
+## TapKit Setup Reminder
+
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. If Switch Control is disabled, call `enable_switch_control(phone_id)` when that MCP tool is available and re-check status. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
 ## App Structure
 
 ### Tab Bar (bottom of screen)
