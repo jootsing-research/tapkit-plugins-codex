@@ -11,6 +11,10 @@ Apple Mail is the default iOS email client. On TJ's iPhone it is configured with
 
 Do not record or repeat the user's full email address in manuals, logs, or summaries unless the user explicitly asks.
 
+## TapKit Setup Reminder
+
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
 ## Current State
 
 Observed configured state:

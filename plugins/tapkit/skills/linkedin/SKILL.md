@@ -7,6 +7,10 @@ description: This skill should be used when the user wants to use LinkedIn, brow
 
 LinkedIn is a professional networking platform. Users browse a feed of professional content, connect with people, search for jobs, message contacts, and post updates. This skill teaches you LinkedIn's UI layout and interaction patterns.
 
+## TapKit Setup Reminder
+
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
 ## App Structure
 
 ### Bottom Tab Bar (5 tabs)

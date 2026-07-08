@@ -9,6 +9,10 @@ Facebook is a social networking app for sharing posts, photos, and videos, joini
 
 **Always take a screenshot after each action to verify what's on screen.** Use visual landmarks (text labels, icons, positions like "top-left") rather than memorized coordinates.
 
+## TapKit Setup Reminder
+
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
 ## App Structure
 
 ### Bottom Navigation Bar (6 tabs, always visible)

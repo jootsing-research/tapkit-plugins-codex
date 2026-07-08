@@ -7,6 +7,10 @@ description: This skill should be used when the user wants to use TikTok, browse
 
 TikTok is a short-form video platform. Users browse an algorithmic "For You" feed, like/comment/share videos, follow creators, and discover content through explore/search. This skill teaches you TikTok's UI layout and interaction patterns.
 
+## TapKit Setup Reminder
+
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
 ## App Structure
 
 ### Tab Bar (bottom of screen)

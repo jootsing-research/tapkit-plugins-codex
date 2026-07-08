@@ -11,6 +11,10 @@ The app was explored on TJ's iPhone. Craigslist commonly uses a dark theme, purp
 
 **Always take a screenshot after each action to verify what's on screen.** Use visible labels, icons, and spatial relationships rather than memorized tap positions.
 
+## TapKit Setup Reminder
+
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
 ## App Structure
 
 ### Bottom Tab Bar

@@ -7,6 +7,10 @@ description: This skill should be used when the user wants to use Telegram, send
 
 Telegram is a messaging app with chats, groups, channels, and bots. Users send messages, share media, join group conversations, interact with bots, and manage contacts. This skill teaches you Telegram's UI layout and interaction patterns.
 
+## TapKit Setup Reminder
+
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
 ## App Structure
 
 ### Tab Bar (bottom of screen)

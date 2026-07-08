@@ -7,6 +7,10 @@ description: This skill should be used when the user wants to use Uber Eats, ord
 
 Uber Eats is a food delivery app for ordering from restaurants, grocery stores, and convenience stores. Users browse restaurants, search for food, customize menu items, manage carts, and place delivery or pickup orders. This skill teaches you Uber Eats' UI layout and interaction patterns.
 
+## TapKit Setup Reminder
+
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
 ## App Structure
 
 ### Tab Bar (bottom of screen)
