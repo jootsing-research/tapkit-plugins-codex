@@ -17,8 +17,6 @@ MCP tools use named arguments. Examples in this skill may use compact shorthand 
 list_phones() -> choose phone_id -> get_phone_status(phone_id) -> use phone_id on every call
 ```
 
-If `get_phone_status(phone_id)` reports that Switch Control is disabled, call `enable_switch_control(phone_id)` when that MCP tool is available, then check status again. If that tool is not available or status still says Switch Control is disabled, stop and tell the user Switch Control must be enabled or configured before phone control can proceed.
-
 ### REST API Equivalents
 
 Use the REST API with `https://api.tapkit.ai/v1` and the `X-API-Key` header:
@@ -26,9 +24,7 @@ Use the REST API with `https://api.tapkit.ai/v1` and the `X-API-Key` header:
 | Intent | MCP call | REST API call |
 |--------|----------|---------------|
 | List available phones | `list_phones()` | `GET /phones` |
-| Check connection and Switch Control | `get_phone_status(phone_id)` | `GET /phones/{phone_id}/status` |
-
-There is no separate public REST endpoint named `enable_switch_control` in the current API docs. Use the MCP helper when it is available, then verify with `GET /phones/{phone_id}/status`.
+| Check connection status | `get_phone_status(phone_id)` | `GET /phones/{phone_id}/status` |
 
 ## Use Tools First, Navigate Second
 
@@ -84,9 +80,8 @@ Screenshots are resized so you see them at the same resolution as the coordinate
 
 ### Device
 - `list_phones()` — List all phones with connection status, IDs, and dimensions. **Call this first.**
-- `enable_switch_control(phone_id)` — Enable Switch Control on the Mac for a phone when that MCP tool is available
 - `screenshot(phone_id)` — Get current screen as an image
-- `get_phone_status(phone_id)` — Get real-time status: connection, Switch Control, screen lock, streaming, dimensions
+- `get_phone_status(phone_id)` — Get real-time status: connection, screen lock, streaming, dimensions
 - `get_phone_info(phone_id)` — *(Deprecated — use `get_phone_status` instead.)* Returns screen dimensions and phone name
 - `lock(phone_id)` / `unlock(phone_id)` — Lock or unlock the screen
 - `volume_up(phone_id)` / `volume_down(phone_id)` — Volume controls

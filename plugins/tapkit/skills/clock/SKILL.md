@@ -22,7 +22,7 @@ Alternatively, use `open_app("Clock")` — though on some devices this may not w
 
 ## TapKit Setup Reminder
 
-Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. If Switch Control is disabled, call `enable_switch_control(phone_id)` when that MCP tool is available and re-check status. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
 
 ---
 
