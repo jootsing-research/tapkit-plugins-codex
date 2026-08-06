@@ -7,13 +7,13 @@ description: This skill should be used when the user wants to use Craigslist, br
 
 Craigslist is a classifieds app for browsing and posting local listings. Users search by location and category, filter results, save searches, favorite or hide postings, reply to posters, manage account settings, and create posting drafts. This skill teaches Craigslist's UI layout and interaction patterns.
 
-The app was explored on TJ's iPhone. Craigslist commonly uses a dark theme, purple primary actions, and gray/black backgrounds.
-
 **Always take a screenshot after each action to verify what's on screen.** Use visible labels, icons, and spatial relationships rather than memorized tap positions.
 
 ## TapKit Setup Reminder
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
+For every text entry, focus the intended field, call `type_text(phone_id, text)`, then take a screenshot and verify the rendered text. Do not tap **Send**, **Post**, **Search**, **Save**, **Confirm**, Return, or an equivalent submission control unless the user explicitly authorized that separate action and visual verification succeeded. Publication has the stricter just-in-time confirmation gate below.
 
 ## App Structure
 
@@ -31,14 +31,16 @@ The bottom tab bar is persistent across most screens. The active tab is highligh
 
 ### Global Safety Rules
 
-- Do not send chat, text, email, call, copy contact details, reveal contact rows, or share personal details unless the user explicitly asks.
+- Do not send chat, text, email, call, copy contact details, or reveal contact rows unless the user explicitly asks for that specific action.
+- Mask poster contact information in every model response. Never transcribe, echo, or store a poster's exact phone number, email address, or street address; direct the user to review it on the device instead.
 - Do not enable iOS notifications or open Settings to change notification permissions unless the user asks.
-- Do not enter an email address unless the user provides one or explicitly confirms using the configured Mail account.
-- Do not set a Craigslist password unless the user explicitly provides one.
-- Do not accept or decline Craigslist Terms of Use unless the user explicitly instructs you.
-- Stop at posting preview unless the user explicitly asks to publish.
-- Stop before payment, phone verification, one-time-code entry, or final publish confirmation unless the user explicitly asks to continue.
-- If a flow opens Mail, Messages, Phone, Settings, or a browser, inspect safely and return to Craigslist when done.
+- Treat every authentication step as user-only. Stop and hand the device to the user for login, sign-up, account email entry, passwords, authentication links, one-time or verification codes, and account recovery. Do not open authentication email or links, operate those screens, or read, copy, reveal, enter, store, or echo authentication material. Resume only after the user says they completed the flow and Craigslist shows a non-sensitive app screen.
+- Treat Terms of Use as user-only. The user must review and tap acceptance or decline controls themselves; never make or execute that decision for them. Resume only after the user completes the Terms screen.
+- Never operate payment UI or enter, inspect, summarize, or submit payment information. Hand the device to the user at any fee or payment screen and resume only after the user completes or exits it and a non-sensitive Craigslist screen is visible.
+- Always stop at the final posting preview, even when the initial request included publication. Present the final preview summary described below and ask for fresh, just-in-time confirmation before tapping **publish**.
+- Leave **publish phone number** and **show address** off by default. Before enabling either, require the user to review the exact value on the device and explicitly confirm that it may be public. Never transcribe that exact value into model output. Reconfirm each disclosure's enabled state in the final preview summary.
+- Preserve saved searches and drafts by default. Never delete one merely because it was created during exploration. Before any deletion, identify the exact target and obtain a fresh, just-in-time confirmation for that target.
+- If a non-authentication flow opens Mail, Messages, Phone, Settings, or a browser, protect unrelated content and return to Craigslist when done.
 
 ## Search Tab
 
@@ -280,7 +282,7 @@ The **preview** button returns to results with a banner such as `previewing save
 | **notifications** | Can trigger iOS notification permission. If permission is denied, saving with notifications on can show a Craigslist **notifications disabled** alert with **cancel** and **open settings**. |
 | **email** | Can be enabled without an iOS permission prompt. Saved-search rows show an envelope icon when email alerts are on. |
 
-For exploration, leave alerts off or delete the saved search when done. Queued alert emails can still arrive later even after a test search is deleted.
+For exploration, leave alerts off unless the user asks for them. Preserve the saved search afterward unless the user identifies it for deletion and confirms that exact deletion just before it occurs. Queued alert emails can still arrive after alerts are changed or a search is later deleted.
 
 ### Editing And Deleting Saved Searches
 
@@ -289,7 +291,7 @@ From **my searches**, swipe a row left:
 - Purple edit button opens the editor.
 - Red trash button can delete immediately.
 
-The editor's top-right **delete** action opens a confirmation alert. Verify the **my searches** empty state or expected remaining searches after deleting a test search.
+Because the row trash action may delete immediately, do not reveal or tap it until the user has reviewed the exact saved-search name and confirmed deletion of that target. The editor's top-right **delete** action opens an app confirmation alert, but it does not replace the required user confirmation. After an authorized deletion, take a screenshot and verify only the intended row was removed.
 
 ## Listing Detail
 
@@ -369,7 +371,7 @@ Do not type or send a chat message unless the user explicitly asks.
 
 Tapping **email** opens Apple Mail compose. Recipient and subject are usually prefilled; body is focused and can include the listing URL plus Mail signature. Top-right send arrow sends the message.
 
-To inspect safely, close with **X** and choose **Delete Draft** unless the user wants to keep or send the draft. After sending, Mail may return to an unrelated Mail message; reopen Craigslist if needed.
+Preserve the Mail draft by default. When leaving the composer, save the draft if needed; never choose **Delete Draft** automatically. Before deleting, identify it without exposing the poster's address, such as by its Craigslist listing title, and obtain fresh confirmation for that exact draft. After sending, Mail may return to an unrelated message; do not summarize it, and reopen Craigslist if needed.
 
 Incoming replies can appear in Mail as `craigslist [listing id]` or from a Craigslist relay-domain sender. Search-alert emails can show as **CL Search Alerts**.
 
@@ -391,7 +393,7 @@ This sheet reveals available contact rows:
 - Each row can have **copy**.
 - Bottom **close** dismisses the panel.
 
-Do not tap **copy**, reveal contact rows, call, text, or email unless the user explicitly wants contact details or contact action. When documenting behavior, describe row types without recording specific phone numbers or email addresses.
+Do not tap **copy**, reveal contact rows, call, text, or email unless the user explicitly wants that specific contact action. Even then, never transcribe, echo, or store the poster's exact phone number, email address, or street address. Refer to the selected contact method generically or in masked form and let the user review exact values on the device.
 
 ## Favorites Tab
 
@@ -412,54 +414,15 @@ Observed empty states:
 
 The Post tab opens a login/sign-up gate when logged out.
 
-### Email Gate
+### Authentication And Terms Gates
 
-Observed first screen:
+When Craigslist shows a login, sign-up, password, authentication-link, code, account-recovery, or Terms screen, stop immediately and hand the device to the user. Do not type an account email, choose an authentication method, open Mail or a browser for a login link, enter a password or code, create an account, or tap an acceptance or decline control. Do not inspect or report the user's credentials or authentication material.
 
-- Title: **log in or sign up to post**.
-- Text: "Please enter your email address to post to craigslist."
-- Email field.
-- Email keyboard with **next** key.
-- Valid email reveals purple **continue** button.
+Resume only after the user confirms they completed or exited the entire user-only flow and a screenshot shows a non-sensitive Craigslist screen. Do not take or relay screenshots while credentials, codes, authentication links, payment information, or other secrets are visible.
 
-Do not enter an email address unless the user provides one or explicitly confirms using the configured Mail account.
+### Post List After User-Completed Login
 
-### Confirm Email
-
-After tapping **continue**:
-
-- Title: **confirm email**.
-- Message: "Thanks, [email]. How can we make sure this is really you?"
-- **send me a link**.
-- **log in with my craigslist password**.
-
-If no password is available, use **send me a link**. The next screen tells the user to check email for a login link.
-
-### Mail Handoff
-
-Craigslist login email can arrive in Apple Mail immediately. Sender is Craigslist automated sender, with a main **complete account sign-up** button and secondary **didn't request this link?** link.
-
-Tap **complete account sign-up** only when continuing the requested login. Do not tap **didn't request this link?** unless the user wants to cancel/report signup.
-
-### Password Options
-
-After the email link opens Craigslist:
-
-- Title: **password options**.
-- **set password**.
-- **skip password**.
-
-Do not set a password unless the user explicitly provides one. If the user wants email-link login, choose **skip password**.
-
-### Terms Of Use Gate
-
-After choosing **skip password**, Craigslist shows **terms of use** with **I ACCEPT** and **I DECLINE**.
-
-This is a hard stop. Do not tap **I ACCEPT** or **I DECLINE** unless the user explicitly instructs you. Accepting legal terms on behalf of a user requires explicit approval.
-
-### Post List After Login
-
-After Terms acceptance, Post becomes a posting manager:
+After the user completes any required authentication and Terms decisions, Post becomes a posting manager:
 
 - Title: **post**.
 - Top-right **+**.
@@ -467,11 +430,11 @@ After Terms acceptance, Post becomes a posting manager:
 - Empty-state text: "press the button below to post on craigslist" and "(swipe down to refresh)".
 - Bottom purple **create posting** button.
 
-Draft cards show title, category/type, age, and inline **edit** / **delete**. Deleting a draft opens confirmation: "Are you sure you want to permanently delete this draft?"
+Draft cards show title, category/type, age, and inline **edit** / **delete**. Preserve drafts by default. Before tapping **delete**, show the user the exact draft title/category target and obtain fresh confirmation for that target; the app's own confirmation alert does not replace this gate.
 
 ## Posting Flow
 
-After login and Terms acceptance, tap **create posting** or top-right **+**.
+After the user completes any required authentication and Terms decisions, tap **create posting** or top-right **+**.
 
 1. **choose images**: top-right **skip**, image library, camera, "include up to 24 images", bottom **skip images** / **continue**.
 2. **choose location**: Apple map, pin, search icon, location-arrow, selected place label, top-right and bottom **continue**.
@@ -491,6 +454,8 @@ Posting details for for-sale-by-owner can include:
 - Reply options with CL mail relay and CL chat checked by default, plus unchecked publish phone number.
 - Location info with unchecked show address option.
 
+Keep **publish phone number** and **show address** unchecked unless the user reviews the exact value on the device and explicitly confirms that specific public disclosure. Do not reproduce the value in model output. If either option is enabled, verify its state again at preview and call it out without exposing the underlying value.
+
 ### Posting Validation
 
 Continuing without required fields returns to the top and shows a red validation summary, such as:
@@ -509,21 +474,25 @@ If price is blank in a for-sale flow, Craigslist can open **is it free**:
 
 ### Publishing, Fees, And Verification
 
-Agents must stop at preview unless the user explicitly asks to publish. Do not tap the top-right **publish** action or the prominent purple **publish** button near the bottom without explicit instruction.
+Always stop at preview, including when the user's initial request said to publish. Verify the preview on-screen, then present a concise final preview summary containing:
 
-Some categories and locations require payment. Craigslist can require email confirmation from `robot@craigslist.org`, phone verification with a one-time code, and payment for paid categories. Stop before payment submission, verification-code entry, or publish confirmation unless explicitly instructed.
+- title, posting type/category, price or free/negotiable state, and non-sensitive city/area;
+- image count and material listing details;
+- enabled reply methods;
+- whether **publish phone number** and **show address** are on or off, without transcribing either value;
+- any visible fee, validation, or verification requirement.
 
-Craigslist warns that requests for personal email addresses, phone numbers, or verification codes may be scams. Never share phone verification codes or personal contact details unless the user explicitly instructs you and the current screen is clearly part of Craigslist's posting flow.
+Ask for fresh, just-in-time confirmation to publish that summarized version. Upfront authorization is not sufficient. Tap **publish** only after the user's reply confirms this exact preview. If the preview changes, repeat the summary and confirmation gate.
+
+If phone or address disclosure is enabled, publication also requires the user to confirm they reviewed the exact on-device value and still approve making it public. If that confirmation is absent or ambiguous, leave the option off and do not publish.
+
+Some categories and locations require authentication, phone verification, or payment. Every such step is user-only: hand over the device without opening links, reading or entering codes, or operating payment controls. Resume only after the user completes or exits the step and a non-sensitive Craigslist screen is visible. If the flow returns to an editable preview, repeat the final summary and obtain a new just-in-time publish confirmation.
 
 ## Account Tab
 
-When logged out, Account begins with an email gate:
+When logged out, Account begins with an authentication gate. Apply the user-only authentication and Terms boundary above; do not enter account information or operate that flow.
 
-- Title: **account**.
-- Text: "Please enter your email address to view your account."
-- Email field.
-
-After login and Terms acceptance, Account shows:
+After the user completes any required login and Terms decisions, Account shows:
 
 | Row | Purpose |
 |-----|---------|
@@ -578,21 +547,26 @@ Do not turn on notifications, search conversations, hide conversations, or send 
 ### Browse A Category
 
 ```
-1. open_app("Craigslist") -> screenshot to verify
-2. Tap Search if needed
-3. Tap categories
-4. Select a top-level group on the left
-5. Select a subcategory on the right
-6. screenshot -> verify result count and visible result cards
+1. `press_home(phone_id)` -> screenshot
+2. If **Craigslist** is visible, tap it; otherwise, swipe left to the App Library and tap its search field to focus it
+3. If using App Library search, call `type_text(phone_id, "Craigslist")`
+4. If using App Library search, take a screenshot and verify **Craigslist** rendered correctly and the intended app result is visible
+5. Only if the user explicitly authorized opening Craigslist and visual verification succeeded, tap that App Library result
+6. screenshot -> verify Craigslist opened
+7. Tap Search if needed
+8. Tap categories
+9. Select a top-level group on the left
+10. Select a subcategory on the right
+11. screenshot -> verify result count and visible result cards
 ```
 
 ### Search Listings
 
 ```
-1. Tap the search craigslist field
-2. copy_text_to_phone("query")
-3. long_press the search field (about 1500ms) -> tap Paste
-4. Choose a suggestion/category result or tap the keyboard search key
+1. Tap the search craigslist field to focus it
+2. Call `type_text(phone_id, "query")`
+3. Take a screenshot and verify the intended query rendered correctly
+4. Only if the user explicitly authorized running that query and visual verification succeeded, choose a suggestion/category result or tap the keyboard search key
 5. screenshot -> verify result count, active category, location, and filter chips
 ```
 
@@ -615,9 +589,9 @@ Do not turn on notifications, search conversations, hide conversations, or send 
 3. Review name and search settings
 4. Leave notifications and email off unless the user wants alerts
 5. Tap preview if needed to verify saved result state
-6. Tap save to create the saved search
-7. After exploration, open my searches, swipe the test search left, and delete it
-8. screenshot -> verify empty state or intended remaining saved searches
+6. Only if the user explicitly authorized saving this search and the preview was visually verified, tap save to create it
+7. Preserve the saved search after exploration by default
+8. If the user asks to delete one, show its exact name/settings, obtain fresh confirmation for that target, delete only it, and take a screenshot to verify the intended row was removed
 ```
 
 ### Use Map View
@@ -639,22 +613,25 @@ Do not turn on notifications, search conversations, hide conversations, or send 
 4. Tap reply only when the user wants contact action
 5. Choose chat, call, text, email, or view/copy contact info only with explicit user intent
 6. For chat, stop at the new message composer unless asked to send
-7. For email, inspect Mail compose if needed, then close with X -> Delete Draft unless asked to send/save
+7. For email, preserve the Mail draft by default; never choose Delete Draft without fresh confirmation for that exact draft
 8. For text, stop at Messages composer unless asked to send
+9. In every model response, mask poster contact information and never transcribe an exact phone number, email address, or street address
 ```
 
 ### Create A Posting Draft
 
 ```
-1. Confirm the user is logged in and has accepted Terms of Use themselves
+1. If authentication or Terms appears, stop and let the user complete the entire flow themselves; resume only on a non-sensitive Craigslist screen
 2. Post tab -> create posting or +
 3. Choose images or skip images
 4. Choose location -> continue
 5. Choose type -> choose category
 6. Fill required posting details using user-provided information
 7. Resolve validation messages
-8. Stop at preview unless the user explicitly asks to publish
-9. Delete only clearly labeled test drafts created during exploration
+8. Leave publish phone number and show address off unless the user reviews the exact on-device value and explicitly confirms that public disclosure
+9. Always stop at preview, present the final preview summary, and obtain fresh confirmation for that exact version before publish
+10. Hand every authentication, verification, code, and payment screen to the user; never operate it
+11. Preserve the draft by default; delete it only after fresh confirmation of its exact title/category target
 ```
 
 ## Tips And Gotchas
@@ -665,9 +642,9 @@ Do not turn on notifications, search conversations, hide conversations, or send 
 - The same top-right overflow menu controls filters, map mode, view mode, saving, and sharing.
 - Category filters differ substantially; re-open **filter & sort** after changing categories.
 - Saved-search notification alerts require iOS notification permission. Do not enable notifications or open Settings unless asked.
-- Email alerts can be enabled without an iOS notification prompt. Delete test saved searches after exploration.
-- Post and account flows require an email address before deeper account/posting features are available.
-- Posting details can auto-save as a draft once enough data has been entered. Delete only the test draft you created.
+- Email alerts can be enabled without an iOS notification prompt. Preserve test and exploratory saved searches unless the user confirms deletion of an exact target.
+- Post and account flows can require authentication before deeper features are available. Hand the entire authentication and Terms flow to the user.
+- Posting details can auto-save as a draft once enough data has been entered. Preserve it unless the user confirms deletion of that exact draft.
 - The bottom trash icon on listing detail hides a posting; use only when the user asks.
-- Reply sheets can expose chat, call, text, email, and copy actions. Avoid sending, calling, texting, copying, or storing exact contact details unless explicitly requested.
+- Reply sheets can expose chat, call, text, email, and copy actions. Take only the requested contact action, and always mask poster contact information in model output; never transcribe or store an exact phone number, email address, or street address.
 - The app can jump to iOS Settings from **app permissions**; use the top-left return link to get back to Craigslist.

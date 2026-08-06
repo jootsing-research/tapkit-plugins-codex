@@ -13,6 +13,8 @@ Reddit is a community-driven platform where users browse subreddits ("communitie
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
 
+For every text-entry action, focus the correct field, call `type_text(phone_id, text)`, then call `screenshot(phone_id)` and visually verify the rendered text. Do not tap Send, Post, Search, Save, Confirm, or an equivalent submission control automatically. Submit only when the user explicitly authorizes the exact action and visual verification succeeds.
+
 ## App Structure
 
 ### Bottom Tab Bar (4 tabs, always visible)
@@ -176,7 +178,7 @@ Two sections:
 - **Communities**: subreddit avatar + `r/name` + `N weekly visitors`
 
 ### Search Results
-Tap `search` on the keyboard or select a suggestion.
+After text entry, call `screenshot(phone_id)` and verify the rendered query and intended suggestion. Do not submit automatically. Only if the user explicitly authorized running the search and verification succeeded, tap `search` on the keyboard or select the matching suggestion.
 
 - **Search bar** (persistent with clear X) + **Ask** button
 - **Tabs** (horizontally scrollable): All · Posts · Communities · Comments · Media · People (active tab has underline)
@@ -293,9 +295,10 @@ Accessed via the bottom-right tab.
 
 ### Browse the Home Feed
 ```
-1. open_app("Reddit") → screenshot
-2. Swipe up to scroll through posts
-3. screenshot → find a post to interact with
+1. press_home(phone_id) → screenshot(phone_id) → visually locate and tap the Reddit icon; use App Library if it is not visible
+2. screenshot(phone_id) to verify
+3. Swipe up to scroll through posts
+4. screenshot → find a post to interact with
 ```
 
 ### Upvote a Post
@@ -316,22 +319,23 @@ Accessed via the bottom-right tab.
 
 ### Reply to a Comment
 ```
-1. copy_text_to_phone("your reply")
-2. In post detail, scroll to the comment → tap its "Reply" arrow
-3. screenshot → keyboard and "Join the conversation" composer appear
-4. long_press the text field (~1500ms) → tap "Paste"
-5. Tap "Reply" button (blue, top-right of composer)
-6. screenshot → verify
+1. In post detail, scroll to the comment → tap its "Reply" arrow
+2. screenshot → keyboard and "Join the conversation" composer appear
+3. Tap the text field to focus it
+4. type_text(phone_id, "your reply")
+5. screenshot(phone_id) → verify the rendered reply and target comment
+6. Only if the user explicitly authorized posting this exact reply and verification succeeded, tap "Reply" (blue, top-right)
+7. screenshot(phone_id) → verify the reply posted
 ```
 
 ### Comment on a Post (top-level)
 ```
-1. copy_text_to_phone("your comment")
-2. Open the post detail
-3. Tap the "Join the conversation" field at the bottom
-4. long_press the field (~1500ms) → tap "Paste"
-5. Tap Reply button
-6. screenshot → verify
+1. Open the post detail
+2. Tap the "Join the conversation" field at the bottom to focus it
+3. type_text(phone_id, "your comment")
+4. screenshot(phone_id) → verify the rendered comment and target post
+5. Only if the user explicitly authorized posting this exact comment and verification succeeded, tap Reply
+6. screenshot(phone_id) → verify the comment posted
 ```
 
 ### Change Comment Sort Order
@@ -343,11 +347,10 @@ Accessed via the bottom-right tab.
 
 ### Search for a Community
 ```
-1. On Home, tap the "Find anything" search bar
-2. copy_text_to_phone("cats")
-3. long_press the search field → tap "Paste"
-4. screenshot → autocomplete shows search suggestions + Communities
-5. Tap a community row (e.g., `r/cats`) to open it, OR tap "search" on keyboard for full results
+1. On Home, tap the "Find anything" search bar to focus it
+2. type_text(phone_id, "cats")
+3. screenshot(phone_id) → verify the rendered query and expected autocomplete suggestions
+4. Do not submit automatically. Only if the user explicitly authorized the search or opening a matching community and verification succeeded, tap a community row (e.g., `r/cats`) or tap "search" on the keyboard
 ```
 
 ### Visit a Subreddit
@@ -360,24 +363,28 @@ Accessed via the bottom-right tab.
 
 ### Create a Text Post
 ```
-1. copy_text_to_phone("Post title")
-2. Tap Create (bottom nav, center-left)
-3. screenshot → composer opens with "What's on your mind?"
-4. Tap the `u/username ⇅` pill → pick a community in the "Post to" sheet
-5. long_press the "What's on your mind?" field → tap "Paste"
-6. (Optional) Type/paste body text in "Add some details"
-7. Tap Post (top-right, now enabled)
+1. Tap Create (bottom nav, center-left)
+2. screenshot → composer opens with "What's on your mind?"
+3. Tap the `u/username ⇅` pill → pick a community in the "Post to" sheet
+4. Tap the "What's on your mind?" field to focus it
+5. type_text(phone_id, "Post title")
+6. screenshot(phone_id) → verify the rendered title and selected community
+7. (Optional) Tap "Add some details" to focus it, call `type_text(phone_id, "Post body")`, then call `screenshot(phone_id)` and verify the rendered body
+8. Only if the user explicitly authorized publishing this exact post and all visual verification succeeded, tap Post (top-right)
+9. screenshot(phone_id) → verify the post published
 ```
 
 ### Create a Poll
 ```
 1. Tap Create
-2. Paste/type your poll question in "What's on your mind?"
-3. Tap the bullet-list icon in the toolbar
-4. screenshot → Poll container appears with Option 1, Option 2
-5. Tap each Option field and type
-6. (Optional) Tap `+ Add Option`, or change "Poll ends in 3 days"
-7. Tap Post
+2. Tap "What's on your mind?" to focus it, then call `type_text(phone_id, "Your poll question")`
+3. screenshot(phone_id) → verify the rendered poll question
+4. Tap the bullet-list icon in the toolbar
+5. screenshot(phone_id) → verify the Poll container appears with Option 1 and Option 2
+6. For each option, focus its field, call `type_text(phone_id, "Option text")`, then call `screenshot(phone_id)` and verify the rendered option before moving to the next field
+7. (Optional) Tap `+ Add Option`, or change "Poll ends in 3 days"
+8. Only if the user explicitly authorized publishing this exact poll and all visual verification succeeded, tap Post
+9. screenshot(phone_id) → verify the poll published
 ```
 
 ### Open Account Settings
@@ -417,5 +424,5 @@ Accessed via the bottom-right tab.
 - **"Ask" button**: Next to the search bar, the orange Ask icon launches Reddit Answers (AI summary) — not a normal keyword search.
 - **Notification permission banner**: The black "Turn on notifications" card at the top of Inbox is dismissible with X — ignore it if you don't need push notifications.
 - **No tab underline on Home**: Home doesn't have sub-tabs like "For you"/"Following" (unlike X/Twitter). Popular/News/Latest are separate full screens reached via the sidebar.
-- **Keyboard dismissal**: Tap above the keyboard (on the body of the screen) or use `escape` to dismiss.
+- **Keyboard dismissal**: Tap a visible area above the keyboard, outside the active text field.
 - **Discarding a draft**: The X on composer always prompts "Discard post?" if any content exists; empty composers dismiss silently.
