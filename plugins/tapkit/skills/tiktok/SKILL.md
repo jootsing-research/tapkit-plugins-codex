@@ -11,6 +11,15 @@ TikTok is a short-form video platform. Users browse an algorithmic "For You" fee
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
 
+For every text-entry action, focus the correct field, call `type_text(phone_id, text)`, then call `screenshot(phone_id)` and visually verify the rendered text. Do not tap Send, Post, Search, Save, Confirm, or an equivalent submission control automatically. Submit only when the user explicitly authorizes the exact action and visual verification succeeds.
+
+## Permission and Navigation Guardrails
+
+- Treat every camera, microphone, photo-library, location, and contacts prompt as a consent gate. Do not tap Allow, Continue, Full Access, Select Photos, Open Settings, or an equivalent permission control until the user explicitly approves that named permission and its visible scope.
+- Never grant full contact access automatically, even when TikTok recommends it. Dismiss the prompt or hand control to the user. If the user approves contact access, use the narrowest scope the interface offers.
+- Prefer an existing permission or limited/selected-photo access over expanding access. Do not broaden a permission merely to make a workflow more convenient.
+- Use a current screenshot and visible labels, icons, and spatial relationships for every tap or swipe. Never use memorized, hardcoded, or absolute x/y coordinates. Re-screenshot whenever layout, overlays, keyboard state, or media orientation changes.
+
 ## App Structure
 
 ### Tab Bar (bottom of screen)
@@ -29,7 +38,7 @@ The tab bar is visible on the main feed but hides when you enter certain sub-vie
 
 When on the Home tab, there are horizontal feed tabs at the top of the screen:
 
-- **LIVE** (far left) — Opens a live stream feed. Swipe up/down between live streams. To exit a live, tap the X in the top-right corner — **aim beyond the visible edge of the screen**. This is critical; tapping at visible positions hits the adjacent toggle button instead.
+- **LIVE** (far left) — Opens a live stream feed. Swipe up/down between live streams. To exit a live, take a current screenshot, visually locate the visible X close control in the live-stream header, and tap that control. If it is obscured or cannot be targeted reliably, stop instead of tapping off-screen.
 - **Explore** — 2-column grid of trending/recommended videos with thumbnails, titles, creators, and like counts
 - **Local** — 2-column grid of location-based content
 - **Following** — Videos from followed accounts only. Has a stories row at top (Create button, then followed creators with colored rings — pink for LIVE, cyan for active)
@@ -103,7 +112,7 @@ Opened by tapping the comment bubble icon. Appears as a bottom half-sheet.
 - **Below text field**: emoji icon, @ mention button, send button (pink/red arrow)
 - Keyboard appears when text field is tapped
 
-To post a comment: `copy_text_to_phone("your comment")` → `long_press` on the "Add comment..." field (duration: 1500) → tap **"Paste"** in the tooltip that appears → tap the send button.
+To draft a comment: tap the "Add comment..." field to focus it → `type_text(phone_id, "your comment")` → `screenshot(phone_id)` → visually verify the rendered comment. Do not tap Send automatically. Only if the user explicitly authorized posting this exact comment and verification succeeded, tap Send and take another screenshot to verify it posted.
 
 To close: tap the **X** in the header, or swipe down on the sheet.
 
@@ -209,7 +218,7 @@ Horizontal scrollable row below the header:
 
 Each category has an icon, title, subtitle/preview, and optional badge:
 
-1. **Chat with contacts** (green phone icon) — "Find and chat with them" with red "Find" button. Opens a contacts sync prompt asking for full contact access.
+1. **Chat with contacts** (green phone icon) — "Find and chat with them" with red "Find" button. It may open a contacts sync prompt asking for full contact access. Never grant that access automatically; dismiss the prompt or hand control to the user.
 
 2. **New followers** (blue people icon) — Shows latest follower name + badge count.
    - **New followers page**: Follower list with avatar, display name, relationship context, "started following you." + date
@@ -320,8 +329,8 @@ As you type, the page switches to autocomplete suggestions:
   - **Fill arrow** (right side) — tapping this fills the suggestion into the search bar WITHOUT executing the search, allowing further refinement
   - Some suggestions show a **thumbnail image** (for creator accounts)
 - **"Press and hold on a suggestion to report it"** hint at bottom
-- Tap a suggestion directly to execute that search
-- Tap the blue **"search"** button on the keyboard or the red **"Search"** button to search for exactly what's typed
+- Tapping a suggestion directly executes that search. Do so only after `screenshot(phone_id)` verifies the rendered query and matching suggestion and the user explicitly authorizes the search.
+- The blue **"search"** keyboard button and red **"Search"** button submit exactly what is typed. Never tap either automatically; only tap one after explicit user authorization and successful visual verification.
 
 ### Search Results Page
 
@@ -477,14 +486,15 @@ The mode selector is **swipeable, not tappable**. Swipe right on the mode bar to
 
 ### Limited Photo Access
 
-When TikTok has "Limited Access" to photos (not full library access), newly saved photos won't appear in TikTok's gallery automatically. To add them:
+When TikTok has "Limited Access" to photos (not full library access), newly saved photos may not appear in TikTok's gallery automatically. Keep limited access unless the user explicitly approves a change. To add a user-requested asset without granting full-library access:
 1. Open TikTok's gallery (tap gallery thumbnail at bottom-left of camera screen)
-2. Tap the **"+" button** at the end of the photo grid — this opens the iOS system photo picker
-3. In the iOS picker, select the new photos (they appear with blue checkmarks when selected)
-4. Tap the **blue checkmark** (top-right) to confirm
-5. Return to TikTok's gallery — the new photos now appear
+2. If a permission prompt appears, stop and obtain explicit approval for selected-photo access before continuing
+3. Tap the **"+" button** at the end of the photo grid — this opens the iOS system photo picker
+4. In the iOS picker, select only the asset or assets the user identified; do not browse unrelated media
+5. Show the selected items and requested access scope to the user, then obtain explicit approval before tapping the **blue checkmark** to confirm
+6. Return to TikTok's gallery and verify only the intended assets were added
 
-The iOS picker header says "Select more photos or deselect to remove access." It shows ALL device photos. The count at the bottom (e.g., "9 Items") reflects total photos TikTok can access.
+The iOS picker may display unrelated device photos. Do not describe, inspect, or select them. Report only the requested asset and the minimum access scope needed for the task.
 
 ### Add Sound Page
 
@@ -551,7 +561,7 @@ The final step before posting. Reached by tapping "Next" on the editing screen.
   - **Trending icon** — add trending sounds/topics
   - **"AI rewrite"** — sparkle pen icon, AI-powered caption rewriting
   - **Expand icon** (right side) — fullscreen text editor
-- **Location** — with suggested location pills (e.g., "Salt Lake Valley", "Denver Colorado S...") — tap to add
+- **Location** — may show suggested location pills. Do not infer or report unrelated suggestions, and do not select one unless the user requested that exact location; obtain explicit approval before granting location permission.
 - **Add link** — attach a URL to the post
 - **"Everyone can view this post"** — privacy/visibility setting (tap to change: Everyone, Friends, Only me)
 - **More options** — opens detailed settings panel (see below)
@@ -560,7 +570,7 @@ The final step before posting. Reached by tapping "Next" on the editing screen.
 **Additional details:**
 - **Character counter**: Shows at bottom-left (e.g., "144/4000") — max 4000 characters for description
 - **Post button in expanded editor**: In the expanded text editor view, the "Post" button moves to the **top-right** corner (red pill button)
-- **Keyboard dismiss**: `escape` may not dismiss the keyboard on the publishing page. Tapping outside the text field or using the expand/collapse icon works better.
+- **Keyboard dismiss**: Tap outside the text field or use the visible expand/collapse icon on the publishing page.
 
 **Bottom buttons:**
 - **"Drafts"** (outlined, left) — save as draft for later
@@ -594,7 +604,7 @@ When backing out of the editing screen with unsaved content, a menu appears:
 ### Creation Tips and Gotchas
 
 - **Mode selector is swipe-only**: You cannot tap on 10m/60s/15s to select them. You must swipe right/left on the mode bar area.
-- **Permissions required**: Camera AND microphone must be enabled in iOS Settings > TikTok for full functionality. If mic is denied, you'll get a persistent overlay asking to grant access via Settings.
+- **Permission prompts are user decisions**: Creation features may request camera or microphone access. Do not enable either permission or open Settings automatically. Explain which requested feature needs the permission and obtain explicit approval for that named permission first.
 - **Auto-assigned sounds**: When you capture a photo, TikTok may auto-assign a trending sound. Tap the X on the sound bar to remove it before posting.
 - **LIVE requires eligibility**: The LIVE tab at the bottom may not work for accounts with fewer followers. Tapping it may do nothing.
 - **Gallery upload**: Tap the gallery thumbnail at the bottom-left of the camera screen to upload existing photos/videos from the camera roll.
@@ -602,7 +612,7 @@ When backing out of the editing screen with unsaved content, a menu appears:
 - **AI rewrite**: The publishing page has an "AI rewrite" tool that can rewrite your caption using AI — useful for improving engagement.
 - **Drafts are local**: Saved drafts appear on your Profile tab in a private Drafts section. They are not published until you manually post them.
 - **Don't accidentally post**: The red "Post" button publishes immediately with no confirmation dialog. Double-check all details before tapping it.
-- **Publishing page text entry**: Use the standard clipboard paste flow for the title and description fields. `copy_text_to_phone("...")` → `long_press` on the field (duration: 1500) → tap **"Paste"** in the tooltip that appears above the field. This is reliable.
+- **Publishing page text entry**: Tap the title or description field to focus it, call `type_text(phone_id, "...")`, then call `screenshot(phone_id)` and visually verify the rendered text. Do not tap Drafts, Post, or another save/publish control automatically; do so only with explicit user authorization after successful verification.
 - **Maximum 5 hashtags per post**: TikTok enforces a limit of 5 hashtags. If you include more, extras are auto-removed with a toast message "Maximum 5 hashtags. 2 removed." Plan your hashtags accordingly.
 - **Multi-select: tap selector circles, NOT image centers**: In multi-select mode, tapping the center of a photo opens a single-image preview instead of selecting it. You must tap the **circle selector** in the upper-right corner of the thumbnail.
 - **Sound picker "For You" tab is contextual**: The For You tab in the sound picker shows personalized/contextual suggestions. The algorithm matches sounds to your content (e.g., bird photos surface "Three Little Birds").
@@ -611,10 +621,11 @@ When backing out of the editing screen with unsaved content, a menu appears:
 
 ### Browse the For You Feed
 ```
-1. open_app("TikTok") → screenshot to verify
-2. Tap "For You" tab if not already selected (top bar)
-3. Watch current video, swipe up from center-left to advance to next video
-4. screenshot → verify new video loaded
+1. press_home(phone_id) → screenshot(phone_id) → visually locate and tap the TikTok icon; use App Library if it is not visible
+2. screenshot(phone_id) to verify
+3. Tap "For You" tab if not already selected (top bar)
+4. Watch current video, swipe up from center-left to advance to next video
+5. screenshot → verify new video loaded
 ```
 
 ### Like a Video
@@ -629,11 +640,11 @@ When backing out of the editing screen with unsaved content, a menu appears:
 ```
 1. Tap the comment bubble icon on the right side
 2. screenshot → verify comment section opened
-3. copy_text_to_phone("your comment")
-4. long_press on "Add comment..." text field (duration: 1500)
-5. Tap "Paste" in the tooltip that appears above the field
-6. Tap the send button (pink arrow, bottom-right of input area)
-7. screenshot → verify comment posted
+3. Tap the "Add comment..." text field to focus it
+4. type_text(phone_id, "your comment")
+5. screenshot(phone_id) → verify the rendered comment and target video
+6. Only if the user explicitly authorized posting this exact comment and verification succeeded, tap the send button (pink arrow, bottom-right)
+7. screenshot(phone_id) → verify the comment posted
 ```
 
 ### Follow a Creator
@@ -655,12 +666,11 @@ When backing out of the editing screen with unsaved content, a menu appears:
 ```
 1. Tap the search icon (magnifying glass) in the top bar (far right)
 2. screenshot → search page appears
-3. copy_text_to_phone("search query")
-4. long_press on the search field (duration: 1500)
-5. Tap "Paste" in the tooltip that appears above the field
-6. screenshot → verify autocomplete suggestions appear
-7. Tap blue "search" button on keyboard OR tap a suggestion
-8. screenshot → verify results page with tabs
+3. Tap the search field to focus it
+4. type_text(phone_id, "search query")
+5. screenshot(phone_id) → verify the rendered query and expected autocomplete suggestions
+6. Do not submit automatically. Only if the user explicitly authorized running the search and verification succeeded, tap the blue "search" button on the keyboard or a matching suggestion
+7. screenshot(phone_id) → verify the results page with tabs
 ```
 
 ### Filter Search Results
@@ -682,23 +692,30 @@ When backing out of the editing screen with unsaved content, a menu appears:
 ### Take and Post a Photo
 ```
 1. Tap the + button (center of bottom tab bar) to open creation screen
-2. Ensure PHOTO mode is selected (white capture button)
-3. Tap the capture button (center)
-4. Edit: add text (Aa), stickers, effects as needed
-5. Tap "Next" (bottom-right)
-6. Add title, description with #hashtags and @mentions
-7. Set location, visibility, other options
-8. Tap "Post" to publish OR "Drafts" to save for later
+2. If a camera, microphone, photo-library, location, or contacts prompt appears, stop and obtain explicit approval for the named permission and visible scope; never grant full contacts access
+3. Ensure PHOTO mode is selected (white capture button)
+4. Tap the capture button (center)
+5. Edit: add text (Aa), stickers, effects as needed
+6. Tap "Next" (bottom-right)
+7. Tap the title field to focus it, call `type_text(phone_id, "title")`, then call `screenshot(phone_id)` and verify the rendered title
+8. If adding a description, focus that field, call `type_text(phone_id, "description")`, then call `screenshot(phone_id)` and verify the rendered description, hashtags, and mentions
+9. Set only the location, visibility, and other options the user requested; obtain explicit approval before granting location permission
+10. Only if the user explicitly authorized publishing or saving this exact draft and all visual verification succeeded, tap the corresponding "Post" or "Drafts" control
+11. screenshot(phone_id) → verify the authorized action completed
 ```
 
 ### Record a Video
 ```
 1. Tap the + button (center of bottom tab bar)
-2. Swipe right on mode bar to select 15s/60s/10m
-3. Record button turns red — tap to start, tap again to stop
+2. If a camera or microphone permission prompt appears, stop and obtain explicit approval for each named permission before continuing; do not open Settings automatically
+3. Swipe right on mode bar to select 15s/60s/10m
+4. Record button turns red — tap to start, tap again to stop
    OR hold to record, release to stop
-4. Edit: add sound, text, effects, stickers
-5. Tap "Next" → fill in details → tap "Post"
+5. Edit: add sound, text, effects, stickers
+6. Tap "Next"
+7. Focus each requested text field, call `type_text(phone_id, text)`, then call `screenshot(phone_id)` and visually verify its rendered contents before moving on
+8. Only if the user explicitly authorized publishing this exact video and all visual verification succeeded, tap "Post"
+9. screenshot(phone_id) → verify the video published
 ```
 
 ### Add Sound to a Post
@@ -714,9 +731,11 @@ When backing out of the editing screen with unsaved content, a menu appears:
 ```
 1. Tap the + button (center of bottom tab bar)
 2. Swipe left on mode bar past PHOTO to TEXT
-3. Type your text in the input area
-4. Tap "Next" → choose a template style
-5. Proceed to publishing page
+3. Tap the text input area to focus it
+4. type_text(phone_id, "your text")
+5. screenshot(phone_id) → verify the rendered text
+6. Only if the user explicitly authorized proceeding with this exact text and verification succeeded, tap "Next" and choose a template style
+7. Proceed to the publishing page; do not tap Post without separate explicit authorization after verifying the final post
 ```
 
 ### Visit a Creator's Profile
@@ -738,7 +757,7 @@ When backing out of the editing screen with unsaved content, a menu appears:
 ## Tips and Gotchas
 
 - **Right-side buttons shift**: The positions of action buttons vary slightly per video depending on the creator info area height. Always screenshot first and adjust if needed.
-- **LIVE stream exit**: The X button on live streams requires tapping **beyond the visible screen edge** to the right. Tapping at normal visible positions hits the adjacent toggle button instead. This is a known quirk.
+- **LIVE stream exit**: Use a current screenshot to locate the visible X close control. If an overlay or layout makes it unreliable, take another screenshot or stop; never tap beyond the visible screen edge.
 - **Non-fullscreen videos**: Horizontal videos show in a smaller frame with a "Full screen" button. The action buttons are positioned differently in this mode — they appear below the video frame rather than overlaid on it.
 - **"Not interested" / "Follow" buttons**: These appear at the bottom for videos from creators you don't follow. They can shift other elements up slightly.
 - **Search suggestion bar**: Some videos show a search bar at the very bottom, above the tab bar. This pushes the tab bar down slightly.

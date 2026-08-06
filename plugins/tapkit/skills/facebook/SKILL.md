@@ -13,6 +13,17 @@ Facebook is a social networking app for sharing posts, photos, and videos, joini
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
 
+For every text entry, focus the intended field, call `type_text(phone_id, text)`, then take a screenshot and verify the rendered text. Do not tap **Send**, **Post**, **Search**, **Save**, **Confirm**, **Share**, Return, or an equivalent submission control unless the user explicitly authorized that submission and visual verification succeeded.
+
+## Privacy and Data Minimization
+
+Treat screenshots and all visible Facebook account content as private operational context.
+
+- Never surface, quote, summarize, infer, or mention feed posts, profile details, location, family, work, school, contact data, notifications, active contacts, conversation previews, or any other personal data unrelated to the user's exact request.
+- Use unrelated content only visually to locate the requested target. Do not transcribe it into reasoning shown to the user or into the final response.
+- If the requested post, profile, listing, person, or conversation is ambiguous, stop and ask the user to clarify without enumerating unrelated people, content, or personal details visible on screen.
+- Report only the minimum task-relevant result. Never infer a person's identity, relationship, location, workplace, school, family connection, or contact information from surrounding Facebook content.
+
 ## App Structure
 
 ### Bottom Navigation Bar (6 tabs, always visible)
@@ -41,6 +52,8 @@ Before acting in this app, follow the core TapKit setup: `list_phones()` -> choo
 ## Home Feed
 
 The main landing screen when you open Facebook.
+
+Use feed content only within the scope the user requested. Do not describe surrounding posts, authors, stories, reactions, comments, suggested content, or sponsored content merely because they are visible.
 
 **What you see:**
 - **Stories row** at top — horizontally scrollable cards showing friends' stories; first card is "Create story" with a + icon
@@ -98,6 +111,8 @@ A horizontal tab bar below the header with 5 options:
 
 ### "For you" Tab (Default View)
 
+Treat the location indicator, nearby listings, seller identities, maps, and surrounding recommendations as private incidental data unless the user's exact request requires one of them. Never infer or report the user's location from Marketplace UI.
+
 - **"Today's picks"** section header with **location indicator** (blue pin icon + city name — tappable to change location)
 - **2-column grid** of listing cards that scroll infinitely
 - **Each listing card shows:**
@@ -126,25 +141,11 @@ Tapping any listing card opens a full-screen detail view with:
 
 Your personal Facebook profile page.
 
-**What you see:**
-- **Cover photo** with camera icon to change it
-- **Profile photo** with camera icon overlay
-- **Name**, friend count, post count
-- **Bio line**: location, workplace, school
-- **Action buttons**: + Create, Edit profile
-- **Content tabs**: All, Photos, Reels
-- **Personal details section**: Location, Hometown, Relationship status, Family, Gender
-- **Work section**: Job history with titles and dates
-- **Education section**: Schools with class years
+Use stable navigation landmarks such as the profile header, **+ Create**, **Edit profile**, and the **All**, **Photos**, and **Reels** tabs. Profiles can expose sensitive personal details and posts; inspect and report only the exact field or content the user requested, and do not infer missing information or relationships from visible context.
 
 ## Notifications
 
-All alerts and activity related to your account.
-
-- **Header**: "Notifications" with more (...), search, and Messenger icons
-- **Friend requests** section at top with Confirm/Delete buttons and "See all"
-- **Time-grouped notifications**: Today, Earlier
-- **Notification types**: Birthday reminders, event announcements, group activity, comments, likes
+The screen has a **Notifications** header with more (...), search, and Messenger controls. Notification rows can reveal names, relationships, events, and activity. Do not enumerate, summarize, or mention any notification outside the exact requested scope; use unrelated rows only as visual landmarks.
 
 ## Menu
 
@@ -178,12 +179,7 @@ Accessible via Menu > Groups.
 
 ## Messenger (Chats)
 
-Tapping the Messenger bubble opens the Chats screen:
-- **Header**: "Chats" with settings gear and compose icons
-- **Search bar** for finding conversations
-- **Active contacts row**: Horizontally scrollable avatars with green dot for online
-- **Filter tabs**: Inbox, Communities, Requests, Spam
-- **Chat list**: Conversations with preview text, timestamps, unread indicators
+Tapping the Messenger bubble opens the **Chats** screen with settings, compose, search, and filter controls. The screen can expose active contacts, conversation names, message previews, timestamps, and unread state. Never surface any of those details unless they are necessary for the exact requested conversation. Navigate by the requested recipient or conversation only; if multiple results could match, ask for clarification without listing the other people or previews.
 
 ## Create Menu (+)
 
@@ -198,27 +194,37 @@ Tapping **+** on the Home screen opens:
 
 ### Browse the Feed
 ```
-1. open_app("Facebook") → screenshot to verify
-2. Home tab should be selected by default
-3. Swipe up from center of screen to scroll down
-4. screenshot → verify new posts loaded
+1. `press_home(phone_id)` → screenshot
+2. If **Facebook** is visible, tap it; otherwise, swipe left to the App Library and tap its search field to focus it
+3. If using App Library search, call `type_text(phone_id, "Facebook")`
+4. If using App Library search, take a screenshot and verify **Facebook** rendered correctly and the intended app result is visible
+5. Only if the user explicitly authorized opening Facebook and visual verification succeeded, tap that App Library result
+6. screenshot → verify Facebook opened
+7. Home tab should be selected by default
+8. Swipe up from center of screen to scroll down
+9. screenshot → verify new posts loaded
+10. Use visible posts only to locate content within the user's requested scope; do not report unrelated posts, people, stories, or recommendations
+11. If the target is ambiguous, ask the user to clarify without enumerating the visible alternatives
 ```
 
 ### Like a Post
 ```
-1. screenshot → find a post and locate its action buttons
-2. Tap the Like button
-3. screenshot → verify like registered
+1. screenshot → locate the exact post described by the user without reporting surrounding feed content
+2. If more than one post could match, ask the user to clarify without listing unrelated posts or authors
+3. Tap the Like button on the unambiguous target
+4. screenshot → verify like registered without describing adjacent content
 ```
 
 ### Comment on a Post
 ```
-1. Tap the Comment button on a post
-2. screenshot → verify comment input appeared
-3. copy_text_to_phone("your comment")
-4. long_press on the comment field (duration: 1500) → tap "Paste" in the tooltip
-5. Tap the send button
-6. screenshot → verify comment posted
+1. Locate the exact post described by the user; if ambiguous, ask for clarification without listing unrelated posts or authors
+2. Tap the Comment button on that post
+3. screenshot → verify comment input appeared without describing surrounding comments or profiles
+4. Tap the comment field to focus it
+5. Call `type_text(phone_id, "your comment")`
+6. Take a screenshot and verify the exact comment rendered correctly
+7. Only if the user explicitly authorized posting that comment and visual verification succeeded, tap the send button
+8. If sent, take a screenshot and verify the comment posted
 ```
 
 ### Share a Story
@@ -227,33 +233,50 @@ Tapping **+** on the Home screen opens:
 2. Tap "Story"
 3. screenshot → verify story creation screen
 4. Select or capture media
-5. Tap "Share" to publish
+5. Only if the user explicitly authorized publishing that exact story and the final preview was visually verified, tap "Share"
 ```
 
 ### Search for Content
 ```
 1. Tap the magnifying glass icon in the top bar
-2. copy_text_to_phone("search query")
-3. long_press on the search bar (duration: 1500) → tap "Paste" in the tooltip
-4. Tap "search" on keyboard
-5. screenshot → verify results
+2. Tap the search bar if it is not already focused
+3. Call `type_text(phone_id, "search query")`
+4. Take a screenshot and verify the intended query rendered correctly
+5. Only if the user explicitly authorized running that query and visual verification succeeded, tap "search" on the keyboard
+6. If submitted, take a screenshot and verify the results
+7. Report only results relevant to the exact query; do not mention unrelated people, profiles, posts, locations, or suggestions
+8. If multiple results could be the requested target, ask for clarification without enumerating unrelated results
+```
+
+### Inspect a Profile
+```
+1. Navigate only to the profile explicitly identified by the user
+2. screenshot → verify the requested profile without reporting any unrelated profile or feed content
+3. Inspect and report only the exact field, post, photo, or setting requested by the user
+4. Do not infer or mention location, family, relationships, work, school, or contact data outside that exact scope
+5. If the profile or requested field is ambiguous, ask for clarification without enumerating visible people or personal details
 ```
 
 ### Browse Marketplace
 ```
 1. Tap the Marketplace tab in bottom nav
-2. screenshot → verify Marketplace loaded with "Today's picks"
-3. Scroll to browse listings, or tap Search to find specific items
+2. screenshot → verify Marketplace loaded without reporting the location indicator, surrounding listings, or seller details
+3. Scroll or search only within the item/category scope requested by the user
+4. Report only matching listing details needed for the request; do not mention unrelated listings, sellers, profile data, maps, locations, or contact information
+5. If multiple listings could be the target, ask for clarification without enumerating unrelated sellers or content
 ```
 
 ### Send a Message
 ```
 1. Tap the Messenger bubble in the top bar
-2. Tap a conversation or tap compose for new message
-3. copy_text_to_phone("your message")
-4. long_press on the message field (duration: 1500) → tap "Paste" in the tooltip
-5. Tap send
-6. screenshot → verify message sent
+2. Navigate only to the conversation explicitly identified by the user, or tap compose and search for the requested recipient
+3. Do not read or report other conversation names, active contacts, message previews, timestamps, or unread state
+4. If multiple recipients or conversations could match, stop and ask for clarification without listing the alternatives
+5. Tap the message field to focus it
+6. Call `type_text(phone_id, "your message")`
+7. Take a screenshot and verify the exact recipient and rendered message without reporting unrelated chat content
+8. Only if the user explicitly authorized sending that message and visual verification succeeded, tap send
+9. If sent, take a screenshot and verify the message was sent without describing other conversations
 ```
 
 ## Tips and Gotchas

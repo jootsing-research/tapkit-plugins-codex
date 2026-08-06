@@ -11,6 +11,8 @@ Hinge is a dating app focused on meaningful connections. Users browse profiles, 
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
 
+For every text entry, focus the intended field, call `type_text(phone_id, text)`, then take a screenshot and verify the rendered text. Do not tap **Send**, **Post**, **Search**, **Save**, **Confirm**, **Done**, Return, or an equivalent submission control unless the user explicitly authorized that submission and visual verification succeeded.
+
 ## App Structure
 
 ### Tab Bar (bottom of screen)
@@ -43,12 +45,12 @@ The Discover feed shows one profile at a time as a scrollable card. Each profile
 Each photo and prompt has a **heart icon** in the top-right corner of that content piece. Tap it to like that specific photo or prompt — this is more engaging than a generic like.
 
 To **add a comment** on a specific photo or prompt:
-1. `copy_text_to_phone("your comment")` to load the text onto the clipboard
-2. `long_press(x, y, duration: 1500)` on the **"Add a comment"** text field below the content piece — this activates the field, brings up the keyboard, and shows the **Paste** tooltip
-3. Tap **"Paste"** in the tooltip
-4. Tap **"done"** on the keyboard or look for a send button
+1. Tap the **"Add a comment"** text field below the content piece to focus it
+2. Call `type_text(phone_id, "your comment")`
+3. Take a screenshot and verify the exact comment rendered correctly
+4. Only if the user explicitly authorized sending that comment and visual verification succeeded, tap **"done"** or the send button
 
-**AI-suggested comment chips**: Hinge sometimes shows suggestion chips below prompts in the like panel (e.g., "Compare debate styles", "Ask her best comeback"). These are tappable shortcuts that auto-fill a comment. You can tap one to use it, or ignore them and type your own comment.
+**AI-suggested comment chips**: Hinge sometimes shows suggestion chips below prompts in the like panel (e.g., "Compare debate styles", "Ask her best comeback"). These are tappable shortcuts that auto-fill a comment. After tapping one, take a screenshot and verify the rendered text; do not send it without the user's explicit authorization.
 
 ### Like / Pass Actions
 
@@ -88,9 +90,9 @@ To **pass** on a profile:
 
 - Messages appear in a chat bubble layout (yours on right, theirs on left)
 - **Text input** is at the bottom of the screen
-- To send a message: `copy_text_to_phone("your message")` → `long_press(x, y, duration: 1500)` on the input field → tap **"Paste"** in the tooltip → tap the **send button** (arrow icon, right side of input)
+- To prepare a message: tap the input field, call `type_text(phone_id, "your message")`, then take a screenshot and verify the exact message. Only if the user explicitly authorized sending it and visual verification succeeded, tap the **send button** (arrow icon, right side of input).
 - You can also send GIFs, photos, and voice notes via icons near the input field
-- **To leave a conversation**: call `escape` to go back to the conversations list
+- **To leave a conversation**: tap the back arrow in the top-left, or swipe right from the left edge
 
 ### Messaging Tone
 
@@ -117,7 +119,7 @@ Rules:
 1. screenshot → verify you're on Discover tab
 2. Scroll through the profile to see photos and prompts
 3. To like a specific photo/prompt: tap the heart icon on that content
-4. To add a comment: copy_text_to_phone("...") → long_press the "Add a comment" field (1500ms) → tap "Paste" → send
+4. To add a comment: tap the "Add a comment" field, call `type_text(phone_id, "...")`, then take a screenshot and verify the rendered text; send only with the user's explicit authorization and successful visual verification
 5. To send a rose: tap the rose button (left side)
 6. To pass: keep scrolling past all content, next profile loads
 7. screenshot → verify next profile loaded
@@ -126,11 +128,11 @@ Rules:
 ### Send a Thoughtful Like (with comment)
 ```
 1. Scroll through profile to find a photo or prompt you want to comment on
-2. copy_text_to_phone("your witty comment here")
-3. long_press on "Add a comment" below that content (duration: 1500)
-4. Tap "Paste" in the tooltip
-5. Tap send/done
-6. screenshot to verify the like was sent
+2. Tap "Add a comment" below that content to focus the field
+3. Call `type_text(phone_id, "your witty comment here")`
+4. Take a screenshot and verify the exact comment rendered correctly
+5. Only if the user explicitly authorized sending that comment and visual verification succeeded, tap send/done
+6. If sent, take a screenshot and verify the like was sent
 ```
 
 ### Check and Respond to Matches
@@ -138,11 +140,11 @@ Rules:
 1. Tap the Matches tab (4th icon from left in the bottom tab bar)
 2. screenshot → see matches and conversations
 3. Tap on a conversation to open it
-4. copy_text_to_phone("your message")
-5. long_press on the message input field at the bottom (duration: 1500)
-6. Tap "Paste" in the tooltip
-7. Tap send button
-8. screenshot to verify
+4. Tap the message input field at the bottom to focus it
+5. Call `type_text(phone_id, "your message")`
+6. Take a screenshot and verify the exact message rendered correctly
+7. Only if the user explicitly authorized sending that message and visual verification succeeded, tap the send button
+8. If sent, take a screenshot and verify it was sent
 ```
 
 ## Tips and Gotchas

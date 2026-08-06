@@ -11,6 +11,26 @@ LinkedIn is a professional networking platform. Users browse a feed of professio
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
 
+For every text entry, focus the intended field, call `type_text(phone_id, text)`, then take a screenshot and verify the rendered text. Do not tap **Send**, **Post**, **Search**, **Save**, **Confirm**, **Comment**, Return, or an equivalent submission control unless the user explicitly authorized that submission and visual verification succeeded.
+
+## Privacy-Minimized Previews and Final Confirmation
+
+Before sending a connection request, accepting an invitation, sending any message or shared post, posting a comment or reply, reposting, or publishing or scheduling a post:
+
+1. Prepare the action without activating its final submission control.
+2. Take a fresh screenshot of the final state and verify the intended target, audience, and final content as applicable.
+3. Present a concise preview containing only the information needed to review the action:
+   - Connection request: target display name and final note, if any.
+   - Invitation acceptance: inviter display name and the **Accept** action.
+   - Message or shared post: recipient or group, final message, and requested attachment.
+   - Comment or reply: intended post or comment and final comment text.
+   - Repost: intended source post, repost mode, audience, and final commentary, if any.
+   - Publication: audience, final text, requested media, and schedule, if any.
+4. Ask for explicit confirmation and wait. A request made before this preview is not final confirmation.
+5. Only after that confirmation, activate the final control and verify the result. If the target, audience, content, or final screen changes, preview it again and reconfirm.
+
+Confirm each action individually rather than batching unrelated targets. Never quote, transcribe, infer, or summarize sponsored content, unrelated profiles, unrelated feed or notification items, recommendations, message previews, or personal data merely because they appear on screen. Navigate only as broadly as needed for the request and report only the requested target information. When a target is ambiguous, ask a narrow clarifying question without listing unrelated visible people or content.
+
 ## App Structure
 
 ### Bottom Tab Bar (5 tabs)
@@ -116,7 +136,7 @@ Opened by tapping the Comment button on a post. Appears as a bottom half-sheet t
   - **"Comment"** button (right, grayed out when empty, active when text entered)
 - Keyboard appears when text field is tapped
 
-To post a comment: `copy_text_to_phone("your comment")` → `long_press` the text field (1500ms) → tap "Paste" in the tooltip → tap "Comment" button.
+To prepare a comment, tap the text field, call `type_text(phone_id, "your comment")`, then take a fresh screenshot and verify the intended post and exact comment. Present the privacy-minimized preview and request explicit final confirmation. Only after that confirmation, tap the "Comment" button.
 
 To dismiss: swipe down on the handle bar, or tap outside the sheet (above it on the post).
 
@@ -127,13 +147,15 @@ Opened by tapping the Repost button. Appears as a bottom sheet with 2 options:
 1. **Repost with your thoughts** (pencil-in-square icon) — "Create a new post with [Author]'s post attached" — opens the post composer with the original post embedded as a quote repost
 2. **Repost** (repost arrows icon) — "Instantly bring [Author]'s post to others' feeds" — direct repost, no additional comment needed
 
+Treat the direct **Repost** option as a final submission control. Do not tap it until the source post and repost mode have been freshly previewed and the user has explicitly confirmed.
+
 ## Send / Share Sheet
 
 Opened by tapping the Send button on a post. Appears as a bottom sheet.
 
 - **"Send as message"** header
 - **Search field** — Search contacts to send the post to
-- **Recent contacts row** (horizontal scroll): Circular avatars with names. The post author has an "Author" badge. Tap a contact to share the post via LinkedIn DM.
+- **Recent contacts row** (horizontal scroll): Circular avatars with names. The post author has an "Author" badge. Selecting a contact prepares the share; it does not bypass the message preview and final-confirmation gate.
 - **External sharing row** (horizontal scroll at bottom):
   - **Share via** (iOS share sheet icon)
   - **Copy link** (chain link icon)
@@ -199,6 +221,7 @@ Two tabs at the top below the top bar:
 - Header: "Invitations (N)" with right arrow to see all
 - Each invitation: Avatar, name (with optional blue "in" badge), headline, mutual connections count, time ago
 - Action buttons: **X** (decline, circular outline) and **checkmark** (accept, circular outline, blue)
+- Treat the checkmark as the final acceptance control; preview the requested invitation and obtain explicit final confirmation before tapping it.
 
 **Promotional section:**
 - LinkedIn puzzle/games feature: "Need a 30 second break?" with "Solve" button
@@ -219,6 +242,8 @@ Two tabs at the top below the top bar:
 - Quick action button: **"Congrats..."** (green, send icon) for job/anniversary events, **"Wishing you a very happy birthday!"** (red, send icon) for birthdays
 - Engagement: Like count (thumbs up icon), Comment count (speech bubble icon)
 - Three-dot menu (right)
+
+Treat any quick action that sends a prepared message as a message: preview its recipient and final text, then obtain explicit final confirmation before tapping its send control.
 
 ## Notifications Tab
 
@@ -646,10 +671,15 @@ Divider
 
 ### Browse the Home Feed
 ```
-1. open_app("LinkedIn") → screenshot to verify
-2. Home tab should be selected by default
-3. Scroll by swiping up from center of screen
-4. screenshot → verify feed content
+1. `press_home(phone_id)` → screenshot
+2. If **LinkedIn** is visible, tap it; otherwise, swipe left to the App Library and tap its search field to focus it
+3. If using App Library search, call `type_text(phone_id, "LinkedIn")`
+4. If using App Library search, take a screenshot and verify **LinkedIn** rendered correctly and the intended app result is visible
+5. Only if the user explicitly authorized opening LinkedIn and visual verification succeeded, tap that App Library result
+6. screenshot → verify LinkedIn opened
+7. Home tab should be selected by default
+8. Scroll by swiping up from center of screen
+9. screenshot → verify the feed loaded without transcribing or summarizing incidental feed, sponsored, profile, recommendation, or personal data
 ```
 
 ### Like a Post
@@ -671,51 +701,63 @@ Divider
 ```
 1. Tap "Comment" button on the post
 2. screenshot → verify comment section opened as bottom sheet
-3. copy_text_to_phone("your comment")
-4. long_press on the "Leave your thoughts here..." text field (duration: 1500)
-5. Tap "Paste" in the tooltip that appears
-6. Tap "Comment" button (right side of input area)
-7. screenshot → verify comment posted
+3. Tap the "Leave your thoughts here..." text field to focus it
+4. Call `type_text(phone_id, "your comment")`
+5. Take a fresh screenshot and verify the intended post and exact comment rendered correctly
+6. Present a privacy-minimized preview containing only the intended post or comment and the final comment text
+7. Ask for explicit final confirmation and wait
+8. Only after confirmation, tap the "Comment" button
+9. Take a screenshot and verify the comment appeared
 ```
 
 ### Repost Content
 ```
 1. Tap "Repost" button on the post
 2. screenshot → verify repost options appeared
-3. Option A: Tap "Repost" for instant repost
-4. Option B: Tap "Repost with your thoughts" → type commentary → tap "Post"
-5. screenshot → verify
+3. Option A: For an instant repost, do not tap the final "Repost" option yet; take a fresh screenshot and verify the intended source post and mode
+4. Option B: Tap "Repost with your thoughts", focus the commentary field, call `type_text(phone_id, "your commentary")`, then take a fresh screenshot and verify the exact commentary and attached source post
+5. Present a privacy-minimized preview containing only the source post, repost mode, audience, and final commentary, if any
+6. Ask for explicit final confirmation and wait
+7. Only after confirmation, tap the final "Repost" or "Post" control
+8. Take a screenshot and verify the repost appeared
 ```
 
 ### Share a Post via DM
 ```
 1. Tap "Send" button (paper plane) on the post
 2. screenshot → verify "Send as message" sheet appeared
-3. Search for or tap a contact
-4. screenshot → verify sent
+3. If the intended recipient is visible, select only that contact
+4. Otherwise, tap the recipient search field to focus it, call `type_text(phone_id, "recipient name")`, take a screenshot, verify the intended name and result, and select only that result
+5. Take a fresh screenshot and verify the target post, intended recipient, and final message, if any
+6. Present a privacy-minimized preview containing only that recipient, post, and final message
+7. Ask for explicit final confirmation and wait
+8. Only after confirmation, tap the control that sends it
+9. Take a screenshot and verify delivery
 ```
 
 ### Create a Text Post
 ```
 1. Tap the compose icon (pencil-in-square) in the top bar
 2. screenshot → verify composer opened
-3. copy_text_to_phone("your post content")
-4. long_press on the text area ("Share your thoughts...") (duration: 1500)
-5. Tap "Paste" in the tooltip that appears
-6. Optionally tap "Anyone" dropdown to change visibility
-7. Tap "Post" button (top-right)
-8. screenshot → verify post published
+3. Tap the text area ("Share your thoughts...") to focus it
+4. Call `type_text(phone_id, "your post content")`
+5. Set the requested visibility and schedule, if any, without activating the final publication control
+6. Take a fresh screenshot and verify the final content, requested media, audience, and schedule
+7. Present a privacy-minimized preview containing only those final publication details
+8. Ask for explicit final confirmation and wait
+9. Only after confirmation, tap the final "Post" or scheduling control
+10. Take a screenshot and verify the post was published or scheduled as requested
 ```
 
 ### Search for People
 ```
 1. Tap the Search bar in the top bar
 2. screenshot → verify search page appeared
-3. copy_text_to_phone("search query")
-4. long_press on the search field (duration: 1500) → tap "Paste" in the tooltip
-5. screenshot → verify autocomplete suggestions
-6. Tap a suggestion or tap "Show all results"
-7. screenshot → verify results with People/Posts/Jobs tabs
+3. Tap the search field if it is not already focused
+4. Call `type_text(phone_id, "search query")`
+5. screenshot → verify the intended query rendered correctly and autocomplete suggestions appeared
+6. Only if the user explicitly authorized running that query and visual verification succeeded, tap a suggestion or "Show all results"
+7. If submitted, take a screenshot and verify results with People/Posts/Jobs tabs
 8. Tap "People" tab if needed, use filter pills (1st, 2nd, 3rd+)
 ```
 
@@ -723,44 +765,57 @@ Divider
 ```
 1. Tap the Jobs tab in the bottom bar
 2. Browse "Top job picks for you" section
-3. OR: copy_text_to_phone("job title or company") → long_press the search bar (1500ms) → tap "Paste"
-4. screenshot → verify job results
-5. Tap a job card to view details
+3. OR: tap the search bar to focus it
+4. Call `type_text(phone_id, "job title or company")`
+5. Take a screenshot and verify the intended query rendered correctly and the expected live job results appeared
+6. Only if the user explicitly authorized opening a result and visual verification succeeded, tap the intended job card
 ```
 
 ### Connect with Someone
 ```
 1. Find a person (via search, My Network suggestions, or profile)
-2. Tap "Connect" button (person+ icon in search, or green "Connect" in suggestions)
-3. screenshot → verify connection request sent
+2. Treat every "Connect" control as potentially sending immediately; do not tap it yet
+3. Take a fresh screenshot and verify the intended target
+4. If adding a note is available and requested, open only a non-sending review screen, focus the note field, call `type_text(phone_id, "your note")`, then take another fresh screenshot and verify the note
+5. Present a privacy-minimized preview containing only the target display name and final note, if any
+6. Ask for explicit final confirmation and wait
+7. Only after confirmation, tap the control that sends the connection request
+8. Take a screenshot and verify the request was sent
 ```
 
 ### Accept Connection Invitations
 ```
 1. Tap "My Network" tab
 2. "Grow" sub-tab should be selected by default
-3. Look at "Invitations" section
-4. Tap checkmark (accept) or X (decline) on each invitation
-5. screenshot → verify
+3. Locate only the requested invitation; do not summarize other invitations or suggestions
+4. Do not tap its checkmark yet
+5. Take a fresh screenshot and verify the intended inviter
+6. Present a privacy-minimized preview containing only the inviter display name and the "Accept" action
+7. Ask for explicit final confirmation and wait
+8. Only after confirmation, tap the checkmark for that invitation
+9. Take a screenshot and verify it was accepted
 ```
 
 ### Send a Message
 ```
 1. Tap Messages icon (top-right) or "Message" button on a profile
-2. If in message list: tap a conversation or tap compose icon for new message
-3. copy_text_to_phone("your message")
-4. long_press on the "Write a message..." text field (duration: 1500)
-5. Tap "Paste" in the tooltip that appears
-6. Tap send (or press return)
-7. screenshot → verify message sent
+2. If in the message list, open only the intended conversation; for a new message, tap compose, focus the "To:" field, call `type_text(phone_id, "recipient name")`, take a screenshot, verify the intended result, and select only that recipient
+3. Tap the "Write a message..." text field to focus it
+4. Call `type_text(phone_id, "your message")`
+5. Take a fresh screenshot and verify the intended recipient or group and exact message
+6. Present a privacy-minimized preview containing only the recipient or group, final message, and requested attachment, if any
+7. Ask for explicit final confirmation and wait
+8. Only after confirmation, tap send or press return
+9. Take a screenshot and verify the message was sent
 ```
 
 ### View a Profile
 ```
 1. Tap an author's avatar or name from a post, search result, or notification
 2. screenshot → verify profile page loaded
-3. Scroll down to see Experience, Education, Skills sections
-4. To go back: tap back arrow (top-left)
+3. Navigate only to the profile section needed for the user's request
+4. Report only the requested profile information; do not summarize unrelated profile, sponsored, recommendation, contact, location, or personal data
+5. To go back: tap back arrow (top-left)
 ```
 
 ### Browse Videos
@@ -768,7 +823,7 @@ Divider
 1. Tap "Video" tab in the bottom bar
 2. Full-screen video appears
 3. Swipe up for next video, swipe down for previous
-4. Tap right-side buttons to like, comment, share, or save
+4. Locate the requested right-side action; follow the fresh preview and final-confirmation gate before any comment, message, repost, or publication
 ```
 
 ## Tips and Gotchas

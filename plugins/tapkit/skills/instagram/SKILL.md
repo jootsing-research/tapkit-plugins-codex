@@ -7,23 +7,27 @@ description: This skill should be used when the user wants to use Instagram, bro
 
 Instagram is a photo/video sharing social media app. Users browse feeds, post photos and Reels, watch stories, send direct messages, and discover content. The interface uses a dark theme with a bottom tab bar for primary navigation. This skill teaches you Instagram's UI layout and interaction patterns.
 
-**Always take a screenshot after each action to verify what's on screen.** Use visual landmarks (text labels, icons, positions like "top-left") rather than memorized coordinates.
+**Always take a screenshot after each action to verify what's on screen.** Use visual landmarks (text labels, icons, positions like "top-left") rather than memorized tap locations.
 
 ## TapKit Setup Reminder
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
 
+For every text entry, focus the intended field, call `type_text(phone_id, text)`, then take a screenshot and verify the rendered text. Do not tap **Send**, **Post**, **Search**, **Save**, **Confirm**, **Share**, Return, or an equivalent submission control unless the user explicitly authorized that submission and visual verification succeeded.
+
+Treat the photo library as user-controlled private data. Never open, scroll, search, or inspect the library beyond the exact asset the user selected. If an asset has not already been selected, hand control to the user to choose it; resume only after Instagram returns to the selected asset's preview. Inspect only that preview, not adjacent thumbnails, other assets, filenames, dates, locations, or metadata.
+
 ## App Structure
 
-### Bottom Tab Bar (5 tabs, always visible at ~y=1280)
+### Bottom Tab Bar (5 tabs, always visible at the bottom)
 
-| Position | Icon | Approx x | Description |
-|----------|------|-----------|-------------|
-| 1 (left) | House (filled when active) | ~65 | **Home** — Main feed of posts/reels from followed accounts |
-| 2 | Play button | ~190 | **Reels** — Full-screen vertical video feed |
-| 3 (center) | Flag/pennant with badge | ~310 | **Direct Messages** — Inbox for private messages |
-| 4 | Magnifying glass | ~435 | **Search/Explore** — Discover content and search |
-| 5 (right) | Person outline (filled when active) | ~555 | **Profile** — Your profile page |
+| Position | Icon | Description |
+|----------|------|-------------|
+| 1 (left) | House (filled when active) | **Home** — Main feed of posts/reels from followed accounts |
+| 2 | Play button | **Reels** — Full-screen vertical video feed |
+| 3 (center) | Flag/pennant with badge | **Direct Messages** — Inbox for private messages |
+| 4 | Magnifying glass | **Search/Explore** — Discover content and search |
+| 5 (right) | Person outline (filled when active) | **Profile** — Your profile page |
 
 The active tab's icon appears filled/bold. A red badge with a number on the DM icon indicates unread messages.
 
@@ -31,12 +35,12 @@ The active tab's icon appears filled/bold. A red badge with a number on the DM i
 
 ## Home Tab
 
-### Top Bar (~y=100)
-- **"+" button** (top-left, ~x=40): Opens the **Create** flow
+### Top Bar
+- **"+" button** (top-left): Opens the **Create** flow
 - **"Instagram" logo** (center): Decorative branding
-- **Heart icon** (top-right, ~x=580): Opens **Activity/Notifications** screen. Red dot when new notifications.
+- **Heart icon** (top-right): Opens **Activity/Notifications** screen. Red dot when new notifications.
 
-### Stories Row (~y=150-280)
+### Stories Row
 A horizontally scrollable row of circular profile pictures:
 - **"Your story"** (leftmost): Your profile pic with a blue "+" overlay to add a new story
 - **Friends' stories**: Circular thumbnails with colored ring borders:
@@ -45,13 +49,13 @@ A horizontally scrollable row of circular profile pictures:
   - **Gray/no ring**: Already viewed story
 - Tap a story circle to open it full-screen. Stories auto-advance.
 
-### Feed Content (~y=320 and below)
+### Feed Content
 Vertically scrolling list. Each post contains:
 
 **Post Header:**
 - Profile picture (circular, left) — tap to visit profile
 - Username (bold) — verified accounts show blue checkmark
-- Three-dot menu "..." (far right, ~x=590) — post options
+- Three-dot menu "..." (far right) — post options
 
 **Post Media:**
 - Full-width image or video. Videos autoplay muted.
@@ -64,7 +68,7 @@ Vertically scrolling list. Each post contains:
 | Speech bubble | Second | **Comment** — opens comments |
 | Repost arrows | Third | **Reshare** — share to story or send to others |
 | Paper plane | Fourth | **Send** — share via DM |
-| Bookmark | Far right (~x=580) | **Save** — save to collections |
+| Bookmark | Far right | **Save** — save to collections |
 
 **Post Details:**
 - "Liked by [username] and others" social proof line
@@ -83,7 +87,7 @@ Full-screen vertical video experience. Each reel takes the entire screen.
 - **"Reels"** (center, with dropdown arrow)
 - **Filter/preferences icon** (top-right): Adjust reel preferences
 
-### Right-Side Engagement Column (~x=575)
+### Right-Side Engagement Column
 | Icon | Description |
 |------|-------------|
 | Heart + count | Like the reel |
@@ -117,7 +121,7 @@ Opens a bottom sheet with:
 
 ## Search/Explore Tab
 
-### Search Bar (top, ~y=105)
+### Search Bar (top)
 - Tap to activate text input and search for accounts, hashtags, places, or content
 
 ### Content Grid (below search bar)
@@ -151,13 +155,21 @@ Opens a bottom sheet with:
 **From a User's Profile:**
 1. Tap username/profile pic on a post to visit their profile
 2. Tap the **"Message"** button
-3. Type and send your message
+3. Tap the message field to focus it
+4. Call `type_text(phone_id, "your message")`
+5. Take a screenshot and verify the exact message rendered correctly
+6. Only if the user explicitly authorized sending that message and visual verification succeeded, tap Return
 
 **From the DM Inbox:**
 1. Tap compose icon (pencil, top-right)
-2. Search for recipient in "To: Search" field
-3. Tap result to select recipient
-4. Type and send message
+2. Tap the "To: Search" field to focus it
+3. Call `type_text(phone_id, "recipient name")`
+4. Take a screenshot and verify the intended recipient name rendered correctly and the correct result is visible
+5. Only if the user explicitly authorized selecting that recipient and visual verification succeeded, tap the result
+6. Tap the message field to focus it
+7. Call `type_text(phone_id, "your message")`
+8. Take a screenshot and verify the exact message rendered correctly
+9. Only if the user explicitly authorized sending that message and visual verification succeeded, tap Return
 
 **DM Input Bar (full features for mutual contacts):**
 | Element | Description |
@@ -165,7 +177,7 @@ Opens a bottom sheet with:
 | Camera (blue circle) | Take a photo/video to send |
 | "Message..." field | Text input |
 | Microphone | Record voice message |
-| Gallery/Image | Pick from camera roll |
+| Gallery/Image | Attach the exact asset the user selects; library browsing remains user-controlled |
 | Sticker/GIF | Browse stickers/GIFs |
 | "+" (more) | Location, Draw, AI images, Meta AI |
 
@@ -186,10 +198,10 @@ Opens a bottom sheet with:
 - **Display name** and **Bio text**
 - **Action buttons**: Edit profile, Share profile, Person+ icon
 
-### Story Highlights (~y=480-570)
+### Story Highlights
 Horizontally scrollable saved story highlights
 
-### Content Tabs (~y=640)
+### Content Tabs
 | Icon | Description |
 |------|-------------|
 | Grid (3x3 dots) | **Posts** grid view (default) |
@@ -222,16 +234,19 @@ Tapping the comment bubble opens a bottom sheet:
 - **Comment input bar**: "Join the conversation..."
 
 ### Writing a Comment
-1. `copy_text_to_phone("your comment")`
-2. `long_press(x, y, duration: 1500)` on the comment input bar
-3. Tap **"Paste"** in the tooltip that appears
-4. Tap the **blue send arrow** to post
+1. Tap the comment input bar to focus it
+2. Call `type_text(phone_id, "your comment")`
+3. Take a screenshot and verify the exact comment rendered correctly
+4. Only if the user explicitly authorized posting that comment and visual verification succeeded, tap the **blue send arrow**
 
 ### Replying to a Comment
 1. Tap "Reply" on the comment
 2. Input changes to "Replying to [username]" with pre-filled @mention
-3. `copy_text_to_phone("your reply")` → `long_press` the input → tap "Paste" → tap blue send arrow
-4. Tap "X" to cancel reply mode
+3. Tap the reply input to focus it
+4. Call `type_text(phone_id, "your reply")`
+5. Take a screenshot and verify the @mention and exact reply rendered correctly
+6. Only if the user explicitly authorized posting that reply and visual verification succeeded, tap the blue send arrow
+7. Tap "X" to cancel reply mode when not submitting
 
 ### Liking Comments
 - Tap heart icon on right side, or double-tap the comment text
@@ -245,7 +260,7 @@ Tapping the comment bubble opens a bottom sheet:
 
 Accessed via "+" button on Home or Profile.
 
-- **Photo library grid**: Shows camera roll
+- **Media selection**: Hand control to the user to choose the exact asset. Do not inspect or browse the library; resume only on the selected asset's preview.
 - **Content type selector** (bottom pills): POST, STORY, REEL
 
 ---
@@ -264,10 +279,15 @@ Accessed via hamburger menu (≡) on Profile.
 
 ### Browse the Feed
 ```
-1. open_app("Instagram") → screenshot to verify
-2. Home tab should be selected by default
-3. Swipe up from center to scroll down
-4. screenshot → verify new posts loaded
+1. `press_home(phone_id)` → screenshot
+2. If **Instagram** is visible, tap it; otherwise, swipe left to the App Library and tap its search field to focus it
+3. If using App Library search, call `type_text(phone_id, "Instagram")`
+4. If using App Library search, take a screenshot and verify **Instagram** rendered correctly and the intended app result is visible
+5. Only if the user explicitly authorized opening Instagram and visual verification succeeded, tap that App Library result
+6. screenshot → verify Instagram opened
+7. Home tab should be selected by default
+8. Swipe up from center to scroll down
+9. screenshot → verify new posts loaded
 ```
 
 ### Like a Post
@@ -281,53 +301,59 @@ Accessed via hamburger menu (≡) on Profile.
 ```
 1. Tap the comment bubble icon on a post
 2. screenshot → verify comments sheet opened
-3. copy_text_to_phone("your comment")
-4. long_press on the "Join the conversation..." input bar (duration: 1500)
-5. Tap "Paste" in the tooltip
-6. Tap the blue send arrow
-7. screenshot → verify comment posted
+3. Tap the "Join the conversation..." input bar to focus it
+4. Call `type_text(phone_id, "your comment")`
+5. Take a screenshot and verify the exact comment rendered correctly
+6. Only if the user explicitly authorized posting that comment and visual verification succeeded, tap the blue send arrow
+7. If sent, take a screenshot and verify the comment posted
 ```
 
 ### Watch Reels
 ```
-1. Tap the Reels tab (~190, 1280) in bottom nav
+1. From the current screenshot, locate the labeled Reels tab by its play-button icon in the bottom navigation and tap it
 2. screenshot → verify reel playing
 3. Swipe up to see next reel
-4. Tap heart icon (~575) to like
+4. Locate the heart icon in the reel's right-side engagement column and tap it to like
 ```
 
 ### Send a DM
 ```
-1. Tap the DM tab (~310, 1280) in bottom nav
+1. From the current screenshot, locate the Direct Messages tab by its flag/pennant icon in the bottom navigation and tap it
 2. Tap compose icon (pencil, top-right)
-3. copy_text_to_phone("recipient name") → long_press search field (1500ms) → tap "Paste"
-4. Tap the correct result
-5. copy_text_to_phone("your message") → long_press the "Message..." input field (1500ms) → tap "Paste"
-6. Tap return key to send
-7. screenshot → verify message sent
+3. Tap the recipient search field to focus it
+4. Call `type_text(phone_id, "recipient name")`
+5. Take a screenshot and verify the intended name rendered correctly and the correct result is visible
+6. Only if the user explicitly authorized selecting that recipient and visual verification succeeded, tap the correct result
+7. Tap the "Message..." input field to focus it
+8. Call `type_text(phone_id, "your message")`
+9. Take a screenshot and verify the exact message rendered correctly
+10. Only if the user explicitly authorized sending that message and visual verification succeeded, tap the return key
+11. If sent, take a screenshot and verify the message was sent
 ```
 
 ### Search for Content
 ```
-1. Tap the Search tab (~435, 1280) in bottom nav
-2. copy_text_to_phone("search query")
-3. long_press the search bar at top (duration: 1500) → tap "Paste"
-4. Results appear in real-time; tap a result
+1. From the current screenshot, locate the Search/Explore tab by its magnifying-glass icon in the bottom navigation and tap it
+2. Tap the search bar at the top to focus it
+3. Call `type_text(phone_id, "search query")`
+4. Take a screenshot and verify the intended query rendered correctly and the expected live results appeared
+5. Only if the user explicitly authorized opening a result and visual verification succeeded, tap the intended result
 ```
 
 ### View Your Profile
 ```
-1. Tap the Profile tab (~555, 1280)
+1. From the current screenshot, locate the Profile tab by its person icon at the right end of the bottom navigation and tap it
 2. screenshot → verify profile loaded
 3. Browse content tabs: Posts, Reels, Tagged
 ```
 
 ### Post a Story
 ```
-1. Tap "Your story" circle in stories row, or tap "+" > Story
-2. Select or capture media
-3. Add stickers, text, or effects
-4. Tap "Share" to publish
+1. To use an existing asset, hand control to the user before opening the Story media picker and ask them to navigate to and select the exact asset
+2. Resume only after Instagram returns to the selected asset's preview; do not screenshot, scroll, or inspect the photo library
+3. To capture new media instead, tap "Your story" or "+" > Story only when the user requested capture and approved any permission prompt
+4. Add requested stickers, text, or effects
+5. Only if the user explicitly authorized publishing that exact story and the final preview was visually verified, tap "Share"
 ```
 
 ## Tips and Gotchas

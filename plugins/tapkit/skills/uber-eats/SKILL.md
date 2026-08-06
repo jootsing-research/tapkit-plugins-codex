@@ -11,6 +11,16 @@ Uber Eats is a food delivery app for ordering from restaurants, grocery stores, 
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
 
+For every text-entry action, focus the correct field, call `type_text(phone_id, text)`, then call `screenshot(phone_id)` and visually verify the rendered text. Do not tap Send, Post, Search, Save, Confirm, or an equivalent submission control automatically. Submit only when the user explicitly authorizes the exact action and visual verification succeeds.
+
+## Privacy And Checkout Decisions
+
+- Inspect only the restaurant, cart, order, or account surface needed for the request. Never enumerate, quote, or summarize the user's order history, saved addresses, phone numbers, or payment methods visible on screen.
+- Never repeat a complete delivery address, phone number, or payment detail in model output. When one is relevant, mask it (for example, `•••• Main St`, `(***) ***-1234`, or `•••• 4242`) and have the user review the full value on the device. If a reorder requires a prior order, use only the exact order the user identified to prepare the current cart; do not report its historical details.
+- Do not silently select a delivery speed, tip, substitution, or response to an upsell. Show the relevant options without unrelated private data and obtain an explicit choice for each consequential decision. A preselected or default option is not user approval.
+- At checkout, present an itemized, privacy-safe preview of the restaurant, items and customizations, masked destination, delivery choice and fee, tip, substitutions, upsell choices, taxes/fees, and total. Get explicit confirmation of every unresolved choice, then obtain separate final confirmation immediately before placing the order.
+- If an address, phone number, or payment method must be added or changed, stop at its form and let the user review the complete value on the device. Do not repeat the complete value in model output.
+
 ## App Structure
 
 ### Tab Bar (bottom of screen)
@@ -55,15 +65,15 @@ Tap the Search tab (3rd icon) to open search.
 - **Keyboard** appears automatically with blue "search" button
 
 ### Search Flow
-1. `copy_text_to_phone("query")` to load the search text onto the clipboard
-2. `long_press` the search bar (~1500ms) to activate it and bring up the **Paste** tooltip
-3. Tap **"Paste"** in the tooltip
-4. **Autocomplete results appear immediately** — showing matching restaurants (with icons) and search suggestions
-5. Tap a restaurant name to go directly to it, OR tap a suggestion to see full results
-5. **Full results page** has filter tabs: All, Restaurants, Grocery, Retail, Alcohol
-6. Filter pills: Uber One, Offers, Under 30 min, Best overall
-7. **Dish suggestion circles** appear at top (e.g., "Pad Thai", "Mango Sticky Rice")
-8. Results show as large restaurant cards
+1. Tap the search bar to focus it
+2. `type_text(phone_id, "query")`
+3. `screenshot(phone_id)` → verify the rendered query and expected autocomplete results
+4. Do not submit automatically. Only if the user explicitly authorized opening a result and verification succeeded, tap a matching restaurant or suggestion
+5. `screenshot(phone_id)` → verify the intended result page opened
+6. **Full results page** has filter tabs: All, Restaurants, Grocery, Retail, Alcohol
+7. Filter pills: Uber One, Offers, Under 30 min, Best overall
+8. **Dish suggestion circles** appear at top (e.g., "Pad Thai", "Mango Sticky Rice")
+9. Results show as large restaurant cards
 
 To clear search: tap the X button on the right side of the search bar.
 
@@ -113,7 +123,7 @@ Opens as a modal/sheet:
 
 ### Carts Page (Cart tab)
 - Shows **multiple saved carts** from different restaurants
-- Each card: restaurant name, item count, total, delivery address, open/closed status
+- Each card: restaurant name, item count, total, masked delivery destination, open/closed status
 - **"View cart"** and **"View store"** buttons
 
 ### Cart Detail
@@ -124,17 +134,17 @@ Opens as a modal/sheet:
 ## Checkout Flow
 
 ### Step 1: Checkout Page
-- Delivery address, instructions, phone
-- **Delivery time options**: Priority (+$3.99, default), Standard (free), Schedule
+- Delivery address, instructions, and phone are sensitive. Verify them on-device and refer to them only in masked form.
+- **Delivery time options**: Priority, Standard, Schedule. Prices and defaults can vary; preview the current options and get the user's explicit choice before selecting one.
 - Order summary, **"Next"** button
 
 ### Step 2: Tip Page
-- Tip percentages: 17%, 21% (default), 25%, 29%, Custom
+- Tip percentages and a Custom option are shown. Preview the current choices and get the user's explicit tip choice; do not accept or infer a default.
 - **"Place order"** button
 
 ### Step 3: Confirmation
 - "Placing order..." with **"Looks good (0:XX)"** countdown button
-- Auto-confirms after countdown
+- The order may auto-confirm after the countdown. Do not enter this state until the privacy-safe checkout preview is complete and the user has explicitly confirmed the final order.
 
 ### Step 4: Order Tracking
 - Map, status, ETA, progress bar, delivery details
@@ -142,11 +152,12 @@ Opens as a modal/sheet:
 ## Reordering
 
 1. Account tab → **Orders** → **Past orders** tab
-2. Find order → tap **"Reorder"**
-3. Opens order detail → scroll down → tap **"Reorder"** button
-4. Confirm customizations if prompted
-5. **"Complete your order"** upsell → tap **"No thanks"**
-6. Proceed through checkout
+2. Inspect only the specific order the user identified; do not enumerate or summarize order history
+3. Find order → tap **"Reorder"**
+4. Opens order detail → scroll down → tap **"Reorder"** button
+5. Preview changed or unavailable customizations and get the user's explicit choices
+6. If **"Complete your order"** or another upsell appears, show the relevant options and ask whether to accept or decline it
+7. Proceed through the decision-gated checkout flow
 
 ## Key Workflows
 
@@ -156,24 +167,28 @@ Opens as a modal/sheet:
 2. Tap restaurant card
 3. Browse menu (scroll or use category tabs/list icon)
 4. Tap item → customize → "Add to cart"
-5. "Go to checkout" → skip upsell ("No thanks")
-6. Switch to Standard delivery (saves $3.99)
-7. "Next" → select tip → "Place order" → confirm
+5. If an upsell appears, preview it and get an explicit accept-or-decline choice
+6. If a substitution prompt appears, preview its relevant options and get an explicit choice
+7. Preview delivery options and get the user's explicit delivery-speed choice
+8. Preview tip options and get the user's explicit tip choice
+9. Show the privacy-safe checkout preview and resolve every remaining choice
+10. Get separate final confirmation immediately before tapping "Place order"
 ```
 
 ### Reorder a Previous Order
 ```
 1. Account tab → "Orders" → "Past orders"
-2. Find order → "Reorder" → scroll down → "Reorder"
-3. Confirm customizations → skip upsell
-4. Checkout → Standard delivery → tip → place order
+2. Find only the identified order → "Reorder" → scroll down → "Reorder"
+3. Preview customizations and any upsell or substitution choices; get explicit decisions
+4. Get explicit delivery and tip choices
+5. Show the privacy-safe checkout preview and get separate final confirmation before placing the order
 ```
 
 ## Tips and Gotchas
 
-- **Priority delivery is default (+$3.99)** — always switch to Standard unless user wants priority
-- **"Complete your order" upsell** always appears before checkout — tap "No thanks"
-- **"Looks good" countdown** on Place Order confirmation — tap it or it auto-confirms
+- **Delivery defaults can change** — never treat Priority, Standard, or another preselection as the user's choice
+- **"Complete your order" and other upsells** may appear before checkout — do not accept or decline one without the user's explicit choice
+- **"Looks good" countdown** on Place Order confirmation can auto-confirm — enter it only after final order confirmation
 - **Restaurants can cancel** even after "Order received" (especially near closing)
 - **Multiple carts** saved across restaurants — cart badge shows total items
 - **Closed restaurants** still appear in search with "Available at X:XX AM"

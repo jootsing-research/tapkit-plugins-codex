@@ -5,13 +5,23 @@ description: This skill should be used when the user wants to use WhatsApp, send
 
 # WhatsApp - Messaging App
 
-WhatsApp is a private messaging and calling app. On TJ's iPhone 12 Mac Mini, it uses a dark interface and a five-tab bottom bar.
+WhatsApp is a private messaging and calling app with a five-tab bottom bar.
 
-Always use the TapKit loop: screenshot, identify the target, act, then screenshot again. Prefer pasting text via the phone clipboard over tapping individual keyboard keys.
+Always use the TapKit loop: screenshot, identify the target, act, then screenshot again.
 
 ## TapKit Setup Reminder
 
 Before acting in this app, follow the core TapKit setup: `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. All TapKit examples in this skill assume every MCP tool call includes that `phone_id`.
+
+For every text-entry action, focus the correct field, call `type_text(phone_id, text)`, then call `screenshot(phone_id)` and visually verify the rendered text. Do not tap Send, Post, Search, Save, Confirm, or an equivalent submission control automatically. Submit only when the user explicitly authorizes the exact action and visual verification succeeds.
+
+## Privacy And Permissions
+
+- Use the narrowest chat, conversation, and query that can satisfy the request. If the conversation is known, open it directly and search within it rather than scanning global chat history.
+- Do not read, quote, or summarize unrelated chat titles, message previews, participants, phone numbers, or search results visible on screen.
+- Mask unsaved phone numbers in confirmations and model output, showing only enough digits to distinguish the intended recipient (for example, `+1 (***) ***-3448`). Keep the full number on-device and ask the user to review it there when needed.
+- Never grant Contacts, Photos or photo-library, Camera, or Microphone access automatically. When a permission prompt appears, stop, explain the exact feature and scope requesting access, and ask for explicit approval before choosing an option. Prefer the least-privileged or selected-item option when available.
+- Treat approval for one permission, asset, or action as scoped only to that request. Do not infer approval for other permissions or broader access.
 
 ## Bottom Tabs
 
@@ -48,21 +58,20 @@ Use this when the user wants to message someone without saving them as a contact
 1. Open WhatsApp.
 2. Go to Chats.
 3. Tap the green +.
-4. Tap Search name or number.
-5. Copy the number to the phone clipboard.
-6. Long-press near the search-field caret and tap Paste.
-7. Under Not in your contacts, verify the formatted number.
-8. Tap the green Chat action on the right.
-9. Paste the message in the composer.
-10. Verify recipient and message text.
-11. Tap the green send arrow.
-12. Screenshot to confirm the outgoing bubble.
+4. Tap Search name or number to focus the field.
+5. Call `type_text(phone_id, requested_full_number)` with the requested number, keeping the complete value on-device.
+6. Call `screenshot(phone_id)` and verify the rendered number and matching formatted result under Not in your contacts.
+7. Confirm the intended recipient using a masked number only, and ask the user to review the full number on-device.
+8. Only if the user explicitly authorized starting a chat with the masked, verified recipient and verification succeeded, tap the green Chat action on the right.
+9. Call `screenshot(phone_id)` and verify the intended chat and recipient opened without transcribing the full unsaved number.
+10. Tap the composer to focus it.
+11. Call `type_text(phone_id, "Your message")`.
+12. Call `screenshot(phone_id)` and verify the masked intended recipient and exact rendered message.
+13. Only if the user explicitly authorized sending this exact message and verification succeeded, tap the green send arrow.
+14. Call `screenshot(phone_id)` to verify the outgoing bubble.
 ```
 
-Observed number behavior:
-
-- `9544960433` becomes `+1 (954) 496-0433`.
-- `+13109683448` becomes `+1 (310) 968-3448`.
+WhatsApp may reformat the entered number with country-code punctuation. Compare the complete value on-device, but use only a masked form in model output.
 
 Important: Tap **Chat**, not **New contact**, if the user wants to message without saving.
 
@@ -70,23 +79,20 @@ Important: Tap **Chat**, not **New contact**, if the user wants to message witho
 
 New Chat has a New contact row, and number-search results also show New contact under More.
 
-Only use this when the user explicitly wants the number saved. Saving a contact mutates the iOS address book, so verify the name and number before saving. For normal "message this number" requests, use the unsaved-number Chat result instead.
+Only use this when the user explicitly wants the number saved. Saving a contact mutates the iOS address book, so verify the name and full number on-device, use a masked number in model output, and request confirmation before saving. If a Contacts permission prompt appears, follow the permission gate above. For normal "message this number" requests, use the unsaved-number Chat result instead.
 
-## Pasting With TapKit
+## Text Entry With TapKit
 
-Use clipboard paste for text entry:
+Focus the destination field before typing text directly:
 
 ```
-copy_text_to_phone(phone_id, text)
-Tap the target field.
-Long-press near the caret.
-Tap Paste.
-Screenshot to verify.
+tap(phone_id, x, y)
+type_text(phone_id, text)
+screenshot(phone_id)
 ```
 
-In New Chat, the paste menu was reliable after focusing the search field and long-pressing near the caret at the left side of the field. The Paste option appears in the iOS edit menu just below the search field.
-
-Do not tap individual keyboard keys for phone numbers unless no paste path is available.
+Do not tap individual keyboard keys. Use `type_text` only after the intended field is visibly focused.
+Do not tap a submission control automatically. Only submit after the user explicitly authorizes the exact action and the screenshot confirms the rendered text.
 
 ## Chat Screen
 
@@ -116,6 +122,13 @@ When text is entered, the microphone changes to a green send arrow. Outgoing mes
 
 ## Search
 
+Scope search before opening results:
+
+1. If the user names a conversation, open that exact chat and use its in-chat search for the requested term or date range.
+2. Use global chat search only when the target conversation is unknown or the user explicitly requests a cross-chat search.
+3. Use the narrowest distinctive query and stop once the requested match is found. Do not continue browsing earlier or later messages without a request-specific reason.
+4. Ignore and do not report unrelated chat rows, message previews, participants, or media surfaced by search.
+
 The Chats search field starts with media filters:
 
 - Photos
@@ -127,18 +140,18 @@ The Chats search field starts with media filters:
 - Polls
 - Events
 
-To find an existing chat by number:
+To find an existing chat by number when the conversation cannot be opened directly:
 
 ```
 1. Tap Ask Meta AI or Search.
-2. Paste a full or partial phone number.
-3. Look under Chats.
-4. Tap the result row to resume the conversation.
+2. Tap the search field to focus it.
+3. Call `type_text(phone_id, text)` with the narrowest useful number fragment supplied by the user.
+4. Call `screenshot(phone_id)` and verify the rendered query and intended result under Chats without transcribing unrelated results.
+5. Confirm the intended result using a masked number only.
+6. If the user asked to resume the verified conversation, tap the matching result row.
 ```
 
-Observed search for `954` found `+1 (954) 496-0433` with preview `Emily: TapKit WhatsApp test`.
-
-If no result appears, try fewer digits, remove punctuation, search the formatted number, or search distinctive message text.
+If no result appears, adjust only within the user's requested scope: try fewer digits, remove punctuation, use another user-supplied fragment, or search distinctive requested message text. Do not broaden into an indiscriminate chat-history scan.
 
 ## Calls
 
@@ -177,5 +190,5 @@ You is profile/settings:
 - Search icon.
 - QR code icon.
 - Profile card.
-- Photo-access prompt.
+- Photo-access prompt. Do not grant access without the explicit, scoped permission required above.
 - Settings rows: Lists, Starred, Broadcast messages, Linked devices, Account, Privacy, Chats, Notifications, Storage and data, Help and feedback, Invite a friend, Meta Accounts Center.
