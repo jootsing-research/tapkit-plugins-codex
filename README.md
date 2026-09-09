@@ -4,7 +4,7 @@ This repository publishes the TapKit Codex plugin marketplace.
 
 The first plugin is `tapkit`, which connects Codex to a physical iPhone through the TapKit MCP server and ships reusable skill guidance for common iOS apps and workflows.
 
-## Distribution Status
+## Installation
 
 Add the marketplace with the Codex CLI:
 
