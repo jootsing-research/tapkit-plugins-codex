@@ -6,8 +6,6 @@ The first plugin is `tapkit`, which connects Codex to a physical iPhone through 
 
 ## Distribution Status
 
-TapKit is distributed as a GitHub-backed Codex plugin marketplace. You no longer need to clone this repository or hand-edit a personal `~/.agents/plugins/marketplace.json` file to install it.
-
 Add the marketplace with the Codex CLI:
 
 ```sh
@@ -16,13 +14,13 @@ codex plugin marketplace add jootsing-research/tapkit-plugins-codex
 
 Then open the Codex plugin directory, choose the `TapKit Plugins` marketplace, and install the `tapkit` plugin.
 
-The marketplace name registered with Codex is `tapkit-plugins`, which comes from `.agents/plugins/marketplace.json`. Use that name when upgrading this marketplace directly:
+To upgrade this marketplace directly:
 
 ```sh
 codex plugin marketplace upgrade tapkit-plugins
 ```
 
-To refresh all configured marketplaces, run:
+To upgrade all configured marketplaces, run:
 
 ```sh
 codex plugin marketplace upgrade
@@ -42,24 +40,6 @@ After installing the plugin, Codex may prompt you to authenticate TapKit in your
 - `plugins/tapkit/.codex-plugin/plugin.json`: TapKit plugin manifest
 - `plugins/tapkit/.mcp.json`: TapKit MCP server configuration
 - `plugins/tapkit/skills/*/SKILL.md`: bundled skills for phone control and app-specific guidance
-
-## Current Scope
-
-This first pass mirrors the same high-level capability set as the sibling Claude plugin:
-
-- Core TapKit iPhone control
-- Clock
-- Facebook
-- Hinge
-- Instagram
-- LinkedIn
-- Telegram
-- TikTok
-- Twitter / X
-- Uber Eats
-- Weather
-
-The app skills here are intentionally concise. They are meant to be usable in Codex immediately while leaving room for a second pass that expands each one into a more exhaustive app manual.
 
 ## Verify The Install
 
