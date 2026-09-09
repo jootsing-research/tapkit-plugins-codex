@@ -1,0 +1,1382 @@
+[[screens]]
+id = "library"
+
+[[screens.modes]]
+id = "normal"
+description = "The main photo library, showing the newest items in a three-column grid with Library, Collections, and Search navigation."
+
+[[screens.modes.elements]]
+position = [665, 95]
+description = "sort and filter menu button — open the library sort, filter, and view options menu"
+target = "library.sort-menu"
+
+[[screens.modes.elements]]
+position = [856, 95]
+description = "Select button — enter multi-item selection mode"
+target = "library.select"
+
+[[screens.modes.elements]]
+position = "any photo thumbnail in the scrollable grid"
+isRepeating = true
+description = "photo thumbnail — open the item viewer"
+target = "photo.normal"
+
+[[screens.modes.elements]]
+position = "photo grid; drag vertically"
+description = "content area \u2014 scroll vertically"
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button — open the Collections dashboard"
+target = "collections.normal"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens.modes]]
+id = "select"
+description = "The library in multi-item selection mode, with selection controls above the grid and Share and Delete actions below."
+
+[[screens.modes.elements]]
+position = [621, 95]
+description = "sort and filter menu button — open view controls while selecting items"
+target = "library.select-sort-menu"
+
+[[screens.modes.elements]]
+position = [758, 95]
+description = "more button — inactive with no selection, or open selected-item actions when items are selected"
+target = "library.select-more-menu"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "close button — leave selection mode"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = "any photo thumbnail in the selection grid"
+isRepeating = true
+description = "photo selection toggle — select or deselect an item without modifying it"
+
+[[screens.modes.elements]]
+position = "selection grid; drag vertically"
+description = "content area \u2014 scroll vertically"
+
+[[screens.modes.elements]]
+position = [134, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "delete button — delete selected items after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "select-more-menu"
+description = "The selected-item actions menu, offering slideshow, copy, and several data-changing photo operations."
+
+[[screens.modes.elements]]
+position = [315, 103]
+description = "slideshow button — start a slideshow of the selected items"
+target = "slideshow.music-permission"
+
+[[screens.modes.elements]]
+position = [513, 103]
+description = "favorite button — mark the selected items as favorites"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [714, 103]
+description = "delete button — delete the selected items after confirmation"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [516, 199]
+description = "copy command \u2014 copy selected items"
+
+[[screens.modes.elements]]
+position = [516, 248]
+description = "duplicate command — create copies of the selected items"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [516, 296]
+description = "hide command — move the selected items into the Hidden collection"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [516, 370]
+description = "add to album command — add the selected items to an album"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [516, 445]
+description = "adjust date and time command — change capture metadata for the selected items"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [516, 494]
+description = "adjust location command — change location metadata for the selected items"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [758, 95]
+description = "highlighted more button — close the selected-item actions menu"
+target = "library.select"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "close button \u2014 leave selection mode"
+
+[[screens.modes.elements]]
+position = "any visible photo thumbnail outside the actions popover while selecting"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [134, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "delete button — delete selected items after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "select-sort-menu"
+description = "Selection mode with the sort, filter, and view-options popover open."
+
+[[screens.modes.elements]]
+position = [516, 115]
+description = "sort by recently added option — order items by addition time and close the menu"
+target = "library.select"
+
+[[screens.modes.elements]]
+position = [516, 179]
+description = "sort by date captured option — order items by capture date and close the menu"
+target = "library.select"
+
+[[screens.modes.elements]]
+position = [516, 253]
+description = "filter submenu — expand item filters while in selection mode"
+target = "library.select-filter-menu"
+
+[[screens.modes.elements]]
+position = [516, 301]
+description = "view options submenu — expand grid and visibility controls while selecting"
+target = "library.select-view-options"
+
+[[screens.modes.elements]]
+position = [621, 95]
+description = "highlighted sort menu button — close the popover and return to selection mode"
+target = "library.select"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "close button \u2014 leave selection mode"
+
+[[screens.modes.elements]]
+position = "any visible photo thumbnail outside the popover while selecting"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [134, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "delete button — delete selected items after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "select-view-options"
+description = "Expanded View Options during selection mode, offering grid zoom and visibility toggles."
+
+[[screens.modes.elements]]
+position = [516, 293]
+description = "view options header — collapse the submenu back to selection-mode sort controls"
+target = "library.select-sort-menu"
+
+[[screens.modes.elements]]
+position = [516, 366]
+description = "zoom in button — enlarge thumbnails and reduce the grid to fewer columns"
+
+[[screens.modes.elements]]
+position = [516, 415]
+description = "zoom out button — shrink thumbnails and increase the grid column count"
+
+[[screens.modes.elements]]
+position = [516, 523]
+description = "screenshots visibility toggle — show or hide screenshots in the selection grid"
+
+[[screens.modes.elements]]
+position = [516, 573]
+description = "shared with you visibility toggle — show or hide items shared through Messages"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "close button \u2014 leave selection mode"
+
+[[screens.modes.elements]]
+position = "any visible photo thumbnail outside the view-options popover while selecting"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [134, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "delete button — delete selected items after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "select-filter-menu"
+description = "The expanded item-filter submenu while the library remains in selection mode."
+
+[[screens.modes.elements]]
+position = [516, 273]
+description = "all items filter — clear active filters"
+
+[[screens.modes.elements]]
+position = [516, 348]
+description = "favorites filter — toggle inclusion of favorited items"
+
+[[screens.modes.elements]]
+position = [516, 397]
+description = "edited filter — toggle inclusion of edited items"
+
+[[screens.modes.elements]]
+position = [516, 447]
+description = "photos filter — toggle inclusion of still photos"
+
+[[screens.modes.elements]]
+position = [516, 496]
+description = "videos filter — toggle inclusion of videos"
+
+[[screens.modes.elements]]
+position = [516, 546]
+description = "screenshots filter — toggle inclusion of screenshots"
+
+[[screens.modes.elements]]
+position = [516, 595]
+description = "shared with you filter — toggle inclusion of items shared through Messages"
+
+[[screens.modes.elements]]
+position = [516, 644]
+description = "not in an album filter — toggle inclusion of items outside albums"
+
+[[screens.modes.elements]]
+position = [516, 201]
+description = "filter header — collapse the submenu back to selection-mode sort controls"
+target = "library.select-sort-menu"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "close button \u2014 leave selection mode"
+
+[[screens.modes.elements]]
+position = "any visible photo thumbnail outside the filter popover while selecting"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [134, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "delete button — delete selected items after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "sort-menu"
+description = "The library with a popover offering sort order, filtering, and view options."
+
+[[screens.modes.elements]]
+position = [435, 115]
+description = "sort by recently added option — order the library by when items were added and close the menu"
+
+[[screens.modes.elements]]
+position = [435, 179]
+description = "sort by date captured option — order the library by capture date and close the menu"
+
+[[screens.modes.elements]]
+position = [435, 253]
+description = "filter submenu — expand the library item filters"
+target = "library.filter-menu"
+
+[[screens.modes.elements]]
+position = [435, 301]
+description = "view options submenu — expand grid zoom, aspect ratio, and visibility options"
+target = "library.view-options"
+
+[[screens.modes.elements]]
+position = [665, 95]
+description = "highlighted sort menu button — close the popover"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [856, 95]
+description = "Select button \u2014 enter selection mode"
+
+[[screens.modes.elements]]
+position = "any visible photo thumbnail outside the popover"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens.modes]]
+id = "view-options"
+description = "The expanded View Options submenu over the library, with grid sizing, aspect-ratio, and visibility controls; option rows shift downward when a hidden-items status subtitle is present."
+
+[[screens.modes.elements]]
+position = [435, 293]
+description = "view options header — collapse the submenu back to the sort menu"
+target = "library.sort-menu"
+
+[[screens.modes.elements]]
+position = "Zoom In row in the View Options popover; shifts when a status subtitle appears"
+description = "zoom in button — enlarge thumbnails and reduce the grid to fewer columns"
+
+[[screens.modes.elements]]
+position = "Zoom Out row in the View Options popover; shifts when a status subtitle appears"
+description = "zoom out button — shrink thumbnails and increase the grid column count"
+
+[[screens.modes.elements]]
+position = "aspect-ratio row in the View Options popover; shifts when a status subtitle appears"
+description = "aspect ratio grid toggle — switch between aspect-ratio thumbnails and a square photo grid"
+
+[[screens.modes.elements]]
+position = "Screenshots row in the View Options popover; shifts when a status subtitle appears"
+description = "screenshots visibility toggle — show or hide screenshots in the library grid"
+
+[[screens.modes.elements]]
+position = "Shared with You row in the View Options popover; shifts when a status subtitle appears"
+description = "shared with you visibility toggle — show or hide items shared through Messages"
+
+[[screens.modes.elements]]
+position = [856, 95]
+description = "Select button \u2014 enter selection mode"
+
+[[screens.modes.elements]]
+position = "any visible photo thumbnail outside the view-options popover"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens.modes]]
+id = "filter-menu"
+description = "The expanded Filter submenu over the library, offering item-type and metadata filters."
+
+[[screens.modes.elements]]
+position = [435, 273]
+description = "all items filter — show every library item"
+
+[[screens.modes.elements]]
+position = [435, 348]
+description = "favorites filter — show only favorited items and close the menu"
+target = "library.filtered-empty"
+
+[[screens.modes.elements]]
+position = [435, 397]
+description = "edited filter \u2014 toggle inclusion of edited items"
+
+[[screens.modes.elements]]
+position = [435, 447]
+description = "photos filter \u2014 toggle inclusion of still photos"
+
+[[screens.modes.elements]]
+position = [435, 496]
+description = "videos filter \u2014 toggle inclusion of videos"
+
+[[screens.modes.elements]]
+position = [435, 546]
+description = "screenshots filter \u2014 toggle inclusion of screenshots"
+
+[[screens.modes.elements]]
+position = [435, 595]
+description = "shared with you filter \u2014 toggle shared items"
+
+[[screens.modes.elements]]
+position = [435, 644]
+description = "not in an album filter \u2014 toggle items outside albums"
+
+[[screens.modes.elements]]
+position = [435, 201]
+description = "filter header \u2014 collapse the expanded filter submenu"
+
+[[screens.modes.elements]]
+position = [856, 95]
+description = "Select button \u2014 enter selection mode"
+
+[[screens.modes.elements]]
+position = "any visible photo thumbnail outside the filter popover"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens.modes]]
+id = "filtered-empty"
+description = "The library with an active filter that matches no items; the filter glyph replaces the usual sort and Select controls."
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "active filter button — open the filtered-library menu"
+target = "library.sort-menu-filtered"
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens.modes]]
+id = "sort-menu-filtered"
+description = "The filtered library menu, showing the current filter and an additional Remove Filter command."
+
+[[screens.modes.elements]]
+position = [661, 112]
+description = "sort by recently added option \u2014 order by addition time"
+
+[[screens.modes.elements]]
+position = [661, 178]
+description = "sort by date captured option \u2014 order by capture date"
+
+[[screens.modes.elements]]
+position = [661, 260]
+description = "filter submenu — expand filters while a filter is active"
+target = "library.filter-menu-filtered"
+
+[[screens.modes.elements]]
+position = [661, 324]
+description = "remove filter command \u2014 clear the active filter"
+
+[[screens.modes.elements]]
+position = [661, 398]
+description = "view options submenu \u2014 open grid view controls"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "highlighted menu button \u2014 close the open popover"
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens.modes]]
+id = "filter-menu-filtered"
+description = "The expanded filter submenu while a filter is active, with the current filter checked."
+
+[[screens.modes.elements]]
+position = [661, 273]
+description = "all items filter — clear active filters and return to the unfiltered library"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [661, 348]
+description = "favorites filter \u2014 toggle inclusion of favorites"
+
+[[screens.modes.elements]]
+position = [661, 397]
+description = "edited filter — toggle inclusion of edited items"
+
+[[screens.modes.elements]]
+position = [661, 447]
+description = "photos filter — toggle inclusion of still photos"
+
+[[screens.modes.elements]]
+position = [661, 496]
+description = "videos filter — toggle inclusion of videos"
+
+[[screens.modes.elements]]
+position = [661, 546]
+description = "screenshots filter — toggle inclusion of screenshots"
+
+[[screens.modes.elements]]
+position = [661, 595]
+description = "shared with you filter — toggle inclusion of items shared through Messages"
+
+[[screens.modes.elements]]
+position = [661, 644]
+description = "not in an album filter — toggle inclusion of items outside albums"
+
+[[screens.modes.elements]]
+position = [661, 181]
+description = "filter header \u2014 collapse the expanded filter submenu"
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens]]
+id = "slideshow"
+
+[[screens.modes]]
+id = "music-permission"
+description = "A system permission alert over the slideshow asking whether Photos may access Apple Music for Memories songs."
+
+[[screens.modes.elements]]
+position = [313, 659]
+description = "Don’t Allow button — continue the slideshow without Apple Music access"
+target = "slideshow.normal"
+
+[[screens.modes.elements]]
+position = [687, 659]
+description = "Allow button — grant Photos access to Apple Music activity and the media library"
+looksMutating = true
+
+[[screens.modes]]
+id = "normal"
+description = "A full-screen slideshow frame with playback, favorite, and sharing controls over the image."
+
+[[screens.modes.elements]]
+position = [95, 95]
+description = "back button \u2014 leave the slideshow"
+
+[[screens.modes.elements]]
+position = "slideshow image surface; tap to show or hide playback chrome"
+description = "photo surface \u2014 hide or show the viewer controls"
+
+[[screens.modes.elements]]
+position = [366, 930]
+description = "replay button — restart slideshow playback and hide the controls"
+target = "slideshow.playing"
+
+[[screens.modes.elements]]
+position = [500, 930]
+description = "favorite button — mark the displayed item as a favorite"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [631, 930]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes]]
+id = "playing"
+description = "The slideshow actively advances full-screen images with all controls hidden."
+
+[[screens.modes.elements]]
+position = "full-screen slideshow image; tap to reveal controls"
+description = "slideshow image — reveal playback controls"
+target = "slideshow.controls"
+
+[[screens.modes.elements]]
+position = "left-edge back gesture on the full-screen slideshow"
+description = "left-edge back gesture — no effect while slideshow playback chrome is hidden"
+
+[[screens.modes]]
+id = "controls"
+description = "Slideshow playback controls over the current image, with audio, pause, filmstrip, music, and grid navigation."
+
+[[screens.modes.elements]]
+position = [95, 95]
+description = "back button \u2014 leave the slideshow"
+
+[[screens.modes.elements]]
+position = "slideshow image outside the controls; tap to hide chrome"
+description = "photo area \u2014 dismiss the open actions menu"
+
+[[screens.modes.elements]]
+position = [756, 95]
+description = "audio button — mute or unmute slideshow sound"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "more button \u2014 show slideshow options"
+
+[[screens.modes.elements]]
+position = [500, 516]
+description = "play/pause button — toggle slideshow playback and hide the controls"
+target = "slideshow.playing"
+
+[[screens.modes.elements]]
+position = "any thumbnail in the slideshow filmstrip"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [132, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [868, 938]
+description = "grid button \u2014 show all slideshow items"
+
+[[screens]]
+id = "photo"
+
+[[screens.modes]]
+id = "normal"
+description = "The single-item viewer with date, navigation filmstrip, sharing, favorite, info, editing, and deletion controls."
+
+[[screens.modes.elements]]
+position = [95, 95]
+description = "back button — return to the presenting photo grid"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "more button — open item actions"
+target = "photo.more-menu"
+
+[[screens.modes.elements]]
+position = [911, 162]
+description = "immersive-view button — hide the standard toolbar and show a close control"
+target = "photo.immersive"
+
+[[screens.modes.elements]]
+position = "displayed photo surface; tap to hide or show chrome"
+description = "photo surface \u2014 hide or show the viewer controls"
+
+[[screens.modes.elements]]
+position = "displayed photo surface; swipe horizontally to move between adjacent items"
+description = "photo surface \u2014 move between adjacent items"
+
+[[screens.modes.elements]]
+position = "any thumbnail in the bottom filmstrip"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [132, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [363, 938]
+description = "favorite button — mark the item as a favorite"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 938]
+description = "info button — open photo metadata and caption details"
+target = "photo.info"
+
+[[screens.modes.elements]]
+position = [637, 938]
+description = "edit button — open the nondestructive photo editor"
+target = "photo.editor"
+
+[[screens.modes.elements]]
+position = [868, 938]
+description = "delete button — delete the displayed item after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "editor"
+description = "The nondestructive photo editor on the Adjust tab, with temporary adjustment controls and Cancel or Done."
+
+[[screens.modes.elements]]
+position = [199, 37]
+description = "Cancel button — discard temporary edits and return to the item viewer"
+target = "photo.normal"
+
+[[screens.modes.elements]]
+position = [806, 37]
+description = "Done button — save the current photo edits"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [95, 95]
+description = "undo button — undo the latest temporary edit when enabled"
+
+[[screens.modes.elements]]
+position = [229, 95]
+description = "redo button — redo an undone temporary edit when enabled"
+
+[[screens.modes.elements]]
+position = [769, 95]
+description = "markup button — open drawing and annotation tools before saving"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "more button — open editor actions"
+
+[[screens.modes.elements]]
+position = [500, 789]
+description = "auto-enhance button — toggle a temporary automatic adjustment"
+
+[[screens.modes.elements]]
+position = "any circular adjustment-type button in the horizontal adjustment strip"
+isRepeating = true
+description = "adjustment type — choose the property controlled by the slider"
+
+[[screens.modes.elements]]
+position = "horizontal adjustment slider below the photo"
+description = "adjustment slider — change the selected temporary adjustment"
+
+[[screens.modes.elements]]
+position = [380, 925]
+description = "Adjust tab — show light and color adjustment controls"
+
+[[screens.modes.elements]]
+position = [500, 925]
+description = "Filters tab — show preset filters"
+
+[[screens.modes.elements]]
+position = [620, 925]
+description = "Crop tab — show crop, straighten, rotate, and perspective controls"
+
+[[screens.modes]]
+id = "info"
+description = "The item information panel showing caption, capture metadata, location, and source attribution above the bottom toolbar."
+
+[[screens.modes.elements]]
+position = "Add a Caption field below the photo"
+description = "caption field — add or change the item caption"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [903, 547]
+description = "Adjust button — change the item’s capture date and time"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 784]
+description = "Add a location button — attach location metadata to the item"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 861]
+description = "source attribution row — open the app or page the item was saved from"
+
+[[screens.modes.elements]]
+position = [132, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [363, 938]
+description = "favorite button — mark the item as a favorite"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 938]
+description = "highlighted info button — close the metadata panel"
+target = "photo.normal"
+
+[[screens.modes.elements]]
+position = [637, 938]
+description = "edit button \u2014 open the item editor"
+
+[[screens.modes.elements]]
+position = [868, 938]
+description = "delete button — delete the displayed item after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "immersive"
+description = "An immersive item view with only a Close button and the bottom filmstrip visible around the photo."
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "close button — return to the standard item viewer"
+target = "photo.normal"
+
+[[screens.modes.elements]]
+position = "displayed photo surface in immersive view"
+description = "photo surface \u2014 hide or show the viewer controls"
+
+[[screens.modes.elements]]
+position = "any thumbnail in the bottom filmstrip"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes]]
+id = "more-menu"
+description = "The displayed-item actions menu with copy and slideshow plus data-changing duplicate, hide, album, metadata, and delete operations."
+
+[[screens.modes.elements]]
+position = [629, 106]
+description = "copy command — copy the displayed item to the system clipboard and close the menu"
+target = "photo.normal"
+
+[[screens.modes.elements]]
+position = [629, 155]
+description = "duplicate command — create a copy of the displayed item"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [629, 204]
+description = "hide command — move the displayed item into the Hidden collection"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [629, 253]
+description = "slideshow command — play a slideshow beginning with the displayed item"
+target = "slideshow.normal"
+
+[[screens.modes.elements]]
+position = [629, 329]
+description = "add to album command — add the displayed item to an album"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [629, 403]
+description = "adjust date and time command — change the item’s capture date metadata"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [629, 451]
+description = "adjust location command — change the item’s location metadata"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [629, 524]
+description = "delete command — delete the displayed item after confirmation"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [95, 95]
+description = "back button \u2014 return to the presenting collection"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "more button \u2014 close the item actions menu"
+
+[[screens.modes.elements]]
+position = "displayed photo outside the actions popover"
+description = "photo area \u2014 dismiss the open actions menu"
+
+[[screens.modes.elements]]
+position = "any thumbnail in the bottom filmstrip"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = [132, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = [363, 938]
+description = "favorite button — mark the item as a favorite"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 938]
+description = "info button \u2014 show item metadata"
+
+[[screens.modes.elements]]
+position = [637, 938]
+description = "edit button \u2014 open the item editor"
+
+[[screens.modes.elements]]
+position = [868, 938]
+description = "delete button — delete the displayed item after confirmation"
+looksMutating = true
+
+[[screens]]
+id = "collections"
+
+[[screens.modes]]
+id = "normal"
+description = "A vertically scrollable dashboard of Memories, Pinned, Albums, People & Pets, and additional collection sections."
+
+[[screens.modes.elements]]
+position = [750, 95]
+description = "more button \u2014 open Collections options"
+
+[[screens.modes.elements]]
+position = [895, 95]
+description = "profile button \u2014 open account and Photos settings"
+
+[[screens.modes.elements]]
+position = "Memories section title; moves as the dashboard scrolls"
+description = "Memories section title — open the Memories collection"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "blue collapse chevron beside any collection section; moves as the dashboard scrolls"
+description = "section chevron — collapse or expand that Collections section"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = "Pinned section title; moves as the dashboard scrolls"
+description = "Pinned section title — open all pinned collections"
+target = "pinned.normal"
+
+[[screens.modes.elements]]
+position = "Pinned Edit button; moves as the dashboard scrolls"
+description = "Pinned Edit button — choose and reorder pinned collections"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "any card in the horizontally scrolling Pinned row"
+description = "card \u2014 open that collection"
+isRepeating = true
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Albums section title; moves as the dashboard scrolls"
+description = "Albums section title — open all albums"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "any personal album card in the Albums row"
+description = "card \u2014 open that collection"
+isRepeating = true
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "People & Pets section title; moves as the dashboard scrolls"
+description = "People & Pets section title — open recognized people and pets"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Collections dashboard; drag vertically to reveal more sections"
+description = "Collections dashboard — scroll vertically through all collection sections"
+
+[[screens.modes.elements]]
+position = "Featured Photos section title; moves as the dashboard scrolls"
+description = "Featured Photos section title — open Featured Photos"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "any card in the Featured Photos row"
+description = "card \u2014 open that collection"
+isRepeating = true
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Shared Albums section title; moves as the dashboard scrolls"
+description = "Shared Albums section title — open Shared Albums"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Start Sharing button in the Shared Albums section"
+description = "Start Sharing button — begin configuring shared albums"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Recent Days section title; moves as the dashboard scrolls"
+description = "Recent Days section title — open recent day collections"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "any card in the Recent Days row"
+description = "card \u2014 open that collection"
+isRepeating = true
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Trips section title; moves as the dashboard scrolls"
+description = "Trips section title — open trip collections"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Media Types section title; moves as the dashboard scrolls"
+description = "Media Types section title — open media-type collections"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "any media-type row under Media Types"
+description = "row \u2014 open that collection"
+isRepeating = true
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Utilities section title; moves as the dashboard scrolls"
+description = "Utilities section title — open all utility collections"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Hidden utility row"
+description = "Hidden utility — open the locked Hidden collection after device authentication"
+
+[[screens.modes.elements]]
+position = "Recently Deleted utility row"
+description = "Recently Deleted utility — open the locked recently deleted collection after device authentication"
+
+[[screens.modes.elements]]
+position = "any unlocked utility row such as Recently Viewed, Imports, Recently Saved, or Map"
+description = "row \u2014 open that collection"
+isRepeating = true
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "any collection card or utility row; long press"
+isRepeating = true
+description = "collection long press — open the Pin context menu"
+target = "collections.pin-menu"
+
+[[screens.modes.elements]]
+position = "Wallpaper Suggestions section title near the bottom of Collections"
+description = "Wallpaper Suggestions section title — open wallpaper suggestions"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Reorder button below the final Collections section"
+description = "Reorder button — enter Collections section reordering mode"
+target = "collections.reorder"
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button — open Photos search with the query field focused"
+target = "search.normal"
+
+[[screens.modes]]
+id = "reorder"
+description = "A list of every Collections section with drag handles for changing their order."
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "Done button — save the section order and leave reorder mode"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "drag handle at the right edge of any Collections section row"
+isRepeating = true
+description = "section drag handle — reorder a Collections section"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens.modes]]
+id = "pin-menu"
+description = "A compact context menu over Collections offering to pin the pressed collection."
+
+[[screens.modes.elements]]
+position = "Pin command in the context menu near the pressed collection"
+description = "Pin command — add the pressed collection to Pinned"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "area outside the Pin context menu"
+description = "outside area — dismiss the Pin context menu"
+target = "collections.normal"
+
+[[screens.modes.elements]]
+position = [750, 95]
+description = "more button \u2014 open Collections options"
+
+[[screens.modes.elements]]
+position = [895, 95]
+description = "profile button \u2014 open account and Photos settings"
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens]]
+id = "search"
+
+[[screens.modes]]
+id = "normal"
+description = "Photos search with a focused library query field, recent searches, and the software keyboard visible."
+
+[[screens.modes.elements]]
+position = [629, 135]
+description = "information button — explain why some search results may not appear"
+target = "search.info-popover"
+
+[[screens.modes.elements]]
+position = "any card in the Recents section"
+description = "card \u2014 open that collection"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = "Search your library field above the keyboard"
+description = "search field — type a query and show live photo and collection results"
+target = "search.results"
+
+[[screens.modes.elements]]
+position = [794, 600]
+description = "dictation button \u2014 enter a query by voice"
+
+[[screens.modes.elements]]
+position = [919, 600]
+description = "close search button \u2014 leave search"
+
+[[screens.modes]]
+id = "results-menu"
+description = "Search results with a popover for result sort order and view options."
+
+[[screens.modes.elements]]
+position = [435, 115]
+description = "sort by recently added option — order matching items by addition time"
+
+[[screens.modes.elements]]
+position = [435, 179]
+description = "sort by date captured option — order matching items by capture date"
+
+[[screens.modes.elements]]
+position = [435, 253]
+description = "view options submenu — open search result grid view controls"
+
+[[screens.modes.elements]]
+position = [665, 95]
+description = "highlighted sort and view menu button — close the popover"
+target = "search.results"
+
+[[screens.modes.elements]]
+position = [856, 95]
+description = "Select button \u2014 enter result selection mode when results exist"
+
+[[screens.modes.elements]]
+position = [266, 189]
+description = "Photos scope \u2014 show matching photos"
+
+[[screens.modes.elements]]
+position = [726, 189]
+description = "Collections scope — show collection matches and dismiss the keyboard"
+target = "search.results-collections"
+
+[[screens.modes.elements]]
+position = "query field above the keyboard"
+description = "query field \u2014 edit the current search query"
+
+[[screens.modes.elements]]
+position = [794, 600]
+description = "dictation button \u2014 enter a query by voice"
+
+[[screens.modes.elements]]
+position = [919, 600]
+description = "close search button \u2014 leave search"
+
+[[screens.modes]]
+id = "results-collections"
+description = "Collection-scoped search results with the keyboard dismissed and a compact bottom query bar."
+
+[[screens.modes.elements]]
+position = [266, 189]
+description = "Photos scope \u2014 show matching photos"
+
+[[screens.modes.elements]]
+position = [726, 189]
+description = "Collections scope \u2014 show matching collections"
+
+[[screens.modes.elements]]
+position = [132, 938]
+description = "share button \u2014 open sharing options"
+
+[[screens.modes.elements]]
+position = "compact query field in the bottom bar"
+description = "query field \u2014 edit the current search query"
+
+[[screens.modes.elements]]
+position = [731, 938]
+description = "clear query button — erase the query and return to empty search"
+target = "search.normal"
+
+[[screens.modes.elements]]
+position = [868, 938]
+description = "close search button \u2014 return to Collections"
+
+[[screens.modes]]
+id = "results"
+description = "Live search results for the entered query, with Photos and Collections scopes and a result grid above the focused query field."
+
+[[screens.modes.elements]]
+position = [665, 95]
+description = "sort and view menu button — open search result sorting and view options"
+target = "search.results-menu"
+
+[[screens.modes.elements]]
+position = [856, 95]
+description = "Select button \u2014 enter result selection mode when results exist"
+
+[[screens.modes.elements]]
+position = [266, 189]
+description = "Photos scope \u2014 show matching photos"
+
+[[screens.modes.elements]]
+position = [726, 189]
+description = "Collections scope \u2014 show matching collections"
+
+[[screens.modes.elements]]
+position = "any photo thumbnail in the search result grid"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = "query field above the keyboard"
+description = "query field \u2014 edit the current search query"
+
+[[screens.modes.elements]]
+position = [794, 600]
+description = "dictation button \u2014 enter a query by voice"
+
+[[screens.modes.elements]]
+position = [919, 600]
+description = "close search button \u2014 leave search"
+
+[[screens.modes]]
+id = "info-popover"
+description = "Search with a popover explaining that indexing occurs while the iPhone is locked, charging, and connected to Wi-Fi."
+
+[[screens.modes.elements]]
+position = [629, 135]
+description = "information button \u2014 close the indexing explanation"
+
+[[screens.modes.elements]]
+position = "area outside the search indexing explanation popover"
+description = "outside area — dismiss the indexing explanation"
+target = "search.normal"
+
+[[screens.modes.elements]]
+position = "any card in the Recents section"
+description = "card \u2014 open that collection"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = "Search your library field above the keyboard"
+description = "search field \u2014 enter a Photos query"
+
+[[screens.modes.elements]]
+position = [794, 600]
+description = "dictation button \u2014 enter a query by voice"
+
+[[screens.modes.elements]]
+position = [919, 600]
+description = "close search button \u2014 leave search"
+
+[[screens]]
+id = "pinned"
+
+[[screens.modes]]
+id = "normal"
+description = "A vertically scrollable two-column grid of pinned collections such as Favorites, Recently Saved, Map, Videos, and Screenshots."
+
+[[screens.modes.elements]]
+position = [95, 95]
+description = "back button — return to the presenting Collections screen"
+
+[[screens.modes.elements]]
+position = [879, 95]
+description = "Edit button — choose and reorder pinned collections"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "any unlocked pinned collection card"
+isRepeating = true
+description = "pinned collection card — open that collection"
+target = "collection.normal"
+
+[[screens.modes.elements]]
+position = "Recently Deleted pinned card"
+description = "Recently Deleted card — open the locked recently deleted collection after device authentication"
+
+[[screens.modes.elements]]
+position = "Pinned grid; drag vertically when more cards exist"
+description = "content area \u2014 scroll vertically"
+
+[[screens.modes.elements]]
+position = [203, 940]
+description = "Library button \u2014 open the Library screen"
+
+[[screens.modes.elements]]
+position = [411, 940]
+description = "Collections button \u2014 open the Collections screen"
+
+[[screens.modes.elements]]
+position = [887, 940]
+description = "Search button \u2014 open Photos search"
+
+[[screens]]
+id = "collection"
+
+[[screens.modes]]
+id = "normal"
+description = "A named photo collection, empty here for Favorites, with Back and More controls and a photo grid when items exist."
+
+[[screens.modes.elements]]
+position = [95, 95]
+description = "back button — return to the presenting Collections screen"
+
+[[screens.modes.elements]]
+position = [903, 95]
+description = "more button — inactive when the collection is empty"
+
+[[screens.modes.elements]]
+position = "any photo thumbnail in the collection grid"
+description = "thumbnail \u2014 open or choose that item"
+isRepeating = true
+
+[[screens.modes.elements]]
+position = "collection grid; drag vertically when content exceeds the screen"
+description = "content area \u2014 scroll vertically"

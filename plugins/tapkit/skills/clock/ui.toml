@@ -1,0 +1,435 @@
+[[screens]]
+id = "world-clock"
+
+[[screens.modes]]
+id = "normal"
+description = "The World Clock tab lists saved cities and their current local times, with editing and add controls above and the four-section Clock tab bar below."
+
+[[screens.modes.elements]]
+position = [96, 95]
+description = "Edit button — reveal world-clock delete and reorder controls"
+target = "world-clock.edit"
+
+[[screens.modes.elements]]
+position = [905, 95]
+description = "add city button — open city search without creating a clock"
+target = "city-search.normal"
+
+[[screens.modes.elements]]
+position = "any saved city row; moves with the list"
+isRepeating = true
+description = "saved city row — displays its relative day, UTC offset, city, and current time"
+
+[[screens.modes.elements]]
+position = [190, 938]
+description = "World Clock tab — show saved world clocks"
+target = "world-clock.normal"
+
+[[screens.modes.elements]]
+position = [392, 938]
+description = "Alarms tab — show alarms and sleep schedule"
+target = "alarms.normal"
+
+[[screens.modes.elements]]
+position = [610, 938]
+description = "Stopwatch tab — show the stopwatch"
+target = "stopwatch.normal"
+
+[[screens.modes.elements]]
+position = [815, 938]
+description = "Timers tab — show timer controls and recents"
+target = "timers.normal"
+
+[[screens.modes]]
+id = "edit"
+description = "World Clock editing mode replaces Edit with a checkmark and adds delete and reorder controls to each saved city. Persistent removal and reordering are safety-blocked."
+
+[[screens.modes.elements]]
+position = [96, 95]
+description = "done button — leave editing mode without changing clocks"
+target = "world-clock.normal"
+
+[[screens.modes.elements]]
+position = [905, 95]
+description = "add city button — open city search without creating a clock"
+target = "city-search.normal"
+
+[[screens.modes.elements]]
+position = "delete button beside any saved city"
+isRepeating = true
+looksMutating = true
+description = "delete city button — remove a saved world clock; safety-blocked"
+
+[[screens.modes.elements]]
+position = "reorder handle beside any saved city"
+isRepeating = true
+looksMutating = true
+description = "city reorder handle — persistently reorder saved world clocks; safety-blocked"
+
+[[screens.modes.elements]]
+position = [190, 938]
+description = "World Clock tab — remain on World Clock editing mode"
+target = "world-clock.edit"
+
+[[screens.modes.elements]]
+position = [392, 938]
+description = "Alarms tab — show alarms and sleep schedule"
+target = "alarms.normal"
+
+[[screens.modes.elements]]
+position = [610, 938]
+description = "Stopwatch tab — show the stopwatch"
+target = "stopwatch.normal"
+
+[[screens.modes.elements]]
+position = [815, 938]
+description = "Timers tab — show timer controls and recents"
+target = "timers.normal"
+
+[[screens]]
+id = "city-search"
+
+[[screens.modes]]
+id = "normal"
+description = "A modal city chooser with a search field and alphabetical city list. Choosing a city would add a persistent world clock and is safety-blocked."
+
+[[screens.modes.elements]]
+position = [96, 113]
+description = "close button — dismiss city search without adding a clock"
+
+[[screens.modes.elements]]
+position = [500, 944]
+description = "search field — focus city-name filtering"
+target = "city-search.search"
+
+[[screens.modes.elements]]
+position = "any city result row; moves with the list"
+isRepeating = true
+looksMutating = true
+description = "city result — add the city to World Clock; safety-blocked"
+
+[[screens.modes]]
+id = "search"
+description = "City search with the search field focused and keyboard visible; matching city rows remain safety-blocked."
+
+[[screens.modes.elements]]
+position = [909, 565]
+description = "cancel search button — dismiss the keyboard and clear the query"
+target = "city-search.normal"
+
+[[screens.modes.elements]]
+position = [400, 565]
+description = "focused search field — filters city results as text is entered"
+
+[[screens.modes.elements]]
+position = [742, 565]
+description = "clear search button — remove the query"
+target = "city-search.search"
+
+[[screens.modes.elements]]
+position = "any matching city result row; moves with results"
+isRepeating = true
+looksMutating = true
+description = "matching city result — add the city to World Clock; safety-blocked"
+
+[[screens]]
+id = "alarms"
+
+[[screens.modes]]
+id = "normal"
+description = "The Alarms tab shows sleep schedule setup and saved alarms, with edit and add controls and the Clock tab bar."
+
+[[screens.modes.elements]]
+position = [905, 95]
+looksMutating = true
+description = "add alarm button — open creation of a persistent alarm; safety-blocked"
+
+[[screens.modes.elements]]
+position = "sleep schedule setup row"
+looksMutating = true
+description = "sleep schedule setup — configure a persistent sleep schedule; safety-blocked"
+
+[[screens.modes.elements]]
+position = "any alarm enable switch; moves with the alarm list"
+isRepeating = true
+looksMutating = true
+description = "alarm enable switch — change an alarm's enabled state; safety-blocked"
+
+[[screens.modes.elements]]
+position = "any saved alarm row; moves with the alarm list"
+isRepeating = true
+looksMutating = true
+description = "saved alarm row — open persistent alarm editing; safety-blocked"
+
+[[screens.modes.elements]]
+position = [190, 938]
+description = "World Clock tab — show saved world clocks"
+target = "world-clock.normal"
+
+[[screens.modes.elements]]
+position = [392, 938]
+description = "Alarms tab — show alarms and sleep schedule"
+target = "alarms.normal"
+
+[[screens.modes.elements]]
+position = [610, 938]
+description = "Stopwatch tab — show the stopwatch"
+target = "stopwatch.normal"
+
+[[screens.modes.elements]]
+position = [815, 938]
+description = "Timers tab — show timer controls and recents"
+target = "timers.normal"
+
+[[screens]]
+id = "stopwatch"
+
+[[screens.modes]]
+id = "normal"
+description = "The reset stopwatch shows 00:00.00 with inactive Lap and green Start controls and an empty lap table."
+
+[[screens.modes.elements]]
+position = [148, 511]
+description = "inactive Lap button — unavailable before the stopwatch starts"
+
+[[screens.modes.elements]]
+position = [852, 511]
+description = "Start button — start the ephemeral stopwatch"
+target = "stopwatch.running"
+
+[[screens.modes.elements]]
+position = "stopwatch face; drag left"
+description = "stopwatch face page gesture — switch from the digital to analog dial"
+target = "stopwatch.analog-normal"
+
+[[screens.modes.elements]]
+position = [190, 938]
+description = "World Clock tab — show saved world clocks"
+target = "world-clock.normal"
+
+[[screens.modes.elements]]
+position = [392, 938]
+description = "Alarms tab — show alarms and sleep schedule"
+target = "alarms.normal"
+
+[[screens.modes.elements]]
+position = [610, 938]
+description = "Stopwatch tab — show the stopwatch"
+target = "stopwatch.normal"
+
+[[screens.modes.elements]]
+position = [815, 938]
+description = "Timers tab — show timer controls and recents"
+target = "timers.normal"
+
+[[screens.modes]]
+id = "running"
+description = "The stopwatch is counting, with active Lap and red Stop controls. This timing state is ephemeral."
+
+[[screens.modes.elements]]
+position = [148, 511]
+description = "Lap button — record an ephemeral lap"
+target = "stopwatch.running-with-lap"
+
+[[screens.modes.elements]]
+position = [852, 511]
+description = "Stop button — pause the stopwatch"
+target = "stopwatch.paused"
+
+[[screens.modes]]
+id = "running-with-lap"
+description = "The stopwatch continues counting and shows one or more lap rows beneath the controls."
+
+[[screens.modes.elements]]
+position = [148, 511]
+description = "Lap button — record another ephemeral lap"
+target = "stopwatch.running-with-lap"
+
+[[screens.modes.elements]]
+position = [852, 511]
+description = "Stop button — pause the stopwatch"
+target = "stopwatch.paused"
+
+[[screens.modes.elements]]
+position = "any lap row; grows as laps are recorded"
+isRepeating = true
+description = "lap row — display a lap number and elapsed split"
+
+[[screens.modes]]
+id = "paused"
+description = "The stopwatch is paused, with white Reset and green Start controls and any recorded lap rows retained."
+
+[[screens.modes.elements]]
+position = [148, 511]
+description = "Reset button — clear ephemeral elapsed time and laps"
+target = "stopwatch.normal"
+
+[[screens.modes.elements]]
+position = [852, 511]
+description = "Start button — resume the ephemeral stopwatch"
+target = "stopwatch.running-with-lap"
+
+[[screens.modes.elements]]
+position = "any lap row; present when laps were recorded"
+isRepeating = true
+description = "lap row — display a retained lap number and split while paused"
+
+[[screens.modes]]
+id = "analog-normal"
+description = "The reset analog stopwatch presents a sixty-second dial with an inset thirty-minute dial, inactive Lap, green Start, and the second page indicator selected."
+
+[[screens.modes.elements]]
+position = [148, 511]
+description = "inactive Lap button — unavailable before the analog stopwatch starts"
+
+[[screens.modes.elements]]
+position = [852, 511]
+description = "Start button — start the ephemeral analog stopwatch"
+target = "stopwatch.analog-running"
+
+[[screens.modes.elements]]
+position = "analog stopwatch face; drag right"
+description = "stopwatch face page gesture — switch back to the digital stopwatch"
+target = "stopwatch.normal"
+
+[[screens.modes]]
+id = "analog-running"
+description = "The analog stopwatch is running, with moving orange hands, active Lap, and red Stop controls."
+
+[[screens.modes.elements]]
+position = [148, 511]
+description = "Lap button — mark an ephemeral analog stopwatch lap"
+target = "stopwatch.analog-running"
+
+[[screens.modes.elements]]
+position = [852, 511]
+description = "Stop button — pause the analog stopwatch"
+target = "stopwatch.analog-paused"
+
+[[screens.modes]]
+id = "analog-paused"
+description = "The analog stopwatch is paused, retaining its hand positions with Reset and green Start controls."
+
+[[screens.modes.elements]]
+position = [148, 511]
+description = "Reset button — clear the ephemeral analog stopwatch"
+target = "stopwatch.analog-normal"
+
+[[screens.modes.elements]]
+position = [852, 511]
+description = "Start button — resume the analog stopwatch"
+target = "stopwatch.analog-running"
+
+[[screens]]
+id = "timers"
+
+[[screens.modes]]
+id = "normal"
+description = "The Timers tab shows duration wheels, a When Timer Ends sound row, a green Start control, and recent timers when available."
+
+[[screens.modes.elements]]
+position = "hours duration wheel"
+description = "hours wheel — adjust a prospective timer duration; not exercised"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "minutes duration wheel"
+description = "minutes wheel — adjust a prospective timer duration; not exercised"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "seconds duration wheel"
+description = "seconds wheel — adjust a prospective timer duration; not exercised"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 750]
+description = "When Timer Ends row — open timer alert-sound selection"
+target = "timer-sound.normal"
+
+[[screens.modes.elements]]
+position = [852, 568]
+looksMutating = true
+description = "Start timer button — begin a timer using the selected duration; safety-blocked"
+
+[[screens.modes.elements]]
+position = [148, 568]
+description = "inactive Cancel button — unavailable until a timer is running"
+
+[[screens.modes.elements]]
+position = [500, 689]
+looksMutating = true
+description = "timer Label field — edit the prospective timer label; safety-blocked"
+
+[[screens.modes.elements]]
+position = "any recent timer row; moves with the recent list"
+isRepeating = true
+description = "recent timer row — display a prior timer duration and label"
+
+[[screens.modes.elements]]
+position = "any recent timer start button; moves with the recent list"
+isRepeating = true
+looksMutating = true
+description = "recent timer start button — begin that timer; safety-blocked"
+
+[[screens.modes.elements]]
+position = [190, 938]
+description = "World Clock tab — show saved world clocks"
+target = "world-clock.normal"
+
+[[screens.modes.elements]]
+position = [392, 938]
+description = "Alarms tab — show alarms and sleep schedule"
+target = "alarms.normal"
+
+[[screens.modes.elements]]
+position = [610, 938]
+description = "Stopwatch tab — show the stopwatch"
+target = "stopwatch.normal"
+
+[[screens.modes.elements]]
+position = [815, 938]
+description = "Timers tab — show timer controls and recents"
+target = "timers.normal"
+
+[[screens]]
+id = "timer-sound"
+
+[[screens.modes]]
+id = "normal"
+description = "The When Timer Ends chooser lists alert sounds and a Stop Playing option; selecting a value would change the prospective timer setting and is safety-blocked."
+
+[[screens.modes.elements]]
+position = [96, 113]
+description = "close button — discard sound-picker changes and return to Timers"
+target = "timers.normal"
+
+[[screens.modes.elements]]
+position = [880, 113]
+looksMutating = true
+description = "Set button — commit the selected timer sound; safety-blocked"
+
+[[screens.modes.elements]]
+position = "any sound row; moves with the sound list"
+isRepeating = true
+looksMutating = true
+description = "timer sound row — select the prospective alert sound; safety-blocked"
+
+[[screens.modes.elements]]
+position = "Stop Playing row near the bottom of the sound list"
+looksMutating = true
+description = "Stop Playing row — select silent timer completion behavior; safety-blocked"
+
+[[screens.modes.elements]]
+position = "sound list content; moves while scrolling"
+description = "sound list — scroll through available alerts and reveal Stop Playing"
+
+[[screens.modes.elements]]
+position = "Tone Store row near the top of the sound list"
+looksMutating = true
+description = "Tone Store row — leave Clock to browse purchasable tones; safety-blocked"
+
+[[screens.modes.elements]]
+position = "Download All Purchased Tones row near the top of the sound list"
+looksMutating = true
+description = "Download All Purchased Tones row — download account purchases; safety-blocked"

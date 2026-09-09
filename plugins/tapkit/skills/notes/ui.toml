@@ -1,0 +1,1477 @@
+[[screens]]
+id = "folders"
+
+[[screens.modes]]
+id = "normal"
+description = "The folder browser, listing local Notes and Recently Deleted beneath controls for folder creation, editing, search, and composition."
+
+[[screens.modes.elements]]
+position = [713, 82]
+description = "new folder button — creates a folder"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [878, 82]
+description = "edit button — toggle folder editing; system folders and bottom controls become disabled"
+
+[[screens.modes.elements]]
+position = [530, 293]
+description = "Notes folder row — open the Notes folder"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [530, 356]
+description = "Recently Deleted row — open deleted notes"
+target = "deleted-list.normal"
+
+[[screens.modes.elements]]
+position = [402, 938]
+description = "search field — open Notes search"
+target = "search.normal"
+
+[[screens.modes.elements]]
+position = [698, 938]
+description = "dictation button — open search and request voice dictation"
+target = "search.dictation-prompt"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "compose button — creates a new note"
+looksMutating = true
+
+[[screens]]
+id = "notes-list"
+
+[[screens.modes]]
+id = "normal"
+description = "The Notes folder's note list, with folder navigation and actions above, one repeating note row, and search and compose controls below."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "more button — open note-list view and selection actions"
+target = "notes-list.more-menu"
+
+[[screens.modes.elements]]
+position = "any note row; moves as the list scrolls"
+isRepeating = true
+description = "note row — open the note"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = [402, 938]
+description = "search field — open Notes search"
+target = "search.normal"
+
+[[screens.modes.elements]]
+position = [698, 938]
+description = "dictation button — open search and request voice dictation"
+target = "search.dictation-prompt"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "compose button — creates a new note"
+looksMutating = true
+
+[[screens.modes]]
+id = "more-menu"
+description = "The note list with its view, selection, sorting, grouping, and attachment actions menu open."
+
+[[screens.modes.elements]]
+position = [650, 92]
+description = "View as Gallery button — show notes as preview cards"
+target = "notes-list.gallery"
+
+[[screens.modes.elements]]
+position = [650, 167]
+description = "Select Notes button — enter note selection mode"
+target = "notes-list.select"
+
+[[screens.modes.elements]]
+position = [650, 226]
+description = "Sort By button — open note sort choices"
+target = "notes-list.sort-menu"
+
+[[screens.modes.elements]]
+position = [650, 299]
+description = "Group By Date button — open date-grouping choices"
+target = "notes-list.group-menu"
+
+[[screens.modes.elements]]
+position = [650, 361]
+description = "View Attachments button — open the folder's attachment browser"
+target = "attachments.normal"
+
+[[screens.modes]]
+id = "group-menu"
+description = "The note-list actions menu with date grouping expanded to choose default, on, or off."
+
+[[screens.modes.elements]]
+position = [650, 280]
+description = "Group By Date button — collapse the date-grouping choices"
+target = "notes-list.more-menu"
+
+[[screens.modes.elements]]
+position = [650, 375]
+description = "Default option — restore default date grouping"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [650, 425]
+description = "On option — group notes into date sections"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [650, 474]
+description = "Off option — show an ungrouped note list"
+target = "notes-list.normal"
+
+[[screens.modes]]
+id = "sort-menu"
+description = "The note-list actions menu with sorting expanded to choose a key and direction."
+
+[[screens.modes.elements]]
+position = [650, 211]
+description = "Sort By button — collapse the sort choices"
+target = "notes-list.more-menu"
+
+[[screens.modes.elements]]
+position = [650, 305]
+description = "Default option — restore the default Date Edited sort key"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [650, 355]
+description = "Date Edited option — sort notes by last edit date"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [650, 405]
+description = "Date Created option — sort notes by creation date"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [650, 455]
+description = "Title option — sort notes alphabetically by title"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [650, 530]
+description = "Newest First or Ascending option — use the primary direction for the selected sort key"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [650, 580]
+description = "Oldest First or Descending option — use the reverse direction for the selected sort key"
+target = "notes-list.normal"
+
+[[screens.modes]]
+id = "select"
+description = "The note list in selection mode, with note selection circles, Done, and bulk move and delete actions."
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — leave note selection mode"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = "any note row selection circle"
+isRepeating = true
+description = "note selection circle — toggle that note's selection"
+
+[[screens.modes.elements]]
+position = [193, 939]
+description = "Move All button — moves all notes"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [792, 939]
+description = "Delete All button — deletes all notes"
+looksMutating = true
+
+[[screens.modes]]
+id = "gallery"
+description = "The Notes folder displayed as gallery preview cards instead of list rows."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "more button — open gallery view and selection actions"
+target = "notes-list.gallery-more-menu"
+
+[[screens.modes.elements]]
+position = "any note gallery card; moves as the gallery scrolls"
+isRepeating = true
+description = "note gallery card — open the note"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = [402, 938]
+description = "search field — open Notes search"
+target = "search.normal"
+
+[[screens.modes.elements]]
+position = [698, 938]
+description = "dictation button — open search and request voice dictation"
+target = "search.dictation-prompt"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "compose button — creates a new note"
+looksMutating = true
+
+[[screens.modes]]
+id = "gallery-more-menu"
+description = "The gallery with its view, selection, sorting, grouping, and attachment actions menu open."
+
+[[screens.modes.elements]]
+position = [650, 92]
+description = "View as List button — show notes as list rows"
+target = "notes-list.normal"
+
+[[screens.modes.elements]]
+position = [650, 167]
+description = "Select Notes button — enter note selection mode"
+target = "notes-list.select"
+
+[[screens.modes.elements]]
+position = [650, 226]
+description = "Sort By button — open note sort choices"
+target = "notes-list.sort-menu"
+
+[[screens.modes.elements]]
+position = [650, 299]
+description = "Group By Date button — open date-grouping choices"
+target = "notes-list.group-menu"
+
+[[screens.modes.elements]]
+position = [650, 361]
+description = "View Attachments button — open the folder's attachment browser"
+target = "attachments.normal"
+
+[[screens]]
+id = "note"
+
+[[screens.modes]]
+id = "normal"
+description = "An existing note in read mode, with its scrollable body and navigation and action controls around the edges."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [613, 82]
+description = "undo button — reverses the last edit to the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [761, 82]
+description = "share button — open the system share sheet"
+target = "note.share-sheet"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "more button — open note actions"
+target = "note.more-menu"
+
+[[screens.modes.elements]]
+position = "note body; content moves as the note scrolls"
+description = "note body — enter editing mode and place the insertion point"
+target = "note.editing"
+
+[[screens.modes.elements]]
+position = "note body; drag across text"
+description = "note body drag — select text and open the selection menu"
+target = "note.selection"
+
+[[screens.modes.elements]]
+position = "note body; swipe vertically to scroll"
+description = "note body swipe — scroll through the note"
+
+[[screens.modes.elements]]
+position = [140, 938]
+description = "checklist button — inserts a checklist into the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [288, 938]
+description = "attachment button — open the attachment menu"
+target = "note.attachment-menu"
+
+[[screens.modes.elements]]
+position = [433, 938]
+description = "markup button — enter markup mode"
+target = "note.markup"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "compose button — creates a new note"
+looksMutating = true
+
+[[screens.modes]]
+id = "more-menu"
+description = "The note in read mode with its actions menu open."
+
+[[screens.modes.elements]]
+position = [454, 87]
+description = "Scan button — scans and attaches content to the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [654, 87]
+description = "Pin Note button — pins the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [853, 87]
+description = "Lock button — locks the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [650, 185]
+description = "Find in Note button — open in-note search"
+target = "note.find"
+
+[[screens.modes.elements]]
+position = [650, 236]
+description = "Move Note button — moves the note to another folder"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [650, 285]
+description = "Recent Notes button — open the recent-note submenu"
+target = "note.recent-notes-menu"
+
+[[screens.modes.elements]]
+position = [650, 344]
+description = "Math Results button — open math-result behavior choices"
+target = "note.math-results-menu"
+
+[[screens.modes.elements]]
+position = [650, 406]
+description = "Lines & Grids button — changes the note background layout"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [650, 456]
+description = "Attachment View button — open attachment sizing choices"
+target = "note.attachment-view-menu"
+
+[[screens.modes.elements]]
+position = [650, 505]
+description = "Delete button — deletes the note"
+looksMutating = true
+
+[[screens.modes]]
+id = "selection"
+description = "The note with text selected and the contextual Add Link and Find Selection menu visible."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [761, 82]
+description = "share button — open the system share sheet"
+target = "note.share-sheet"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "more button — open note actions"
+target = "note.more-menu"
+
+[[screens.modes.elements]]
+position = [346, 350]
+description = "Add Link button — adds a link to the selected text"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [612, 350]
+description = "Find Selection button — search within the note"
+target = "note.find"
+
+[[screens.modes]]
+id = "attachment-view-menu"
+description = "The note actions menu with Attachment View expanded to choose small or large attachment presentation."
+
+[[screens.modes.elements]]
+position = [650, 441]
+description = "Attachment View button — collapse attachment sizing choices"
+target = "note.more-menu"
+
+[[screens.modes.elements]]
+position = [650, 516]
+description = "Set All to Small option — display all attachments at small size"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = [650, 567]
+description = "Set All to Large option — display all attachments at large size"
+target = "note.normal"
+
+[[screens.modes]]
+id = "math-results-menu"
+description = "The note actions menu with Math Results expanded to choose automatic insert, suggestions, or off."
+
+[[screens.modes.elements]]
+position = [650, 325]
+description = "Math Results button — collapse math-result behavior choices"
+target = "note.more-menu"
+
+[[screens.modes.elements]]
+position = [650, 420]
+description = "Insert Results option — automatically insert calculated math results"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = [650, 470]
+description = "Suggest Results option — show suggested math results without inserting them"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = [650, 518]
+description = "Off option — disable automatic math results"
+target = "note.normal"
+
+[[screens.modes]]
+id = "recent-notes-menu"
+description = "The note actions menu with Recent Notes expanded into a nested list of recent destinations and menu management."
+
+[[screens.modes.elements]]
+position = [644, 276]
+description = "Recent Notes button — collapse the recent-note submenu"
+target = "note.more-menu"
+
+[[screens.modes.elements]]
+position = "any existing note row in the Recent Notes submenu"
+isRepeating = true
+description = "recent note row — switch to that note"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = [644, 446]
+description = "New Note button — creates a new note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [644, 521]
+description = "Clear Menu button — clears the recent-note menu"
+looksMutating = true
+
+[[screens.modes]]
+id = "editing"
+description = "The note with an insertion point and keyboard open; the top-right compose control becomes Done and an editing toolbar appears above the keyboard."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [468, 82]
+description = "undo button — reverses the last edit to the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [615, 82]
+description = "share button — open the system share sheet"
+target = "note.share-sheet"
+
+[[screens.modes.elements]]
+position = [756, 82]
+description = "more button — open note actions"
+target = "note.markup-more-menu"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — saves edits and dismisses the keyboard"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "note body; content moves as the note scrolls"
+description = "editable note body — place the insertion point"
+
+[[screens.modes.elements]]
+position = [109, 560]
+description = "format button — open the Format panel"
+target = "note.format"
+
+[[screens.modes.elements]]
+position = [283, 560]
+description = "checklist button — inserts a checklist into the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [463, 560]
+description = "table button — inserts a table into the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [637, 560]
+description = "attachment button — open the attachment menu"
+target = "note.attachment-menu"
+
+[[screens.modes.elements]]
+position = [797, 560]
+description = "markup button — enter markup mode"
+target = "note.markup"
+
+[[screens.modes]]
+id = "share-sheet"
+description = "The system share sheet over the note, with destination apps and content actions; sharing destinations are safety-blocked."
+
+[[screens.modes.elements]]
+position = "any destination app in the horizontally scrolling share row"
+isRepeating = true
+description = "share destination — sends or adds the note through the selected app"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [174, 382]
+description = "Copy button — copies the note to the clipboard"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [389, 382]
+description = "Export as Markdown button — exports the note as Markdown"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [610, 382]
+description = "Markup button — creates a marked-up share representation"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [827, 382]
+description = "View More button — opens more share actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "share sheet panel; swipe down to dismiss"
+description = "share sheet panel — swipe down to expand the share actions"
+target = "note.share-sheet-expanded"
+
+[[screens.modes.elements]]
+position = "outside the share sheet"
+description = "outside area — dismiss the share sheet"
+target = "note.normal"
+
+[[screens.modes]]
+id = "share-sheet-expanded"
+description = "The expanded system share sheet with the full action list and a close button."
+
+[[screens.modes.elements]]
+position = [902, 95]
+description = "close button — close the share sheet"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = "any destination app in the horizontally scrolling share row"
+isRepeating = true
+description = "share destination — sends or adds the note through the selected app"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [161, 387]
+description = "Copy button — copies the note to the clipboard"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [386, 387]
+description = "Export as Markdown button — exports the note as Markdown"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [615, 387]
+description = "Markup button — creates a marked-up share representation"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [845, 387]
+description = "View Less button — collapse the share actions"
+target = "note.share-sheet"
+
+[[screens.modes.elements]]
+position = [499, 530]
+description = "Print button — opens printing for the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [499, 592]
+description = "Save to Files button — saves an exported note file"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [499, 666]
+description = "Edit Actions button — changes the share sheet action list"
+looksMutating = true
+
+[[screens.modes]]
+id = "markup"
+description = "The note in markup mode, with drawing tools along the bottom and Done replacing the editor toolbar."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [613, 82]
+description = "undo button — reverses the last markup edit"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [756, 82]
+description = "more button — open note actions"
+target = "note.markup-more-menu"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — saves markup and leaves markup mode"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "note canvas"
+description = "note canvas — draw markup on the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [208, 928]
+description = "pen tool — select the pen for markup"
+
+[[screens.modes.elements]]
+position = [332, 928]
+description = "pencil tool — select the pencil for markup"
+
+[[screens.modes.elements]]
+position = [454, 928]
+description = "highlighter tool — select the highlighter for markup"
+
+[[screens.modes.elements]]
+position = [578, 928]
+description = "eraser tool — select the eraser for markup"
+
+[[screens.modes.elements]]
+position = [774, 928]
+description = "color button — open the markup color panel"
+target = "note.color-grid"
+
+[[screens.modes.elements]]
+position = [871, 928]
+description = "add button — open the markup insert menu"
+target = "note.markup-add-menu"
+
+[[screens.modes]]
+id = "color-grid"
+description = "Markup's Colors panel on the Grid tab, with color swatches, HDR boost and opacity sliders, presets, and color-view tabs."
+
+[[screens.modes.elements]]
+position = [95, 236]
+description = "eyedropper button — sample a color from the screen"
+target = "note.eyedropper"
+
+[[screens.modes.elements]]
+position = [911, 236]
+description = "close button — close the Colors panel"
+target = "note.markup"
+
+[[screens.modes.elements]]
+position = [203, 285]
+description = "Grid tab — show the color grid"
+
+[[screens.modes.elements]]
+position = [500, 285]
+description = "Spectrum tab — show the continuous color spectrum"
+target = "note.color-spectrum-expanded"
+
+[[screens.modes.elements]]
+position = [797, 285]
+description = "Sliders tab — show numeric RGB color controls"
+target = "note.color-sliders-expanded"
+
+[[screens.modes.elements]]
+position = "any color cell in the grid"
+isRepeating = true
+description = "color cell — select the drawing color"
+
+[[screens.modes.elements]]
+position = [403, 724]
+description = "HDR boost slider — adjust extended-range brightness for the drawing color"
+
+[[screens.modes.elements]]
+position = [403, 813]
+description = "opacity slider — adjust drawing color opacity"
+
+[[screens.modes.elements]]
+position = "any preset color swatch near the bottom of the Colors panel"
+isRepeating = true
+description = "preset color swatch — select a preset drawing color"
+
+[[screens.modes.elements]]
+position = [380, 955]
+description = "add preset button — saves the current color as a preset"
+looksMutating = true
+
+[[screens.modes]]
+id = "eyedropper"
+description = "Markup with the movable eyedropper loupe over the note for sampling an on-screen color."
+
+[[screens.modes.elements]]
+position = "eyedropper loupe; moves over the screen"
+description = "eyedropper loupe — drag to sample a color and release to return to the expanded Colors panel"
+target = "note.color-grid-expanded"
+
+[[screens.modes]]
+id = "color-grid-expanded"
+description = "Markup's Colors panel expanded upward on the Grid tab, showing the same controls with a taller sheet."
+
+[[screens.modes.elements]]
+position = [97, 197]
+description = "eyedropper button — sample a color from the screen"
+target = "note.eyedropper"
+
+[[screens.modes.elements]]
+position = [911, 197]
+description = "close button — close the Colors panel"
+target = "note.markup"
+
+[[screens.modes.elements]]
+position = [203, 246]
+description = "Grid tab — show the color grid"
+
+[[screens.modes.elements]]
+position = [500, 246]
+description = "Spectrum tab — show the continuous color spectrum"
+target = "note.color-spectrum-expanded"
+
+[[screens.modes.elements]]
+position = [797, 246]
+description = "Sliders tab — show numeric RGB color controls"
+target = "note.color-sliders-expanded"
+
+[[screens.modes.elements]]
+position = "any color cell in the expanded grid"
+isRepeating = true
+description = "color cell — select the drawing color"
+
+[[screens.modes.elements]]
+position = [403, 686]
+description = "HDR boost slider — adjust extended-range brightness for the drawing color"
+
+[[screens.modes.elements]]
+position = [403, 772]
+description = "opacity slider — adjust drawing color opacity"
+
+[[screens.modes.elements]]
+position = "any preset color swatch near the bottom of the expanded Colors panel"
+isRepeating = true
+description = "preset color swatch — select a preset drawing color"
+
+[[screens.modes.elements]]
+position = [380, 918]
+description = "add preset button — saves the current color as a preset"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Colors panel header; drag vertically to change the sheet height"
+description = "Colors panel header — drag to change the sheet height"
+
+[[screens.modes]]
+id = "color-sliders-expanded"
+description = "The expanded Colors panel on the Sliders tab, with RGB sliders and values, a hex color field, HDR boost, opacity, and presets."
+
+[[screens.modes.elements]]
+position = [97, 197]
+description = "eyedropper button — sample a color from the screen"
+target = "note.eyedropper"
+
+[[screens.modes.elements]]
+position = [911, 197]
+description = "close button — close the Colors panel"
+target = "note.markup"
+
+[[screens.modes.elements]]
+position = [203, 246]
+description = "Grid tab — show the color grid"
+target = "note.color-grid-expanded"
+
+[[screens.modes.elements]]
+position = [500, 246]
+description = "Spectrum tab — show the continuous color spectrum"
+target = "note.color-spectrum-expanded"
+
+[[screens.modes.elements]]
+position = [797, 246]
+description = "Sliders tab — show numeric RGB color controls"
+
+[[screens.modes.elements]]
+position = [386, 326]
+description = "red slider — adjust the red color component"
+
+[[screens.modes.elements]]
+position = [845, 326]
+description = "red value field — focus numeric entry for the red component"
+target = "note.color-sliders-keyboard"
+
+[[screens.modes.elements]]
+position = [386, 411]
+description = "green slider — adjust the green color component"
+
+[[screens.modes.elements]]
+position = [845, 411]
+description = "green value field — focus numeric entry for the green component"
+
+[[screens.modes.elements]]
+position = [386, 496]
+description = "blue slider — adjust the blue color component"
+
+[[screens.modes.elements]]
+position = [845, 496]
+description = "blue value field — focus numeric entry for the blue component"
+
+[[screens.modes.elements]]
+position = [837, 573]
+description = "hex color field — focus direct hexadecimal color entry"
+
+[[screens.modes.elements]]
+position = [403, 685]
+description = "HDR boost slider — adjust extended-range brightness for the drawing color"
+
+[[screens.modes.elements]]
+position = [403, 775]
+description = "opacity slider — adjust drawing color opacity"
+
+[[screens.modes.elements]]
+position = "any preset color swatch near the bottom of the expanded Colors panel"
+isRepeating = true
+description = "preset color swatch — select a preset drawing color"
+
+[[screens.modes.elements]]
+position = [380, 918]
+description = "add preset button — saves the current color as a preset"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Colors panel header; drag vertically to change the sheet height"
+description = "Colors panel header — drag to change the sheet height"
+
+[[screens.modes]]
+id = "color-sliders-keyboard"
+description = "The Sliders color panel expanded to full height with the numeric keyboard open for direct component or hex entry."
+
+[[screens.modes.elements]]
+position = [77, 100]
+description = "eyedropper button — sample a color from the screen"
+target = "note.eyedropper"
+
+[[screens.modes.elements]]
+position = [927, 100]
+description = "close button — close the Colors panel"
+target = "note.markup"
+
+[[screens.modes.elements]]
+position = [190, 152]
+description = "Grid tab — show the color grid"
+target = "note.color-grid-expanded"
+
+[[screens.modes.elements]]
+position = [500, 152]
+description = "Spectrum tab — show the continuous color spectrum"
+target = "note.color-spectrum-expanded"
+
+[[screens.modes.elements]]
+position = [810, 152]
+description = "Sliders tab — show numeric RGB color controls"
+
+[[screens.modes.elements]]
+position = [380, 234]
+description = "red slider — adjust the red color component"
+
+[[screens.modes.elements]]
+position = [860, 234]
+description = "red value field — focus numeric entry for the red component"
+
+[[screens.modes.elements]]
+position = [380, 323]
+description = "green slider — adjust the green color component"
+
+[[screens.modes.elements]]
+position = [860, 323]
+description = "green value field — focus numeric entry for the green component"
+
+[[screens.modes.elements]]
+position = [380, 411]
+description = "blue slider — adjust the blue color component"
+
+[[screens.modes.elements]]
+position = [860, 411]
+description = "blue value field — focus numeric entry for the blue component"
+
+[[screens.modes.elements]]
+position = [830, 493]
+description = "hex color field — focus direct hexadecimal color entry"
+
+[[screens.modes.elements]]
+position = [380, 608]
+description = "HDR boost slider — adjust extended-range brightness for the drawing color"
+
+[[screens.modes.elements]]
+position = [860, 608]
+description = "HDR boost value field — focus numeric entry for HDR boost"
+
+[[screens.modes]]
+id = "color-spectrum-expanded"
+description = "The expanded Colors panel on the Spectrum tab, with a continuous color field plus HDR boost, opacity, and preset controls."
+
+[[screens.modes.elements]]
+position = [97, 197]
+description = "eyedropper button — sample a color from the screen"
+target = "note.eyedropper"
+
+[[screens.modes.elements]]
+position = [911, 197]
+description = "close button — close the Colors panel"
+target = "note.markup"
+
+[[screens.modes.elements]]
+position = [203, 246]
+description = "Grid tab — show the color grid"
+target = "note.color-grid-expanded"
+
+[[screens.modes.elements]]
+position = [500, 246]
+description = "Spectrum tab — show the continuous color spectrum"
+
+[[screens.modes.elements]]
+position = [797, 246]
+description = "Sliders tab — show numeric RGB color controls"
+target = "note.color-sliders-expanded"
+
+[[screens.modes.elements]]
+position = "any point in the color spectrum"
+description = "spectrum point — select the drawing color"
+
+[[screens.modes.elements]]
+position = [403, 686]
+description = "HDR boost slider — adjust extended-range brightness for the drawing color"
+
+[[screens.modes.elements]]
+position = [403, 772]
+description = "opacity slider — adjust drawing color opacity"
+
+[[screens.modes.elements]]
+position = "any preset color swatch near the bottom of the expanded Colors panel"
+isRepeating = true
+description = "preset color swatch — select a preset drawing color"
+
+[[screens.modes.elements]]
+position = [380, 918]
+description = "add preset button — saves the current color as a preset"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Colors panel header; drag vertically to change the sheet height"
+description = "Colors panel header — drag to change the sheet height"
+
+[[screens.modes]]
+id = "markup-add-menu"
+description = "Markup mode with the insert menu open above the drawing toolbar."
+
+[[screens.modes.elements]]
+position = [650, 604]
+description = "Add Sticker button — choose and add a sticker"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [650, 656]
+description = "Add Text button — add a text box"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [650, 708]
+description = "Add Signature button — choose and add a signature"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [650, 761]
+description = "Add Shape button — add a shape"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [650, 813]
+description = "Add Loupe button — add a magnifier"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [871, 928]
+description = "add button — close the markup insert menu"
+target = "note.markup"
+
+[[screens.modes]]
+id = "markup-more-menu"
+description = "Markup mode with the note actions menu open, including search, navigation, viewing, layout, and destructive actions."
+
+[[screens.modes.elements]]
+position = [316, 87]
+description = "Scan button — scans and attaches content to the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [517, 87]
+description = "Pin Note button — pins the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [716, 87]
+description = "Lock button — locks the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 185]
+description = "Find in Note button — open in-note search"
+target = "note.find"
+
+[[screens.modes.elements]]
+position = [500, 236]
+description = "Move Note button — moves the note to another folder"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 285]
+description = "Recent Notes button — open the recent-note submenu"
+target = "note.recent-notes-menu"
+
+[[screens.modes.elements]]
+position = [500, 344]
+description = "Math Results button — open math-result behavior choices"
+target = "note.math-results-menu"
+
+[[screens.modes.elements]]
+position = [500, 406]
+description = "Lines & Grids button — changes the note background layout"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 456]
+description = "Attachment View button — open attachment sizing choices"
+target = "note.attachment-view-menu"
+
+[[screens.modes.elements]]
+position = [500, 505]
+description = "Delete button — deletes the note"
+looksMutating = true
+
+[[screens.modes]]
+id = "find"
+description = "The note with in-note search focused above the keyboard, plus previous and next match controls."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [613, 82]
+description = "undo button — reverses the last edit to the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [761, 82]
+description = "share button — open the system share sheet"
+target = "note.share-sheet"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "more button — open note actions"
+target = "note.more-menu"
+
+[[screens.modes.elements]]
+position = [95, 593]
+description = "close search button — leave in-note search"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = [460, 593]
+description = "search field — enter an in-note query"
+target = "note.find-results"
+
+[[screens.modes.elements]]
+position = [811, 593]
+description = "previous match button — move to the previous search result"
+
+[[screens.modes.elements]]
+position = [914, 593]
+description = "next match button — move to the next search result"
+
+[[screens.modes]]
+id = "find-results"
+description = "In-note search with a query and matching text highlighted; the field shows result position and gains a clear button."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [613, 82]
+description = "undo button — reverses the last edit to the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [761, 82]
+description = "share button — open the system share sheet"
+target = "note.share-sheet"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "more button — open note actions"
+target = "note.more-menu"
+
+[[screens.modes.elements]]
+position = [95, 593]
+description = "close search button — leave in-note search"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = [460, 593]
+description = "search field — edit the in-note query"
+
+[[screens.modes.elements]]
+position = [676, 593]
+description = "clear query button — clear the in-note search"
+target = "note.find"
+
+[[screens.modes.elements]]
+position = [811, 593]
+description = "previous match button — move to the previous search result"
+
+[[screens.modes.elements]]
+position = [914, 593]
+description = "next match button — move to the next search result"
+
+[[screens.modes]]
+id = "attachment-menu"
+description = "The note editor with an attachment menu above the keyboard for scanned, captured, chosen, recorded, or filed content."
+
+[[screens.modes.elements]]
+position = [640, 255]
+description = "Scan Text button — scan and insert recognized text"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [640, 305]
+description = "Scan Documents button — scan and attach documents"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [640, 356]
+description = "Take Photo or Video button — capture and attach a photo or video"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [640, 414]
+description = "Choose Photo or Video button — choose and attach media"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [640, 503]
+description = "Record Audio button — record and attach audio"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [640, 554]
+description = "Attach File button — choose and attach a file"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "outside the attachment menu"
+description = "outside area — dismiss the attachment menu"
+target = "note.editing"
+
+[[screens.modes]]
+id = "format"
+description = "The note editor with a Format panel covering the keyboard, offering paragraph styles, character styling, lists, indentation, and block quotation."
+
+[[screens.modes.elements]]
+position = [886, 713]
+description = "close button — close the Format panel"
+target = "note.editing"
+
+[[screens.modes.elements]]
+position = [40, 774]
+description = "Title style button — format the current paragraph as a title"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [274, 774]
+description = "Heading style button — format the current paragraph as a heading"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [580, 774]
+description = "Subheading style button — format the current paragraph as a subheading"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [853, 774]
+description = "Body style button — format the current paragraph as body text"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [130, 842]
+description = "bold button — toggle bold formatting"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [275, 842]
+description = "italic button — toggle italic formatting"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [419, 842]
+description = "underline button — toggle underline formatting"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [564, 842]
+description = "strikethrough button — toggle strikethrough formatting"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [736, 842]
+description = "highlight button — apply highlighting to text"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [873, 842]
+description = "text color button — change the text color"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [129, 908]
+description = "dashed list button — format the current paragraph as a dashed list"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [274, 908]
+description = "bulleted list button — format the current paragraph as a bulleted list"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [419, 908]
+description = "numbered list button — format the current paragraph as a numbered list"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [588, 908]
+description = "decrease indent button — decrease the paragraph indentation"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [733, 908]
+description = "increase indent button — increase the paragraph indentation"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [886, 908]
+description = "block quote button — toggle block quotation formatting"
+looksMutating = true
+
+[[screens]]
+id = "attachments"
+
+[[screens.modes]]
+id = "normal"
+description = "The folder attachment browser; this folder currently has no attachments."
+
+[[screens.modes.elements]]
+position = [95, 101]
+description = "close button — return to the presenting note-list view"
+
+[[screens]]
+id = "search"
+
+[[screens.modes]]
+id = "normal"
+description = "Notes search with the keyboard open and suggested smart filters above an empty query field."
+
+[[screens.modes.elements]]
+position = "any suggested smart-filter row"
+isRepeating = true
+description = "suggested smart-filter row — filter notes by that category"
+target = "search.results"
+
+[[screens.modes.elements]]
+position = [435, 560]
+description = "search field — enter a Notes query"
+target = "search.results"
+
+[[screens.modes.elements]]
+position = [741, 560]
+description = "dictation button — request voice dictation for the search field"
+target = "search.dictation-prompt"
+
+[[screens.modes.elements]]
+position = [907, 560]
+description = "close button — leave Notes search"
+
+[[screens.modes]]
+id = "dictation-prompt"
+description = "A system privacy prompt over Notes search asking whether to enable Dictation."
+
+[[screens.modes.elements]]
+position = [500, 545]
+description = "Enable Dictation button — enables system Dictation"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [500, 612]
+description = "Not Now button — leave Dictation disabled and dismiss the prompt"
+target = "search.keyboard-hidden"
+
+[[screens.modes.elements]]
+position = [500, 678]
+description = "Dictation privacy link — open Siri and Dictation privacy information"
+
+[[screens.modes]]
+id = "keyboard-hidden"
+description = "Notes search with suggested smart filters and the keyboard dismissed; the search controls sit at the bottom edge."
+
+[[screens.modes.elements]]
+position = "any suggested smart-filter row"
+isRepeating = true
+description = "suggested smart-filter row — filter notes by that category"
+target = "search.results"
+
+[[screens.modes.elements]]
+position = [402, 938]
+description = "search field — focus Notes search and open the keyboard"
+target = "search.normal"
+
+[[screens.modes.elements]]
+position = [698, 938]
+description = "dictation button — request voice dictation for the search field"
+target = "search.dictation-prompt"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "close button — leave Notes search"
+
+[[screens.modes]]
+id = "results"
+description = "Notes search with an active query or smart-filter token and matching notes, or an empty-results message."
+
+[[screens.modes.elements]]
+position = [435, 560]
+description = "search field — edit the active Notes query"
+
+[[screens.modes.elements]]
+position = "any search result row from an active folder"
+isRepeating = true
+description = "active-folder search result — open the matching note"
+target = "note.normal"
+
+[[screens.modes.elements]]
+position = "any search result row from Recently Deleted"
+isRepeating = true
+description = "Recently Deleted search result — open the deleted note"
+target = "deleted-note.normal"
+
+[[screens.modes.elements]]
+position = [741, 560]
+description = "clear query button — clear the search query or filter token"
+target = "search.normal"
+
+[[screens.modes.elements]]
+position = [907, 560]
+description = "close button — leave Notes search"
+
+[[screens]]
+id = "deleted-note"
+
+[[screens.modes]]
+id = "normal"
+description = "A note opened from Recently Deleted, with destructive delete, recovery, and compose actions."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [135, 938]
+description = "delete button — permanently deletes the note"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [282, 938]
+description = "recover or move button — restores the deleted note to a folder"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "compose button — creates a new note"
+looksMutating = true
+
+[[screens]]
+id = "deleted-list"
+
+[[screens.modes]]
+id = "normal"
+description = "The Recently Deleted folder, showing its retention notice and deleted-note rows with edit and search controls."
+
+[[screens.modes.elements]]
+position = [95, 82]
+description = "back button — return to the folder browser"
+
+[[screens.modes.elements]]
+position = [878, 82]
+description = "Edit button — enter deleted-note selection mode"
+target = "deleted-list.select"
+
+[[screens.modes.elements]]
+position = "any deleted-note row; moves as the list scrolls"
+isRepeating = true
+description = "deleted-note row — open the deleted note"
+target = "deleted-note.normal"
+
+[[screens.modes.elements]]
+position = [402, 938]
+description = "search field — open Notes search"
+target = "search.normal"
+
+[[screens.modes.elements]]
+position = [698, 938]
+description = "dictation button — open search and request voice dictation"
+target = "search.dictation-prompt"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "compose button — creates a new note"
+looksMutating = true
+
+[[screens.modes]]
+id = "select"
+description = "Recently Deleted in selection mode, with selection circles, Done, and bulk move and permanent-delete actions."
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — leave deleted-note selection mode"
+target = "deleted-list.normal"
+
+[[screens.modes.elements]]
+position = "any deleted-note selection circle"
+isRepeating = true
+description = "deleted-note selection circle — toggle that note's selection"
+
+[[screens.modes.elements]]
+position = [193, 939]
+description = "Move All button — restores all deleted notes to a folder"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [792, 939]
+description = "Delete All button — permanently deletes all deleted notes"
+looksMutating = true

@@ -1,0 +1,1745 @@
+[[screens]]
+id = "all-shortcuts"
+
+[[screens.modes]]
+id = "normal"
+description = "The All Shortcuts grid shows shortcut cards beneath search, with editing and creation controls and the app tab bar."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    83,
+]
+description = "back button — return to the Library screen"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    738,
+    83,
+]
+description = "edit button — enter shortcut selection mode"
+target = "all-shortcuts.select"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "new shortcut button — creates and opens an auto-saving shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    500,
+    208,
+]
+description = "search field — focus and filter the visible shortcuts or actions"
+target = "all-shortcuts.search"
+
+[[screens.modes.elements]]
+position = [
+    897,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = "any shortcut card; moves as the grid scrolls"
+isRepeating = true
+description = "shortcut card — runs the shortcut, which may perform arbitrary actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "overflow button at the upper-right of any shortcut card; moves as the grid scrolls"
+isRepeating = true
+description = "shortcut overflow button — open the shortcut editor without running it"
+target = "shortcut-editor.existing"
+
+[[screens.modes.elements]]
+position = "shortcut grid; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens.modes]]
+id = "select"
+description = "All Shortcuts in selection mode shows Select All and Done, selection circles on cards, and bulk folder and delete actions."
+
+[[screens.modes.elements]]
+position = [
+    195,
+    83,
+]
+description = "select all button — toggle selection of every shortcut"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "done button — leave shortcut selection mode"
+target = "all-shortcuts.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    208,
+]
+description = "search field — focus shortcut search"
+target = "all-shortcuts.select-search"
+
+[[screens.modes.elements]]
+position = [
+    897,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = "any shortcut card or its selection circle; moves as the grid scrolls"
+isRepeating = true
+description = "shortcut selection control — toggle the shortcut selection"
+
+[[screens.modes.elements]]
+position = "shortcut grid; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = [
+    360,
+    935,
+]
+description = "add-to-folder bulk action — changes folder membership for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    510,
+    935,
+]
+description = "move-to-folder bulk action — changes folder membership for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    650,
+    935,
+]
+description = "delete bulk action — deletes selected shortcuts after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "select-search"
+description = "All Shortcuts selection mode with focused search, an X control, and the keyboard visible when available."
+
+[[screens.modes.elements]]
+position = [
+    195,
+    83,
+]
+description = "select all button — toggle selection of every filtered shortcut"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "done button — leave selection mode while retaining focused search"
+target = "all-shortcuts.search"
+
+[[screens.modes.elements]]
+position = [
+    350,
+    208,
+]
+description = "search field — keep focus in the live shortcut filter"
+
+[[screens.modes.elements]]
+position = [
+    754,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    208,
+]
+description = "close search button — dismiss focused search"
+target = "all-shortcuts.normal"
+
+[[screens.modes.elements]]
+position = "any visible shortcut card or its selection circle"
+isRepeating = true
+description = "shortcut selection control — toggle the shortcut's selection"
+
+[[screens.modes.elements]]
+position = "shortcut grid; drag vertically to scroll filtered results"
+description = "shortcut grid — scroll filtered selection results and reveal compact floating chrome"
+target = "all-shortcuts.select-search-scrolled"
+
+[[screens.modes.elements]]
+position = [
+    360,
+    935,
+]
+description = "add-to-folder bulk action — changes folder membership for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    510,
+    935,
+]
+description = "move-to-folder bulk action — changes folder membership for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    650,
+    935,
+]
+description = "delete bulk action — deletes selected shortcuts after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "select-search-scrolled"
+description = "All Shortcuts selection and search mode after scrolling, with Select All, Done, and search condensed into floating chrome over the grid."
+
+[[screens.modes.elements]]
+position = [
+    195,
+    81,
+]
+description = "select all button — toggle selection of every filtered shortcut"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    81,
+]
+description = "done button — leave selection mode while retaining the scrolled grid"
+target = "all-shortcuts.search-scrolled"
+
+[[screens.modes.elements]]
+position = [
+    350,
+    147,
+]
+description = "search field — focus the live shortcut filter"
+
+[[screens.modes.elements]]
+position = [
+    754,
+    147,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    147,
+]
+description = "close search button — dismiss focused search"
+target = "all-shortcuts.select"
+
+[[screens.modes.elements]]
+position = "any visible shortcut card or its selection circle in the scrolled grid"
+isRepeating = true
+description = "shortcut selection control — toggle the shortcut's selection"
+
+[[screens.modes.elements]]
+position = "scrolled shortcut grid; drag vertically to continue scrolling"
+description = "shortcut grid — continue scrolling selection results"
+
+[[screens.modes.elements]]
+position = [
+    360,
+    935,
+]
+description = "add-to-folder bulk action — changes folder membership for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    510,
+    935,
+]
+description = "move-to-folder bulk action — changes folder membership for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    650,
+    935,
+]
+description = "delete bulk action — deletes selected shortcuts after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "search-scrolled"
+description = "All Shortcuts after scrolling with focused search condensed into floating chrome over the card grid."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    81,
+]
+description = "back button — return to the Library screen"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    738,
+    81,
+]
+description = "edit button — enter selection mode at the current scroll position"
+target = "all-shortcuts.select-search-scrolled"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    81,
+]
+description = "new shortcut button — creates and opens an auto-saving shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    350,
+    147,
+]
+description = "search field — keep focus in the live shortcut filter"
+
+[[screens.modes.elements]]
+position = [
+    754,
+    147,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    147,
+]
+description = "close search button — dismiss focused search"
+target = "all-shortcuts.scrolled"
+
+[[screens.modes.elements]]
+position = "any visible shortcut card in the scrolled grid"
+isRepeating = true
+description = "shortcut card — runs the shortcut, which may perform arbitrary actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "overflow button at the upper-right of any visible shortcut card in the scrolled grid"
+isRepeating = true
+description = "shortcut overflow button — open the shortcut editor without running it"
+target = "shortcut-editor.existing"
+
+[[screens.modes.elements]]
+position = "scrolled shortcut grid; drag vertically to continue scrolling"
+description = "shortcut grid — continue scrolling filtered results"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens.modes]]
+id = "scrolled"
+description = "All Shortcuts after scrolling, with a compact floating title bar over the shortcut grid and no search field."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    81,
+]
+description = "back button — return to the Library screen"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    738,
+    81,
+]
+description = "edit button — enter selection mode at the current scroll position"
+target = "all-shortcuts.select-search-scrolled"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    81,
+]
+description = "new shortcut button — creates and opens an auto-saving shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "any visible shortcut card in the scrolled grid"
+isRepeating = true
+description = "shortcut card — runs the shortcut, which may perform arbitrary actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "overflow button at the upper-right of any visible shortcut card in the scrolled grid"
+isRepeating = true
+description = "shortcut overflow button — open the shortcut editor without running it"
+target = "shortcut-editor.existing"
+
+[[screens.modes.elements]]
+position = "scrolled shortcut grid; drag vertically to continue scrolling"
+description = "shortcut grid — continue scrolling through shortcuts"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens.modes]]
+id = "search"
+description = "All Shortcuts with focused search, an X control, and the keyboard visible when available."
+
+[[screens.modes.elements]]
+position = [
+    738,
+    83,
+]
+description = "edit button — enter selection mode"
+target = "all-shortcuts.select"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "new shortcut button — creates and opens an auto-saving shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    350,
+    208,
+]
+description = "search field — focus and filter the visible shortcuts or actions"
+
+[[screens.modes.elements]]
+position = [
+    754,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    208,
+]
+description = "close search button — dismiss focused search"
+target = "all-shortcuts.normal"
+
+[[screens.modes.elements]]
+position = "any visible shortcut card"
+isRepeating = true
+description = "shortcut card — runs the shortcut, which may perform arbitrary actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "overflow button at the upper-right of any visible shortcut card"
+isRepeating = true
+description = "shortcut overflow button — open the shortcut editor without running it"
+target = "shortcut-editor.existing"
+
+[[screens.modes.elements]]
+position = "shortcut grid; drag vertically to scroll filtered results"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens]]
+id = "gallery"
+
+[[screens.modes]]
+id = "normal"
+description = "The Gallery presents curated shortcut collections and horizontally scrolling suggestion cards beneath search, with vertical section scrolling and the app tab bar."
+
+[[screens.modes.elements]]
+position = [
+    500,
+    208,
+]
+description = "search field — focus Gallery search"
+target = "gallery.search"
+
+[[screens.modes.elements]]
+position = [
+    897,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = "any large featured collection banner"
+isRepeating = true
+description = "featured collection banner — open the collection's themed Gallery sections"
+target = "gallery-collection.normal"
+
+[[screens.modes.elements]]
+position = "See All button at the right of any Gallery section heading"
+isRepeating = true
+description = "See All button — open the complete list for that Gallery section"
+target = "gallery-section.normal"
+
+[[screens.modes.elements]]
+position = "any suggested shortcut card in a horizontal carousel"
+isRepeating = true
+description = "suggested shortcut card — open its preview and setup sheet"
+target = "gallery-shortcut-preview.normal"
+
+[[screens.modes.elements]]
+position = "plus button at the upper-right of any suggested shortcut card"
+isRepeating = true
+description = "add suggested shortcut button — adds the shortcut to the Library"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Gallery page; drag vertically to scroll sections"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "any Gallery shortcut carousel; drag horizontally to browse cards"
+isRepeating = true
+description = "shortcut carousel — browse additional suggestion cards horizontally"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens.modes]]
+id = "search"
+description = "The Gallery with its search field focused and an X control beside the expanded search field."
+
+[[screens.modes.elements]]
+position = [
+    350,
+    208,
+]
+description = "search field — keep focus in Gallery search"
+
+[[screens.modes.elements]]
+position = [
+    754,
+    208,
+]
+description = "dictation button — request voice dictation for Gallery search"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    208,
+]
+description = "close search button — dismiss focused Gallery search"
+target = "gallery.normal"
+
+[[screens.modes.elements]]
+position = "any large featured collection banner"
+isRepeating = true
+description = "featured collection banner — open the themed Gallery collection"
+target = "gallery-collection.normal"
+
+[[screens.modes.elements]]
+position = "See All button at the right of any Gallery section heading"
+isRepeating = true
+description = "See All button — open the complete list for that section"
+target = "gallery-section.normal"
+
+[[screens.modes.elements]]
+position = "any suggested shortcut card in a horizontal carousel"
+isRepeating = true
+description = "suggested shortcut card — open its preview and setup sheet"
+target = "gallery-shortcut-preview.normal"
+
+[[screens.modes.elements]]
+position = "plus button at the upper-right of any suggested shortcut card"
+isRepeating = true
+description = "add suggested shortcut button — adds the shortcut to the Library"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Gallery page; drag vertically to scroll sections"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "any Gallery shortcut carousel; drag horizontally to browse cards"
+isRepeating = true
+description = "shortcut carousel — browse additional suggestion cards horizontally"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens]]
+id = "gallery-section"
+
+[[screens.modes]]
+id = "normal"
+description = "A Gallery section lists suggested shortcuts vertically with descriptions and individual add controls."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    83,
+]
+description = "back or close button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = "any suggested shortcut card-and-description row"
+isRepeating = true
+description = "suggested shortcut row — open a preview and setup sheet"
+target = "gallery-shortcut-preview.normal"
+
+[[screens.modes.elements]]
+position = "plus button on any suggested shortcut row"
+isRepeating = true
+description = "add suggested shortcut button — adds the shortcut to the Library"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Gallery section list; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens]]
+id = "gallery-shortcut-preview"
+
+[[screens.modes]]
+id = "normal"
+description = "A Gallery shortcut preview sheet shows the shortcut description, preview card, availability notes, sharing, and a setup button."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    101,
+]
+description = "back or close button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    101,
+]
+description = "share button — opens sharing for the Gallery shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "overflow button on the shortcut preview card"
+description = "preview overflow button — inspect the shortcut's read-only action list"
+target = "gallery-shortcut-actions.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    893,
+]
+description = "Set Up Shortcut button — begins configuring and adding the shortcut"
+looksMutating = true
+
+[[screens]]
+id = "gallery-shortcut-actions"
+
+[[screens.modes]]
+id = "normal"
+description = "A read-only action-list preview shows the Gallery shortcut's actions and explanatory comments."
+
+[[screens.modes.elements]]
+position = [
+    902,
+    113,
+]
+description = "done button — return to the Gallery shortcut preview"
+target = "gallery-shortcut-preview.normal"
+
+[[screens.modes.elements]]
+position = "blue disclosure button on any preview action"
+isRepeating = true
+description = "action disclosure button — reveal or hide additional action details"
+
+[[screens.modes.elements]]
+position = "read-only action list; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens]]
+id = "gallery-collection"
+
+[[screens.modes]]
+id = "normal"
+description = "A themed Gallery collection lists sections of suggested shortcuts in horizontal carousels, each with See All and add controls."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    83,
+]
+description = "back button — return to the Gallery"
+
+[[screens.modes.elements]]
+position = "See All button at the right of any collection section heading"
+isRepeating = true
+description = "See All button — open the complete list for that section"
+target = "gallery-section.normal"
+
+[[screens.modes.elements]]
+position = "any suggested shortcut card in a collection carousel"
+isRepeating = true
+description = "suggested shortcut card — open its preview and setup sheet"
+target = "gallery-shortcut-preview.normal"
+
+[[screens.modes.elements]]
+position = "plus button at the upper-right of any suggested shortcut card"
+isRepeating = true
+description = "add suggested shortcut button — adds the shortcut to the Library"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "collection page; drag vertically to scroll sections"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "any collection shortcut carousel; drag horizontally to browse cards"
+isRepeating = true
+description = "shortcut carousel — browse additional suggestion cards horizontally"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — show suggested shortcuts"
+target = "gallery.normal"
+
+[[screens]]
+id = "library"
+
+[[screens.modes]]
+id = "normal"
+description = "The Library root lists built-in shortcut collections and user folders, with editing and folder creation controls and the app tab bar."
+
+[[screens.modes.elements]]
+position = [
+    738,
+    83,
+]
+description = "edit button — enter folder editing mode"
+target = "library.edit"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "new folder button — creates a new shortcut folder"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "All Shortcuts row near the top of the Library list"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "Share Sheet row near the top of the Library list"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "Apple Watch row near the top of the Library list"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "any user folder row in the Folders section; moves as the list scrolls"
+isRepeating = true
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "Library list; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens.modes]]
+id = "edit"
+description = "The Library in folder editing mode shows a completion button plus delete, information, and reorder controls on user folders."
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "done button — leave folder editing mode"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = "All Shortcuts row near the top of the Library list"
+description = "All Shortcuts row — open the complete shortcut grid and leave folder editing mode"
+target = "all-shortcuts.normal"
+
+[[screens.modes.elements]]
+position = "Share Sheet row near the top of the Library list"
+description = "Share Sheet row — open shortcuts available from the share sheet and leave folder editing mode"
+target = "share-sheet.normal"
+
+[[screens.modes.elements]]
+position = "Apple Watch row near the top of the Library list"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "red remove button beside any user folder; moves as the list scrolls"
+isRepeating = true
+description = "folder remove button — begins deleting the folder"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "information button beside any user folder; moves as the list scrolls"
+isRepeating = true
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = "reorder handle beside any user folder; moves as the list scrolls"
+isRepeating = true
+description = "folder reorder handle — changes the folder order when dragged"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Library list; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens]]
+id = "share-sheet"
+
+[[screens.modes]]
+id = "normal"
+description = "The Share Sheet collection shows shortcuts enabled for the system share sheet in a searchable card grid."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    83,
+]
+description = "back button — return to the presenting Library mode"
+
+[[screens.modes.elements]]
+position = [
+    738,
+    83,
+]
+description = "edit button — enter shortcut selection mode"
+target = "share-sheet.select"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "new shortcut button — creates and opens an auto-saving shortcut"
+looksMutating = true
+target = "shortcut-editor.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    208,
+]
+description = "search field — focus and filter the visible shortcuts or actions"
+target = "share-sheet.search"
+
+[[screens.modes.elements]]
+position = [
+    897,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = "any shortcut card; moves as the grid scrolls"
+isRepeating = true
+description = "shortcut card — runs the shortcut, which may perform arbitrary actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "overflow button at the upper-right of any shortcut card; moves as the grid scrolls"
+isRepeating = true
+description = "shortcut overflow button — open the shortcut editor without running it"
+target = "shortcut-editor.existing"
+
+[[screens.modes.elements]]
+position = "shortcut grid; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"
+
+[[screens.modes]]
+id = "select"
+description = "The Share Sheet collection in selection mode replaces the title controls with Select All and Done, adds selection circles to cards, and shows bulk actions."
+
+[[screens.modes.elements]]
+position = [
+    195,
+    83,
+]
+description = "select all button — toggle selection of every visible shortcut"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "done button — leave shortcut selection mode"
+target = "share-sheet.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    208,
+]
+description = "search field — focus shortcut search"
+target = "share-sheet.select-search"
+
+[[screens.modes.elements]]
+position = [
+    897,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = "any shortcut card or its selection circle; moves as the grid scrolls"
+isRepeating = true
+description = "shortcut selection control — toggle the shortcut's selection"
+
+[[screens.modes.elements]]
+position = "shortcut grid; drag vertically to scroll"
+description = "shortcut grid — attempt to scroll selection results"
+
+[[screens.modes.elements]]
+position = [
+    360,
+    575,
+]
+description = "add-to-folder bulk action — changes folder membership for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    510,
+    575,
+]
+description = "share bulk action — opens sharing for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    650,
+    575,
+]
+description = "delete bulk action — deletes selected shortcuts after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "select-search"
+description = "Share Sheet selection mode with the search field focused, an on-screen keyboard visible, and an X control beside the expanded search field."
+
+[[screens.modes.elements]]
+position = [
+    195,
+    83,
+]
+description = "select all button — toggle selection of every filtered shortcut"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "done button — leave selection mode while keeping search focused"
+target = "share-sheet.search"
+
+[[screens.modes.elements]]
+position = [
+    350,
+    208,
+]
+description = "search field — keep focus in the live shortcut filter"
+
+[[screens.modes.elements]]
+position = [
+    754,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    208,
+]
+description = "close search button — dismiss focused search and the keyboard"
+target = "share-sheet.select"
+
+[[screens.modes.elements]]
+position = "any visible shortcut card or its selection circle above the keyboard"
+isRepeating = true
+description = "shortcut selection control — toggle the shortcut's selection while search remains focused"
+target = "share-sheet.select-search"
+
+[[screens.modes.elements]]
+position = "shortcut grid above the keyboard; drag vertically to scroll"
+description = "shortcut grid — attempt to scroll filtered selection results"
+
+[[screens.modes.elements]]
+position = [
+    360,
+    430,
+]
+description = "add-to-folder bulk action — changes folder membership for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    510,
+    430,
+]
+description = "share bulk action — opens sharing for selected shortcuts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    650,
+    430,
+]
+description = "delete bulk action — deletes selected shortcuts after confirmation"
+looksMutating = true
+
+[[screens.modes]]
+id = "search"
+description = "The Share Sheet collection with search focused, the keyboard visible, and an X control beside the expanded search field."
+
+[[screens.modes.elements]]
+position = [
+    738,
+    83,
+]
+description = "edit button — enter selection mode while keeping search focused"
+target = "share-sheet.select-search"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    83,
+]
+description = "screen control — perform the labeled interface action"
+
+[[screens.modes.elements]]
+position = [
+    350,
+    208,
+]
+description = "search field — focus and filter the visible shortcuts or actions"
+
+[[screens.modes.elements]]
+position = [
+    754,
+    208,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    902,
+    208,
+]
+description = "close search button — dismiss focused search"
+target = "share-sheet.normal"
+
+[[screens.modes.elements]]
+position = "any visible shortcut card above the keyboard"
+isRepeating = true
+description = "shortcut card — runs the shortcut, which may perform arbitrary actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "overflow button at the upper-right of any visible shortcut card above the keyboard"
+isRepeating = true
+description = "shortcut overflow button — open the shortcut editor without running it"
+target = "shortcut-editor.existing"
+
+[[screens.modes.elements]]
+position = "shortcut grid above the keyboard; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens]]
+id = "dictation-permission"
+
+[[screens.modes]]
+id = "normal"
+description = "A system alert asks whether to enable Dictation after the search microphone is used."
+
+[[screens.modes.elements]]
+position = [
+    500,
+    548,
+]
+description = "Enable Dictation button — enables the system Dictation setting"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    500,
+    615,
+]
+description = "Not Now button — dismiss the Dictation prompt without changing settings"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    681,
+]
+description = "About Siri, Dictation & Privacy button — open Apple's Dictation privacy information"
+target = "dictation-privacy.normal"
+
+[[screens]]
+id = "dictation-privacy"
+
+[[screens.modes]]
+id = "normal"
+description = "A scrollable system sheet explains Siri and Dictation privacy and includes a link to Apple's legal site."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    113,
+]
+description = "close button — return to the presenting Dictation prompt"
+
+[[screens.modes.elements]]
+position = "apple.com legal link within the privacy text; moves as the sheet scrolls"
+description = "apple.com legal link — open Apple's Improve Siri and Dictation privacy page outside Shortcuts"
+
+[[screens.modes.elements]]
+position = "privacy information sheet; drag vertically to scroll"
+description = "privacy information sheet — scroll through the privacy explanation and reveal compact title chrome"
+target = "dictation-privacy.scrolled"
+
+[[screens.modes]]
+id = "scrolled"
+description = "The Dictation privacy sheet after scrolling, with its title condensed into the fixed top bar."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    113,
+]
+description = "close button — return to the presenting Dictation prompt"
+
+[[screens.modes.elements]]
+position = "apple.com legal link within the privacy text; moves as the sheet scrolls"
+description = "apple.com legal link — open Apple's Improve Siri and Dictation privacy page outside Shortcuts"
+
+[[screens.modes.elements]]
+position = "privacy information sheet; drag vertically to scroll"
+description = "privacy information sheet — continue scrolling through the explanation"
+
+[[screens]]
+id = "shortcut-editor"
+
+[[screens.modes]]
+id = "normal"
+description = "The shortcut editor shows the shortcut name, its Share Sheet input configuration, and a lower action drawer with search, categories, suggestions, and apps."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    83,
+]
+description = "back button — leave the editor and return to the presenting shortcut collection"
+
+[[screens.modes.elements]]
+position = [
+    698,
+    83,
+]
+description = "shortcut name menu button — open shortcut management actions"
+target = "shortcut-editor.name-menu"
+
+[[screens.modes.elements]]
+position = "blue input-types parameter in the Receive block"
+description = "input types parameter — changes which input types the shortcut accepts"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "blue Share Sheet source parameter in the Receive block"
+description = "Share Sheet source parameter — changes where the shortcut is available"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "blue no-input behavior parameter in the Receive block"
+description = "no-input behavior parameter — changes how the shortcut handles missing input"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "action drawer grabber above Search Actions"
+description = "action drawer grabber — expand or collapse the action drawer"
+
+[[screens.modes.elements]]
+position = [
+    450,
+    523,
+]
+description = "search field — focus and filter the visible shortcuts or actions"
+
+[[screens.modes.elements]]
+position = [
+    870,
+    523,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = "any action category chip beneath Search Actions"
+isRepeating = true
+description = "action category chip — filter the action drawer by category"
+
+[[screens.modes.elements]]
+position = "any suggested action row in the action drawer"
+isRepeating = true
+description = "suggested action row — adds that action to the shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "information button at the right of any suggested action row"
+isRepeating = true
+description = "information button — show details for the adjacent item"
+
+[[screens.modes.elements]]
+position = "any app row in the action drawer"
+isRepeating = true
+description = "app row — browse actions supplied by that app"
+
+[[screens.modes.elements]]
+position = "action drawer contents; drag vertically to scroll"
+description = "scrollable content — browse additional items in the indicated direction"
+
+[[screens.modes]]
+id = "existing"
+description = "The editor for an existing shortcut shows its action stack, editable parameters, and a collapsed lower action drawer with shortcut controls."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    83,
+]
+description = "back button — leave the editor and return to the presenting shortcut collection"
+
+[[screens.modes.elements]]
+position = [
+    607,
+    83,
+]
+description = "shortcut name menu button — open shortcut management actions"
+target = "shortcut-editor.name-menu"
+
+[[screens.modes.elements]]
+position = "any action card in the shortcut action stack; drag to reorder"
+isRepeating = true
+description = "action card drag gesture — changes the order of actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "any editable text or blue parameter within an action card"
+isRepeating = true
+description = "action parameter — changes the configured action value"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "gray remove button at the upper-right of any action card"
+isRepeating = true
+description = "remove action button — deletes that action from the shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "blue disclosure button at the right of an action card"
+isRepeating = true
+description = "action disclosure button — reveal or hide advanced action options"
+target = "shortcut-editor.action-expanded"
+
+[[screens.modes.elements]]
+position = "action drawer grabber above Search Actions"
+description = "action drawer grabber — expand or collapse the action drawer"
+
+[[screens.modes.elements]]
+position = [
+    450,
+    876,
+]
+description = "search field — focus and filter the visible shortcuts or actions"
+
+[[screens.modes.elements]]
+position = [
+    834,
+    876,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    165,
+    933,
+]
+description = "undo button — reverses the last shortcut edit"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    330,
+    933,
+]
+description = "redo button — reapplies an undone shortcut edit"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    500,
+    933,
+]
+description = "shortcut information button — show shortcut details"
+
+[[screens.modes.elements]]
+position = [
+    670,
+    933,
+]
+description = "share button — opens sharing for the shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    840,
+    933,
+]
+description = "run button — runs the shortcut and may perform arbitrary actions"
+looksMutating = true
+
+[[screens.modes]]
+id = "action-expanded"
+description = "The existing shortcut editor with one action expanded to show its advanced options, including Local Only and Expire At controls."
+
+[[screens.modes.elements]]
+position = [
+    95,
+    83,
+]
+description = "back button — leave the editor and return to the presenting shortcut collection"
+
+[[screens.modes.elements]]
+position = [
+    607,
+    83,
+]
+description = "shortcut name menu button — open shortcut management actions"
+target = "shortcut-editor.name-menu"
+
+[[screens.modes.elements]]
+position = "any action card in the shortcut action stack; drag to reorder"
+isRepeating = true
+description = "action card drag gesture — changes the order of actions"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "any editable text or blue parameter within an action card"
+isRepeating = true
+description = "action parameter — changes the configured action value"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "gray remove button at the upper-right of any action card"
+isRepeating = true
+description = "remove action button — deletes that action from the shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "blue disclosure button on the expanded action"
+description = "action disclosure button — collapse advanced action options"
+target = "shortcut-editor.existing"
+
+[[screens.modes.elements]]
+position = "Local Only toggle in the expanded action"
+description = "Local Only toggle — changes whether clipboard content stays local"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "Expire At control in the expanded action"
+description = "Expire At control — changes clipboard expiration behavior"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "action drawer grabber above Search Actions"
+description = "action drawer grabber — expand or collapse the action drawer"
+
+[[screens.modes.elements]]
+position = [
+    450,
+    876,
+]
+description = "search field — focus and filter the visible shortcuts or actions"
+
+[[screens.modes.elements]]
+position = [
+    834,
+    876,
+]
+description = "dictation button — request voice dictation for the search field"
+target = "dictation-permission.normal"
+
+[[screens.modes.elements]]
+position = [
+    165,
+    933,
+]
+description = "undo button — reverses the last shortcut edit"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    330,
+    933,
+]
+description = "redo button — reapplies an undone shortcut edit"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    500,
+    933,
+]
+description = "shortcut information button — show shortcut details"
+
+[[screens.modes.elements]]
+position = [
+    670,
+    933,
+]
+description = "share button — opens sharing for the shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    840,
+    933,
+]
+description = "run button — runs the shortcut and may perform arbitrary actions"
+looksMutating = true
+
+[[screens.modes]]
+id = "name-menu"
+description = "A shortcut-name popover offers rename, icon, duplicate, move, and Home Screen management actions over the editor."
+
+[[screens.modes.elements]]
+position = "outside the shortcut-name popover"
+description = "outside popover — dismiss the shortcut-name menu"
+target = "shortcut-editor.existing"
+
+[[screens.modes.elements]]
+position = [
+    440,
+    106,
+]
+description = "Rename action — changes the shortcut name"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    440,
+    157,
+]
+description = "Choose Icon action — changes the shortcut icon"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    440,
+    207,
+]
+description = "Duplicate action — creates a copy of the shortcut"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    440,
+    258,
+]
+description = "Move action — changes the shortcut folder"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    500,
+    331,
+]
+description = "Add to Home Screen action — creates a Home Screen shortcut icon"
+looksMutating = true
+
+[[screens]]
+id = "automation"
+
+[[screens.modes]]
+id = "normal"
+description = "The Automation tab is empty and offers a single control to create the first personal automation."
+
+[[screens.modes.elements]]
+position = [
+    500,
+    628,
+]
+description = "New Automation button — begins creating a personal automation"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = [
+    274,
+    955,
+]
+description = "Library tab — show the Library root"
+target = "library.normal"
+
+[[screens.modes.elements]]
+position = [
+    500,
+    955,
+]
+description = "Automation tab — show personal automations"
+target = "automation.normal"
+
+[[screens.modes.elements]]
+position = [
+    739,
+    955,
+]
+description = "Gallery tab — browse suggested shortcuts"
+target = "gallery.normal"

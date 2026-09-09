@@ -1,0 +1,879 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>reminders</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; }
+[hidden] { display: none !important; }
+body { font: 14px/1.45 -apple-system, system-ui, sans-serif; background: #f5f5f7; color: #1d1d1f; }
+nav { position: fixed; inset: 0 auto 0 0; width: 190px; padding: 24px 16px; overflow-y: auto; }
+nav .t { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #86868b; margin-bottom: 8px; }
+nav a { display: block; padding: 5px 10px; border-radius: 7px; color: #1d1d1f; text-decoration: none;
+        text-transform: capitalize; }
+nav a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+main { margin-left: 190px; padding: 28px 36px; }
+h2 { font-size: 20px; text-transform: capitalize; margin-bottom: 12px; }
+.tabs { display: inline-flex; gap: 2px; background: #e8e8ed; border-radius: 9px; padding: 2px; margin-bottom: 16px; }
+.tabs a { padding: 3px 14px; border-radius: 7px; font-size: 13px; color: #1d1d1f; text-decoration: none;
+          text-transform: capitalize; }
+.tabs a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+p.content { max-width: 760px; color: #3a3a3c; margin-bottom: 16px; }
+.mode { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+.frame { position: relative; flex: none; width: 280px; aspect-ratio: 393/852; background: #fff;
+         border-radius: 36px; box-shadow: 0 1px 4px rgba(0,0,0,.25); overflow: hidden; }
+.el { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+      border: 1.5px solid; }
+.el span { position: absolute; left: 17px; top: 0; font-size: 9px; font-weight: 600; white-space: nowrap; }
+table { border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12); min-width: 420px; flex: 1; }
+th, td { text-align: left; padding: 6px 12px; vertical-align: top; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #6e6e73;
+     border-bottom: 1px solid #e5e5ea; }
+tr + tr td { border-top: 1px solid #f0f0f2; }
+td.d { font-weight: 600; white-space: nowrap; }
+td.d.unseen { color: #d70015; font-style: italic; }
+td.p, td.f { color: #86868b; }
+td.t { font-family: ui-monospace, monospace; font-size: 12px; }
+</style>
+
+<nav>
+  <div class=t>Screens</div>
+  <a data-screen="welcome" href="#welcome/normal">welcome</a>
+  <a data-screen="overview" href="#overview/normal">overview</a>
+  <a data-screen="lists" href="#lists/icloud-prompt">lists</a>
+  <a data-screen="list-info" href="#list-info/normal">list info</a>
+  <a data-screen="today" href="#today/normal">today</a>
+  <a data-screen="scheduled" href="#scheduled/normal">scheduled</a>
+  <a data-screen="all" href="#all/normal">all</a>
+  <a data-screen="completed" href="#completed/normal">completed</a>
+  <a data-screen="print-options" href="#print-options/normal">print options</a>
+</nav>
+
+<main>
+  <section data-screen="welcome">
+    <h2>welcome</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The first-launch welcome sheet introduces Reminders features above a single Continue button.</p>
+      <div class=frame>
+        <div class=el data-x="500" data-y="892" data-hue="299" title="lists.icloud-prompt"><span>continue button — advance through the UI-only welcome flow</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>continue button — advance through the UI-only welcome flow</td><td class=t>500, 892</td>          <td class=t>lists.icloud-prompt</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="overview">
+    <h2>overview</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#overview/normal">normal</a>
+      <a data-mode="edit" href="#overview/edit">edit</a>
+      <a data-mode="search" href="#overview/search">search</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Lists overview combines search, smart-list tiles, an iCloud syncing suggestion, the local Reminders list, and creation controls.</p>
+      <div class=frame>
+        <div class=el data-x="920" data-y="66" data-hue="265" title="overview.edit"><span>edit button — enter list reordering and management mode</span></div>
+        <div class=el data-x="450" data-y="106" data-hue="129" title="overview.search"><span>search field — focus reminder search</span></div>
+        <div class=el data-x="916" data-y="106" data-hue="151" title=""><span>dictation button — start voice input for search</span></div>
+        <div class=el data-x="259" data-y="191" data-hue="5" title="today.normal"><span>today tile — show reminders due today</span></div>
+        <div class=el data-x="760" data-y="191" data-hue="174" title="scheduled.normal"><span>scheduled tile — show reminders with scheduled dates</span></div>
+        <div class=el data-x="259" data-y="287" data-hue="239" title="all.normal"><span>all tile — show all reminders</span></div>
+        <div class=el data-x="760" data-y="287" data-hue="251" title="completed.normal"><span>completed tile — show completed reminders</span></div>
+        <div class=el data-x="908" data-y="363" data-hue="77" title=""><span>dismiss iCloud suggestion button — hide the syncing suggestion</span></div>
+        <div class=el data-x="307" data-y="463" data-hue="296" title=""><span>go to settings link — leave Reminders for iCloud settings without changing anything</span></div>
+        <div class=el data-x="203" data-y="756" data-hue="290" title=""><span>new reminder button — begin creating a reminder</span></div>
+        <div class=el data-x="879" data-y="756" data-hue="15" title=""><span>add list button — begin creating a list</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>edit button — enter list reordering and management mode</td><td class=t>920, 66</td>          <td class=t>overview.edit</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — focus reminder search</td><td class=t>450, 106</td>          <td class=t>overview.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — start voice input for search</td><td class=t>916, 106</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>today tile — show reminders due today</td><td class=t>259, 191</td>          <td class=t>today.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>scheduled tile — show reminders with scheduled dates</td><td class=t>760, 191</td>          <td class=t>scheduled.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>all tile — show all reminders</td><td class=t>259, 287</td>          <td class=t>all.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>completed tile — show completed reminders</td><td class=t>760, 287</td>          <td class=t>completed.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dismiss iCloud suggestion button — hide the syncing suggestion</td><td class=t>908, 363</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>go to settings link — leave Reminders for iCloud settings without changing anything</td><td class=t>307, 463</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list row — open that reminder list</td><td class=p>any list row under My Lists</td>          <td class=t>lists.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>new reminder button — begin creating a reminder</td><td class=t>203, 756</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add list button — begin creating a list</td><td class=t>879, 756</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="edit">
+      <p class=content style="flex-basis:100%">Lists editing mode shows visibility toggles and reorder handles for smart lists, plus deletion, information, and reorder controls for local lists.</p>
+      <div class=frame>
+        <div class=el data-x="920" data-y="66" data-hue="86" title="overview.normal"><span>done button — leave Lists editing mode</span></div>
+        <div class=el data-x="879" data-y="756" data-hue="15" title=""><span>add list button — begin creating a list</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — leave Lists editing mode</td><td class=t>920, 66</td>          <td class=t>overview.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>smart-list visibility checkmark — show or hide that smart list</td><td class=p>any smart-list visibility checkmark</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>smart-list reorder handle — rearrange the smart lists</td><td class=p>any smart-list reorder handle</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>remove list button — begin deleting the local list</td><td class=p>the minus button beside a local list</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>list information button — open the list appearance editor</td><td class=p>the information button beside a local list</td>          <td class=t>list-info.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list reorder handle — rearrange the local list</td><td class=p>the reorder handle beside a local list</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add list button — begin creating a list</td><td class=t>879, 756</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">Search mode focuses the search field over a dimmed Lists overview and adds a Cancel button.</p>
+      <div class=frame>
+        <div class=el data-x="430" data-y="70" data-hue="90" title=""><span>search field — enter a transient reminder query</span></div>
+        <div class=el data-x="752" data-y="70" data-hue="151" title=""><span>dictation button — start voice input for search</span></div>
+        <div class=el data-x="891" data-y="70" data-hue="323" title="overview.normal"><span>cancel button — leave search without a query</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter a transient reminder query</td><td class=t>430, 70</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — start voice input for search</td><td class=t>752, 70</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>cancel button — leave search without a query</td><td class=t>891, 70</td>          <td class=t>overview.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="lists">
+    <h2>lists</h2>
+    <div class=tabs>
+      <a data-mode="icloud-prompt" href="#lists/icloud-prompt">icloud-prompt</a>
+      <a data-mode="normal" href="#lists/normal">normal</a>
+      <a data-mode="menu" href="#lists/menu">menu</a>
+      <a data-mode="sort-menu" href="#lists/sort-menu">sort-menu</a>
+      <a data-mode="select" href="#lists/select">select</a>
+    </div>
+    <div class=mode data-mode="icloud-prompt">
+      <p class=content style="flex-basis:100%">The empty built-in Reminders list is dimmed beneath an alert asking whether to enable iCloud syncing in Settings.</p>
+      <div class=frame>
+        <div class=el data-x="91" data-y="66" data-hue="355" title=""><span>back button — return to the presenting screen</span></div>
+        <div class=el data-x="927" data-y="66" data-hue="76" title=""><span>more button — open list-management options</span></div>
+        <div class=el data-x="327" data-y="469" data-hue="146" title="lists.normal"><span>not now button — dismiss the syncing suggestion without changing settings</span></div>
+        <div class=el data-x="668" data-y="469" data-hue="109" title=""><span>go to settings button — leave Reminders for its system settings without changing anything</span></div>
+        <div class=el data-x="203" data-y="756" data-hue="290" title=""><span>new reminder button — begin creating a reminder</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting screen</td><td class=t>91, 66</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open list-management options</td><td class=t>927, 66</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>not now button — dismiss the syncing suggestion without changing settings</td><td class=t>327, 469</td>          <td class=t>lists.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>go to settings button — leave Reminders for its system settings without changing anything</td><td class=t>668, 469</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>new reminder button — begin creating a reminder</td><td class=t>203, 756</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The empty built-in Reminders list shows no reminder rows, with back navigation, list options, and a New Reminder action.</p>
+      <div class=frame>
+        <div class=el data-x="91" data-y="66" data-hue="140" title=""><span>back button — return to the Lists overview</span></div>
+        <div class=el data-x="927" data-y="66" data-hue="76" title="lists.menu"><span>more button — open list-management options</span></div>
+        <div class=el data-x="203" data-y="756" data-hue="290" title=""><span>new reminder button — begin creating a reminder</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the Lists overview</td><td class=t>91, 66</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open list-management options</td><td class=t>927, 66</td>          <td class=t>lists.menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>new reminder button — begin creating a reminder</td><td class=t>203, 756</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="menu">
+      <p class=content style="flex-basis:100%">A list-management popover overlays the empty list with information, selection, sorting, visibility, printing, and deletion actions.</p>
+      <div class=frame>
+        <div class=el data-x="620" data-y="109" data-hue="210" title="list-info.normal"><span>show list info row — open unsaved name, icon, and color controls</span></div>
+        <div class=el data-x="620" data-y="151" data-hue="7" title="lists.select"><span>select reminders row — enter multi-selection mode</span></div>
+        <div class=el data-x="620" data-y="201" data-hue="267" title="lists.sort-menu"><span>sort by row — open sort criteria options</span></div>
+        <div class=el data-x="620" data-y="255" data-hue="314" title=""><span>show completed row — change whether completed reminders are visible</span></div>
+        <div class=el data-x="620" data-y="297" data-hue="79" title="print-options.normal"><span>print row — open the system print configuration</span></div>
+        <div class=el data-x="620" data-y="339" data-hue="323" title=""><span>delete list button — permanently delete this list after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>show list info row — open unsaved name, icon, and color controls</td><td class=t>620, 109</td>          <td class=t>list-info.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>select reminders row — enter multi-selection mode</td><td class=t>620, 151</td>          <td class=t>lists.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by row — open sort criteria options</td><td class=t>620, 201</td>          <td class=t>lists.sort-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show completed row — change whether completed reminders are visible</td><td class=t>620, 255</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>print row — open the system print configuration</td><td class=t>620, 297</td>          <td class=t>print-options.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete list button — permanently delete this list after confirmation</td><td class=t>620, 339</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="sort-menu">
+      <p class=content style="flex-basis:100%">The expanded Sort By submenu offers manual, due-date, creation-date, priority, and title ordering.</p>
+      <div class=frame>
+        <div class=el data-x="620" data-y="179" data-hue="32" title="lists.menu"><span>sort by row — collapse sort criteria options</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort by row — collapse sort criteria options</td><td class=t>620, 179</td>          <td class=t>lists.menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort criterion row — change the list ordering preference</td><td class=p>any sort criterion row</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">Selection mode for the empty list changes the title and exposes disabled bulk date, move, delete, and more actions.</p>
+      <div class=frame>
+        <div class=el data-x="898" data-y="66" data-hue="137" title="lists.normal"><span>done button — leave reminder selection mode</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — leave reminder selection mode</td><td class=t>898, 66</td>          <td class=t>lists.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bulk action — change or delete selected reminders</td><td class=p>any disabled bulk action along the bottom</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="list-info">
+    <h2>list info</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">List Info presents unsaved appearance controls for the Reminders list, including its icon, name, and color palette.</p>
+      <div class=frame>
+        <div class=el data-x="107" data-y="82" data-hue="233" title=""><span>cancel button — discard unsaved list appearance changes and return</span></div>
+        <div class=el data-x="898" data-y="82" data-hue="197" title=""><span>done button — save list appearance changes</span></div>
+        <div class=el data-x="500" data-y="181" data-hue="238" title=""><span>current list icon preview — no action</span></div>
+        <div class=el data-x="500" data-y="274" data-hue="96" title=""><span>list name field — edit the unsaved list name</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>cancel button — discard unsaved list appearance changes and return</td><td class=t>107, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>done button — save list appearance changes</td><td class=t>898, 82</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>current list icon preview — no action</td><td class=t>500, 181</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list name field — edit the unsaved list name</td><td class=t>500, 274</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>color swatch — choose an unsaved list color</td><td class=p>any color swatch in the palette</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="today">
+    <h2>today</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#today/normal">normal</a>
+      <a data-mode="menu" href="#today/menu">menu</a>
+      <a data-mode="sort-menu" href="#today/sort-menu">sort-menu</a>
+      <a data-mode="select" href="#today/select">select</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Today groups the empty due-today view into Morning, Afternoon, and Tonight sections.</p>
+      <div class=frame>
+        <div class=el data-x="91" data-y="66" data-hue="140" title=""><span>back button — return to the Lists overview</span></div>
+        <div class=el data-x="927" data-y="66" data-hue="62" title="today.menu"><span>more button — open Today view options</span></div>
+        <div class=el data-x="203" data-y="756" data-hue="237" title=""><span>new reminder button — begin creating a reminder due today</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the Lists overview</td><td class=t>91, 66</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open Today view options</td><td class=t>927, 66</td>          <td class=t>today.menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>new reminder button — begin creating a reminder due today</td><td class=t>203, 756</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="menu">
+      <p class=content style="flex-basis:100%">Today view options provide selection, time grouping, sorting, and printing.</p>
+      <div class=frame>
+        <div class=el data-x="620" data-y="109" data-hue="119" title="today.select"><span>select reminders row — enter selection mode</span></div>
+        <div class=el data-x="620" data-y="151" data-hue="328" title=""><span>group by time row — change whether today is split into time-of-day sections</span></div>
+        <div class=el data-x="620" data-y="201" data-hue="276" title="today.sort-menu"><span>sort by row — open Today sort criteria</span></div>
+        <div class=el data-x="620" data-y="255" data-hue="79" title="print-options.normal"><span>print row — open the system print configuration</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select reminders row — enter selection mode</td><td class=t>620, 109</td>          <td class=t>today.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>group by time row — change whether today is split into time-of-day sections</td><td class=t>620, 151</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>sort by row — open Today sort criteria</td><td class=t>620, 201</td>          <td class=t>today.sort-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>print row — open the system print configuration</td><td class=t>620, 255</td>          <td class=t>print-options.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="sort-menu">
+      <p class=content style="flex-basis:100%">The expanded Today Sort By submenu offers due-date and other ordering criteria.</p>
+      <div class=frame>
+        <div class=el data-x="620" data-y="179" data-hue="323" title="today.menu"><span>sort by row — collapse Today sort criteria</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort by row — collapse Today sort criteria</td><td class=t>620, 179</td>          <td class=t>today.menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort criterion row — change Today ordering</td><td class=p>any sort criterion row</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">Today selection mode shows no reminder rows and disabled bulk actions.</p>
+      <div class=frame>
+        <div class=el data-x="898" data-y="66" data-hue="137" title="today.normal"><span>done button — leave reminder selection mode</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — leave reminder selection mode</td><td class=t>898, 66</td>          <td class=t>today.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bulk action — change or delete selected reminders</td><td class=p>any disabled bulk action along the bottom</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="scheduled">
+    <h2>scheduled</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#scheduled/normal">normal</a>
+      <a data-mode="menu" href="#scheduled/menu">menu</a>
+      <a data-mode="select" href="#scheduled/select">select</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Scheduled groups the empty view under Today, upcoming dates, later months, and future years.</p>
+      <div class=frame>
+        <div class=el data-x="91" data-y="66" data-hue="140" title=""><span>back button — return to the Lists overview</span></div>
+        <div class=el data-x="927" data-y="66" data-hue="112" title="scheduled.menu"><span>more button — open Scheduled view options</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the Lists overview</td><td class=t>91, 66</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open Scheduled view options</td><td class=t>927, 66</td>          <td class=t>scheduled.menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>scheduled content — scroll through future date groups</td><td class=p>the chronological scheduled-reminder content</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="menu">
+      <p class=content style="flex-basis:100%">Scheduled view options provide selection, completed-item visibility, and printing.</p>
+      <div class=frame>
+        <div class=el data-x="620" data-y="109" data-hue="119" title="scheduled.select"><span>select reminders row — enter selection mode</span></div>
+        <div class=el data-x="620" data-y="151" data-hue="169" title=""><span>show completed row — change whether completed scheduled reminders are visible</span></div>
+        <div class=el data-x="620" data-y="201" data-hue="79" title="print-options.normal"><span>print row — open the system print configuration</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select reminders row — enter selection mode</td><td class=t>620, 109</td>          <td class=t>scheduled.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show completed row — change whether completed scheduled reminders are visible</td><td class=t>620, 151</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>print row — open the system print configuration</td><td class=t>620, 201</td>          <td class=t>print-options.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">Scheduled selection mode exposes disabled bulk operations because there are no reminder rows.</p>
+      <div class=frame>
+        <div class=el data-x="898" data-y="66" data-hue="137" title="scheduled.normal"><span>done button — leave reminder selection mode</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — leave reminder selection mode</td><td class=t>898, 66</td>          <td class=t>scheduled.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bulk action — change or delete selected reminders</td><td class=p>any disabled bulk action along the bottom</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="all">
+    <h2>all</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#all/normal">normal</a>
+      <a data-mode="menu" href="#all/menu">menu</a>
+      <a data-mode="select" href="#all/select">select</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">All groups every active reminder by source list; the local Reminders group is currently empty.</p>
+      <div class=frame>
+        <div class=el data-x="91" data-y="66" data-hue="140" title=""><span>back button — return to the Lists overview</span></div>
+        <div class=el data-x="927" data-y="66" data-hue="152" title="all.menu"><span>more button — open All view options</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the Lists overview</td><td class=t>91, 66</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open All view options</td><td class=t>927, 66</td>          <td class=t>all.menu</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="menu">
+      <p class=content style="flex-basis:100%">All view options provide selection, completed-item visibility, and printing.</p>
+      <div class=frame>
+        <div class=el data-x="620" data-y="109" data-hue="119" title="all.select"><span>select reminders row — enter selection mode</span></div>
+        <div class=el data-x="620" data-y="151" data-hue="314" title=""><span>show completed row — change whether completed reminders are visible</span></div>
+        <div class=el data-x="620" data-y="201" data-hue="79" title="print-options.normal"><span>print row — open the system print configuration</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select reminders row — enter selection mode</td><td class=t>620, 109</td>          <td class=t>all.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show completed row — change whether completed reminders are visible</td><td class=t>620, 151</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>print row — open the system print configuration</td><td class=t>620, 201</td>          <td class=t>print-options.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">All selection mode exposes disabled bulk operations because there are no reminder rows.</p>
+      <div class=frame>
+        <div class=el data-x="898" data-y="66" data-hue="137" title="all.normal"><span>done button — leave reminder selection mode</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — leave reminder selection mode</td><td class=t>898, 66</td>          <td class=t>all.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bulk action — change or delete selected reminders</td><td class=p>any disabled bulk action along the bottom</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="completed">
+    <h2>completed</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#completed/normal">normal</a>
+      <a data-mode="menu" href="#completed/menu">menu</a>
+      <a data-mode="select" href="#completed/select">select</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Completed shows the completed reminder count and an empty completed-reminder area.</p>
+      <div class=frame>
+        <div class=el data-x="91" data-y="66" data-hue="140" title=""><span>back button — return to the Lists overview</span></div>
+        <div class=el data-x="927" data-y="66" data-hue="354" title="completed.menu"><span>more button — open Completed view options</span></div>
+        <div class=el data-x="385" data-y="157" data-hue="322" title=""><span>clear button — permanently clear completed reminders</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the Lists overview</td><td class=t>91, 66</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open Completed view options</td><td class=t>927, 66</td>          <td class=t>completed.menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>clear button — permanently clear completed reminders</td><td class=t>385, 157</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="menu">
+      <p class=content style="flex-basis:100%">Completed view options provide selection and printing.</p>
+      <div class=frame>
+        <div class=el data-x="620" data-y="109" data-hue="119" title="completed.select"><span>select reminders row — enter selection mode</span></div>
+        <div class=el data-x="620" data-y="151" data-hue="79" title="print-options.normal"><span>print row — open the system print configuration</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select reminders row — enter selection mode</td><td class=t>620, 109</td>          <td class=t>completed.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>print row — open the system print configuration</td><td class=t>620, 151</td>          <td class=t>print-options.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">Completed selection mode exposes disabled bulk operations because there are no completed reminder rows.</p>
+      <div class=frame>
+        <div class=el data-x="898" data-y="66" data-hue="137" title="completed.normal"><span>done button — leave reminder selection mode</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — leave reminder selection mode</td><td class=t>898, 66</td>          <td class=t>completed.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bulk action — change or delete selected reminders</td><td class=p>any disabled bulk action along the bottom</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="print-options">
+    <h2>print options</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The system print sheet previews the empty list and offers printer, copies, paper, orientation, scaling, layout, sharing, and printing controls.</p>
+      <div class=frame>
+        <div class=el data-x="107" data-y="82" data-hue="299" title=""><span>cancel button — dismiss printing and return to the list</span></div>
+        <div class=el data-x="781" data-y="82" data-hue="155" title=""><span>share button — open destinations for exporting the print document</span></div>
+        <div class=el data-x="908" data-y="82" data-hue="43" title=""><span>print button — submit the configured print job</span></div>
+        <div class=el data-x="500" data-y="147" data-hue="68" title=""><span>printer row — choose a printer for the prospective job</span></div>
+        <div class=el data-x="500" data-y="264" data-hue="21" title=""><span>paper size row — choose paper size for the prospective job</span></div>
+        <div class=el data-x="500" data-y="435" data-hue="199" title=""><span>layout row — choose pages per sheet for the prospective job</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>cancel button — dismiss printing and return to the list</td><td class=t>107, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>share button — open destinations for exporting the print document</td><td class=t>781, 82</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>print button — submit the configured print job</td><td class=t>908, 82</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>printer row — choose a printer for the prospective job</td><td class=t>500, 147</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>copies stepper — change the prospective copy count</td><td class=p>copies minus or plus button</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>paper size row — choose paper size for the prospective job</td><td class=t>500, 264</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>orientation button — change the prospective page orientation</td><td class=p>portrait or landscape orientation button</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>scaling stepper — change the prospective print scale</td><td class=p>scaling minus or plus button</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>layout row — choose pages per sheet for the prospective job</td><td class=t>500, 435</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+// Position fixed-element dots in the phone frame: data-x/data-y are on a
+// 1000x1000 grid, so percent = value / 10.
+document.querySelectorAll('.el').forEach(el => {
+  const h = el.dataset.hue;
+  el.style.left = (Number(el.dataset.x) / 10) + '%';
+  el.style.top = (Number(el.dataset.y) / 10) + '%';
+  el.style.borderColor = `hsl(${h},70%,40%)`;
+  el.style.background = `hsla(${h},70%,55%,.35)`;
+  el.style.color = `hsl(${h},70%,30%)`;
+});
+
+const sections = [...document.querySelectorAll('main > section')];
+const navlinks = [...document.querySelectorAll('nav a')];
+function route() {
+  const [s, m] = location.hash.slice(1).split('/');
+  const sec = sections.find(x => x.dataset.screen === s) || sections[0];
+  const modes = [...sec.querySelectorAll('.mode')];
+  const mode = modes.find(x => x.dataset.mode === m) || modes[0];
+  sections.forEach(x => x.hidden = x !== sec);
+  modes.forEach(x => x.hidden = x !== mode);
+  navlinks.forEach(a => a.classList.toggle('active', a.dataset.screen === sec.dataset.screen));
+  sec.querySelectorAll('.tabs a').forEach(a =>
+    a.classList.toggle('active', a.dataset.mode === mode.dataset.mode));
+  const want = `#${sec.dataset.screen}/${mode.dataset.mode}`;
+  if (location.hash !== want) history.replaceState(null, '', want);
+  window.scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+route();
+</script>

@@ -1,0 +1,2376 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>files</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; }
+[hidden] { display: none !important; }
+body { font: 14px/1.45 -apple-system, system-ui, sans-serif; background: #f5f5f7; color: #1d1d1f; }
+nav { position: fixed; inset: 0 auto 0 0; width: 190px; padding: 24px 16px; overflow-y: auto; }
+nav .t { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #86868b; margin-bottom: 8px; }
+nav a { display: block; padding: 5px 10px; border-radius: 7px; color: #1d1d1f; text-decoration: none;
+        text-transform: capitalize; }
+nav a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+main { margin-left: 190px; padding: 28px 36px; }
+h2 { font-size: 20px; text-transform: capitalize; margin-bottom: 12px; }
+.tabs { display: inline-flex; gap: 2px; background: #e8e8ed; border-radius: 9px; padding: 2px; margin-bottom: 16px; }
+.tabs a { padding: 3px 14px; border-radius: 7px; font-size: 13px; color: #1d1d1f; text-decoration: none;
+          text-transform: capitalize; }
+.tabs a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+p.content { max-width: 760px; color: #3a3a3c; margin-bottom: 16px; }
+.mode { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+.frame { position: relative; flex: none; width: 280px; aspect-ratio: 393/852; background: #fff;
+         border-radius: 36px; box-shadow: 0 1px 4px rgba(0,0,0,.25); overflow: hidden; }
+.el { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+      border: 1.5px solid; }
+.el span { position: absolute; left: 17px; top: 0; font-size: 9px; font-weight: 600; white-space: nowrap; }
+table { border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12); min-width: 420px; flex: 1; }
+th, td { text-align: left; padding: 6px 12px; vertical-align: top; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #6e6e73;
+     border-bottom: 1px solid #e5e5ea; }
+tr + tr td { border-top: 1px solid #f0f0f2; }
+td.d { font-weight: 600; white-space: nowrap; }
+td.d.unseen { color: #d70015; font-style: italic; }
+td.p, td.f { color: #86868b; }
+td.t { font-family: ui-monospace, monospace; font-size: 12px; }
+</style>
+
+<nav>
+  <div class=t>Screens</div>
+  <a data-screen="recents" href="#recents/normal">recents</a>
+  <a data-screen="document-scanner" href="#document-scanner/normal">document scanner</a>
+  <a data-screen="connect-server" href="#connect-server/normal">connect server</a>
+  <a data-screen="shared" href="#shared/normal">shared</a>
+  <a data-screen="icloud-drive" href="#icloud-drive/normal">icloud drive</a>
+  <a data-screen="folder" href="#folder/normal">folder</a>
+  <a data-screen="item-info" href="#item-info/normal">item info</a>
+  <a data-screen="browse" href="#browse/normal">browse</a>
+  <a data-screen="local-storage" href="#local-storage/normal">local storage</a>
+  <a data-screen="recently-deleted" href="#recently-deleted/normal">recently deleted</a>
+  <a data-screen="tag-results" href="#tag-results/normal">tag results</a>
+</nav>
+
+<main>
+  <section data-screen="recents">
+    <h2>recents</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#recents/normal">normal</a>
+      <a data-mode="more-menu" href="#recents/more-menu">more-menu</a>
+      <a data-mode="select" href="#recents/select">select</a>
+      <a data-mode="selected" href="#recents/selected">selected</a>
+      <a data-mode="list" href="#recents/list">list</a>
+      <a data-mode="search" href="#recents/search">search</a>
+      <a data-mode="search-query" href="#recents/search-query">search-query</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Recents root shows a searchable grid of recently used files with a More menu and the Recents, Shared, and Browse tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="82" data-hue="274" title="recents.more-menu"><span>more button — open view, sort, selection, scanning, and server options</span></div>
+        <div class=el data-x="500" data-y="208" data-hue="334" title="recents.search"><span>search field — enter Recents search mode</span></div>
+        <div class=el data-x="895" data-y="208" data-hue="85" title=""><span>dictation button — begin voice input for Recents search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.normal"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="278" title="browse.normal"><span>browse tab — show storage locations and favorites</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>more button — open view, sort, selection, scanning, and server options</td><td class=t>903, 82</td>          <td class=t>recents.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter Recents search mode</td><td class=t>500, 208</td>          <td class=t>recents.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for Recents search; safety-blocked because it records audio</td><td class=t>895, 208</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>file thumbnail — opens the selected user file; safety-blocked because opening may download or change recency metadata</td><td class=p>any file thumbnail; moves with the grid</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>cloud download button — downloads the file to the device; safety-blocked</td><td class=p>cloud download icon beside an offloaded file; moves with the grid</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — show storage locations and favorites</td><td class=t>742, 946</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The Recents More popover offers selection, document scanning, server connection, icon or list layout, and sort choices.</p>
+      <div class=frame>
+        <div class=el data-x="628" data-y="93" data-hue="172" title="recents.select"><span>select button — enter file selection mode</span></div>
+        <div class=el data-x="670" data-y="142" data-hue="214" title="document-scanner.normal"><span>scan documents button — open the document scanner</span></div>
+        <div class=el data-x="684" data-y="191" data-hue="145" title="connect-server.normal"><span>connect to server button — open the server connection form</span></div>
+        <div class=el data-x="634" data-y="266" data-hue="150" title="recents.normal"><span>icons layout button — show files as an icon grid and close the menu</span></div>
+        <div class=el data-x="609" data-y="316" data-hue="140" title="recents.list"><span>list layout button — show files as a list</span></div>
+        <div class=el data-x="490" data-y="391" data-hue="129" title="recents.normal"><span>sort by name button — sort files by name and close the menu</span></div>
+        <div class=el data-x="490" data-y="440" data-hue="293" title="recents.normal"><span>sort by kind button — sort files by kind and close the menu</span></div>
+        <div class=el data-x="490" data-y="491" data-hue="153" title="recents.normal"><span>sort by date button — sort files by date and close the menu</span></div>
+        <div class=el data-x="490" data-y="564" data-hue="277" title="recents.normal"><span>sort by size button — sort files by size and close the menu</span></div>
+        <div class=el data-x="490" data-y="613" data-hue="204" title="recents.normal"><span>sort by tags button — sort files by tag and close the menu</span></div>
+        <div class=el data-x="165" data-y="500" data-hue="152" title="recents.normal"><span>background — dismiss the More popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select button — enter file selection mode</td><td class=t>628, 93</td>          <td class=t>recents.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>scan documents button — open the document scanner</td><td class=t>670, 142</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect to server button — open the server connection form</td><td class=t>684, 191</td>          <td class=t>connect-server.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>icons layout button — show files as an icon grid and close the menu</td><td class=t>634, 266</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list layout button — show files as a list</td><td class=t>609, 316</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by name button — sort files by name and close the menu</td><td class=t>490, 391</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by kind button — sort files by kind and close the menu</td><td class=t>490, 440</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date button — sort files by date and close the menu</td><td class=t>490, 491</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by size button — sort files by size and close the menu</td><td class=t>490, 564</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by tags button — sort files by tag and close the menu</td><td class=t>490, 613</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the More popover</td><td class=t>165, 500</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">Recents selection mode shows selection circles on each file, Select All and Done controls, and disabled share, move, delete, and More actions until a file is selected.</p>
+      <div class=frame>
+        <div class=el data-x="174" data-y="82" data-hue="5" title="recents.selected"><span>select all button — select every visible file</span></div>
+        <div class=el data-x="902" data-y="82" data-hue="83" title="recents.normal"><span>done button — leave selection mode</span></div>
+        <div class=el data-x="137" data-y="938" data-hue="357" title=""><span>share button — share selected files; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="283" data-y="938" data-hue="67" title=""><span>move button — move selected files; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="432" data-y="938" data-hue="159" title=""><span>delete button — delete selected files; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="193" title=""><span>more actions button — disabled until a file is selected</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select all button — select every visible file</td><td class=t>174, 82</td>          <td class=t>recents.selected</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>done button — leave selection mode</td><td class=t>902, 82</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>file selection circle — select a file without opening it</td><td class=p>selection circle on any file thumbnail; moves with the grid</td>          <td class=t>recents.selected</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — share selected files; disabled with no selection and safety-blocked</td><td class=t>137, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>move button — move selected files; disabled with no selection and safety-blocked</td><td class=t>283, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected files; disabled with no selection and safety-blocked</td><td class=t>432, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>more actions button — disabled until a file is selected</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="selected">
+      <p class=content style="flex-basis:100%">Recents selection mode with one or more files selected enables selection actions; all data-changing actions remain safety-blocked.</p>
+      <div class=frame>
+        <div class=el data-x="174" data-y="82" data-hue="5" title="recents.selected"><span>select all button — select every visible file</span></div>
+        <div class=el data-x="902" data-y="82" data-hue="20" title="recents.normal"><span>done button — clear the selection and leave selection mode</span></div>
+        <div class=el data-x="137" data-y="938" data-hue="169" title=""><span>share button — share selected files; safety-blocked</span></div>
+        <div class=el data-x="283" data-y="938" data-hue="219" title=""><span>move button — move selected files; safety-blocked</span></div>
+        <div class=el data-x="432" data-y="938" data-hue="63" title=""><span>delete button — delete selected files; safety-blocked</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="92" title=""><span>more actions button — open actions for selected files; safety-blocked because its actions can alter or disclose user data</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select all button — select every visible file</td><td class=t>174, 82</td>          <td class=t>recents.selected</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>done button — clear the selection and leave selection mode</td><td class=t>902, 82</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>file selection circle — toggle that file's selection</td><td class=p>selection circle on any file thumbnail; moves with the grid</td>          <td class=t>recents.selected</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — share selected files; safety-blocked</td><td class=t>137, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>move button — move selected files; safety-blocked</td><td class=t>283, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected files; safety-blocked</td><td class=t>432, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>more actions button — open actions for selected files; safety-blocked because its actions can alter or disclose user data</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="list">
+      <p class=content style="flex-basis:100%">Recents in list layout shows each recent file as a row with its date and size, while retaining search, More, and the root tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="82" data-hue="274" title="recents.more-menu"><span>more button — open view, sort, selection, scanning, and server options</span></div>
+        <div class=el data-x="500" data-y="208" data-hue="334" title="recents.search"><span>search field — enter Recents search mode</span></div>
+        <div class=el data-x="895" data-y="208" data-hue="85" title=""><span>dictation button — begin voice input for Recents search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="278" title="browse.normal"><span>browse tab — show storage locations and favorites</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>more button — open view, sort, selection, scanning, and server options</td><td class=t>903, 82</td>          <td class=t>recents.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter Recents search mode</td><td class=t>500, 208</td>          <td class=t>recents.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for Recents search; safety-blocked because it records audio</td><td class=t>895, 208</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>file row — opens the selected user file; safety-blocked because opening may download or change recency metadata</td><td class=p>any file row; moves with the list</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>cloud download button — downloads the file to the device; safety-blocked</td><td class=p>cloud download icon beside an offloaded file row; moves with the list</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — show storage locations and favorites</td><td class=t>742, 946</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">Recents search mode focuses a live search field above the current files, shows a layout toggle and cancel button, and raises the keyboard.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="359" title=""><span>search field — enter text to filter recent files live</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="325" title=""><span>dictation button — begin voice input for search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="128" title="recents.search"><span>layout toggle — switch search results between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="85" title="recents.list"><span>cancel search button — close the keyboard and return to Recents</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter text to filter recent files live</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for search; safety-blocked because it records audio</td><td class=t>580, 90</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch search results between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>recents.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — close the keyboard and return to Recents</td><td class=t>902, 90</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>matching file result — opens the selected user file; safety-blocked because opening may download or change recency metadata</td><td class=p>any matching file row or thumbnail; moves with results</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>cloud download button — downloads the file to the device; safety-blocked</td><td class=p>cloud download icon beside an offloaded result; moves with results</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search-query">
+      <p class=content style="flex-basis:100%">Recents live search with text entered replaces dictation with a clear button and offers a Name Contains suggestion above the keyboard.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="188" title=""><span>search field — edit the live search query</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="186" title="recents.search"><span>clear search button — erase the query and return to empty search</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="128" title="recents.search-query"><span>layout toggle — switch search results between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="250" title="recents.list"><span>cancel search button — discard the query, close the keyboard, and return to Recents</span></div>
+        <div class=el data-x="322" data-y="160" data-hue="2" title="recents.search-query"><span>name contains suggestion — constrain search to file names containing the query</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — edit the live search query</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>clear search button — erase the query and return to empty search</td><td class=t>580, 90</td>          <td class=t>recents.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch search results between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>recents.search-query</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — discard the query, close the keyboard, and return to Recents</td><td class=t>902, 90</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>name contains suggestion — constrain search to file names containing the query</td><td class=t>322, 160</td>          <td class=t>recents.search-query</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>matching file result — opens the selected user file; safety-blocked because opening may download or change recency metadata</td><td class=p>any matching file result; moves with results</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="document-scanner">
+    <h2>document scanner</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#document-scanner/normal">normal</a>
+      <a data-mode="flash-menu" href="#document-scanner/flash-menu">flash-menu</a>
+      <a data-mode="filter-menu" href="#document-scanner/filter-menu">filter-menu</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The live document scanner shows the camera preview with close, flash, filter, automatic-shutter, and capture controls.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="91" data-hue="48" title="recents.normal"><span>close button — cancel scanning and return to Recents</span></div>
+        <div class=el data-x="338" data-y="779" data-hue="40" title="document-scanner.flash-menu"><span>flash button — open flash mode choices</span></div>
+        <div class=el data-x="500" data-y="779" data-hue="55" title="document-scanner.filter-menu"><span>filters button — open document filter choices</span></div>
+        <div class=el data-x="663" data-y="779" data-hue="280" title=""><span>automatic shutter toggle — switch between automatic edge-detection capture and manual capture</span></div>
+        <div class=el data-x="500" data-y="888" data-hue="95" title=""><span>capture button — capture a document page; safety-blocked because it creates scan data</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — cancel scanning and return to Recents</td><td class=t>97, 91</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>flash button — open flash mode choices</td><td class=t>338, 779</td>          <td class=t>document-scanner.flash-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>filters button — open document filter choices</td><td class=t>500, 779</td>          <td class=t>document-scanner.filter-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>automatic shutter toggle — switch between automatic edge-detection capture and manual capture</td><td class=t>663, 779</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>capture button — capture a document page; safety-blocked because it creates scan data</td><td class=t>500, 888</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="flash-menu">
+      <p class=content style="flex-basis:100%">A Flash Mode popover overlays the scanner with Auto, On, and Off choices.</p>
+      <div class=frame>
+        <div class=el data-x="500" data-y="681" data-hue="183" title="document-scanner.normal"><span>auto flash button — use automatic flash and close the popover</span></div>
+        <div class=el data-x="500" data-y="731" data-hue="348" title="document-scanner.normal"><span>flash on button — force the flash on and close the popover</span></div>
+        <div class=el data-x="500" data-y="780" data-hue="247" title="document-scanner.normal"><span>flash off button — disable flash and close the popover</span></div>
+        <div class=el data-x="850" data-y="500" data-hue="124" title="document-scanner.normal"><span>camera preview background — dismiss the flash popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>auto flash button — use automatic flash and close the popover</td><td class=t>500, 681</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>flash on button — force the flash on and close the popover</td><td class=t>500, 731</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>flash off button — disable flash and close the popover</td><td class=t>500, 780</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>camera preview background — dismiss the flash popover</td><td class=t>850, 500</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="filter-menu">
+      <p class=content style="flex-basis:100%">A Filter Mode popover overlays the scanner with Color, Grayscale, Black &amp; White, and Photo choices.</p>
+      <div class=frame>
+        <div class=el data-x="370" data-y="630" data-hue="41" title="document-scanner.normal"><span>color filter button — use the Color scan filter and close the popover</span></div>
+        <div class=el data-x="400" data-y="680" data-hue="185" title="document-scanner.normal"><span>grayscale filter button — use the Grayscale scan filter and close the popover</span></div>
+        <div class=el data-x="430" data-y="730" data-hue="294" title="document-scanner.normal"><span>black and white filter button — use the Black &amp; White scan filter and close the popover</span></div>
+        <div class=el data-x="360" data-y="780" data-hue="157" title="document-scanner.normal"><span>photo filter button — use the Photo scan filter and close the popover</span></div>
+        <div class=el data-x="900" data-y="450" data-hue="194" title="document-scanner.normal"><span>camera preview background — dismiss the filter popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>color filter button — use the Color scan filter and close the popover</td><td class=t>370, 630</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>grayscale filter button — use the Grayscale scan filter and close the popover</td><td class=t>400, 680</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>black and white filter button — use the Black &amp; White scan filter and close the popover</td><td class=t>430, 730</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo filter button — use the Photo scan filter and close the popover</td><td class=t>360, 780</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>camera preview background — dismiss the filter popover</td><td class=t>900, 450</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="connect-server">
+    <h2>connect server</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">A Connect to Server sheet has a focused server-address field, a cancel button, and a disabled confirmation button until an address is entered.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="101" data-hue="172" title="recents.normal"><span>close button — cancel server connection and return to Recents</span></div>
+        <div class=el data-x="500" data-y="192" data-hue="25" title=""><span>server address field — focus the field for entering a hostname or network address</span></div>
+        <div class=el data-x="902" data-y="101" data-hue="130" title=""><span>connect confirmation button — connect to the entered server; safety-blocked</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — cancel server connection and return to Recents</td><td class=t>97, 101</td>          <td class=t>recents.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>server address field — focus the field for entering a hostname or network address</td><td class=t>500, 192</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect confirmation button — connect to the entered server; safety-blocked</td><td class=t>902, 101</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="shared">
+    <h2>shared</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#shared/normal">normal</a>
+      <a data-mode="more-menu" href="#shared/more-menu">more-menu</a>
+      <a data-mode="search" href="#shared/search">search</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Shared root is empty on this phone and shows search, More, an empty-state message, and the Recents, Shared, and Browse tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="82" data-hue="202" title="shared.more-menu"><span>more button — open view, sort, scanning, and server options</span></div>
+        <div class=el data-x="500" data-y="208" data-hue="241" title="shared.search"><span>search field — enter Shared search mode</span></div>
+        <div class=el data-x="895" data-y="208" data-hue="196" title=""><span>dictation button — begin voice input for Shared search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="278" title="browse.normal"><span>browse tab — show storage locations and favorites</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>more button — open view, sort, scanning, and server options</td><td class=t>903, 82</td>          <td class=t>shared.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter Shared search mode</td><td class=t>500, 208</td>          <td class=t>shared.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for Shared search; safety-blocked because it records audio</td><td class=t>895, 208</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — show storage locations and favorites</td><td class=t>742, 946</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The Shared More popover offers disabled selection on the empty view, document scanning, server connection, icon or list layout, and sort choices.</p>
+      <div class=frame>
+        <div class=el data-x="628" data-y="93" data-hue="244" title=""><span>select button — disabled because there are no shared files</span></div>
+        <div class=el data-x="670" data-y="142" data-hue="214" title="document-scanner.normal"><span>scan documents button — open the document scanner</span></div>
+        <div class=el data-x="684" data-y="191" data-hue="145" title="connect-server.normal"><span>connect to server button — open the server connection form</span></div>
+        <div class=el data-x="634" data-y="266" data-hue="105" title="shared.normal"><span>icons layout button — show shared files as an icon grid and close the menu</span></div>
+        <div class=el data-x="609" data-y="316" data-hue="326" title="shared.normal"><span>list layout button — show shared files as a list and close the menu</span></div>
+        <div class=el data-x="490" data-y="391" data-hue="296" title="shared.normal"><span>sort by name button — sort shared files by name and close the menu</span></div>
+        <div class=el data-x="490" data-y="440" data-hue="178" title="shared.normal"><span>sort by kind button — sort shared files by kind and close the menu</span></div>
+        <div class=el data-x="490" data-y="491" data-hue="174" title="shared.normal"><span>sort by date button — sort shared files by date and close the menu</span></div>
+        <div class=el data-x="490" data-y="564" data-hue="252" title="shared.normal"><span>sort by size button — sort shared files by size and close the menu</span></div>
+        <div class=el data-x="490" data-y="613" data-hue="275" title="shared.normal"><span>sort by tags button — sort shared files by tag and close the menu</span></div>
+        <div class=el data-x="165" data-y="500" data-hue="152" title="shared.normal"><span>background — dismiss the More popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select button — disabled because there are no shared files</td><td class=t>628, 93</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>scan documents button — open the document scanner</td><td class=t>670, 142</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect to server button — open the server connection form</td><td class=t>684, 191</td>          <td class=t>connect-server.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>icons layout button — show shared files as an icon grid and close the menu</td><td class=t>634, 266</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list layout button — show shared files as a list and close the menu</td><td class=t>609, 316</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by name button — sort shared files by name and close the menu</td><td class=t>490, 391</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by kind button — sort shared files by kind and close the menu</td><td class=t>490, 440</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date button — sort shared files by date and close the menu</td><td class=t>490, 491</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by size button — sort shared files by size and close the menu</td><td class=t>490, 564</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by tags button — sort shared files by tag and close the menu</td><td class=t>490, 613</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the More popover</td><td class=t>165, 500</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">Shared search mode focuses an empty live search field, shows a layout toggle and cancel button, and raises the keyboard over the empty shared-files state.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="257" title=""><span>search field — enter text to filter shared files live</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="325" title=""><span>dictation button — begin voice input for search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="191" title="shared.search"><span>layout toggle — switch Shared between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="342" title="shared.normal"><span>cancel search button — close the keyboard and return to Shared</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter text to filter shared files live</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for search; safety-blocked because it records audio</td><td class=t>580, 90</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch Shared between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>shared.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — close the keyboard and return to Shared</td><td class=t>902, 90</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="icloud-drive">
+    <h2>icloud drive</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#icloud-drive/normal">normal</a>
+      <a data-mode="more-menu" href="#icloud-drive/more-menu">more-menu</a>
+      <a data-mode="select" href="#icloud-drive/select">select</a>
+      <a data-mode="selected" href="#icloud-drive/selected">selected</a>
+      <a data-mode="list" href="#icloud-drive/list">list</a>
+      <a data-mode="search" href="#icloud-drive/search">search</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The iCloud Drive location shows a searchable icon grid of cloud-backed folders, a More menu, a back button, sync status, and the root tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="82" data-hue="355" title=""><span>back button — return to the presenting screen</span></div>
+        <div class=el data-x="903" data-y="82" data-hue="229" title="icloud-drive.more-menu"><span>more button — open selection, creation, scanning, server, view, and sort options</span></div>
+        <div class=el data-x="500" data-y="146" data-hue="160" title="icloud-drive.search"><span>search field — enter iCloud Drive search mode</span></div>
+        <div class=el data-x="895" data-y="146" data-hue="109" title=""><span>dictation button — begin voice input for iCloud Drive search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="224" title="icloud-drive.normal"><span>browse tab — remain in the current Browse hierarchy</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting screen</td><td class=t>97, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open selection, creation, scanning, server, view, and sort options</td><td class=t>903, 82</td>          <td class=t>icloud-drive.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter iCloud Drive search mode</td><td class=t>500, 146</td>          <td class=t>icloud-drive.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for iCloud Drive search; safety-blocked because it records audio</td><td class=t>895, 146</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>folder tile — open the folder</td><td class=p>any folder tile; moves with the grid</td>          <td class=t>folder.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>cloud download button — downloads the folder contents to the device; safety-blocked</td><td class=p>cloud download icon beside an offloaded folder; moves with the grid</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — remain in the current Browse hierarchy</td><td class=t>742, 946</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The iCloud Drive More popover offers selection, New Folder, document scanning, server connection, icon or list layout, and sort choices.</p>
+      <div class=frame>
+        <div class=el data-x="628" data-y="93" data-hue="215" title="icloud-drive.select"><span>select button — enter folder and file selection mode</span></div>
+        <div class=el data-x="668" data-y="142" data-hue="131" title=""><span>new folder button — create a folder in iCloud Drive; safety-blocked</span></div>
+        <div class=el data-x="668" data-y="192" data-hue="214" title="document-scanner.normal"><span>scan documents button — open the document scanner</span></div>
+        <div class=el data-x="684" data-y="242" data-hue="145" title="connect-server.normal"><span>connect to server button — open the server connection form</span></div>
+        <div class=el data-x="628" data-y="316" data-hue="319" title="icloud-drive.normal"><span>icons layout button — show iCloud Drive as an icon grid and close the menu</span></div>
+        <div class=el data-x="612" data-y="366" data-hue="296" title="icloud-drive.list"><span>list layout button — show iCloud Drive as a list and close the menu</span></div>
+        <div class=el data-x="483" data-y="440" data-hue="268" title="icloud-drive.normal"><span>sort by name button — sort items by name and close the menu</span></div>
+        <div class=el data-x="483" data-y="512" data-hue="28" title="icloud-drive.normal"><span>sort by kind button — sort items by kind and close the menu</span></div>
+        <div class=el data-x="483" data-y="562" data-hue="248" title="icloud-drive.normal"><span>sort by date button — sort items by date and close the menu</span></div>
+        <div class=el data-x="483" data-y="612" data-hue="224" title="icloud-drive.normal"><span>sort by size button — sort items by size and close the menu</span></div>
+        <div class=el data-x="483" data-y="661" data-hue="319" title="icloud-drive.normal"><span>sort by tags button — sort items by tag and close the menu</span></div>
+        <div class=el data-x="150" data-y="500" data-hue="152" title="icloud-drive.normal"><span>background — dismiss the More popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select button — enter folder and file selection mode</td><td class=t>628, 93</td>          <td class=t>icloud-drive.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>new folder button — create a folder in iCloud Drive; safety-blocked</td><td class=t>668, 142</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>scan documents button — open the document scanner</td><td class=t>668, 192</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect to server button — open the server connection form</td><td class=t>684, 242</td>          <td class=t>connect-server.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>icons layout button — show iCloud Drive as an icon grid and close the menu</td><td class=t>628, 316</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list layout button — show iCloud Drive as a list and close the menu</td><td class=t>612, 366</td>          <td class=t>icloud-drive.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by name button — sort items by name and close the menu</td><td class=t>483, 440</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by kind button — sort items by kind and close the menu</td><td class=t>483, 512</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date button — sort items by date and close the menu</td><td class=t>483, 562</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by size button — sort items by size and close the menu</td><td class=t>483, 612</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by tags button — sort items by tag and close the menu</td><td class=t>483, 661</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the More popover</td><td class=t>150, 500</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">iCloud Drive selection mode shows selection circles on every folder, Select All and Done controls, and disabled file-operation buttons until an item is selected.</p>
+      <div class=frame>
+        <div class=el data-x="174" data-y="82" data-hue="167" title="icloud-drive.selected"><span>select all button — select every visible folder</span></div>
+        <div class=el data-x="902" data-y="82" data-hue="83" title="icloud-drive.normal"><span>done button — leave selection mode</span></div>
+        <div class=el data-x="137" data-y="938" data-hue="132" title=""><span>share button — share selected items; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="283" data-y="938" data-hue="348" title=""><span>duplicate button — duplicate selected items; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="432" data-y="938" data-hue="238" title=""><span>move button — move selected items; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="580" data-y="938" data-hue="274" title=""><span>delete button — delete selected items; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="234" title=""><span>more actions button — disabled until an item is selected</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select all button — select every visible folder</td><td class=t>174, 82</td>          <td class=t>icloud-drive.selected</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>done button — leave selection mode</td><td class=t>902, 82</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>folder selection circle — select a folder without opening it</td><td class=p>selection circle on any folder tile; moves with the grid</td>          <td class=t>icloud-drive.selected</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — share selected items; disabled with no selection and safety-blocked</td><td class=t>137, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>duplicate button — duplicate selected items; disabled with no selection and safety-blocked</td><td class=t>283, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>move button — move selected items; disabled with no selection and safety-blocked</td><td class=t>432, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected items; disabled with no selection and safety-blocked</td><td class=t>580, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>more actions button — disabled until an item is selected</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="selected">
+      <p class=content style="flex-basis:100%">iCloud Drive selection mode with one or more folders selected enables file operations; all data-changing actions remain safety-blocked.</p>
+      <div class=frame>
+        <div class=el data-x="174" data-y="82" data-hue="167" title="icloud-drive.selected"><span>select all button — select every visible folder</span></div>
+        <div class=el data-x="902" data-y="82" data-hue="20" title="icloud-drive.normal"><span>done button — clear the selection and leave selection mode</span></div>
+        <div class=el data-x="137" data-y="938" data-hue="118" title=""><span>share button — share selected items; safety-blocked</span></div>
+        <div class=el data-x="283" data-y="938" data-hue="94" title=""><span>duplicate button — duplicate selected items; safety-blocked</span></div>
+        <div class=el data-x="432" data-y="938" data-hue="340" title=""><span>move button — move selected items; safety-blocked</span></div>
+        <div class=el data-x="580" data-y="938" data-hue="144" title=""><span>delete button — delete selected items; safety-blocked</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="223" title=""><span>more actions button — open additional actions for selected items; safety-blocked</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select all button — select every visible folder</td><td class=t>174, 82</td>          <td class=t>icloud-drive.selected</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>done button — clear the selection and leave selection mode</td><td class=t>902, 82</td>          <td class=t>icloud-drive.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>folder selection circle — toggle that folder's selection</td><td class=p>selection circle on any folder tile; moves with the grid</td>          <td class=t>icloud-drive.selected</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — share selected items; safety-blocked</td><td class=t>137, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>duplicate button — duplicate selected items; safety-blocked</td><td class=t>283, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>move button — move selected items; safety-blocked</td><td class=t>432, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected items; safety-blocked</td><td class=t>580, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>more actions button — open additional actions for selected items; safety-blocked</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="list">
+      <p class=content style="flex-basis:100%">iCloud Drive in list layout shows each folder as a dated row with a disclosure chevron and cloud status while retaining back, search, More, sync status, and the root tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="82" data-hue="355" title=""><span>back button — return to the presenting screen</span></div>
+        <div class=el data-x="903" data-y="82" data-hue="229" title="icloud-drive.more-menu"><span>more button — open selection, creation, scanning, server, view, and sort options</span></div>
+        <div class=el data-x="500" data-y="146" data-hue="160" title="icloud-drive.search"><span>search field — enter iCloud Drive search mode</span></div>
+        <div class=el data-x="895" data-y="146" data-hue="109" title=""><span>dictation button — begin voice input for iCloud Drive search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="224" title="icloud-drive.list"><span>browse tab — remain in the current Browse hierarchy</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting screen</td><td class=t>97, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open selection, creation, scanning, server, view, and sort options</td><td class=t>903, 82</td>          <td class=t>icloud-drive.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter iCloud Drive search mode</td><td class=t>500, 146</td>          <td class=t>icloud-drive.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for iCloud Drive search; safety-blocked because it records audio</td><td class=t>895, 146</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>folder row — open the folder</td><td class=p>any folder row or disclosure chevron; moves with the list</td>          <td class=t>folder.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>cloud download button — downloads the folder contents to the device; safety-blocked</td><td class=p>cloud download icon beside an offloaded folder row; moves with the list</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — remain in the current Browse hierarchy</td><td class=t>742, 946</td>          <td class=t>icloud-drive.list</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">iCloud Drive search mode focuses a live search field above the current items, shows a layout toggle and cancel button, and raises the keyboard.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="91" title=""><span>search field — enter text to filter iCloud Drive items live</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="325" title=""><span>dictation button — begin voice input for search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="128" title="icloud-drive.search"><span>layout toggle — switch search results between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="167" title="icloud-drive.list"><span>cancel search button — close the keyboard and return to iCloud Drive</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter text to filter iCloud Drive items live</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for search; safety-blocked because it records audio</td><td class=t>580, 90</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch search results between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>icloud-drive.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — close the keyboard and return to iCloud Drive</td><td class=t>902, 90</td>          <td class=t>icloud-drive.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>matching folder result — open the folder</td><td class=p>any matching folder or file result; moves with results</td>          <td class=t>folder.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>cloud download button — downloads the item to the device; safety-blocked</td><td class=p>cloud download icon beside an offloaded result; moves with results</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="folder">
+    <h2>folder</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#folder/normal">normal</a>
+      <a data-mode="title-menu" href="#folder/title-menu">title-menu</a>
+      <a data-mode="more-menu" href="#folder/more-menu">more-menu</a>
+      <a data-mode="select" href="#folder/select">select</a>
+      <a data-mode="selected" href="#folder/selected">selected</a>
+      <a data-mode="icons" href="#folder/icons">icons</a>
+      <a data-mode="search" href="#folder/search">search</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">An iCloud Drive folder shows its title and hierarchy menu, back, search, More, a list of contained files, sync status, and the root tab bar; Desktop is the observed example.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="82" data-hue="355" title=""><span>back button — return to the presenting screen</span></div>
+        <div class=el data-x="593" data-y="82" data-hue="173" title="folder.title-menu"><span>folder title menu button — open hierarchy and folder actions</span></div>
+        <div class=el data-x="903" data-y="82" data-hue="313" title="folder.more-menu"><span>more button — open folder selection, creation, scanning, server, view, and sort options</span></div>
+        <div class=el data-x="500" data-y="146" data-hue="344" title="folder.search"><span>search field — enter search within the current folder</span></div>
+        <div class=el data-x="895" data-y="146" data-hue="225" title=""><span>dictation button — begin voice input for folder search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="224" title="folder.normal"><span>browse tab — remain in the current Browse hierarchy</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting screen</td><td class=t>97, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>folder title menu button — open hierarchy and folder actions</td><td class=t>593, 82</td>          <td class=t>folder.title-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open folder selection, creation, scanning, server, view, and sort options</td><td class=t>903, 82</td>          <td class=t>folder.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter search within the current folder</td><td class=t>500, 146</td>          <td class=t>folder.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for folder search; safety-blocked because it records audio</td><td class=t>895, 146</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>file row — opens the selected user file; safety-blocked because opening may download or change recency metadata</td><td class=p>any file row; moves with the list</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>cloud download button — downloads the file to the device; safety-blocked</td><td class=p>cloud download icon beside an offloaded file; moves with the list</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — remain in the current Browse hierarchy</td><td class=t>742, 946</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="title-menu">
+      <p class=content style="flex-basis:100%">The folder-title popover shows the current folder, its iCloud Drive parent, download controls, rename, copy, move, and Get Info.</p>
+      <div class=frame>
+        <div class=el data-x="483" data-y="101" data-hue="158" title=""><span>current folder summary — identifies the current folder and its size</span></div>
+        <div class=el data-x="483" data-y="192" data-hue="179" title="icloud-drive.list"><span>iCloud Drive parent button — navigate to the iCloud Drive location</span></div>
+        <div class=el data-x="483" data-y="266" data-hue="22" title=""><span>download now button — download the folder contents to the device; safety-blocked</span></div>
+        <div class=el data-x="483" data-y="316" data-hue="214" title=""><span>keep downloaded button — pin the folder for local storage; safety-blocked</span></div>
+        <div class=el data-x="483" data-y="391" data-hue="144" title=""><span>rename button — rename the folder; safety-blocked</span></div>
+        <div class=el data-x="483" data-y="440" data-hue="206" title=""><span>copy button — copy the folder for later paste; safety-blocked</span></div>
+        <div class=el data-x="483" data-y="491" data-hue="305" title=""><span>move button — move the folder to another location; safety-blocked</span></div>
+        <div class=el data-x="483" data-y="565" data-hue="163" title="item-info.normal"><span>get info button — show folder metadata</span></div>
+        <div class=el data-x="900" data-y="500" data-hue="354" title="folder.normal"><span>background — dismiss the folder-title popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>current folder summary — identifies the current folder and its size</td><td class=t>483, 101</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>iCloud Drive parent button — navigate to the iCloud Drive location</td><td class=t>483, 192</td>          <td class=t>icloud-drive.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>download now button — download the folder contents to the device; safety-blocked</td><td class=t>483, 266</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>keep downloaded button — pin the folder for local storage; safety-blocked</td><td class=t>483, 316</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>rename button — rename the folder; safety-blocked</td><td class=t>483, 391</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>copy button — copy the folder for later paste; safety-blocked</td><td class=t>483, 440</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>move button — move the folder to another location; safety-blocked</td><td class=t>483, 491</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>get info button — show folder metadata</td><td class=t>483, 565</td>          <td class=t>item-info.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the folder-title popover</td><td class=t>900, 500</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The folder More popover offers selection, New Folder, document scanning, server connection, icon or list layout, and sort choices.</p>
+      <div class=frame>
+        <div class=el data-x="628" data-y="93" data-hue="172" title="folder.select"><span>select button — enter file selection mode</span></div>
+        <div class=el data-x="668" data-y="142" data-hue="148" title=""><span>new folder button — create a folder here; safety-blocked</span></div>
+        <div class=el data-x="668" data-y="192" data-hue="214" title="document-scanner.normal"><span>scan documents button — open the document scanner</span></div>
+        <div class=el data-x="684" data-y="242" data-hue="145" title="connect-server.normal"><span>connect to server button — open the server connection form</span></div>
+        <div class=el data-x="628" data-y="316" data-hue="69" title="folder.icons"><span>icons layout button — show folder contents as an icon grid and close the menu</span></div>
+        <div class=el data-x="612" data-y="366" data-hue="154" title="folder.normal"><span>list layout button — show folder contents as a list and close the menu</span></div>
+        <div class=el data-x="483" data-y="440" data-hue="268" title="folder.normal"><span>sort by name button — sort items by name and close the menu</span></div>
+        <div class=el data-x="483" data-y="512" data-hue="28" title="folder.normal"><span>sort by kind button — sort items by kind and close the menu</span></div>
+        <div class=el data-x="483" data-y="562" data-hue="248" title="folder.normal"><span>sort by date button — sort items by date and close the menu</span></div>
+        <div class=el data-x="483" data-y="612" data-hue="224" title="folder.normal"><span>sort by size button — sort items by size and close the menu</span></div>
+        <div class=el data-x="483" data-y="661" data-hue="319" title="folder.normal"><span>sort by tags button — sort items by tag and close the menu</span></div>
+        <div class=el data-x="150" data-y="500" data-hue="152" title="folder.normal"><span>background — dismiss the More popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select button — enter file selection mode</td><td class=t>628, 93</td>          <td class=t>folder.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>new folder button — create a folder here; safety-blocked</td><td class=t>668, 142</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>scan documents button — open the document scanner</td><td class=t>668, 192</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect to server button — open the server connection form</td><td class=t>684, 242</td>          <td class=t>connect-server.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>icons layout button — show folder contents as an icon grid and close the menu</td><td class=t>628, 316</td>          <td class=t>folder.icons</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list layout button — show folder contents as a list and close the menu</td><td class=t>612, 366</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by name button — sort items by name and close the menu</td><td class=t>483, 440</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by kind button — sort items by kind and close the menu</td><td class=t>483, 512</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date button — sort items by date and close the menu</td><td class=t>483, 562</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by size button — sort items by size and close the menu</td><td class=t>483, 612</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by tags button — sort items by tag and close the menu</td><td class=t>483, 661</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the More popover</td><td class=t>150, 500</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">Folder selection mode shows selection circles on each file, Select All and Done, and disabled file-operation buttons until an item is selected.</p>
+      <div class=frame>
+        <div class=el data-x="174" data-y="82" data-hue="5" title="folder.selected"><span>select all button — select every visible file</span></div>
+        <div class=el data-x="902" data-y="82" data-hue="83" title="folder.normal"><span>done button — leave selection mode</span></div>
+        <div class=el data-x="137" data-y="938" data-hue="357" title=""><span>share button — share selected files; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="283" data-y="938" data-hue="213" title=""><span>duplicate button — duplicate selected files; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="432" data-y="938" data-hue="67" title=""><span>move button — move selected files; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="580" data-y="938" data-hue="159" title=""><span>delete button — delete selected files; disabled with no selection and safety-blocked</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="193" title=""><span>more actions button — disabled until a file is selected</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select all button — select every visible file</td><td class=t>174, 82</td>          <td class=t>folder.selected</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>done button — leave selection mode</td><td class=t>902, 82</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>file selection circle — select a file without opening it</td><td class=p>selection circle on any file row; moves with the list</td>          <td class=t>folder.selected</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — share selected files; disabled with no selection and safety-blocked</td><td class=t>137, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>duplicate button — duplicate selected files; disabled with no selection and safety-blocked</td><td class=t>283, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>move button — move selected files; disabled with no selection and safety-blocked</td><td class=t>432, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected files; disabled with no selection and safety-blocked</td><td class=t>580, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>more actions button — disabled until a file is selected</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="selected">
+      <p class=content style="flex-basis:100%">Folder selection mode with one or more files selected enables file operations; all data-changing actions remain safety-blocked.</p>
+      <div class=frame>
+        <div class=el data-x="174" data-y="82" data-hue="5" title="folder.selected"><span>select all button — select every visible file</span></div>
+        <div class=el data-x="902" data-y="82" data-hue="20" title="folder.normal"><span>done button — clear the selection and leave selection mode</span></div>
+        <div class=el data-x="137" data-y="938" data-hue="169" title=""><span>share button — share selected files; safety-blocked</span></div>
+        <div class=el data-x="283" data-y="938" data-hue="145" title=""><span>duplicate button — duplicate selected files; safety-blocked</span></div>
+        <div class=el data-x="432" data-y="938" data-hue="219" title=""><span>move button — move selected files; safety-blocked</span></div>
+        <div class=el data-x="580" data-y="938" data-hue="63" title=""><span>delete button — delete selected files; safety-blocked</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="44" title=""><span>more actions button — open additional actions for selected files; safety-blocked</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select all button — select every visible file</td><td class=t>174, 82</td>          <td class=t>folder.selected</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>done button — clear the selection and leave selection mode</td><td class=t>902, 82</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>file selection circle — toggle that file's selection</td><td class=p>selection circle on any file row; moves with the list</td>          <td class=t>folder.selected</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — share selected files; safety-blocked</td><td class=t>137, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>duplicate button — duplicate selected files; safety-blocked</td><td class=t>283, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>move button — move selected files; safety-blocked</td><td class=t>432, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected files; safety-blocked</td><td class=t>580, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>more actions button — open additional actions for selected files; safety-blocked</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="icons">
+      <p class=content style="flex-basis:100%">The current folder in icon layout shows files as thumbnails while retaining title menu, back, search, More, sync status, and the root tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="82" data-hue="355" title=""><span>back button — return to the presenting screen</span></div>
+        <div class=el data-x="593" data-y="82" data-hue="173" title="folder.title-menu"><span>folder title menu button — open hierarchy and folder actions</span></div>
+        <div class=el data-x="903" data-y="82" data-hue="313" title="folder.more-menu"><span>more button — open folder selection, creation, scanning, server, view, and sort options</span></div>
+        <div class=el data-x="500" data-y="146" data-hue="344" title="folder.search"><span>search field — enter search within the current folder</span></div>
+        <div class=el data-x="895" data-y="146" data-hue="225" title=""><span>dictation button — begin voice input for folder search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="224" title="folder.icons"><span>browse tab — remain in the current Browse hierarchy</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting screen</td><td class=t>97, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>folder title menu button — open hierarchy and folder actions</td><td class=t>593, 82</td>          <td class=t>folder.title-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open folder selection, creation, scanning, server, view, and sort options</td><td class=t>903, 82</td>          <td class=t>folder.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter search within the current folder</td><td class=t>500, 146</td>          <td class=t>folder.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for folder search; safety-blocked because it records audio</td><td class=t>895, 146</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>file thumbnail — opens the selected user file; safety-blocked because opening may download or change recency metadata</td><td class=p>any file thumbnail; moves with the grid</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — remain in the current Browse hierarchy</td><td class=t>742, 946</td>          <td class=t>folder.icons</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">Folder search mode focuses a live search field above current-folder results, shows a layout toggle and cancel button, and raises the keyboard.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="343" title=""><span>search field — enter text to filter current-folder items live</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="325" title=""><span>dictation button — begin voice input for search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="258" title="folder.search"><span>layout toggle — switch folder search results between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="342" title="folder.normal"><span>cancel search button — close the keyboard and return to the folder</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter text to filter current-folder items live</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for search; safety-blocked because it records audio</td><td class=t>580, 90</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch folder search results between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>folder.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — close the keyboard and return to the folder</td><td class=t>902, 90</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>matching file result — opens the selected user file; safety-blocked because opening may download or change recency metadata</td><td class=p>any matching file result; moves with results</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>cloud download button — downloads the file to the device; safety-blocked</td><td class=p>cloud download icon beside an offloaded result; moves with results</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="item-info">
+    <h2>item info</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">An Info sheet presents an item's preview, name, kind, size, creation and modification dates, containing location, and tags; Desktop folder metadata is the observed example.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="101" data-hue="130" title="folder.normal"><span>close button — dismiss the Info sheet and return to the folder</span></div>
+        <div class=el data-x="870" data-y="859" data-hue="101" title="icloud-drive.list"><span>containing location link — open the item's iCloud Drive location</span></div>
+        <div class=el data-x="870" data-y="896" data-hue="130" title=""><span>add tags button — assign tags to the item; safety-blocked</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss the Info sheet and return to the folder</td><td class=t>97, 101</td>          <td class=t>folder.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>containing location link — open the item's iCloud Drive location</td><td class=t>870, 859</td>          <td class=t>icloud-drive.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add tags button — assign tags to the item; safety-blocked</td><td class=t>870, 896</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="browse">
+    <h2>browse</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#browse/normal">normal</a>
+      <a data-mode="more-menu" href="#browse/more-menu">more-menu</a>
+      <a data-mode="locations-collapsed" href="#browse/locations-collapsed">locations-collapsed</a>
+      <a data-mode="both-collapsed" href="#browse/both-collapsed">both-collapsed</a>
+      <a data-mode="tags-collapsed" href="#browse/tags-collapsed">tags-collapsed</a>
+      <a data-mode="search" href="#browse/search">search</a>
+      <a data-mode="scrolled" href="#browse/scrolled">scrolled</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Browse root lists storage locations and colored tags beneath search and More, with collapsible Locations and Tags sections and the root tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="82" data-hue="214" title="browse.more-menu"><span>more button — open editing and connection options for Browse</span></div>
+        <div class=el data-x="500" data-y="208" data-hue="70" title="browse.search"><span>search field — enter Browse search mode</span></div>
+        <div class=el data-x="895" data-y="208" data-hue="59" title=""><span>dictation button — begin voice input for Browse search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="900" data-y="280" data-hue="15" title="browse.locations-collapsed"><span>locations disclosure button — collapse or expand storage locations</span></div>
+        <div class=el data-x="500" data-y="336" data-hue="335" title="icloud-drive.list"><span>iCloud Drive row — open iCloud Drive</span></div>
+        <div class=el data-x="500" data-y="398" data-hue="143" title="local-storage.normal"><span>On My iPhone row — open local device storage</span></div>
+        <div class=el data-x="500" data-y="459" data-hue="43" title="recently-deleted.normal"><span>Recently Deleted row — open recoverable deleted items</span></div>
+        <div class=el data-x="900" data-y="537" data-hue="35" title="browse.tags-collapsed"><span>tags disclosure button — collapse or expand the tags list</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="228" title="browse.normal"><span>browse tab — show storage locations and tags</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>more button — open editing and connection options for Browse</td><td class=t>903, 82</td>          <td class=t>browse.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter Browse search mode</td><td class=t>500, 208</td>          <td class=t>browse.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for Browse search; safety-blocked because it records audio</td><td class=t>895, 208</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>locations disclosure button — collapse or expand storage locations</td><td class=t>900, 280</td>          <td class=t>browse.locations-collapsed</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>iCloud Drive row — open iCloud Drive</td><td class=t>500, 336</td>          <td class=t>icloud-drive.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>On My iPhone row — open local device storage</td><td class=t>500, 398</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Recently Deleted row — open recoverable deleted items</td><td class=t>500, 459</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tags disclosure button — collapse or expand the tags list</td><td class=t>900, 537</td>          <td class=t>browse.tags-collapsed</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tag row — show items assigned that tag</td><td class=p>any colored tag row; moves with the scrollable list</td>          <td class=t>tag-results.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Browse list — scroll to reveal additional tags and sections</td><td class=p>Browse list background; drag vertically</td>          <td class=t>browse.scrolled</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — show storage locations and tags</td><td class=t>742, 946</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The Browse More popover offers document scanning, server connection, and editing of Browse locations and tags.</p>
+      <div class=frame>
+        <div class=el data-x="640" data-y="93" data-hue="214" title="document-scanner.normal"><span>scan documents button — open the document scanner</span></div>
+        <div class=el data-x="660" data-y="142" data-hue="145" title="connect-server.normal"><span>connect to server button — open the server connection form</span></div>
+        <div class=el data-x="535" data-y="192" data-hue="271" title=""><span>edit button — edit Browse locations, order, and tags; safety-blocked</span></div>
+        <div class=el data-x="150" data-y="500" data-hue="198" title="browse.normal"><span>background — dismiss the Browse More popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>scan documents button — open the document scanner</td><td class=t>640, 93</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect to server button — open the server connection form</td><td class=t>660, 142</td>          <td class=t>connect-server.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>edit button — edit Browse locations, order, and tags; safety-blocked</td><td class=t>535, 192</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the Browse More popover</td><td class=t>150, 500</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="locations-collapsed">
+      <p class=content style="flex-basis:100%">The Browse root with Locations collapsed shows the full tags list directly beneath the closed Locations header, while retaining search, More, and the root tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="82" data-hue="214" title="browse.more-menu"><span>more button — open editing and connection options for Browse</span></div>
+        <div class=el data-x="500" data-y="208" data-hue="70" title="browse.search"><span>search field — enter Browse search mode</span></div>
+        <div class=el data-x="895" data-y="208" data-hue="59" title=""><span>dictation button — begin voice input for Browse search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="900" data-y="280" data-hue="143" title="browse.normal"><span>locations disclosure button — expand storage locations</span></div>
+        <div class=el data-x="900" data-y="352" data-hue="264" title="browse.both-collapsed"><span>tags disclosure button — collapse the tags list</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="228" title="browse.locations-collapsed"><span>browse tab — show storage locations and tags</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>more button — open editing and connection options for Browse</td><td class=t>903, 82</td>          <td class=t>browse.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter Browse search mode</td><td class=t>500, 208</td>          <td class=t>browse.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for Browse search; safety-blocked because it records audio</td><td class=t>895, 208</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>locations disclosure button — expand storage locations</td><td class=t>900, 280</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tags disclosure button — collapse the tags list</td><td class=t>900, 352</td>          <td class=t>browse.both-collapsed</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tag row — show items assigned that tag</td><td class=p>any colored tag row; moves with the scrollable list</td>          <td class=t>tag-results.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Browse list — scroll through the tags list</td><td class=p>Browse list background; drag vertically</td>          <td class=t>browse.scrolled</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — show storage locations and tags</td><td class=t>742, 946</td>          <td class=t>browse.locations-collapsed</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="both-collapsed">
+      <p class=content style="flex-basis:100%">The Browse root with both Locations and Tags collapsed shows only the two closed section headers beneath search and More.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="82" data-hue="214" title="browse.more-menu"><span>more button — open editing and connection options for Browse</span></div>
+        <div class=el data-x="500" data-y="208" data-hue="70" title="browse.search"><span>search field — enter Browse search mode</span></div>
+        <div class=el data-x="895" data-y="208" data-hue="59" title=""><span>dictation button — begin voice input for Browse search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="900" data-y="280" data-hue="143" title="browse.tags-collapsed"><span>locations disclosure button — expand storage locations</span></div>
+        <div class=el data-x="900" data-y="352" data-hue="295" title="browse.locations-collapsed"><span>tags disclosure button — expand the tags list</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="228" title="browse.both-collapsed"><span>browse tab — show storage locations and tags</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>more button — open editing and connection options for Browse</td><td class=t>903, 82</td>          <td class=t>browse.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter Browse search mode</td><td class=t>500, 208</td>          <td class=t>browse.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for Browse search; safety-blocked because it records audio</td><td class=t>895, 208</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>locations disclosure button — expand storage locations</td><td class=t>900, 280</td>          <td class=t>browse.tags-collapsed</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tags disclosure button — expand the tags list</td><td class=t>900, 352</td>          <td class=t>browse.locations-collapsed</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — show storage locations and tags</td><td class=t>742, 946</td>          <td class=t>browse.both-collapsed</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="tags-collapsed">
+      <p class=content style="flex-basis:100%">The Browse root with Tags collapsed shows expanded iCloud Drive, On My iPhone, and Recently Deleted locations above the closed Tags header.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="82" data-hue="214" title="browse.more-menu"><span>more button — open editing and connection options for Browse</span></div>
+        <div class=el data-x="500" data-y="208" data-hue="70" title="browse.search"><span>search field — enter Browse search mode</span></div>
+        <div class=el data-x="895" data-y="208" data-hue="59" title=""><span>dictation button — begin voice input for Browse search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="900" data-y="280" data-hue="288" title="browse.both-collapsed"><span>locations disclosure button — collapse storage locations</span></div>
+        <div class=el data-x="500" data-y="336" data-hue="335" title="icloud-drive.list"><span>iCloud Drive row — open iCloud Drive</span></div>
+        <div class=el data-x="500" data-y="398" data-hue="143" title="local-storage.normal"><span>On My iPhone row — open local device storage</span></div>
+        <div class=el data-x="500" data-y="459" data-hue="43" title="recently-deleted.normal"><span>Recently Deleted row — open recoverable deleted items</span></div>
+        <div class=el data-x="900" data-y="537" data-hue="295" title="browse.normal"><span>tags disclosure button — expand the tags list</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="228" title="browse.tags-collapsed"><span>browse tab — show storage locations and tags</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>more button — open editing and connection options for Browse</td><td class=t>903, 82</td>          <td class=t>browse.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter Browse search mode</td><td class=t>500, 208</td>          <td class=t>browse.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for Browse search; safety-blocked because it records audio</td><td class=t>895, 208</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>locations disclosure button — collapse storage locations</td><td class=t>900, 280</td>          <td class=t>browse.both-collapsed</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>iCloud Drive row — open iCloud Drive</td><td class=t>500, 336</td>          <td class=t>icloud-drive.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>On My iPhone row — open local device storage</td><td class=t>500, 398</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Recently Deleted row — open recoverable deleted items</td><td class=t>500, 459</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tags disclosure button — expand the tags list</td><td class=t>900, 537</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — show storage locations and tags</td><td class=t>742, 946</td>          <td class=t>browse.tags-collapsed</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">Browse search mode focuses a live search field, shows a layout toggle and cancel button, and raises the keyboard over storage and tag results.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="43" title=""><span>search field — enter text to filter files across Browse locations</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="325" title=""><span>dictation button — begin voice input for search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="72" title="browse.search"><span>layout toggle — switch Browse search results between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="45" title="browse.normal"><span>cancel search button — close the keyboard and return to Browse</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter text to filter files across Browse locations</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for search; safety-blocked because it records audio</td><td class=t>580, 90</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch Browse search results between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>browse.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — close the keyboard and return to Browse</td><td class=t>902, 90</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>matching file result — opens the selected user item; safety-blocked because opening may download or change recency metadata</td><td class=p>any matching folder or file result; moves with results</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="scrolled">
+      <p class=content style="flex-basis:100%">The Browse list scrolled down reveals later custom tags while section headers and earlier rows move upward; the root tab bar remains fixed.</p>
+      <div class=frame>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="228" title="browse.scrolled"><span>browse tab — show storage locations and tags</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>tag row — show items assigned that tag</td><td class=p>any colored tag row; moves with the scrollable list</td>          <td class=t>tag-results.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Browse list — scroll back toward storage locations and earlier tags</td><td class=p>Browse list background; drag vertically</td>          <td class=t>browse.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — show storage locations and tags</td><td class=t>742, 946</td>          <td class=t>browse.scrolled</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="local-storage">
+    <h2>local storage</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#local-storage/normal">normal</a>
+      <a data-mode="more-menu" href="#local-storage/more-menu">more-menu</a>
+      <a data-mode="search" href="#local-storage/search">search</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The empty On My iPhone location shows back, search, More, an empty-state message, and the root tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="82" data-hue="355" title=""><span>back button — return to the presenting screen</span></div>
+        <div class=el data-x="903" data-y="82" data-hue="143" title="local-storage.more-menu"><span>more button — open creation, scanning, server, view, and sort options</span></div>
+        <div class=el data-x="500" data-y="146" data-hue="8" title="local-storage.search"><span>search field — enter search within local storage</span></div>
+        <div class=el data-x="895" data-y="146" data-hue="86" title=""><span>dictation button — begin voice input for local search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="231" title="local-storage.normal"><span>browse tab — remain in local storage</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting screen</td><td class=t>97, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open creation, scanning, server, view, and sort options</td><td class=t>903, 82</td>          <td class=t>local-storage.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter search within local storage</td><td class=t>500, 146</td>          <td class=t>local-storage.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for local search; safety-blocked because it records audio</td><td class=t>895, 146</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — remain in local storage</td><td class=t>742, 946</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The empty local-storage More popover offers disabled selection, New Folder, document scanning, server connection, icon or list layout, and sort choices.</p>
+      <div class=frame>
+        <div class=el data-x="628" data-y="93" data-hue="94" title=""><span>select button — disabled because local storage is empty</span></div>
+        <div class=el data-x="668" data-y="142" data-hue="139" title=""><span>new folder button — create a folder in local storage; safety-blocked</span></div>
+        <div class=el data-x="668" data-y="192" data-hue="214" title="document-scanner.normal"><span>scan documents button — open the document scanner</span></div>
+        <div class=el data-x="684" data-y="242" data-hue="145" title="connect-server.normal"><span>connect to server button — open the server connection form</span></div>
+        <div class=el data-x="628" data-y="316" data-hue="196" title="local-storage.normal"><span>icons layout button — use icon layout and close the menu</span></div>
+        <div class=el data-x="612" data-y="366" data-hue="1" title="local-storage.normal"><span>list layout button — use list layout and close the menu</span></div>
+        <div class=el data-x="483" data-y="440" data-hue="13" title="local-storage.normal"><span>sort by name button — sort local items by name and close the menu</span></div>
+        <div class=el data-x="483" data-y="512" data-hue="229" title="local-storage.normal"><span>sort by kind button — sort local items by kind and close the menu</span></div>
+        <div class=el data-x="483" data-y="562" data-hue="93" title="local-storage.normal"><span>sort by date button — sort local items by date and close the menu</span></div>
+        <div class=el data-x="483" data-y="612" data-hue="293" title="local-storage.normal"><span>sort by size button — sort local items by size and close the menu</span></div>
+        <div class=el data-x="483" data-y="661" data-hue="292" title="local-storage.normal"><span>sort by tags button — sort local items by tag and close the menu</span></div>
+        <div class=el data-x="150" data-y="500" data-hue="233" title="local-storage.normal"><span>background — dismiss the local-storage More popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select button — disabled because local storage is empty</td><td class=t>628, 93</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>new folder button — create a folder in local storage; safety-blocked</td><td class=t>668, 142</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>scan documents button — open the document scanner</td><td class=t>668, 192</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect to server button — open the server connection form</td><td class=t>684, 242</td>          <td class=t>connect-server.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>icons layout button — use icon layout and close the menu</td><td class=t>628, 316</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list layout button — use list layout and close the menu</td><td class=t>612, 366</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by name button — sort local items by name and close the menu</td><td class=t>483, 440</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by kind button — sort local items by kind and close the menu</td><td class=t>483, 512</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date button — sort local items by date and close the menu</td><td class=t>483, 562</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by size button — sort local items by size and close the menu</td><td class=t>483, 612</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by tags button — sort local items by tag and close the menu</td><td class=t>483, 661</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the local-storage More popover</td><td class=t>150, 500</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">Local-storage search mode focuses an empty live search field, shows a layout toggle and cancel button, and raises the keyboard over the empty state.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="220" title=""><span>search field — enter text to filter local items live</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="325" title=""><span>dictation button — begin voice input for search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="266" title="local-storage.search"><span>layout toggle — switch local storage between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="359" title="local-storage.normal"><span>cancel search button — close the keyboard and return to local storage</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter text to filter local items live</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for search; safety-blocked because it records audio</td><td class=t>580, 90</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch local storage between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>local-storage.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — close the keyboard and return to local storage</td><td class=t>902, 90</td>          <td class=t>local-storage.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="recently-deleted">
+    <h2>recently deleted</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#recently-deleted/normal">normal</a>
+      <a data-mode="more-menu" href="#recently-deleted/more-menu">more-menu</a>
+      <a data-mode="search" href="#recently-deleted/search">search</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The empty Recently Deleted location shows back, search, More, a retention warning, and the root tab bar.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="82" data-hue="355" title=""><span>back button — return to the presenting screen</span></div>
+        <div class=el data-x="903" data-y="82" data-hue="96" title="recently-deleted.more-menu"><span>more button — open disabled selection, scanning, server, view, and sort options</span></div>
+        <div class=el data-x="500" data-y="146" data-hue="79" title="recently-deleted.search"><span>search field — enter search within Recently Deleted</span></div>
+        <div class=el data-x="895" data-y="146" data-hue="81" title=""><span>dictation button — begin voice input for deleted-items search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="150" title="recently-deleted.normal"><span>browse tab — remain in Recently Deleted</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting screen</td><td class=t>97, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open disabled selection, scanning, server, view, and sort options</td><td class=t>903, 82</td>          <td class=t>recently-deleted.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter search within Recently Deleted</td><td class=t>500, 146</td>          <td class=t>recently-deleted.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for deleted-items search; safety-blocked because it records audio</td><td class=t>895, 146</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — remain in Recently Deleted</td><td class=t>742, 946</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The empty Recently Deleted More popover offers disabled selection, document scanning, server connection, icon or list layout, and sort choices.</p>
+      <div class=frame>
+        <div class=el data-x="628" data-y="93" data-hue="89" title=""><span>select button — disabled because Recently Deleted is empty</span></div>
+        <div class=el data-x="668" data-y="142" data-hue="214" title="document-scanner.normal"><span>scan documents button — open the document scanner</span></div>
+        <div class=el data-x="684" data-y="192" data-hue="145" title="connect-server.normal"><span>connect to server button — open the server connection form</span></div>
+        <div class=el data-x="628" data-y="266" data-hue="196" title="recently-deleted.normal"><span>icons layout button — use icon layout and close the menu</span></div>
+        <div class=el data-x="612" data-y="316" data-hue="1" title="recently-deleted.normal"><span>list layout button — use list layout and close the menu</span></div>
+        <div class=el data-x="483" data-y="391" data-hue="219" title="recently-deleted.normal"><span>sort by name button — sort deleted items by name and close the menu</span></div>
+        <div class=el data-x="483" data-y="463" data-hue="351" title="recently-deleted.normal"><span>sort by kind button — sort deleted items by kind and close the menu</span></div>
+        <div class=el data-x="483" data-y="512" data-hue="55" title="recently-deleted.normal"><span>sort by date button — sort deleted items by date and close the menu</span></div>
+        <div class=el data-x="483" data-y="562" data-hue="351" title="recently-deleted.normal"><span>sort by size button — sort deleted items by size and close the menu</span></div>
+        <div class=el data-x="483" data-y="612" data-hue="70" title="recently-deleted.normal"><span>sort by tags button — sort deleted items by tag and close the menu</span></div>
+        <div class=el data-x="150" data-y="500" data-hue="319" title="recently-deleted.normal"><span>background — dismiss the Recently Deleted More popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select button — disabled because Recently Deleted is empty</td><td class=t>628, 93</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>scan documents button — open the document scanner</td><td class=t>668, 142</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect to server button — open the server connection form</td><td class=t>684, 192</td>          <td class=t>connect-server.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>icons layout button — use icon layout and close the menu</td><td class=t>628, 266</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list layout button — use list layout and close the menu</td><td class=t>612, 316</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by name button — sort deleted items by name and close the menu</td><td class=t>483, 391</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by kind button — sort deleted items by kind and close the menu</td><td class=t>483, 463</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date button — sort deleted items by date and close the menu</td><td class=t>483, 512</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by size button — sort deleted items by size and close the menu</td><td class=t>483, 562</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by tags button — sort deleted items by tag and close the menu</td><td class=t>483, 612</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the Recently Deleted More popover</td><td class=t>150, 500</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">Recently Deleted search mode focuses an empty live search field, shows a layout toggle and cancel button, and raises the keyboard over the empty state.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="170" title=""><span>search field — enter text to filter deleted items live</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="325" title=""><span>dictation button — begin voice input for search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="166" title="recently-deleted.search"><span>layout toggle — switch deleted-items search between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="278" title="recently-deleted.normal"><span>cancel search button — close the keyboard and return to Recently Deleted</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter text to filter deleted items live</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for search; safety-blocked because it records audio</td><td class=t>580, 90</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch deleted-items search between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>recently-deleted.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — close the keyboard and return to Recently Deleted</td><td class=t>902, 90</td>          <td class=t>recently-deleted.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="tag-results">
+    <h2>tag results</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#tag-results/normal">normal</a>
+      <a data-mode="more-menu" href="#tag-results/more-menu">more-menu</a>
+      <a data-mode="search" href="#tag-results/search">search</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">A colored-tag results screen shows back, search, More, an empty state when no files carry that tag, and the root tab bar; Red is the observed tag.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="82" data-hue="355" title=""><span>back button — return to the presenting screen</span></div>
+        <div class=el data-x="903" data-y="82" data-hue="96" title="tag-results.more-menu"><span>more button — open disabled selection, scanning, server, view, and sort options</span></div>
+        <div class=el data-x="500" data-y="146" data-hue="254" title="tag-results.search"><span>search field — enter search within tagged items</span></div>
+        <div class=el data-x="895" data-y="146" data-hue="52" title=""><span>dictation button — begin voice input for tagged-items search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="280" data-y="946" data-hue="237" title="recents.list"><span>recents tab — show recently used files</span></div>
+        <div class=el data-x="500" data-y="946" data-hue="173" title="shared.normal"><span>shared tab — show shared files and collaboration activity</span></div>
+        <div class=el data-x="742" data-y="946" data-hue="183" title="tag-results.normal"><span>browse tab — remain in tag results</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting screen</td><td class=t>97, 82</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open disabled selection, scanning, server, view, and sort options</td><td class=t>903, 82</td>          <td class=t>tag-results.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter search within tagged items</td><td class=t>500, 146</td>          <td class=t>tag-results.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for tagged-items search; safety-blocked because it records audio</td><td class=t>895, 146</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>recents tab — show recently used files</td><td class=t>280, 946</td>          <td class=t>recents.list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared tab — show shared files and collaboration activity</td><td class=t>500, 946</td>          <td class=t>shared.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>browse tab — remain in tag results</td><td class=t>742, 946</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The empty tag-results More popover offers disabled selection, document scanning, server connection, icon or list layout, and sort choices.</p>
+      <div class=frame>
+        <div class=el data-x="628" data-y="93" data-hue="164" title=""><span>select button — disabled because the tag has no files</span></div>
+        <div class=el data-x="668" data-y="142" data-hue="214" title="document-scanner.normal"><span>scan documents button — open the document scanner</span></div>
+        <div class=el data-x="684" data-y="192" data-hue="145" title="connect-server.normal"><span>connect to server button — open the server connection form</span></div>
+        <div class=el data-x="628" data-y="266" data-hue="196" title="tag-results.normal"><span>icons layout button — use icon layout and close the menu</span></div>
+        <div class=el data-x="612" data-y="316" data-hue="1" title="tag-results.normal"><span>list layout button — use list layout and close the menu</span></div>
+        <div class=el data-x="483" data-y="391" data-hue="230" title="tag-results.normal"><span>sort by name button — sort tagged items by name and close the menu</span></div>
+        <div class=el data-x="483" data-y="463" data-hue="108" title="tag-results.normal"><span>sort by kind button — sort tagged items by kind and close the menu</span></div>
+        <div class=el data-x="483" data-y="512" data-hue="284" title="tag-results.normal"><span>sort by date button — sort tagged items by date and close the menu</span></div>
+        <div class=el data-x="483" data-y="562" data-hue="18" title="tag-results.normal"><span>sort by size button — sort tagged items by size and close the menu</span></div>
+        <div class=el data-x="483" data-y="612" data-hue="25" title="tag-results.normal"><span>sort by tags button — sort tagged items by tag and close the menu</span></div>
+        <div class=el data-x="150" data-y="500" data-hue="161" title="tag-results.normal"><span>background — dismiss the tag-results More popover</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>select button — disabled because the tag has no files</td><td class=t>628, 93</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>scan documents button — open the document scanner</td><td class=t>668, 142</td>          <td class=t>document-scanner.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>connect to server button — open the server connection form</td><td class=t>684, 192</td>          <td class=t>connect-server.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>icons layout button — use icon layout and close the menu</td><td class=t>628, 266</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>list layout button — use list layout and close the menu</td><td class=t>612, 316</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by name button — sort tagged items by name and close the menu</td><td class=t>483, 391</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by kind button — sort tagged items by kind and close the menu</td><td class=t>483, 463</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date button — sort tagged items by date and close the menu</td><td class=t>483, 512</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by size button — sort tagged items by size and close the menu</td><td class=t>483, 562</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by tags button — sort tagged items by tag and close the menu</td><td class=t>483, 612</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background — dismiss the tag-results More popover</td><td class=t>150, 500</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="search">
+      <p class=content style="flex-basis:100%">Tag-results search mode focuses an empty live search field, shows a layout toggle and cancel button, and raises the keyboard over the empty state.</p>
+      <div class=frame>
+        <div class=el data-x="350" data-y="90" data-hue="179" title=""><span>search field — enter text to filter tagged items live</span></div>
+        <div class=el data-x="580" data-y="90" data-hue="325" title=""><span>dictation button — begin voice input for search; safety-blocked because it records audio</span></div>
+        <div class=el data-x="749" data-y="90" data-hue="195" title="tag-results.search"><span>layout toggle — switch tag-results search between list and icon layouts</span></div>
+        <div class=el data-x="902" data-y="90" data-hue="79" title="tag-results.normal"><span>cancel search button — close the keyboard and return to tag results</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>search field — enter text to filter tagged items live</td><td class=t>350, 90</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — begin voice input for search; safety-blocked because it records audio</td><td class=t>580, 90</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>layout toggle — switch tag-results search between list and icon layouts</td><td class=t>749, 90</td>          <td class=t>tag-results.search</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel search button — close the keyboard and return to tag results</td><td class=t>902, 90</td>          <td class=t>tag-results.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+// Position fixed-element dots in the phone frame: data-x/data-y are on a
+// 1000x1000 grid, so percent = value / 10.
+document.querySelectorAll('.el').forEach(el => {
+  const h = el.dataset.hue;
+  el.style.left = (Number(el.dataset.x) / 10) + '%';
+  el.style.top = (Number(el.dataset.y) / 10) + '%';
+  el.style.borderColor = `hsl(${h},70%,40%)`;
+  el.style.background = `hsla(${h},70%,55%,.35)`;
+  el.style.color = `hsl(${h},70%,30%)`;
+});
+
+const sections = [...document.querySelectorAll('main > section')];
+const navlinks = [...document.querySelectorAll('nav a')];
+function route() {
+  const [s, m] = location.hash.slice(1).split('/');
+  const sec = sections.find(x => x.dataset.screen === s) || sections[0];
+  const modes = [...sec.querySelectorAll('.mode')];
+  const mode = modes.find(x => x.dataset.mode === m) || modes[0];
+  sections.forEach(x => x.hidden = x !== sec);
+  modes.forEach(x => x.hidden = x !== mode);
+  navlinks.forEach(a => a.classList.toggle('active', a.dataset.screen === sec.dataset.screen));
+  sec.querySelectorAll('.tabs a').forEach(a =>
+    a.classList.toggle('active', a.dataset.mode === mode.dataset.mode));
+  const want = `#${sec.dataset.screen}/${mode.dataset.mode}`;
+  if (location.hash !== want) history.replaceState(null, '', want);
+  window.scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+route();
+</script>

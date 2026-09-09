@@ -1,0 +1,1287 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>safari</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; }
+[hidden] { display: none !important; }
+body { font: 14px/1.45 -apple-system, system-ui, sans-serif; background: #f5f5f7; color: #1d1d1f; }
+nav { position: fixed; inset: 0 auto 0 0; width: 190px; padding: 24px 16px; overflow-y: auto; }
+nav .t { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #86868b; margin-bottom: 8px; }
+nav a { display: block; padding: 5px 10px; border-radius: 7px; color: #1d1d1f; text-decoration: none;
+        text-transform: capitalize; }
+nav a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+main { margin-left: 190px; padding: 28px 36px; }
+h2 { font-size: 20px; text-transform: capitalize; margin-bottom: 12px; }
+.tabs { display: inline-flex; gap: 2px; background: #e8e8ed; border-radius: 9px; padding: 2px; margin-bottom: 16px; }
+.tabs a { padding: 3px 14px; border-radius: 7px; font-size: 13px; color: #1d1d1f; text-decoration: none;
+          text-transform: capitalize; }
+.tabs a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+p.content { max-width: 760px; color: #3a3a3c; margin-bottom: 16px; }
+.mode { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+.frame { position: relative; flex: none; width: 280px; aspect-ratio: 393/852; background: #fff;
+         border-radius: 36px; box-shadow: 0 1px 4px rgba(0,0,0,.25); overflow: hidden; }
+.el { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+      border: 1.5px solid; }
+.el span { position: absolute; left: 17px; top: 0; font-size: 9px; font-weight: 600; white-space: nowrap; }
+table { border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12); min-width: 420px; flex: 1; }
+th, td { text-align: left; padding: 6px 12px; vertical-align: top; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #6e6e73;
+     border-bottom: 1px solid #e5e5ea; }
+tr + tr td { border-top: 1px solid #f0f0f2; }
+td.d { font-weight: 600; white-space: nowrap; }
+td.d.unseen { color: #d70015; font-style: italic; }
+td.p, td.f { color: #86868b; }
+td.t { font-family: ui-monospace, monospace; font-size: 12px; }
+</style>
+
+<nav>
+  <div class=t>Screens</div>
+  <a data-screen="start-page" href="#start-page/normal">start page</a>
+  <a data-screen="privacy-report" href="#privacy-report/normal">privacy report</a>
+  <a data-screen="customize-start-page" href="#customize-start-page/normal">customize start page</a>
+  <a data-screen="web-page" href="#web-page/normal">web page</a>
+  <a data-screen="share-sheet" href="#share-sheet/normal">share sheet</a>
+  <a data-screen="tabs" href="#tabs/normal">tabs</a>
+  <a data-screen="address-entry" href="#address-entry/normal">address entry</a>
+</nav>
+
+<main>
+  <section data-screen="start-page">
+    <h2>start page</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#start-page/normal">normal</a>
+      <a data-mode="favorites-expanded" href="#start-page/favorites-expanded">favorites-expanded</a>
+      <a data-mode="bookmarks" href="#start-page/bookmarks">bookmarks</a>
+      <a data-mode="history-menu" href="#start-page/history-menu">history-menu</a>
+      <a data-mode="history" href="#start-page/history">history</a>
+      <a data-mode="history-collapsed" href="#start-page/history-collapsed">history-collapsed</a>
+      <a data-mode="reading-list" href="#start-page/reading-list">reading-list</a>
+      <a data-mode="bookmarks-inline-menu" href="#start-page/bookmarks-inline-menu">bookmarks-inline-menu</a>
+      <a data-mode="bookmarks-menu" href="#start-page/bookmarks-menu">bookmarks-menu</a>
+      <a data-mode="bookmarks-sort-menu" href="#start-page/bookmarks-sort-menu">bookmarks-sort-menu</a>
+      <a data-mode="bookmarks-folders-inline" href="#start-page/bookmarks-folders-inline">bookmarks-folders-inline</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Safari's customizable start page, showing navigation categories, Favorites, a Privacy Report card, and the bottom address and tab controls.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="310" title=""><span>start page button — keep the start page selected</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="864" data-y="145" data-hue="7" title="start-page.favorites-expanded"><span>show all favorites button — expand the full Favorites grid</span></div>
+        <div class=el data-x="500" data-y="497" data-hue="228" title="privacy-report.normal"><span>privacy report card — open Safari's tracker-prevention report</span></div>
+        <div class=el data-x="500" data-y="598" data-hue="67" title="customize-start-page.normal"><span>edit button — open Start Page customization</span></div>
+        <div class=el data-x="133" data-y="938" data-hue="20" title=""><span>back button — return to the previous page when browsing history is available</span></div>
+        <div class=el data-x="499" data-y="938" data-hue="193" title="address-entry.normal"><span>address field — focus Safari’s address and search editor</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="318" title="tabs.normal"><span>tabs button — open the tab overview</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — keep the start page selected</td><td class=t>152, 87</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show all favorites button — expand the full Favorites grid</td><td class=t>864, 145</td>          <td class=t>start-page.favorites-expanded</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorite tile — open the favorite website</td><td class=p>any favorite tile in the Favorites grid</td>          <td class=t>web-page.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>privacy report card — open Safari's tracker-prevention report</td><td class=t>500, 497</td>          <td class=t>privacy-report.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>edit button — open Start Page customization</td><td class=t>500, 598</td>          <td class=t>customize-start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>back button — return to the previous page when browsing history is available</td><td class=t>133, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address field — focus Safari’s address and search editor</td><td class=t>499, 938</td>          <td class=t>address-entry.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tabs button — open the tab overview</td><td class=t>866, 938</td>          <td class=t>tabs.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="favorites-expanded">
+      <p class=content style="flex-basis:100%">Safari's start page with the full Favorites grid expanded, moving Privacy Report and later sections downward.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="864" data-y="145" data-hue="81" title="start-page.normal"><span>show less favorites button — collapse the Favorites grid</span></div>
+        <div class=el data-x="500" data-y="846" data-hue="144" title="privacy-report.normal"><span>privacy report card — open Safari’s tracker-prevention report</span></div>
+        <div class=el data-x="133" data-y="938" data-hue="20" title=""><span>back button — return to the previous page when browsing history is available</span></div>
+        <div class=el data-x="499" data-y="938" data-hue="193" title="address-entry.normal"><span>address field — focus Safari’s address and search editor</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="318" title="tabs.normal"><span>tabs button — open the tab overview</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show less favorites button — collapse the Favorites grid</td><td class=t>864, 145</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorite tile — open the favorite website</td><td class=p>any favorite tile in the expanded Favorites grid</td>          <td class=t>web-page.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>privacy report card — open Safari’s tracker-prevention report</td><td class=t>500, 846</td>          <td class=t>privacy-report.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>expanded Start Page — scroll through sections moved below the full Favorites grid</td><td class=p>the vertically scrolling expanded Start Page</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>back button — return to the previous page when browsing history is available</td><td class=t>133, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address field — focus Safari’s address and search editor</td><td class=t>499, 938</td>          <td class=t>address-entry.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tabs button — open the tab overview</td><td class=t>866, 938</td>          <td class=t>tabs.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="bookmarks">
+      <p class=content style="flex-basis:100%">The Bookmarks category on Safari's start page, showing recently saved bookmark cards, bookmark folders, a menu, and the bottom browser controls.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="902" data-y="155" data-hue="121" title="start-page.bookmarks-menu"><span>bookmarks options button — open the bookmarks options menu</span></div>
+        <div class=el data-x="391" data-y="214" data-hue="179" title=""><span>recently saved disclosure — show the full Recently Saved collection</span></div>
+        <div class=el data-x="500" data-y="540" data-hue="34" title=""><span>Favorites folder row — open the Favorites bookmark folder</span></div>
+        <div class=el data-x="500" data-y="594" data-hue="260" title=""><span>Tab Group Favorites row — open favorites associated with tab groups</span></div>
+        <div class=el data-x="133" data-y="938" data-hue="20" title=""><span>back button — return to the previous page when browsing history is available</span></div>
+        <div class=el data-x="499" data-y="938" data-hue="193" title="address-entry.normal"><span>address field — focus Safari’s address and search editor</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="318" title="tabs.normal"><span>tabs button — open the tab overview</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks options button — open the bookmarks options menu</td><td class=t>902, 155</td>          <td class=t>start-page.bookmarks-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recently saved disclosure — show the full Recently Saved collection</td><td class=t>391, 214</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recently saved bookmark card — open the saved website</td><td class=p>any card in the horizontally scrolling Recently Saved row</td>          <td class=t>web-page.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>recently saved card row — scroll horizontally through bookmark cards</td><td class=p>the horizontally scrolling Recently Saved card row</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Favorites folder row — open the Favorites bookmark folder</td><td class=t>500, 540</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Tab Group Favorites row — open favorites associated with tab groups</td><td class=t>500, 594</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>back button — return to the previous page when browsing history is available</td><td class=t>133, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address field — focus Safari’s address and search editor</td><td class=t>499, 938</td>          <td class=t>address-entry.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tabs button — open the tab overview</td><td class=t>866, 938</td>          <td class=t>tabs.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="history-menu">
+      <p class=content style="flex-basis:100%">The History options menu offers website selection and destructive history clearing over the history list.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="677" data-y="160" data-hue="45" title=""><span>select websites command — enter history selection mode</span></div>
+        <div class=el data-x="677" data-y="205" data-hue="276" title=""><span>clear history command — open controls that delete browsing history</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>select websites command — enter history selection mode</td><td class=t>677, 160</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>clear history command — open controls that delete browsing history</td><td class=t>677, 205</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>outside area — dismiss the History options menu</td><td class=p>any visible area outside the History options menu</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="history">
+      <p class=content style="flex-basis:100%">Safari's History category, with the current period expanded into page rows and older day groups collapsed in a vertically scrollable list.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="902" data-y="155" data-hue="247" title="start-page.history-menu"><span>history options button — open selection and clearing commands</span></div>
+        <div class=el data-x="900" data-y="213" data-hue="53" title="start-page.history-collapsed"><span>expanded date-group disclosure — collapse the current history group</span></div>
+        <div class=el data-x="133" data-y="938" data-hue="20" title=""><span>back button — return to the previous page when browsing history is available</span></div>
+        <div class=el data-x="499" data-y="938" data-hue="193" title="address-entry.normal"><span>address field — focus Safari’s address and search editor</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="318" title="tabs.normal"><span>tabs button — open the tab overview</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history options button — open selection and clearing commands</td><td class=t>902, 155</td>          <td class=t>start-page.history-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>expanded date-group disclosure — collapse the current history group</td><td class=t>900, 213</td>          <td class=t>start-page.history-collapsed</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history entry — open the recorded website</td><td class=p>any individual history entry in an expanded date group</td>          <td class=t>web-page.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>collapsed date-group row — expand that period’s history entries</td><td class=p>any collapsed date-group row in the history list</td>          <td class=t>start-page.history</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>history list — scroll through older browsing periods</td><td class=p>the vertically scrolling history list</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>back button — return to the previous page when browsing history is available</td><td class=t>133, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address field — focus Safari’s address and search editor</td><td class=t>499, 938</td>          <td class=t>address-entry.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tabs button — open the tab overview</td><td class=t>866, 938</td>          <td class=t>tabs.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="history-collapsed">
+      <p class=content style="flex-basis:100%">Safari History with all date groups collapsed into disclosure rows in a vertically scrollable list.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="902" data-y="155" data-hue="247" title="start-page.history-menu"><span>history options button — open selection and clearing commands</span></div>
+        <div class=el data-x="133" data-y="938" data-hue="20" title=""><span>back button — return to the previous page when browsing history is available</span></div>
+        <div class=el data-x="499" data-y="938" data-hue="193" title="address-entry.normal"><span>address field — focus Safari’s address and search editor</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="318" title="tabs.normal"><span>tabs button — open the tab overview</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history options button — open selection and clearing commands</td><td class=t>902, 155</td>          <td class=t>start-page.history-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>collapsed date-group row — expand that period’s history entries</td><td class=p>any collapsed date-group row in the history list</td>          <td class=t>start-page.history</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>history list — scroll through older browsing periods</td><td class=p>the vertically scrolling history list</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>back button — return to the previous page when browsing history is available</td><td class=t>133, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address field — focus Safari’s address and search editor</td><td class=t>499, 938</td>          <td class=t>address-entry.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tabs button — open the tab overview</td><td class=t>866, 938</td>          <td class=t>tabs.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="reading-list">
+      <p class=content style="flex-basis:100%">The empty Reading List category, showing an explanatory message plus category, options, address, back, and tab controls.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="902" data-y="155" data-hue="27" title=""><span>reading list options button — open Reading List commands</span></div>
+        <div class=el data-x="133" data-y="938" data-hue="20" title=""><span>back button — return to the previous page when browsing history is available</span></div>
+        <div class=el data-x="499" data-y="938" data-hue="193" title="address-entry.normal"><span>address field — focus Safari’s address and search editor</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="318" title="tabs.normal"><span>tabs button — open the tab overview</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list options button — open Reading List commands</td><td class=t>902, 155</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>back button — return to the previous page when browsing history is available</td><td class=t>133, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address field — focus Safari’s address and search editor</td><td class=t>499, 938</td>          <td class=t>address-entry.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tabs button — open the tab overview</td><td class=t>866, 938</td>          <td class=t>tabs.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="bookmarks-inline-menu">
+      <p class=content style="flex-basis:100%">The Bookmarks options menu while folders are inline, offering layout, restoring folders to the top section, selection, and folder creation.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="645" data-y="162" data-hue="323" title="start-page.bookmarks-folders-inline"><span>large layout option — switch to large bookmark cards and close the menu</span></div>
+        <div class=el data-x="645" data-y="207" data-hue="155" title="start-page.bookmarks-folders-inline"><span>compact layout option — switch to compact bookmark cards and close the menu</span></div>
+        <div class=el data-x="677" data-y="275" data-hue="121" title="start-page.bookmarks"><span>show folders on top toggle — restore the titled Folders section and close the menu</span></div>
+        <div class=el data-x="694" data-y="364" data-hue="36" title=""><span>select bookmarks command — enter bookmark selection mode</span></div>
+        <div class=el data-x="694" data-y="409" data-hue="272" title=""><span>new folder command — open bookmark-folder creation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>large layout option — switch to large bookmark cards and close the menu</td><td class=t>645, 162</td>          <td class=t>start-page.bookmarks-folders-inline</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>compact layout option — switch to compact bookmark cards and close the menu</td><td class=t>645, 207</td>          <td class=t>start-page.bookmarks-folders-inline</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show folders on top toggle — restore the titled Folders section and close the menu</td><td class=t>677, 275</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>select bookmarks command — enter bookmark selection mode</td><td class=t>694, 364</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>new folder command — open bookmark-folder creation</td><td class=t>694, 409</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>outside area — dismiss the bookmarks options menu</td><td class=p>any visible area outside the inline-folder bookmarks options menu</td>          <td class=t>start-page.bookmarks-folders-inline</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="bookmarks-menu">
+      <p class=content style="flex-basis:100%">The Bookmarks options menu is open over the bookmarks category, with layout, sorting, folder placement, selection, and folder-creation commands. The software keyboard is visible below Safari.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="645" data-y="158" data-hue="323" title="start-page.bookmarks"><span>large layout option — switch to large bookmark cards and close the menu</span></div>
+        <div class=el data-x="645" data-y="202" data-hue="155" title="start-page.bookmarks"><span>compact layout option — switch to compact bookmark cards and close the menu</span></div>
+        <div class=el data-x="677" data-y="279" data-hue="251" title="start-page.bookmarks-sort-menu"><span>sort by submenu — open bookmark sort choices</span></div>
+        <div class=el data-x="677" data-y="346" data-hue="65" title="start-page.bookmarks-folders-inline"><span>show folders on top toggle — move folder rows between their titled section and inline placement</span></div>
+        <div class=el data-x="694" data-y="424" data-hue="36" title=""><span>select bookmarks command — enter bookmark selection mode</span></div>
+        <div class=el data-x="694" data-y="469" data-hue="272" title=""><span>new folder command — open bookmark-folder creation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>large layout option — switch to large bookmark cards and close the menu</td><td class=t>645, 158</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>compact layout option — switch to compact bookmark cards and close the menu</td><td class=t>645, 202</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by submenu — open bookmark sort choices</td><td class=t>677, 279</td>          <td class=t>start-page.bookmarks-sort-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show folders on top toggle — move folder rows between their titled section and inline placement</td><td class=t>677, 346</td>          <td class=t>start-page.bookmarks-folders-inline</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>select bookmarks command — enter bookmark selection mode</td><td class=t>694, 424</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>new folder command — open bookmark-folder creation</td><td class=t>694, 469</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>outside area — dismiss the bookmarks options menu</td><td class=p>any visible area outside the bookmarks options menu</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="bookmarks-sort-menu">
+      <p class=content style="flex-basis:100%">The bookmark Sort By submenu is expanded over the Bookmarks category, offering None, Date Added, Name, and Address ordering.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="677" data-y="275" data-hue="201" title="start-page.bookmarks-menu"><span>sort by header — collapse the sort choices</span></div>
+        <div class=el data-x="597" data-y="350" data-hue="101" title="start-page.bookmarks"><span>none sort option — preserve bookmark order and close the menu</span></div>
+        <div class=el data-x="597" data-y="395" data-hue="337" title="start-page.bookmarks"><span>date added sort option — order bookmarks by date added and close the menu</span></div>
+        <div class=el data-x="597" data-y="440" data-hue="341" title="start-page.bookmarks"><span>name sort option — order bookmarks by name and close the menu</span></div>
+        <div class=el data-x="597" data-y="484" data-hue="232" title="start-page.bookmarks"><span>address sort option — order bookmarks by URL and close the menu</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by header — collapse the sort choices</td><td class=t>677, 275</td>          <td class=t>start-page.bookmarks-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>none sort option — preserve bookmark order and close the menu</td><td class=t>597, 350</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>date added sort option — order bookmarks by date added and close the menu</td><td class=t>597, 395</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>name sort option — order bookmarks by name and close the menu</td><td class=t>597, 440</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address sort option — order bookmarks by URL and close the menu</td><td class=t>597, 484</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>outside area — dismiss the expanded Sort By menu</td><td class=p>any visible area outside the expanded Sort By menu</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="bookmarks-folders-inline">
+      <p class=content style="flex-basis:100%">The Bookmarks category with Show Folders on Top disabled, placing folder rows directly below recently saved cards without a Folders heading.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="902" data-y="155" data-hue="137" title="start-page.bookmarks-inline-menu"><span>bookmarks options button — open the options menu for inline folder placement</span></div>
+        <div class=el data-x="391" data-y="214" data-hue="179" title=""><span>recently saved disclosure — show the full Recently Saved collection</span></div>
+        <div class=el data-x="500" data-y="510" data-hue="34" title=""><span>Favorites folder row — open the Favorites bookmark folder</span></div>
+        <div class=el data-x="500" data-y="565" data-hue="260" title=""><span>Tab Group Favorites row — open favorites associated with tab groups</span></div>
+        <div class=el data-x="133" data-y="938" data-hue="20" title=""><span>back button — return to the previous page when browsing history is available</span></div>
+        <div class=el data-x="499" data-y="938" data-hue="193" title="address-entry.normal"><span>address field — focus Safari’s address and search editor</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="318" title="tabs.normal"><span>tabs button — open the tab overview</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks options button — open the options menu for inline folder placement</td><td class=t>902, 155</td>          <td class=t>start-page.bookmarks-inline-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recently saved disclosure — show the full Recently Saved collection</td><td class=t>391, 214</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>recently saved bookmark card — open the saved website</td><td class=p>any card in the horizontally scrolling Recently Saved row</td>          <td class=t>web-page.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>recently saved card row — scroll horizontally through bookmark cards</td><td class=p>the horizontally scrolling Recently Saved card row</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Favorites folder row — open the Favorites bookmark folder</td><td class=t>500, 510</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Tab Group Favorites row — open favorites associated with tab groups</td><td class=t>500, 565</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>back button — return to the previous page when browsing history is available</td><td class=t>133, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address field — focus Safari’s address and search editor</td><td class=t>499, 938</td>          <td class=t>address-entry.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tabs button — open the tab overview</td><td class=t>866, 938</td>          <td class=t>tabs.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="privacy-report">
+    <h2>privacy report</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#privacy-report/normal">normal</a>
+      <a data-mode="trackers" href="#privacy-report/trackers">trackers</a>
+      <a data-mode="explanation" href="#privacy-report/explanation">explanation</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Safari's Privacy Report sheet summarizes prevented trackers and lists websites by tracker activity, with Websites and Trackers views.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="108" data-hue="285" title="start-page.normal"><span>done button — close Privacy Report</span></div>
+        <div class=el data-x="500" data-y="216" data-hue="25" title="privacy-report.explanation"><span>show more button — expand Privacy Report explanations</span></div>
+        <div class=el data-x="267" data-y="619" data-hue="40" title="privacy-report.normal"><span>websites segment — keep website-centered tracker statistics visible</span></div>
+        <div class=el data-x="733" data-y="619" data-hue="328" title="privacy-report.trackers"><span>trackers segment — list trackers by contacted websites</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — close Privacy Report</td><td class=t>903, 108</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show more button — expand Privacy Report explanations</td><td class=t>500, 216</td>          <td class=t>privacy-report.explanation</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>websites segment — keep website-centered tracker statistics visible</td><td class=t>267, 619</td>          <td class=t>privacy-report.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>trackers segment — list trackers by contacted websites</td><td class=t>733, 619</td>          <td class=t>privacy-report.trackers</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>website row — show tracker details for that site</td><td class=p>any website row in the privacy report</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>privacy report — scroll through website tracker statistics</td><td class=p>the vertically scrolling privacy report</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="trackers">
+      <p class=content style="flex-basis:100%">Privacy Report's Trackers view, listing contacted tracking domains and their website counts.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="108" data-hue="285" title="start-page.normal"><span>done button — close Privacy Report</span></div>
+        <div class=el data-x="500" data-y="216" data-hue="25" title="privacy-report.explanation"><span>show more button — expand Privacy Report explanations</span></div>
+        <div class=el data-x="267" data-y="619" data-hue="200" title="privacy-report.normal"><span>websites segment — return to website-centered tracker statistics</span></div>
+        <div class=el data-x="733" data-y="619" data-hue="104" title="privacy-report.trackers"><span>trackers segment — keep tracker-centered statistics visible</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — close Privacy Report</td><td class=t>903, 108</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show more button — expand Privacy Report explanations</td><td class=t>500, 216</td>          <td class=t>privacy-report.explanation</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>websites segment — return to website-centered tracker statistics</td><td class=t>267, 619</td>          <td class=t>privacy-report.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>trackers segment — keep tracker-centered statistics visible</td><td class=t>733, 619</td>          <td class=t>privacy-report.trackers</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tracker row — show websites associated with that tracker</td><td class=p>any tracker row in the privacy report</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>privacy report — scroll through tracker statistics</td><td class=p>the vertically scrolling privacy report</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="explanation">
+      <p class=content style="flex-basis:100%">Privacy Report with the tracker-prevention explanation expanded above the report statistics.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="108" data-hue="285" title="start-page.normal"><span>done button — close Privacy Report</span></div>
+        <div class=el data-x="500" data-y="216" data-hue="118" title="privacy-report.normal"><span>show less button — collapse Privacy Report explanations</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>done button — close Privacy Report</td><td class=t>903, 108</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>show less button — collapse Privacy Report explanations</td><td class=t>500, 216</td>          <td class=t>privacy-report.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>expanded privacy report — scroll through explanations and statistics</td><td class=p>the vertically scrolling expanded privacy explanation and report</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="customize-start-page">
+    <h2>customize start page</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Customize Start Page sheet, with iCloud sync, section visibility and ordering, and background image controls.</p>
+      <div class=frame>
+        <div class=el data-x="902" data-y="108" data-hue="55" title="start-page.normal"><span>close button — dismiss Start Page customization</span></div>
+        <div class=el data-x="830" data-y="171" data-hue="12" title=""><span>use Start Page on all devices switch — toggle iCloud synchronization of Start Page appearance</span></div>
+        <div class=el data-x="833" data-y="638" data-hue="13" title=""><span>background image switch — show or hide the selected Start Page background</span></div>
+        <div class=el data-x="216" data-y="728" data-hue="295" title=""><span>add background tile — choose a custom Start Page background image</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Start Page customization</td><td class=t>902, 108</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>use Start Page on all devices switch — toggle iCloud synchronization of Start Page appearance</td><td class=t>830, 171</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>section visibility switch — show or hide that Start Page section</td><td class=p>any Start Page section visibility switch</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>section reorder handle — drag to change Start Page section order</td><td class=p>any reorder handle beside a Start Page section</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>background image switch — show or hide the selected Start Page background</td><td class=t>833, 638</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add background tile — choose a custom Start Page background image</td><td class=t>216, 728</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>background thumbnail — select that Start Page background</td><td class=p>any background image thumbnail</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>background download icon — download that background choice</td><td class=p>any download icon on an uninstalled background thumbnail</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>customization sheet — scroll through all Start Page sections and background choices</td><td class=p>the vertically scrolling customization sheet</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="web-page">
+    <h2>web page</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#web-page/normal">normal</a>
+      <a data-mode="page-menu" href="#web-page/page-menu">page-menu</a>
+      <a data-mode="find" href="#web-page/find">find</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">A loaded website in Safari, with page-provided content filling the viewport and Safari's bottom browser toolbar visible.</p>
+      <div class=frame>
+        <div class=el data-x="133" data-y="938" data-hue="47" title=""><span>back button — attempt to return in browsing history; unavailable on this page</span></div>
+        <div class=el data-x="265" data-y="938" data-hue="139" title="web-page.page-menu"><span>page menu button — open Safari page actions</span></div>
+        <div class=el data-x="500" data-y="938" data-hue="237" title="address-entry.normal"><span>address field — focus the current URL for editing</span></div>
+        <div class=el data-x="739" data-y="938" data-hue="12" title="web-page.normal"><span>reload button — reload the current website</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="318" title="tabs.normal"><span>tabs button — open the tab overview</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>web page link or control — follow a site-provided interaction within the loaded page</td><td class=p>any link or control supplied by the loaded web page</td>          <td class=t>web-page.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>web page content area — scroll the page; this page remained at the same viewport</td><td class=p>the loaded web page content area</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>back button — attempt to return in browsing history; unavailable on this page</td><td class=t>133, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>page menu button — open Safari page actions</td><td class=t>265, 938</td>          <td class=t>web-page.page-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>address field — focus the current URL for editing</td><td class=t>500, 938</td>          <td class=t>address-entry.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reload button — reload the current website</td><td class=t>739, 938</td>          <td class=t>web-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tabs button — open the tab overview</td><td class=t>866, 938</td>          <td class=t>tabs.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="page-menu">
+      <p class=content style="flex-basis:100%">Safari's page menu over a loaded website, with sharing, bookmark, find, zoom, distraction control, tab, privacy, desktop-site, and toolbar actions.</p>
+      <div class=frame>
+        <div class=el data-x="470" data-y="151" data-hue="319" title="share-sheet.normal"><span>share command — open the system share sheet</span></div>
+        <div class=el data-x="470" data-y="196" data-hue="316" title=""><span>add to bookmarks command — save the current page as a bookmark</span></div>
+        <div class=el data-x="470" data-y="242" data-hue="169" title=""><span>add bookmark to command — save the current page into a chosen bookmark folder</span></div>
+        <div class=el data-x="470" data-y="309" data-hue="130" title="web-page.find"><span>find on page command — open the in-page search bar</span></div>
+        <div class=el data-x="470" data-y="354" data-hue="2" title=""><span>page zoom command — open page text and zoom controls</span></div>
+        <div class=el data-x="470" data-y="409" data-hue="105" title=""><span>hide distracting items command — enter distraction-control mode</span></div>
+        <div class=el data-x="470" data-y="487" data-hue="293" title=""><span>tab actions submenu — open actions for the current tab</span></div>
+        <div class=el data-x="470" data-y="533" data-hue="216" title=""><span>privacy and security submenu — open per-site privacy controls</span></div>
+        <div class=el data-x="470" data-y="588" data-hue="205" title="web-page.normal"><span>request desktop website command — reload the site using its desktop presentation</span></div>
+        <div class=el data-x="470" data-y="644" data-hue="5" title=""><span>hide toolbar command — collapse Safari’s browser toolbar</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>share command — open the system share sheet</td><td class=t>470, 151</td>          <td class=t>share-sheet.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add to bookmarks command — save the current page as a bookmark</td><td class=t>470, 196</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add bookmark to command — save the current page into a chosen bookmark folder</td><td class=t>470, 242</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>find on page command — open the in-page search bar</td><td class=t>470, 309</td>          <td class=t>web-page.find</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>page zoom command — open page text and zoom controls</td><td class=t>470, 354</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>hide distracting items command — enter distraction-control mode</td><td class=t>470, 409</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tab actions submenu — open actions for the current tab</td><td class=t>470, 487</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>privacy and security submenu — open per-site privacy controls</td><td class=t>470, 533</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>request desktop website command — reload the site using its desktop presentation</td><td class=t>470, 588</td>          <td class=t>web-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>hide toolbar command — collapse Safari’s browser toolbar</td><td class=t>470, 644</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>outside area — dismiss the page menu</td><td class=p>any visible area outside the page menu</td>          <td class=t>web-page.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="find">
+      <p class=content style="flex-basis:100%">Find on Page mode dims the website and shows a search field with close, previous-match, and next-match controls above the keyboard.</p>
+      <div class=frame>
+        <div class=el data-x="95" data-y="617" data-hue="281" title="web-page.normal"><span>close find button — leave Find on Page mode</span></div>
+        <div class=el data-x="468" data-y="617" data-hue="230" title=""><span>find field — enter text to search within the loaded page</span></div>
+        <div class=el data-x="819" data-y="617" data-hue="165" title=""><span>previous match button — move to the previous in-page match</span></div>
+        <div class=el data-x="911" data-y="617" data-hue="97" title=""><span>next match button — move to the next in-page match</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close find button — leave Find on Page mode</td><td class=t>95, 617</td>          <td class=t>web-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>find field — enter text to search within the loaded page</td><td class=t>468, 617</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>previous match button — move to the previous in-page match</td><td class=t>819, 617</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>next match button — move to the next in-page match</td><td class=t>911, 617</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="share-sheet">
+    <h2>share sheet</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The system share sheet for the current webpage, with item options, app destinations, quick actions, and a swipe-to-dismiss sheet.</p>
+      <div class=frame>
+        <div class=el data-x="378" data-y="663" data-hue="351" title=""><span>options button — open sharing options for the current page</span></div>
+        <div class=el data-x="174" data-y="902" data-hue="287" title=""><span>copy action — copy the current page URL</span></div>
+        <div class=el data-x="390" data-y="902" data-hue="263" title=""><span>add to bookmarks action — save the current page as a bookmark</span></div>
+        <div class=el data-x="608" data-y="902" data-hue="256" title=""><span>add to reading list action — save the current page to Reading List</span></div>
+        <div class=el data-x="826" data-y="902" data-hue="11" title=""><span>view more action — show additional share-sheet actions</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>options button — open sharing options for the current page</td><td class=t>378, 663</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>share destination — open the selected app’s share composer</td><td class=p>any app destination in the horizontally scrolling share row</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>copy action — copy the current page URL</td><td class=t>174, 902</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add to bookmarks action — save the current page as a bookmark</td><td class=t>390, 902</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add to reading list action — save the current page to Reading List</td><td class=t>608, 902</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>view more action — show additional share-sheet actions</td><td class=t>826, 902</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>share sheet surface — swipe down to dismiss the sheet</td><td class=p>the share sheet surface; drag downward to dismiss</td>          <td class=t>web-page.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="tabs">
+    <h2>tabs</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Safari's tab overview, showing a grid of open tab cards with search, options, tab-group controls, new-tab, and Done buttons.</p>
+      <div class=frame>
+        <div class=el data-x="97" data-y="87" data-hue="174" title=""><span>tab search button — search open tabs</span></div>
+        <div class=el data-x="903" data-y="87" data-hue="158" title=""><span>tab overview options button — open tab-management commands</span></div>
+        <div class=el data-x="135" data-y="938" data-hue="9" title="start-page.normal"><span>new tab button — create a new tab and show Safari's start page</span></div>
+        <div class=el data-x="403" data-y="938" data-hue="27" title=""><span>Private button — switch to Private Browsing tabs</span></div>
+        <div class=el data-x="605" data-y="938" data-hue="39" title=""><span>tab group button — keep the current tab group selected</span></div>
+        <div class=el data-x="865" data-y="938" data-hue="157" title="web-page.normal"><span>done button — close the tab overview and return to the selected tab</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>tab search button — search open tabs</td><td class=t>97, 87</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tab overview options button — open tab-management commands</td><td class=t>903, 87</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tab preview — select and open that tab</td><td class=p>any open tab preview card</td>          <td class=t>web-page.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>tab close button — close the corresponding open tab</td><td class=p>the close button at the upper-right of any tab preview</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>new tab button — create a new tab and show Safari's start page</td><td class=t>135, 938</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Private button — switch to Private Browsing tabs</td><td class=t>403, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>tab group button — keep the current tab group selected</td><td class=t>605, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>done button — close the tab overview and return to the selected tab</td><td class=t>865, 938</td>          <td class=t>web-page.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="address-entry">
+    <h2>address entry</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Safari's focused address editor, with the current URL selected above the software keyboard and the bookmarks panel visible behind it.</p>
+      <div class=frame>
+        <div class=el data-x="152" data-y="87" data-hue="168" title="start-page.normal"><span>start page button — show Safari’s Start Page</span></div>
+        <div class=el data-x="385" data-y="87" data-hue="172" title="start-page.bookmarks"><span>bookmarks button — show bookmarks</span></div>
+        <div class=el data-x="615" data-y="87" data-hue="326" title="start-page.reading-list"><span>reading list button — show Reading List</span></div>
+        <div class=el data-x="847" data-y="87" data-hue="173" title="start-page.history"><span>history button — show browsing history</span></div>
+        <div class=el data-x="400" data-y="623" data-hue="130" title=""><span>selected address field — edit or replace the current URL or search text</span></div>
+        <div class=el data-x="800" data-y="623" data-hue="144" title=""><span>clear text button — clear the selected address field</span></div>
+        <div class=el data-x="926" data-y="623" data-hue="298" title="web-page.normal"><span>cancel button — dismiss address editing and return to the loaded page</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>start page button — show Safari’s Start Page</td><td class=t>152, 87</td>          <td class=t>start-page.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>bookmarks button — show bookmarks</td><td class=t>385, 87</td>          <td class=t>start-page.bookmarks</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>reading list button — show Reading List</td><td class=t>615, 87</td>          <td class=t>start-page.reading-list</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>history button — show browsing history</td><td class=t>847, 87</td>          <td class=t>start-page.history</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>selected address field — edit or replace the current URL or search text</td><td class=t>400, 623</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>clear text button — clear the selected address field</td><td class=t>800, 623</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>cancel button — dismiss address editing and return to the loaded page</td><td class=t>926, 623</td>          <td class=t>web-page.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+// Position fixed-element dots in the phone frame: data-x/data-y are on a
+// 1000x1000 grid, so percent = value / 10.
+document.querySelectorAll('.el').forEach(el => {
+  const h = el.dataset.hue;
+  el.style.left = (Number(el.dataset.x) / 10) + '%';
+  el.style.top = (Number(el.dataset.y) / 10) + '%';
+  el.style.borderColor = `hsl(${h},70%,40%)`;
+  el.style.background = `hsla(${h},70%,55%,.35)`;
+  el.style.color = `hsl(${h},70%,30%)`;
+});
+
+const sections = [...document.querySelectorAll('main > section')];
+const navlinks = [...document.querySelectorAll('nav a')];
+function route() {
+  const [s, m] = location.hash.slice(1).split('/');
+  const sec = sections.find(x => x.dataset.screen === s) || sections[0];
+  const modes = [...sec.querySelectorAll('.mode')];
+  const mode = modes.find(x => x.dataset.mode === m) || modes[0];
+  sections.forEach(x => x.hidden = x !== sec);
+  modes.forEach(x => x.hidden = x !== mode);
+  navlinks.forEach(a => a.classList.toggle('active', a.dataset.screen === sec.dataset.screen));
+  sec.querySelectorAll('.tabs a').forEach(a =>
+    a.classList.toggle('active', a.dataset.mode === mode.dataset.mode));
+  const want = `#${sec.dataset.screen}/${mode.dataset.mode}`;
+  if (location.hash !== want) history.replaceState(null, '', want);
+  window.scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+route();
+</script>

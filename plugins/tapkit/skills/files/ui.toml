@@ -1,0 +1,1865 @@
+[[screens]]
+id = "recents"
+
+[[screens.modes]]
+id = "normal"
+description = "The Recents root shows a searchable grid of recently used files with a More menu and the Recents, Shared, and Browse tab bar."
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open view, sort, selection, scanning, and server options"
+target = "recents.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 208]
+description = "search field — enter Recents search mode"
+target = "recents.search"
+
+[[screens.modes.elements]]
+position = [895, 208]
+looksMutating = true
+description = "dictation button — begin voice input for Recents search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = "any file thumbnail; moves with the grid"
+isRepeating = true
+looksMutating = true
+description = "file thumbnail — opens the selected user file; safety-blocked because opening may download or change recency metadata"
+
+[[screens.modes.elements]]
+position = "cloud download icon beside an offloaded file; moves with the grid"
+isRepeating = true
+looksMutating = true
+description = "cloud download button — downloads the file to the device; safety-blocked"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — show storage locations and favorites"
+target = "browse.normal"
+
+[[screens.modes]]
+id = "more-menu"
+description = "The Recents More popover offers selection, document scanning, server connection, icon or list layout, and sort choices."
+
+[[screens.modes.elements]]
+position = [628, 93]
+description = "select button — enter file selection mode"
+target = "recents.select"
+
+[[screens.modes.elements]]
+position = [670, 142]
+description = "scan documents button — open the document scanner"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [684, 191]
+description = "connect to server button — open the server connection form"
+target = "connect-server.normal"
+
+[[screens.modes.elements]]
+position = [634, 266]
+description = "icons layout button — show files as an icon grid and close the menu"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [609, 316]
+description = "list layout button — show files as a list"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [490, 391]
+description = "sort by name button — sort files by name and close the menu"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [490, 440]
+description = "sort by kind button — sort files by kind and close the menu"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [490, 491]
+description = "sort by date button — sort files by date and close the menu"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [490, 564]
+description = "sort by size button — sort files by size and close the menu"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [490, 613]
+description = "sort by tags button — sort files by tag and close the menu"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [165, 500]
+description = "background — dismiss the More popover"
+target = "recents.normal"
+
+[[screens.modes]]
+id = "select"
+description = "Recents selection mode shows selection circles on each file, Select All and Done controls, and disabled share, move, delete, and More actions until a file is selected."
+
+[[screens.modes.elements]]
+position = [174, 82]
+description = "select all button — select every visible file"
+target = "recents.selected"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — leave selection mode"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = "selection circle on any file thumbnail; moves with the grid"
+isRepeating = true
+description = "file selection circle — select a file without opening it"
+target = "recents.selected"
+
+[[screens.modes.elements]]
+position = [137, 938]
+looksMutating = true
+description = "share button — share selected files; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [283, 938]
+looksMutating = true
+description = "move button — move selected files; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [432, 938]
+looksMutating = true
+description = "delete button — delete selected files; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "more actions button — disabled until a file is selected"
+
+[[screens.modes]]
+id = "selected"
+description = "Recents selection mode with one or more files selected enables selection actions; all data-changing actions remain safety-blocked."
+
+[[screens.modes.elements]]
+position = [174, 82]
+description = "select all button — select every visible file"
+target = "recents.selected"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — clear the selection and leave selection mode"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = "selection circle on any file thumbnail; moves with the grid"
+isRepeating = true
+description = "file selection circle — toggle that file's selection"
+target = "recents.selected"
+
+[[screens.modes.elements]]
+position = [137, 938]
+looksMutating = true
+description = "share button — share selected files; safety-blocked"
+
+[[screens.modes.elements]]
+position = [283, 938]
+looksMutating = true
+description = "move button — move selected files; safety-blocked"
+
+[[screens.modes.elements]]
+position = [432, 938]
+looksMutating = true
+description = "delete button — delete selected files; safety-blocked"
+
+[[screens.modes.elements]]
+position = [866, 938]
+looksMutating = true
+description = "more actions button — open actions for selected files; safety-blocked because its actions can alter or disclose user data"
+
+[[screens.modes]]
+id = "list"
+description = "Recents in list layout shows each recent file as a row with its date and size, while retaining search, More, and the root tab bar."
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open view, sort, selection, scanning, and server options"
+target = "recents.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 208]
+description = "search field — enter Recents search mode"
+target = "recents.search"
+
+[[screens.modes.elements]]
+position = [895, 208]
+description = "dictation button — begin voice input for Recents search; safety-blocked because it records audio"
+looksMutating = true
+
+[[screens.modes.elements]]
+position = "any file row; moves with the list"
+isRepeating = true
+looksMutating = true
+description = "file row — opens the selected user file; safety-blocked because opening may download or change recency metadata"
+
+[[screens.modes.elements]]
+position = "cloud download icon beside an offloaded file row; moves with the list"
+isRepeating = true
+looksMutating = true
+description = "cloud download button — downloads the file to the device; safety-blocked"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — show storage locations and favorites"
+target = "browse.normal"
+
+[[screens.modes]]
+id = "search"
+description = "Recents search mode focuses a live search field above the current files, shows a layout toggle and cancel button, and raises the keyboard."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — enter text to filter recent files live"
+
+[[screens.modes.elements]]
+position = [580, 90]
+looksMutating = true
+description = "dictation button — begin voice input for search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch search results between list and icon layouts"
+target = "recents.search"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — close the keyboard and return to Recents"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = "any matching file row or thumbnail; moves with results"
+isRepeating = true
+looksMutating = true
+description = "matching file result — opens the selected user file; safety-blocked because opening may download or change recency metadata"
+
+[[screens.modes.elements]]
+position = "cloud download icon beside an offloaded result; moves with results"
+isRepeating = true
+looksMutating = true
+description = "cloud download button — downloads the file to the device; safety-blocked"
+
+[[screens.modes]]
+id = "search-query"
+description = "Recents live search with text entered replaces dictation with a clear button and offers a Name Contains suggestion above the keyboard."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — edit the live search query"
+
+[[screens.modes.elements]]
+position = [580, 90]
+description = "clear search button — erase the query and return to empty search"
+target = "recents.search"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch search results between list and icon layouts"
+target = "recents.search-query"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — discard the query, close the keyboard, and return to Recents"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [322, 160]
+description = "name contains suggestion — constrain search to file names containing the query"
+target = "recents.search-query"
+
+[[screens.modes.elements]]
+position = "any matching file result; moves with results"
+isRepeating = true
+looksMutating = true
+description = "matching file result — opens the selected user file; safety-blocked because opening may download or change recency metadata"
+
+[[screens]]
+id = "document-scanner"
+
+[[screens.modes]]
+id = "normal"
+description = "The live document scanner shows the camera preview with close, flash, filter, automatic-shutter, and capture controls."
+
+[[screens.modes.elements]]
+position = [97, 91]
+description = "close button — cancel scanning and return to Recents"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [338, 779]
+description = "flash button — open flash mode choices"
+target = "document-scanner.flash-menu"
+
+[[screens.modes.elements]]
+position = [500, 779]
+description = "filters button — open document filter choices"
+target = "document-scanner.filter-menu"
+
+[[screens.modes.elements]]
+position = [663, 779]
+description = "automatic shutter toggle — switch between automatic edge-detection capture and manual capture"
+
+[[screens.modes.elements]]
+position = [500, 888]
+looksMutating = true
+description = "capture button — capture a document page; safety-blocked because it creates scan data"
+
+[[screens.modes]]
+id = "flash-menu"
+description = "A Flash Mode popover overlays the scanner with Auto, On, and Off choices."
+
+[[screens.modes.elements]]
+position = [500, 681]
+description = "auto flash button — use automatic flash and close the popover"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [500, 731]
+description = "flash on button — force the flash on and close the popover"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [500, 780]
+description = "flash off button — disable flash and close the popover"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [850, 500]
+description = "camera preview background — dismiss the flash popover"
+target = "document-scanner.normal"
+
+[[screens.modes]]
+id = "filter-menu"
+description = "A Filter Mode popover overlays the scanner with Color, Grayscale, Black & White, and Photo choices."
+
+[[screens.modes.elements]]
+position = [370, 630]
+description = "color filter button — use the Color scan filter and close the popover"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [400, 680]
+description = "grayscale filter button — use the Grayscale scan filter and close the popover"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [430, 730]
+description = "black and white filter button — use the Black & White scan filter and close the popover"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [360, 780]
+description = "photo filter button — use the Photo scan filter and close the popover"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [900, 450]
+description = "camera preview background — dismiss the filter popover"
+target = "document-scanner.normal"
+
+[[screens]]
+id = "connect-server"
+
+[[screens.modes]]
+id = "normal"
+description = "A Connect to Server sheet has a focused server-address field, a cancel button, and a disabled confirmation button until an address is entered."
+
+[[screens.modes.elements]]
+position = [97, 101]
+description = "close button — cancel server connection and return to Recents"
+target = "recents.normal"
+
+[[screens.modes.elements]]
+position = [500, 192]
+description = "server address field — focus the field for entering a hostname or network address"
+
+[[screens.modes.elements]]
+position = [902, 101]
+looksMutating = true
+description = "connect confirmation button — connect to the entered server; safety-blocked"
+
+[[screens]]
+id = "shared"
+
+[[screens.modes]]
+id = "normal"
+description = "The Shared root is empty on this phone and shows search, More, an empty-state message, and the Recents, Shared, and Browse tab bar."
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open view, sort, scanning, and server options"
+target = "shared.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 208]
+description = "search field — enter Shared search mode"
+target = "shared.search"
+
+[[screens.modes.elements]]
+position = [895, 208]
+looksMutating = true
+description = "dictation button — begin voice input for Shared search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — show storage locations and favorites"
+target = "browse.normal"
+
+[[screens.modes]]
+id = "more-menu"
+description = "The Shared More popover offers disabled selection on the empty view, document scanning, server connection, icon or list layout, and sort choices."
+
+[[screens.modes.elements]]
+position = [628, 93]
+description = "select button — disabled because there are no shared files"
+
+[[screens.modes.elements]]
+position = [670, 142]
+description = "scan documents button — open the document scanner"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [684, 191]
+description = "connect to server button — open the server connection form"
+target = "connect-server.normal"
+
+[[screens.modes.elements]]
+position = [634, 266]
+description = "icons layout button — show shared files as an icon grid and close the menu"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [609, 316]
+description = "list layout button — show shared files as a list and close the menu"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [490, 391]
+description = "sort by name button — sort shared files by name and close the menu"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [490, 440]
+description = "sort by kind button — sort shared files by kind and close the menu"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [490, 491]
+description = "sort by date button — sort shared files by date and close the menu"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [490, 564]
+description = "sort by size button — sort shared files by size and close the menu"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [490, 613]
+description = "sort by tags button — sort shared files by tag and close the menu"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [165, 500]
+description = "background — dismiss the More popover"
+target = "shared.normal"
+
+[[screens.modes]]
+id = "search"
+description = "Shared search mode focuses an empty live search field, shows a layout toggle and cancel button, and raises the keyboard over the empty shared-files state."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — enter text to filter shared files live"
+
+[[screens.modes.elements]]
+position = [580, 90]
+looksMutating = true
+description = "dictation button — begin voice input for search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch Shared between list and icon layouts"
+target = "shared.search"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — close the keyboard and return to Shared"
+target = "shared.normal"
+
+[[screens]]
+id = "icloud-drive"
+
+[[screens.modes]]
+id = "normal"
+description = "The iCloud Drive location shows a searchable icon grid of cloud-backed folders, a More menu, a back button, sync status, and the root tab bar."
+
+[[screens.modes.elements]]
+position = [97, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open selection, creation, scanning, server, view, and sort options"
+target = "icloud-drive.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 146]
+description = "search field — enter iCloud Drive search mode"
+target = "icloud-drive.search"
+
+[[screens.modes.elements]]
+position = [895, 146]
+looksMutating = true
+description = "dictation button — begin voice input for iCloud Drive search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = "any folder tile; moves with the grid"
+isRepeating = true
+description = "folder tile — open the folder"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = "cloud download icon beside an offloaded folder; moves with the grid"
+isRepeating = true
+looksMutating = true
+description = "cloud download button — downloads the folder contents to the device; safety-blocked"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — remain in the current Browse hierarchy"
+target = "icloud-drive.normal"
+
+[[screens.modes]]
+id = "more-menu"
+description = "The iCloud Drive More popover offers selection, New Folder, document scanning, server connection, icon or list layout, and sort choices."
+
+[[screens.modes.elements]]
+position = [628, 93]
+description = "select button — enter folder and file selection mode"
+target = "icloud-drive.select"
+
+[[screens.modes.elements]]
+position = [668, 142]
+looksMutating = true
+description = "new folder button — create a folder in iCloud Drive; safety-blocked"
+
+[[screens.modes.elements]]
+position = [668, 192]
+description = "scan documents button — open the document scanner"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [684, 242]
+description = "connect to server button — open the server connection form"
+target = "connect-server.normal"
+
+[[screens.modes.elements]]
+position = [628, 316]
+description = "icons layout button — show iCloud Drive as an icon grid and close the menu"
+target = "icloud-drive.normal"
+
+[[screens.modes.elements]]
+position = [612, 366]
+description = "list layout button — show iCloud Drive as a list and close the menu"
+target = "icloud-drive.list"
+
+[[screens.modes.elements]]
+position = [483, 440]
+description = "sort by name button — sort items by name and close the menu"
+target = "icloud-drive.normal"
+
+[[screens.modes.elements]]
+position = [483, 512]
+description = "sort by kind button — sort items by kind and close the menu"
+target = "icloud-drive.normal"
+
+[[screens.modes.elements]]
+position = [483, 562]
+description = "sort by date button — sort items by date and close the menu"
+target = "icloud-drive.normal"
+
+[[screens.modes.elements]]
+position = [483, 612]
+description = "sort by size button — sort items by size and close the menu"
+target = "icloud-drive.normal"
+
+[[screens.modes.elements]]
+position = [483, 661]
+description = "sort by tags button — sort items by tag and close the menu"
+target = "icloud-drive.normal"
+
+[[screens.modes.elements]]
+position = [150, 500]
+description = "background — dismiss the More popover"
+target = "icloud-drive.normal"
+
+[[screens.modes]]
+id = "select"
+description = "iCloud Drive selection mode shows selection circles on every folder, Select All and Done controls, and disabled file-operation buttons until an item is selected."
+
+[[screens.modes.elements]]
+position = [174, 82]
+description = "select all button — select every visible folder"
+target = "icloud-drive.selected"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — leave selection mode"
+target = "icloud-drive.normal"
+
+[[screens.modes.elements]]
+position = "selection circle on any folder tile; moves with the grid"
+isRepeating = true
+description = "folder selection circle — select a folder without opening it"
+target = "icloud-drive.selected"
+
+[[screens.modes.elements]]
+position = [137, 938]
+looksMutating = true
+description = "share button — share selected items; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [283, 938]
+looksMutating = true
+description = "duplicate button — duplicate selected items; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [432, 938]
+looksMutating = true
+description = "move button — move selected items; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [580, 938]
+looksMutating = true
+description = "delete button — delete selected items; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "more actions button — disabled until an item is selected"
+
+[[screens.modes]]
+id = "selected"
+description = "iCloud Drive selection mode with one or more folders selected enables file operations; all data-changing actions remain safety-blocked."
+
+[[screens.modes.elements]]
+position = [174, 82]
+description = "select all button — select every visible folder"
+target = "icloud-drive.selected"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — clear the selection and leave selection mode"
+target = "icloud-drive.normal"
+
+[[screens.modes.elements]]
+position = "selection circle on any folder tile; moves with the grid"
+isRepeating = true
+description = "folder selection circle — toggle that folder's selection"
+target = "icloud-drive.selected"
+
+[[screens.modes.elements]]
+position = [137, 938]
+looksMutating = true
+description = "share button — share selected items; safety-blocked"
+
+[[screens.modes.elements]]
+position = [283, 938]
+looksMutating = true
+description = "duplicate button — duplicate selected items; safety-blocked"
+
+[[screens.modes.elements]]
+position = [432, 938]
+looksMutating = true
+description = "move button — move selected items; safety-blocked"
+
+[[screens.modes.elements]]
+position = [580, 938]
+looksMutating = true
+description = "delete button — delete selected items; safety-blocked"
+
+[[screens.modes.elements]]
+position = [866, 938]
+looksMutating = true
+description = "more actions button — open additional actions for selected items; safety-blocked"
+
+[[screens.modes]]
+id = "list"
+description = "iCloud Drive in list layout shows each folder as a dated row with a disclosure chevron and cloud status while retaining back, search, More, sync status, and the root tab bar."
+
+[[screens.modes.elements]]
+position = [97, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open selection, creation, scanning, server, view, and sort options"
+target = "icloud-drive.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 146]
+description = "search field — enter iCloud Drive search mode"
+target = "icloud-drive.search"
+
+[[screens.modes.elements]]
+position = [895, 146]
+looksMutating = true
+description = "dictation button — begin voice input for iCloud Drive search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = "any folder row or disclosure chevron; moves with the list"
+isRepeating = true
+description = "folder row — open the folder"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = "cloud download icon beside an offloaded folder row; moves with the list"
+isRepeating = true
+looksMutating = true
+description = "cloud download button — downloads the folder contents to the device; safety-blocked"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — remain in the current Browse hierarchy"
+target = "icloud-drive.list"
+
+[[screens.modes]]
+id = "search"
+description = "iCloud Drive search mode focuses a live search field above the current items, shows a layout toggle and cancel button, and raises the keyboard."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — enter text to filter iCloud Drive items live"
+
+[[screens.modes.elements]]
+position = [580, 90]
+looksMutating = true
+description = "dictation button — begin voice input for search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch search results between list and icon layouts"
+target = "icloud-drive.search"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — close the keyboard and return to iCloud Drive"
+target = "icloud-drive.list"
+
+[[screens.modes.elements]]
+position = "any matching folder or file result; moves with results"
+isRepeating = true
+description = "matching folder result — open the folder"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = "cloud download icon beside an offloaded result; moves with results"
+isRepeating = true
+looksMutating = true
+description = "cloud download button — downloads the item to the device; safety-blocked"
+
+[[screens]]
+id = "folder"
+
+[[screens.modes]]
+id = "normal"
+description = "An iCloud Drive folder shows its title and hierarchy menu, back, search, More, a list of contained files, sync status, and the root tab bar; Desktop is the observed example."
+
+[[screens.modes.elements]]
+position = [97, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [593, 82]
+description = "folder title menu button — open hierarchy and folder actions"
+target = "folder.title-menu"
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open folder selection, creation, scanning, server, view, and sort options"
+target = "folder.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 146]
+description = "search field — enter search within the current folder"
+target = "folder.search"
+
+[[screens.modes.elements]]
+position = [895, 146]
+looksMutating = true
+description = "dictation button — begin voice input for folder search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = "any file row; moves with the list"
+isRepeating = true
+looksMutating = true
+description = "file row — opens the selected user file; safety-blocked because opening may download or change recency metadata"
+
+[[screens.modes.elements]]
+position = "cloud download icon beside an offloaded file; moves with the list"
+isRepeating = true
+looksMutating = true
+description = "cloud download button — downloads the file to the device; safety-blocked"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — remain in the current Browse hierarchy"
+target = "folder.normal"
+
+[[screens.modes]]
+id = "title-menu"
+description = "The folder-title popover shows the current folder, its iCloud Drive parent, download controls, rename, copy, move, and Get Info."
+
+[[screens.modes.elements]]
+position = [483, 101]
+description = "current folder summary — identifies the current folder and its size"
+
+[[screens.modes.elements]]
+position = [483, 192]
+description = "iCloud Drive parent button — navigate to the iCloud Drive location"
+target = "icloud-drive.list"
+
+[[screens.modes.elements]]
+position = [483, 266]
+looksMutating = true
+description = "download now button — download the folder contents to the device; safety-blocked"
+
+[[screens.modes.elements]]
+position = [483, 316]
+looksMutating = true
+description = "keep downloaded button — pin the folder for local storage; safety-blocked"
+
+[[screens.modes.elements]]
+position = [483, 391]
+looksMutating = true
+description = "rename button — rename the folder; safety-blocked"
+
+[[screens.modes.elements]]
+position = [483, 440]
+looksMutating = true
+description = "copy button — copy the folder for later paste; safety-blocked"
+
+[[screens.modes.elements]]
+position = [483, 491]
+looksMutating = true
+description = "move button — move the folder to another location; safety-blocked"
+
+[[screens.modes.elements]]
+position = [483, 565]
+description = "get info button — show folder metadata"
+target = "item-info.normal"
+
+[[screens.modes.elements]]
+position = [900, 500]
+description = "background — dismiss the folder-title popover"
+target = "folder.normal"
+
+[[screens.modes]]
+id = "more-menu"
+description = "The folder More popover offers selection, New Folder, document scanning, server connection, icon or list layout, and sort choices."
+
+[[screens.modes.elements]]
+position = [628, 93]
+description = "select button — enter file selection mode"
+target = "folder.select"
+
+[[screens.modes.elements]]
+position = [668, 142]
+looksMutating = true
+description = "new folder button — create a folder here; safety-blocked"
+
+[[screens.modes.elements]]
+position = [668, 192]
+description = "scan documents button — open the document scanner"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [684, 242]
+description = "connect to server button — open the server connection form"
+target = "connect-server.normal"
+
+[[screens.modes.elements]]
+position = [628, 316]
+description = "icons layout button — show folder contents as an icon grid and close the menu"
+target = "folder.icons"
+
+[[screens.modes.elements]]
+position = [612, 366]
+description = "list layout button — show folder contents as a list and close the menu"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = [483, 440]
+description = "sort by name button — sort items by name and close the menu"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = [483, 512]
+description = "sort by kind button — sort items by kind and close the menu"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = [483, 562]
+description = "sort by date button — sort items by date and close the menu"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = [483, 612]
+description = "sort by size button — sort items by size and close the menu"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = [483, 661]
+description = "sort by tags button — sort items by tag and close the menu"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = [150, 500]
+description = "background — dismiss the More popover"
+target = "folder.normal"
+
+[[screens.modes]]
+id = "select"
+description = "Folder selection mode shows selection circles on each file, Select All and Done, and disabled file-operation buttons until an item is selected."
+
+[[screens.modes.elements]]
+position = [174, 82]
+description = "select all button — select every visible file"
+target = "folder.selected"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — leave selection mode"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = "selection circle on any file row; moves with the list"
+isRepeating = true
+description = "file selection circle — select a file without opening it"
+target = "folder.selected"
+
+[[screens.modes.elements]]
+position = [137, 938]
+looksMutating = true
+description = "share button — share selected files; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [283, 938]
+looksMutating = true
+description = "duplicate button — duplicate selected files; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [432, 938]
+looksMutating = true
+description = "move button — move selected files; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [580, 938]
+looksMutating = true
+description = "delete button — delete selected files; disabled with no selection and safety-blocked"
+
+[[screens.modes.elements]]
+position = [866, 938]
+description = "more actions button — disabled until a file is selected"
+
+[[screens.modes]]
+id = "selected"
+description = "Folder selection mode with one or more files selected enables file operations; all data-changing actions remain safety-blocked."
+
+[[screens.modes.elements]]
+position = [174, 82]
+description = "select all button — select every visible file"
+target = "folder.selected"
+
+[[screens.modes.elements]]
+position = [902, 82]
+description = "done button — clear the selection and leave selection mode"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = "selection circle on any file row; moves with the list"
+isRepeating = true
+description = "file selection circle — toggle that file's selection"
+target = "folder.selected"
+
+[[screens.modes.elements]]
+position = [137, 938]
+looksMutating = true
+description = "share button — share selected files; safety-blocked"
+
+[[screens.modes.elements]]
+position = [283, 938]
+looksMutating = true
+description = "duplicate button — duplicate selected files; safety-blocked"
+
+[[screens.modes.elements]]
+position = [432, 938]
+looksMutating = true
+description = "move button — move selected files; safety-blocked"
+
+[[screens.modes.elements]]
+position = [580, 938]
+looksMutating = true
+description = "delete button — delete selected files; safety-blocked"
+
+[[screens.modes.elements]]
+position = [866, 938]
+looksMutating = true
+description = "more actions button — open additional actions for selected files; safety-blocked"
+
+[[screens.modes]]
+id = "icons"
+description = "The current folder in icon layout shows files as thumbnails while retaining title menu, back, search, More, sync status, and the root tab bar."
+
+[[screens.modes.elements]]
+position = [97, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [593, 82]
+description = "folder title menu button — open hierarchy and folder actions"
+target = "folder.title-menu"
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open folder selection, creation, scanning, server, view, and sort options"
+target = "folder.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 146]
+description = "search field — enter search within the current folder"
+target = "folder.search"
+
+[[screens.modes.elements]]
+position = [895, 146]
+looksMutating = true
+description = "dictation button — begin voice input for folder search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = "any file thumbnail; moves with the grid"
+isRepeating = true
+looksMutating = true
+description = "file thumbnail — opens the selected user file; safety-blocked because opening may download or change recency metadata"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — remain in the current Browse hierarchy"
+target = "folder.icons"
+
+[[screens.modes]]
+id = "search"
+description = "Folder search mode focuses a live search field above current-folder results, shows a layout toggle and cancel button, and raises the keyboard."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — enter text to filter current-folder items live"
+
+[[screens.modes.elements]]
+position = [580, 90]
+looksMutating = true
+description = "dictation button — begin voice input for search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch folder search results between list and icon layouts"
+target = "folder.search"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — close the keyboard and return to the folder"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = "any matching file result; moves with results"
+isRepeating = true
+looksMutating = true
+description = "matching file result — opens the selected user file; safety-blocked because opening may download or change recency metadata"
+
+[[screens.modes.elements]]
+position = "cloud download icon beside an offloaded result; moves with results"
+isRepeating = true
+looksMutating = true
+description = "cloud download button — downloads the file to the device; safety-blocked"
+
+[[screens]]
+id = "item-info"
+
+[[screens.modes]]
+id = "normal"
+description = "An Info sheet presents an item's preview, name, kind, size, creation and modification dates, containing location, and tags; Desktop folder metadata is the observed example."
+
+[[screens.modes.elements]]
+position = [97, 101]
+description = "close button — dismiss the Info sheet and return to the folder"
+target = "folder.normal"
+
+[[screens.modes.elements]]
+position = [870, 859]
+description = "containing location link — open the item's iCloud Drive location"
+target = "icloud-drive.list"
+
+[[screens.modes.elements]]
+position = [870, 896]
+looksMutating = true
+description = "add tags button — assign tags to the item; safety-blocked"
+
+[[screens]]
+id = "browse"
+
+[[screens.modes]]
+id = "normal"
+description = "The Browse root lists storage locations and colored tags beneath search and More, with collapsible Locations and Tags sections and the root tab bar."
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open editing and connection options for Browse"
+target = "browse.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 208]
+description = "search field — enter Browse search mode"
+target = "browse.search"
+
+[[screens.modes.elements]]
+position = [895, 208]
+looksMutating = true
+description = "dictation button — begin voice input for Browse search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [900, 280]
+description = "locations disclosure button — collapse or expand storage locations"
+target = "browse.locations-collapsed"
+
+[[screens.modes.elements]]
+position = [500, 336]
+description = "iCloud Drive row — open iCloud Drive"
+target = "icloud-drive.list"
+
+[[screens.modes.elements]]
+position = [500, 398]
+description = "On My iPhone row — open local device storage"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [500, 459]
+description = "Recently Deleted row — open recoverable deleted items"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [900, 537]
+description = "tags disclosure button — collapse or expand the tags list"
+target = "browse.tags-collapsed"
+
+[[screens.modes.elements]]
+position = "any colored tag row; moves with the scrollable list"
+isRepeating = true
+description = "tag row — show items assigned that tag"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = "Browse list background; drag vertically"
+description = "Browse list — scroll to reveal additional tags and sections"
+target = "browse.scrolled"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — show storage locations and tags"
+target = "browse.normal"
+
+[[screens.modes]]
+id = "more-menu"
+description = "The Browse More popover offers document scanning, server connection, and editing of Browse locations and tags."
+
+[[screens.modes.elements]]
+position = [640, 93]
+description = "scan documents button — open the document scanner"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [660, 142]
+description = "connect to server button — open the server connection form"
+target = "connect-server.normal"
+
+[[screens.modes.elements]]
+position = [535, 192]
+looksMutating = true
+description = "edit button — edit Browse locations, order, and tags; safety-blocked"
+
+[[screens.modes.elements]]
+position = [150, 500]
+description = "background — dismiss the Browse More popover"
+target = "browse.normal"
+
+[[screens.modes]]
+id = "locations-collapsed"
+description = "The Browse root with Locations collapsed shows the full tags list directly beneath the closed Locations header, while retaining search, More, and the root tab bar."
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open editing and connection options for Browse"
+target = "browse.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 208]
+description = "search field — enter Browse search mode"
+target = "browse.search"
+
+[[screens.modes.elements]]
+position = [895, 208]
+looksMutating = true
+description = "dictation button — begin voice input for Browse search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [900, 280]
+description = "locations disclosure button — expand storage locations"
+target = "browse.normal"
+
+[[screens.modes.elements]]
+position = [900, 352]
+description = "tags disclosure button — collapse the tags list"
+target = "browse.both-collapsed"
+
+[[screens.modes.elements]]
+position = "any colored tag row; moves with the scrollable list"
+isRepeating = true
+description = "tag row — show items assigned that tag"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = "Browse list background; drag vertically"
+description = "Browse list — scroll through the tags list"
+target = "browse.scrolled"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — show storage locations and tags"
+target = "browse.locations-collapsed"
+
+[[screens.modes]]
+id = "both-collapsed"
+description = "The Browse root with both Locations and Tags collapsed shows only the two closed section headers beneath search and More."
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open editing and connection options for Browse"
+target = "browse.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 208]
+description = "search field — enter Browse search mode"
+target = "browse.search"
+
+[[screens.modes.elements]]
+position = [895, 208]
+looksMutating = true
+description = "dictation button — begin voice input for Browse search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [900, 280]
+description = "locations disclosure button — expand storage locations"
+target = "browse.tags-collapsed"
+
+[[screens.modes.elements]]
+position = [900, 352]
+description = "tags disclosure button — expand the tags list"
+target = "browse.locations-collapsed"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — show storage locations and tags"
+target = "browse.both-collapsed"
+
+[[screens.modes]]
+id = "tags-collapsed"
+description = "The Browse root with Tags collapsed shows expanded iCloud Drive, On My iPhone, and Recently Deleted locations above the closed Tags header."
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open editing and connection options for Browse"
+target = "browse.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 208]
+description = "search field — enter Browse search mode"
+target = "browse.search"
+
+[[screens.modes.elements]]
+position = [895, 208]
+looksMutating = true
+description = "dictation button — begin voice input for Browse search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [900, 280]
+description = "locations disclosure button — collapse storage locations"
+target = "browse.both-collapsed"
+
+[[screens.modes.elements]]
+position = [500, 336]
+description = "iCloud Drive row — open iCloud Drive"
+target = "icloud-drive.list"
+
+[[screens.modes.elements]]
+position = [500, 398]
+description = "On My iPhone row — open local device storage"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [500, 459]
+description = "Recently Deleted row — open recoverable deleted items"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [900, 537]
+description = "tags disclosure button — expand the tags list"
+target = "browse.normal"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — show storage locations and tags"
+target = "browse.tags-collapsed"
+
+[[screens.modes]]
+id = "search"
+description = "Browse search mode focuses a live search field, shows a layout toggle and cancel button, and raises the keyboard over storage and tag results."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — enter text to filter files across Browse locations"
+
+[[screens.modes.elements]]
+position = [580, 90]
+looksMutating = true
+description = "dictation button — begin voice input for search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch Browse search results between list and icon layouts"
+target = "browse.search"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — close the keyboard and return to Browse"
+target = "browse.normal"
+
+[[screens.modes.elements]]
+position = "any matching folder or file result; moves with results"
+isRepeating = true
+looksMutating = true
+description = "matching file result — opens the selected user item; safety-blocked because opening may download or change recency metadata"
+
+[[screens.modes]]
+id = "scrolled"
+description = "The Browse list scrolled down reveals later custom tags while section headers and earlier rows move upward; the root tab bar remains fixed."
+
+[[screens.modes.elements]]
+position = "any colored tag row; moves with the scrollable list"
+isRepeating = true
+description = "tag row — show items assigned that tag"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = "Browse list background; drag vertically"
+description = "Browse list — scroll back toward storage locations and earlier tags"
+target = "browse.normal"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — show storage locations and tags"
+target = "browse.scrolled"
+
+[[screens]]
+id = "local-storage"
+
+[[screens.modes]]
+id = "normal"
+description = "The empty On My iPhone location shows back, search, More, an empty-state message, and the root tab bar."
+
+[[screens.modes.elements]]
+position = [97, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open creation, scanning, server, view, and sort options"
+target = "local-storage.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 146]
+description = "search field — enter search within local storage"
+target = "local-storage.search"
+
+[[screens.modes.elements]]
+position = [895, 146]
+looksMutating = true
+description = "dictation button — begin voice input for local search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — remain in local storage"
+target = "local-storage.normal"
+
+[[screens.modes]]
+id = "more-menu"
+description = "The empty local-storage More popover offers disabled selection, New Folder, document scanning, server connection, icon or list layout, and sort choices."
+
+[[screens.modes.elements]]
+position = [628, 93]
+description = "select button — disabled because local storage is empty"
+
+[[screens.modes.elements]]
+position = [668, 142]
+looksMutating = true
+description = "new folder button — create a folder in local storage; safety-blocked"
+
+[[screens.modes.elements]]
+position = [668, 192]
+description = "scan documents button — open the document scanner"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [684, 242]
+description = "connect to server button — open the server connection form"
+target = "connect-server.normal"
+
+[[screens.modes.elements]]
+position = [628, 316]
+description = "icons layout button — use icon layout and close the menu"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [612, 366]
+description = "list layout button — use list layout and close the menu"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [483, 440]
+description = "sort by name button — sort local items by name and close the menu"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [483, 512]
+description = "sort by kind button — sort local items by kind and close the menu"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [483, 562]
+description = "sort by date button — sort local items by date and close the menu"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [483, 612]
+description = "sort by size button — sort local items by size and close the menu"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [483, 661]
+description = "sort by tags button — sort local items by tag and close the menu"
+target = "local-storage.normal"
+
+[[screens.modes.elements]]
+position = [150, 500]
+description = "background — dismiss the local-storage More popover"
+target = "local-storage.normal"
+
+[[screens.modes]]
+id = "search"
+description = "Local-storage search mode focuses an empty live search field, shows a layout toggle and cancel button, and raises the keyboard over the empty state."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — enter text to filter local items live"
+
+[[screens.modes.elements]]
+position = [580, 90]
+looksMutating = true
+description = "dictation button — begin voice input for search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch local storage between list and icon layouts"
+target = "local-storage.search"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — close the keyboard and return to local storage"
+target = "local-storage.normal"
+
+[[screens]]
+id = "recently-deleted"
+
+[[screens.modes]]
+id = "normal"
+description = "The empty Recently Deleted location shows back, search, More, a retention warning, and the root tab bar."
+
+[[screens.modes.elements]]
+position = [97, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open disabled selection, scanning, server, view, and sort options"
+target = "recently-deleted.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 146]
+description = "search field — enter search within Recently Deleted"
+target = "recently-deleted.search"
+
+[[screens.modes.elements]]
+position = [895, 146]
+looksMutating = true
+description = "dictation button — begin voice input for deleted-items search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — remain in Recently Deleted"
+target = "recently-deleted.normal"
+
+[[screens.modes]]
+id = "more-menu"
+description = "The empty Recently Deleted More popover offers disabled selection, document scanning, server connection, icon or list layout, and sort choices."
+
+[[screens.modes.elements]]
+position = [628, 93]
+description = "select button — disabled because Recently Deleted is empty"
+
+[[screens.modes.elements]]
+position = [668, 142]
+description = "scan documents button — open the document scanner"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [684, 192]
+description = "connect to server button — open the server connection form"
+target = "connect-server.normal"
+
+[[screens.modes.elements]]
+position = [628, 266]
+description = "icons layout button — use icon layout and close the menu"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [612, 316]
+description = "list layout button — use list layout and close the menu"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [483, 391]
+description = "sort by name button — sort deleted items by name and close the menu"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [483, 463]
+description = "sort by kind button — sort deleted items by kind and close the menu"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [483, 512]
+description = "sort by date button — sort deleted items by date and close the menu"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [483, 562]
+description = "sort by size button — sort deleted items by size and close the menu"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [483, 612]
+description = "sort by tags button — sort deleted items by tag and close the menu"
+target = "recently-deleted.normal"
+
+[[screens.modes.elements]]
+position = [150, 500]
+description = "background — dismiss the Recently Deleted More popover"
+target = "recently-deleted.normal"
+
+[[screens.modes]]
+id = "search"
+description = "Recently Deleted search mode focuses an empty live search field, shows a layout toggle and cancel button, and raises the keyboard over the empty state."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — enter text to filter deleted items live"
+
+[[screens.modes.elements]]
+position = [580, 90]
+looksMutating = true
+description = "dictation button — begin voice input for search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch deleted-items search between list and icon layouts"
+target = "recently-deleted.search"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — close the keyboard and return to Recently Deleted"
+target = "recently-deleted.normal"
+
+[[screens]]
+id = "tag-results"
+
+[[screens.modes]]
+id = "normal"
+description = "A colored-tag results screen shows back, search, More, an empty state when no files carry that tag, and the root tab bar; Red is the observed tag."
+
+[[screens.modes.elements]]
+position = [97, 82]
+description = "back button — return to the presenting screen"
+
+[[screens.modes.elements]]
+position = [903, 82]
+description = "more button — open disabled selection, scanning, server, view, and sort options"
+target = "tag-results.more-menu"
+
+[[screens.modes.elements]]
+position = [500, 146]
+description = "search field — enter search within tagged items"
+target = "tag-results.search"
+
+[[screens.modes.elements]]
+position = [895, 146]
+looksMutating = true
+description = "dictation button — begin voice input for tagged-items search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [280, 946]
+description = "recents tab — show recently used files"
+target = "recents.list"
+
+[[screens.modes.elements]]
+position = [500, 946]
+description = "shared tab — show shared files and collaboration activity"
+target = "shared.normal"
+
+[[screens.modes.elements]]
+position = [742, 946]
+description = "browse tab — remain in tag results"
+target = "tag-results.normal"
+
+[[screens.modes]]
+id = "more-menu"
+description = "The empty tag-results More popover offers disabled selection, document scanning, server connection, icon or list layout, and sort choices."
+
+[[screens.modes.elements]]
+position = [628, 93]
+description = "select button — disabled because the tag has no files"
+
+[[screens.modes.elements]]
+position = [668, 142]
+description = "scan documents button — open the document scanner"
+target = "document-scanner.normal"
+
+[[screens.modes.elements]]
+position = [684, 192]
+description = "connect to server button — open the server connection form"
+target = "connect-server.normal"
+
+[[screens.modes.elements]]
+position = [628, 266]
+description = "icons layout button — use icon layout and close the menu"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = [612, 316]
+description = "list layout button — use list layout and close the menu"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = [483, 391]
+description = "sort by name button — sort tagged items by name and close the menu"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = [483, 463]
+description = "sort by kind button — sort tagged items by kind and close the menu"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = [483, 512]
+description = "sort by date button — sort tagged items by date and close the menu"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = [483, 562]
+description = "sort by size button — sort tagged items by size and close the menu"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = [483, 612]
+description = "sort by tags button — sort tagged items by tag and close the menu"
+target = "tag-results.normal"
+
+[[screens.modes.elements]]
+position = [150, 500]
+description = "background — dismiss the tag-results More popover"
+target = "tag-results.normal"
+
+[[screens.modes]]
+id = "search"
+description = "Tag-results search mode focuses an empty live search field, shows a layout toggle and cancel button, and raises the keyboard over the empty state."
+
+[[screens.modes.elements]]
+position = [350, 90]
+description = "search field — enter text to filter tagged items live"
+
+[[screens.modes.elements]]
+position = [580, 90]
+looksMutating = true
+description = "dictation button — begin voice input for search; safety-blocked because it records audio"
+
+[[screens.modes.elements]]
+position = [749, 90]
+description = "layout toggle — switch tag-results search between list and icon layouts"
+target = "tag-results.search"
+
+[[screens.modes.elements]]
+position = [902, 90]
+description = "cancel search button — close the keyboard and return to tag results"
+target = "tag-results.normal"

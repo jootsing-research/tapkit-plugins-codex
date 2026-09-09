@@ -1,0 +1,1858 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>photos</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; }
+[hidden] { display: none !important; }
+body { font: 14px/1.45 -apple-system, system-ui, sans-serif; background: #f5f5f7; color: #1d1d1f; }
+nav { position: fixed; inset: 0 auto 0 0; width: 190px; padding: 24px 16px; overflow-y: auto; }
+nav .t { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #86868b; margin-bottom: 8px; }
+nav a { display: block; padding: 5px 10px; border-radius: 7px; color: #1d1d1f; text-decoration: none;
+        text-transform: capitalize; }
+nav a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+main { margin-left: 190px; padding: 28px 36px; }
+h2 { font-size: 20px; text-transform: capitalize; margin-bottom: 12px; }
+.tabs { display: inline-flex; gap: 2px; background: #e8e8ed; border-radius: 9px; padding: 2px; margin-bottom: 16px; }
+.tabs a { padding: 3px 14px; border-radius: 7px; font-size: 13px; color: #1d1d1f; text-decoration: none;
+          text-transform: capitalize; }
+.tabs a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+p.content { max-width: 760px; color: #3a3a3c; margin-bottom: 16px; }
+.mode { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+.frame { position: relative; flex: none; width: 280px; aspect-ratio: 393/852; background: #fff;
+         border-radius: 36px; box-shadow: 0 1px 4px rgba(0,0,0,.25); overflow: hidden; }
+.el { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+      border: 1.5px solid; }
+.el span { position: absolute; left: 17px; top: 0; font-size: 9px; font-weight: 600; white-space: nowrap; }
+table { border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12); min-width: 420px; flex: 1; }
+th, td { text-align: left; padding: 6px 12px; vertical-align: top; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #6e6e73;
+     border-bottom: 1px solid #e5e5ea; }
+tr + tr td { border-top: 1px solid #f0f0f2; }
+td.d { font-weight: 600; white-space: nowrap; }
+td.d.unseen { color: #d70015; font-style: italic; }
+td.p, td.f { color: #86868b; }
+td.t { font-family: ui-monospace, monospace; font-size: 12px; }
+</style>
+
+<nav>
+  <div class=t>Screens</div>
+  <a data-screen="library" href="#library/normal">library</a>
+  <a data-screen="slideshow" href="#slideshow/music-permission">slideshow</a>
+  <a data-screen="photo" href="#photo/normal">photo</a>
+  <a data-screen="collections" href="#collections/normal">collections</a>
+  <a data-screen="search" href="#search/normal">search</a>
+  <a data-screen="pinned" href="#pinned/normal">pinned</a>
+  <a data-screen="collection" href="#collection/normal">collection</a>
+</nav>
+
+<main>
+  <section data-screen="library">
+    <h2>library</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#library/normal">normal</a>
+      <a data-mode="select" href="#library/select">select</a>
+      <a data-mode="select-more-menu" href="#library/select-more-menu">select-more-menu</a>
+      <a data-mode="select-sort-menu" href="#library/select-sort-menu">select-sort-menu</a>
+      <a data-mode="select-view-options" href="#library/select-view-options">select-view-options</a>
+      <a data-mode="select-filter-menu" href="#library/select-filter-menu">select-filter-menu</a>
+      <a data-mode="sort-menu" href="#library/sort-menu">sort-menu</a>
+      <a data-mode="view-options" href="#library/view-options">view-options</a>
+      <a data-mode="filter-menu" href="#library/filter-menu">filter-menu</a>
+      <a data-mode="filtered-empty" href="#library/filtered-empty">filtered-empty</a>
+      <a data-mode="sort-menu-filtered" href="#library/sort-menu-filtered">sort-menu-filtered</a>
+      <a data-mode="filter-menu-filtered" href="#library/filter-menu-filtered">filter-menu-filtered</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The main photo library, showing the newest items in a three-column grid with Library, Collections, and Search navigation.</p>
+      <div class=frame>
+        <div class=el data-x="665" data-y="95" data-hue="102" title="library.sort-menu"><span>sort and filter menu button — open the library sort, filter, and view options menu</span></div>
+        <div class=el data-x="856" data-y="95" data-hue="319" title="library.select"><span>Select button — enter multi-item selection mode</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="334" title="collections.normal"><span>Collections button — open the Collections dashboard</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort and filter menu button — open the library sort, filter, and view options menu</td><td class=t>665, 95</td>          <td class=t>library.sort-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Select button — enter multi-item selection mode</td><td class=t>856, 95</td>          <td class=t>library.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo thumbnail — open the item viewer</td><td class=p>any photo thumbnail in the scrollable grid</td>          <td class=t>photo.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>content area — scroll vertically</td><td class=p>photo grid; drag vertically</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections dashboard</td><td class=t>411, 940</td>          <td class=t>collections.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">The library in multi-item selection mode, with selection controls above the grid and Share and Delete actions below.</p>
+      <div class=frame>
+        <div class=el data-x="621" data-y="95" data-hue="207" title="library.select-sort-menu"><span>sort and filter menu button — open view controls while selecting items</span></div>
+        <div class=el data-x="758" data-y="95" data-hue="310" title="library.select-more-menu"><span>more button — inactive with no selection, or open selected-item actions when items are selected</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="325" title="library.normal"><span>close button — leave selection mode</span></div>
+        <div class=el data-x="134" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="287" title=""><span>delete button — delete selected items after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort and filter menu button — open view controls while selecting items</td><td class=t>621, 95</td>          <td class=t>library.select-sort-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — inactive with no selection, or open selected-item actions when items are selected</td><td class=t>758, 95</td>          <td class=t>library.select-more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close button — leave selection mode</td><td class=t>903, 95</td>          <td class=t>library.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo selection toggle — select or deselect an item without modifying it</td><td class=p>any photo thumbnail in the selection grid</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>content area — scroll vertically</td><td class=p>selection grid; drag vertically</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>134, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected items after confirmation</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select-more-menu">
+      <p class=content style="flex-basis:100%">The selected-item actions menu, offering slideshow, copy, and several data-changing photo operations.</p>
+      <div class=frame>
+        <div class=el data-x="315" data-y="103" data-hue="87" title="slideshow.music-permission"><span>slideshow button — start a slideshow of the selected items</span></div>
+        <div class=el data-x="513" data-y="103" data-hue="315" title=""><span>favorite button — mark the selected items as favorites</span></div>
+        <div class=el data-x="714" data-y="103" data-hue="32" title=""><span>delete button — delete the selected items after confirmation</span></div>
+        <div class=el data-x="516" data-y="199" data-hue="109" title=""><span>copy command — copy selected items</span></div>
+        <div class=el data-x="516" data-y="248" data-hue="131" title=""><span>duplicate command — create copies of the selected items</span></div>
+        <div class=el data-x="516" data-y="296" data-hue="302" title=""><span>hide command — move the selected items into the Hidden collection</span></div>
+        <div class=el data-x="516" data-y="370" data-hue="137" title=""><span>add to album command — add the selected items to an album</span></div>
+        <div class=el data-x="516" data-y="445" data-hue="129" title=""><span>adjust date and time command — change capture metadata for the selected items</span></div>
+        <div class=el data-x="516" data-y="494" data-hue="239" title=""><span>adjust location command — change location metadata for the selected items</span></div>
+        <div class=el data-x="758" data-y="95" data-hue="115" title="library.select"><span>highlighted more button — close the selected-item actions menu</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="325" title=""><span>close button — leave selection mode</span></div>
+        <div class=el data-x="134" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="287" title=""><span>delete button — delete selected items after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>slideshow button — start a slideshow of the selected items</td><td class=t>315, 103</td>          <td class=t>slideshow.music-permission</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorite button — mark the selected items as favorites</td><td class=t>513, 103</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete the selected items after confirmation</td><td class=t>714, 103</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>copy command — copy selected items</td><td class=t>516, 199</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>duplicate command — create copies of the selected items</td><td class=t>516, 248</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>hide command — move the selected items into the Hidden collection</td><td class=t>516, 296</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add to album command — add the selected items to an album</td><td class=t>516, 370</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>adjust date and time command — change capture metadata for the selected items</td><td class=t>516, 445</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>adjust location command — change location metadata for the selected items</td><td class=t>516, 494</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>highlighted more button — close the selected-item actions menu</td><td class=t>758, 95</td>          <td class=t>library.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close button — leave selection mode</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any visible photo thumbnail outside the actions popover while selecting</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>134, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected items after confirmation</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select-sort-menu">
+      <p class=content style="flex-basis:100%">Selection mode with the sort, filter, and view-options popover open.</p>
+      <div class=frame>
+        <div class=el data-x="516" data-y="115" data-hue="142" title="library.select"><span>sort by recently added option — order items by addition time and close the menu</span></div>
+        <div class=el data-x="516" data-y="179" data-hue="7" title="library.select"><span>sort by date captured option — order items by capture date and close the menu</span></div>
+        <div class=el data-x="516" data-y="253" data-hue="25" title="library.select-filter-menu"><span>filter submenu — expand item filters while in selection mode</span></div>
+        <div class=el data-x="516" data-y="301" data-hue="331" title="library.select-view-options"><span>view options submenu — expand grid and visibility controls while selecting</span></div>
+        <div class=el data-x="621" data-y="95" data-hue="14" title="library.select"><span>highlighted sort menu button — close the popover and return to selection mode</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="325" title=""><span>close button — leave selection mode</span></div>
+        <div class=el data-x="134" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="287" title=""><span>delete button — delete selected items after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort by recently added option — order items by addition time and close the menu</td><td class=t>516, 115</td>          <td class=t>library.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date captured option — order items by capture date and close the menu</td><td class=t>516, 179</td>          <td class=t>library.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>filter submenu — expand item filters while in selection mode</td><td class=t>516, 253</td>          <td class=t>library.select-filter-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>view options submenu — expand grid and visibility controls while selecting</td><td class=t>516, 301</td>          <td class=t>library.select-view-options</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>highlighted sort menu button — close the popover and return to selection mode</td><td class=t>621, 95</td>          <td class=t>library.select</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close button — leave selection mode</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any visible photo thumbnail outside the popover while selecting</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>134, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected items after confirmation</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select-view-options">
+      <p class=content style="flex-basis:100%">Expanded View Options during selection mode, offering grid zoom and visibility toggles.</p>
+      <div class=frame>
+        <div class=el data-x="516" data-y="293" data-hue="318" title="library.select-sort-menu"><span>view options header — collapse the submenu back to selection-mode sort controls</span></div>
+        <div class=el data-x="516" data-y="366" data-hue="65" title=""><span>zoom in button — enlarge thumbnails and reduce the grid to fewer columns</span></div>
+        <div class=el data-x="516" data-y="415" data-hue="167" title=""><span>zoom out button — shrink thumbnails and increase the grid column count</span></div>
+        <div class=el data-x="516" data-y="523" data-hue="133" title=""><span>screenshots visibility toggle — show or hide screenshots in the selection grid</span></div>
+        <div class=el data-x="516" data-y="573" data-hue="353" title=""><span>shared with you visibility toggle — show or hide items shared through Messages</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="325" title=""><span>close button — leave selection mode</span></div>
+        <div class=el data-x="134" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="287" title=""><span>delete button — delete selected items after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>view options header — collapse the submenu back to selection-mode sort controls</td><td class=t>516, 293</td>          <td class=t>library.select-sort-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>zoom in button — enlarge thumbnails and reduce the grid to fewer columns</td><td class=t>516, 366</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>zoom out button — shrink thumbnails and increase the grid column count</td><td class=t>516, 415</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>screenshots visibility toggle — show or hide screenshots in the selection grid</td><td class=t>516, 523</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared with you visibility toggle — show or hide items shared through Messages</td><td class=t>516, 573</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close button — leave selection mode</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any visible photo thumbnail outside the view-options popover while selecting</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>134, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected items after confirmation</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select-filter-menu">
+      <p class=content style="flex-basis:100%">The expanded item-filter submenu while the library remains in selection mode.</p>
+      <div class=frame>
+        <div class=el data-x="516" data-y="273" data-hue="338" title=""><span>all items filter — clear active filters</span></div>
+        <div class=el data-x="516" data-y="348" data-hue="237" title=""><span>favorites filter — toggle inclusion of favorited items</span></div>
+        <div class=el data-x="516" data-y="397" data-hue="272" title=""><span>edited filter — toggle inclusion of edited items</span></div>
+        <div class=el data-x="516" data-y="447" data-hue="102" title=""><span>photos filter — toggle inclusion of still photos</span></div>
+        <div class=el data-x="516" data-y="496" data-hue="64" title=""><span>videos filter — toggle inclusion of videos</span></div>
+        <div class=el data-x="516" data-y="546" data-hue="212" title=""><span>screenshots filter — toggle inclusion of screenshots</span></div>
+        <div class=el data-x="516" data-y="595" data-hue="22" title=""><span>shared with you filter — toggle inclusion of items shared through Messages</span></div>
+        <div class=el data-x="516" data-y="644" data-hue="299" title=""><span>not in an album filter — toggle inclusion of items outside albums</span></div>
+        <div class=el data-x="516" data-y="201" data-hue="189" title="library.select-sort-menu"><span>filter header — collapse the submenu back to selection-mode sort controls</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="325" title=""><span>close button — leave selection mode</span></div>
+        <div class=el data-x="134" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="866" data-y="938" data-hue="287" title=""><span>delete button — delete selected items after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>all items filter — clear active filters</td><td class=t>516, 273</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorites filter — toggle inclusion of favorited items</td><td class=t>516, 348</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>edited filter — toggle inclusion of edited items</td><td class=t>516, 397</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photos filter — toggle inclusion of still photos</td><td class=t>516, 447</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>videos filter — toggle inclusion of videos</td><td class=t>516, 496</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>screenshots filter — toggle inclusion of screenshots</td><td class=t>516, 546</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared with you filter — toggle inclusion of items shared through Messages</td><td class=t>516, 595</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>not in an album filter — toggle inclusion of items outside albums</td><td class=t>516, 644</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>filter header — collapse the submenu back to selection-mode sort controls</td><td class=t>516, 201</td>          <td class=t>library.select-sort-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close button — leave selection mode</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any visible photo thumbnail outside the filter popover while selecting</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>134, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete selected items after confirmation</td><td class=t>866, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="sort-menu">
+      <p class=content style="flex-basis:100%">The library with a popover offering sort order, filtering, and view options.</p>
+      <div class=frame>
+        <div class=el data-x="435" data-y="115" data-hue="344" title=""><span>sort by recently added option — order the library by when items were added and close the menu</span></div>
+        <div class=el data-x="435" data-y="179" data-hue="263" title=""><span>sort by date captured option — order the library by capture date and close the menu</span></div>
+        <div class=el data-x="435" data-y="253" data-hue="48" title="library.filter-menu"><span>filter submenu — expand the library item filters</span></div>
+        <div class=el data-x="435" data-y="301" data-hue="358" title="library.view-options"><span>view options submenu — expand grid zoom, aspect ratio, and visibility options</span></div>
+        <div class=el data-x="665" data-y="95" data-hue="359" title="library.normal"><span>highlighted sort menu button — close the popover</span></div>
+        <div class=el data-x="856" data-y="95" data-hue="104" title=""><span>Select button — enter selection mode</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort by recently added option — order the library by when items were added and close the menu</td><td class=t>435, 115</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date captured option — order the library by capture date and close the menu</td><td class=t>435, 179</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>filter submenu — expand the library item filters</td><td class=t>435, 253</td>          <td class=t>library.filter-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>view options submenu — expand grid zoom, aspect ratio, and visibility options</td><td class=t>435, 301</td>          <td class=t>library.view-options</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>highlighted sort menu button — close the popover</td><td class=t>665, 95</td>          <td class=t>library.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Select button — enter selection mode</td><td class=t>856, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any visible photo thumbnail outside the popover</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="view-options">
+      <p class=content style="flex-basis:100%">The expanded View Options submenu over the library, with grid sizing, aspect-ratio, and visibility controls; option rows shift downward when a hidden-items status subtitle is present.</p>
+      <div class=frame>
+        <div class=el data-x="435" data-y="293" data-hue="226" title="library.sort-menu"><span>view options header — collapse the submenu back to the sort menu</span></div>
+        <div class=el data-x="856" data-y="95" data-hue="104" title=""><span>Select button — enter selection mode</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>view options header — collapse the submenu back to the sort menu</td><td class=t>435, 293</td>          <td class=t>library.sort-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>zoom in button — enlarge thumbnails and reduce the grid to fewer columns</td><td class=p>Zoom In row in the View Options popover; shifts when a status subtitle appears</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>zoom out button — shrink thumbnails and increase the grid column count</td><td class=p>Zoom Out row in the View Options popover; shifts when a status subtitle appears</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>aspect ratio grid toggle — switch between aspect-ratio thumbnails and a square photo grid</td><td class=p>aspect-ratio row in the View Options popover; shifts when a status subtitle appears</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>screenshots visibility toggle — show or hide screenshots in the library grid</td><td class=p>Screenshots row in the View Options popover; shifts when a status subtitle appears</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared with you visibility toggle — show or hide items shared through Messages</td><td class=p>Shared with You row in the View Options popover; shifts when a status subtitle appears</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Select button — enter selection mode</td><td class=t>856, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any visible photo thumbnail outside the view-options popover</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="filter-menu">
+      <p class=content style="flex-basis:100%">The expanded Filter submenu over the library, offering item-type and metadata filters.</p>
+      <div class=frame>
+        <div class=el data-x="435" data-y="273" data-hue="216" title=""><span>all items filter — show every library item</span></div>
+        <div class=el data-x="435" data-y="348" data-hue="252" title="library.filtered-empty"><span>favorites filter — show only favorited items and close the menu</span></div>
+        <div class=el data-x="435" data-y="397" data-hue="272" title=""><span>edited filter — toggle inclusion of edited items</span></div>
+        <div class=el data-x="435" data-y="447" data-hue="102" title=""><span>photos filter — toggle inclusion of still photos</span></div>
+        <div class=el data-x="435" data-y="496" data-hue="64" title=""><span>videos filter — toggle inclusion of videos</span></div>
+        <div class=el data-x="435" data-y="546" data-hue="212" title=""><span>screenshots filter — toggle inclusion of screenshots</span></div>
+        <div class=el data-x="435" data-y="595" data-hue="232" title=""><span>shared with you filter — toggle shared items</span></div>
+        <div class=el data-x="435" data-y="644" data-hue="296" title=""><span>not in an album filter — toggle items outside albums</span></div>
+        <div class=el data-x="435" data-y="201" data-hue="154" title=""><span>filter header — collapse the expanded filter submenu</span></div>
+        <div class=el data-x="856" data-y="95" data-hue="104" title=""><span>Select button — enter selection mode</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>all items filter — show every library item</td><td class=t>435, 273</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorites filter — show only favorited items and close the menu</td><td class=t>435, 348</td>          <td class=t>library.filtered-empty</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>edited filter — toggle inclusion of edited items</td><td class=t>435, 397</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photos filter — toggle inclusion of still photos</td><td class=t>435, 447</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>videos filter — toggle inclusion of videos</td><td class=t>435, 496</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>screenshots filter — toggle inclusion of screenshots</td><td class=t>435, 546</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared with you filter — toggle shared items</td><td class=t>435, 595</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>not in an album filter — toggle items outside albums</td><td class=t>435, 644</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>filter header — collapse the expanded filter submenu</td><td class=t>435, 201</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Select button — enter selection mode</td><td class=t>856, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any visible photo thumbnail outside the filter popover</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="filtered-empty">
+      <p class=content style="flex-basis:100%">The library with an active filter that matches no items; the filter glyph replaces the usual sort and Select controls.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="95" data-hue="6" title="library.sort-menu-filtered"><span>active filter button — open the filtered-library menu</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>active filter button — open the filtered-library menu</td><td class=t>903, 95</td>          <td class=t>library.sort-menu-filtered</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="sort-menu-filtered">
+      <p class=content style="flex-basis:100%">The filtered library menu, showing the current filter and an additional Remove Filter command.</p>
+      <div class=frame>
+        <div class=el data-x="661" data-y="112" data-hue="201" title=""><span>sort by recently added option — order by addition time</span></div>
+        <div class=el data-x="661" data-y="178" data-hue="298" title=""><span>sort by date captured option — order by capture date</span></div>
+        <div class=el data-x="661" data-y="260" data-hue="303" title="library.filter-menu-filtered"><span>filter submenu — expand filters while a filter is active</span></div>
+        <div class=el data-x="661" data-y="324" data-hue="68" title=""><span>remove filter command — clear the active filter</span></div>
+        <div class=el data-x="661" data-y="398" data-hue="228" title=""><span>view options submenu — open grid view controls</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="103" title=""><span>highlighted menu button — close the open popover</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort by recently added option — order by addition time</td><td class=t>661, 112</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date captured option — order by capture date</td><td class=t>661, 178</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>filter submenu — expand filters while a filter is active</td><td class=t>661, 260</td>          <td class=t>library.filter-menu-filtered</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>remove filter command — clear the active filter</td><td class=t>661, 324</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>view options submenu — open grid view controls</td><td class=t>661, 398</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>highlighted menu button — close the open popover</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="filter-menu-filtered">
+      <p class=content style="flex-basis:100%">The expanded filter submenu while a filter is active, with the current filter checked.</p>
+      <div class=frame>
+        <div class=el data-x="661" data-y="273" data-hue="2" title="library.normal"><span>all items filter — clear active filters and return to the unfiltered library</span></div>
+        <div class=el data-x="661" data-y="348" data-hue="164" title=""><span>favorites filter — toggle inclusion of favorites</span></div>
+        <div class=el data-x="661" data-y="397" data-hue="272" title=""><span>edited filter — toggle inclusion of edited items</span></div>
+        <div class=el data-x="661" data-y="447" data-hue="102" title=""><span>photos filter — toggle inclusion of still photos</span></div>
+        <div class=el data-x="661" data-y="496" data-hue="64" title=""><span>videos filter — toggle inclusion of videos</span></div>
+        <div class=el data-x="661" data-y="546" data-hue="212" title=""><span>screenshots filter — toggle inclusion of screenshots</span></div>
+        <div class=el data-x="661" data-y="595" data-hue="22" title=""><span>shared with you filter — toggle inclusion of items shared through Messages</span></div>
+        <div class=el data-x="661" data-y="644" data-hue="299" title=""><span>not in an album filter — toggle inclusion of items outside albums</span></div>
+        <div class=el data-x="661" data-y="181" data-hue="154" title=""><span>filter header — collapse the expanded filter submenu</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>all items filter — clear active filters and return to the unfiltered library</td><td class=t>661, 273</td>          <td class=t>library.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorites filter — toggle inclusion of favorites</td><td class=t>661, 348</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>edited filter — toggle inclusion of edited items</td><td class=t>661, 397</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photos filter — toggle inclusion of still photos</td><td class=t>661, 447</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>videos filter — toggle inclusion of videos</td><td class=t>661, 496</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>screenshots filter — toggle inclusion of screenshots</td><td class=t>661, 546</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>shared with you filter — toggle inclusion of items shared through Messages</td><td class=t>661, 595</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>not in an album filter — toggle inclusion of items outside albums</td><td class=t>661, 644</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>filter header — collapse the expanded filter submenu</td><td class=t>661, 181</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="slideshow">
+    <h2>slideshow</h2>
+    <div class=tabs>
+      <a data-mode="music-permission" href="#slideshow/music-permission">music-permission</a>
+      <a data-mode="normal" href="#slideshow/normal">normal</a>
+      <a data-mode="playing" href="#slideshow/playing">playing</a>
+      <a data-mode="controls" href="#slideshow/controls">controls</a>
+    </div>
+    <div class=mode data-mode="music-permission">
+      <p class=content style="flex-basis:100%">A system permission alert over the slideshow asking whether Photos may access Apple Music for Memories songs.</p>
+      <div class=frame>
+        <div class=el data-x="313" data-y="659" data-hue="59" title="slideshow.normal"><span>Don’t Allow button — continue the slideshow without Apple Music access</span></div>
+        <div class=el data-x="687" data-y="659" data-hue="337" title=""><span>Allow button — grant Photos access to Apple Music activity and the media library</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>Don’t Allow button — continue the slideshow without Apple Music access</td><td class=t>313, 659</td>          <td class=t>slideshow.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Allow button — grant Photos access to Apple Music activity and the media library</td><td class=t>687, 659</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">A full-screen slideshow frame with playback, favorite, and sharing controls over the image.</p>
+      <div class=frame>
+        <div class=el data-x="95" data-y="95" data-hue="260" title=""><span>back button — leave the slideshow</span></div>
+        <div class=el data-x="366" data-y="930" data-hue="186" title="slideshow.playing"><span>replay button — restart slideshow playback and hide the controls</span></div>
+        <div class=el data-x="500" data-y="930" data-hue="268" title=""><span>favorite button — mark the displayed item as a favorite</span></div>
+        <div class=el data-x="631" data-y="930" data-hue="92" title=""><span>share button — open sharing options</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — leave the slideshow</td><td class=t>95, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo surface — hide or show the viewer controls</td><td class=p>slideshow image surface; tap to show or hide playback chrome</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>replay button — restart slideshow playback and hide the controls</td><td class=t>366, 930</td>          <td class=t>slideshow.playing</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorite button — mark the displayed item as a favorite</td><td class=t>500, 930</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>631, 930</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="playing">
+      <p class=content style="flex-basis:100%">The slideshow actively advances full-screen images with all controls hidden.</p>
+      <div class=frame>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>slideshow image — reveal playback controls</td><td class=p>full-screen slideshow image; tap to reveal controls</td>          <td class=t>slideshow.controls</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>left-edge back gesture — no effect while slideshow playback chrome is hidden</td><td class=p>left-edge back gesture on the full-screen slideshow</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="controls">
+      <p class=content style="flex-basis:100%">Slideshow playback controls over the current image, with audio, pause, filmstrip, music, and grid navigation.</p>
+      <div class=frame>
+        <div class=el data-x="95" data-y="95" data-hue="260" title=""><span>back button — leave the slideshow</span></div>
+        <div class=el data-x="756" data-y="95" data-hue="76" title=""><span>audio button — mute or unmute slideshow sound</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="233" title=""><span>more button — show slideshow options</span></div>
+        <div class=el data-x="500" data-y="516" data-hue="279" title="slideshow.playing"><span>play/pause button — toggle slideshow playback and hide the controls</span></div>
+        <div class=el data-x="132" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="868" data-y="938" data-hue="317" title=""><span>grid button — show all slideshow items</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — leave the slideshow</td><td class=t>95, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo area — dismiss the open actions menu</td><td class=p>slideshow image outside the controls; tap to hide chrome</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>audio button — mute or unmute slideshow sound</td><td class=t>756, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — show slideshow options</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>play/pause button — toggle slideshow playback and hide the controls</td><td class=t>500, 516</td>          <td class=t>slideshow.playing</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any thumbnail in the slideshow filmstrip</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>132, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>grid button — show all slideshow items</td><td class=t>868, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="photo">
+    <h2>photo</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#photo/normal">normal</a>
+      <a data-mode="editor" href="#photo/editor">editor</a>
+      <a data-mode="info" href="#photo/info">info</a>
+      <a data-mode="immersive" href="#photo/immersive">immersive</a>
+      <a data-mode="more-menu" href="#photo/more-menu">more-menu</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The single-item viewer with date, navigation filmstrip, sharing, favorite, info, editing, and deletion controls.</p>
+      <div class=frame>
+        <div class=el data-x="95" data-y="95" data-hue="207" title=""><span>back button — return to the presenting photo grid</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="26" title="photo.more-menu"><span>more button — open item actions</span></div>
+        <div class=el data-x="911" data-y="162" data-hue="33" title="photo.immersive"><span>immersive-view button — hide the standard toolbar and show a close control</span></div>
+        <div class=el data-x="132" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="363" data-y="938" data-hue="277" title=""><span>favorite button — mark the item as a favorite</span></div>
+        <div class=el data-x="500" data-y="938" data-hue="173" title="photo.info"><span>info button — open photo metadata and caption details</span></div>
+        <div class=el data-x="637" data-y="938" data-hue="262" title="photo.editor"><span>edit button — open the nondestructive photo editor</span></div>
+        <div class=el data-x="868" data-y="938" data-hue="169" title=""><span>delete button — delete the displayed item after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting photo grid</td><td class=t>95, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open item actions</td><td class=t>903, 95</td>          <td class=t>photo.more-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>immersive-view button — hide the standard toolbar and show a close control</td><td class=t>911, 162</td>          <td class=t>photo.immersive</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo surface — hide or show the viewer controls</td><td class=p>displayed photo surface; tap to hide or show chrome</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo surface — move between adjacent items</td><td class=p>displayed photo surface; swipe horizontally to move between adjacent items</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any thumbnail in the bottom filmstrip</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>132, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorite button — mark the item as a favorite</td><td class=t>363, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>info button — open photo metadata and caption details</td><td class=t>500, 938</td>          <td class=t>photo.info</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>edit button — open the nondestructive photo editor</td><td class=t>637, 938</td>          <td class=t>photo.editor</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete the displayed item after confirmation</td><td class=t>868, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="editor">
+      <p class=content style="flex-basis:100%">The nondestructive photo editor on the Adjust tab, with temporary adjustment controls and Cancel or Done.</p>
+      <div class=frame>
+        <div class=el data-x="199" data-y="37" data-hue="213" title="photo.normal"><span>Cancel button — discard temporary edits and return to the item viewer</span></div>
+        <div class=el data-x="806" data-y="37" data-hue="217" title=""><span>Done button — save the current photo edits</span></div>
+        <div class=el data-x="95" data-y="95" data-hue="201" title=""><span>undo button — undo the latest temporary edit when enabled</span></div>
+        <div class=el data-x="229" data-y="95" data-hue="127" title=""><span>redo button — redo an undone temporary edit when enabled</span></div>
+        <div class=el data-x="769" data-y="95" data-hue="301" title=""><span>markup button — open drawing and annotation tools before saving</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="324" title=""><span>more button — open editor actions</span></div>
+        <div class=el data-x="500" data-y="789" data-hue="291" title=""><span>auto-enhance button — toggle a temporary automatic adjustment</span></div>
+        <div class=el data-x="380" data-y="925" data-hue="265" title=""><span>Adjust tab — show light and color adjustment controls</span></div>
+        <div class=el data-x="500" data-y="925" data-hue="94" title=""><span>Filters tab — show preset filters</span></div>
+        <div class=el data-x="620" data-y="925" data-hue="162" title=""><span>Crop tab — show crop, straighten, rotate, and perspective controls</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>Cancel button — discard temporary edits and return to the item viewer</td><td class=t>199, 37</td>          <td class=t>photo.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Done button — save the current photo edits</td><td class=t>806, 37</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>undo button — undo the latest temporary edit when enabled</td><td class=t>95, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>redo button — redo an undone temporary edit when enabled</td><td class=t>229, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>markup button — open drawing and annotation tools before saving</td><td class=t>769, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open editor actions</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>auto-enhance button — toggle a temporary automatic adjustment</td><td class=t>500, 789</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>adjustment type — choose the property controlled by the slider</td><td class=p>any circular adjustment-type button in the horizontal adjustment strip</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>adjustment slider — change the selected temporary adjustment</td><td class=p>horizontal adjustment slider below the photo</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Adjust tab — show light and color adjustment controls</td><td class=t>380, 925</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Filters tab — show preset filters</td><td class=t>500, 925</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Crop tab — show crop, straighten, rotate, and perspective controls</td><td class=t>620, 925</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="info">
+      <p class=content style="flex-basis:100%">The item information panel showing caption, capture metadata, location, and source attribution above the bottom toolbar.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="547" data-hue="132" title=""><span>Adjust button — change the item’s capture date and time</span></div>
+        <div class=el data-x="500" data-y="784" data-hue="208" title=""><span>Add a location button — attach location metadata to the item</span></div>
+        <div class=el data-x="500" data-y="861" data-hue="301" title=""><span>source attribution row — open the app or page the item was saved from</span></div>
+        <div class=el data-x="132" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="363" data-y="938" data-hue="277" title=""><span>favorite button — mark the item as a favorite</span></div>
+        <div class=el data-x="500" data-y="938" data-hue="298" title="photo.normal"><span>highlighted info button — close the metadata panel</span></div>
+        <div class=el data-x="637" data-y="938" data-hue="64" title=""><span>edit button — open the item editor</span></div>
+        <div class=el data-x="868" data-y="938" data-hue="169" title=""><span>delete button — delete the displayed item after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>caption field — add or change the item caption</td><td class=p>Add a Caption field below the photo</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Adjust button — change the item’s capture date and time</td><td class=t>903, 547</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Add a location button — attach location metadata to the item</td><td class=t>500, 784</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>source attribution row — open the app or page the item was saved from</td><td class=t>500, 861</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>132, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorite button — mark the item as a favorite</td><td class=t>363, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>highlighted info button — close the metadata panel</td><td class=t>500, 938</td>          <td class=t>photo.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>edit button — open the item editor</td><td class=t>637, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete the displayed item after confirmation</td><td class=t>868, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="immersive">
+      <p class=content style="flex-basis:100%">An immersive item view with only a Close button and the bottom filmstrip visible around the photo.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="95" data-hue="275" title="photo.normal"><span>close button — return to the standard item viewer</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — return to the standard item viewer</td><td class=t>903, 95</td>          <td class=t>photo.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo surface — hide or show the viewer controls</td><td class=p>displayed photo surface in immersive view</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any thumbnail in the bottom filmstrip</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="more-menu">
+      <p class=content style="flex-basis:100%">The displayed-item actions menu with copy and slideshow plus data-changing duplicate, hide, album, metadata, and delete operations.</p>
+      <div class=frame>
+        <div class=el data-x="629" data-y="106" data-hue="63" title="photo.normal"><span>copy command — copy the displayed item to the system clipboard and close the menu</span></div>
+        <div class=el data-x="629" data-y="155" data-hue="29" title=""><span>duplicate command — create a copy of the displayed item</span></div>
+        <div class=el data-x="629" data-y="204" data-hue="71" title=""><span>hide command — move the displayed item into the Hidden collection</span></div>
+        <div class=el data-x="629" data-y="253" data-hue="53" title="slideshow.normal"><span>slideshow command — play a slideshow beginning with the displayed item</span></div>
+        <div class=el data-x="629" data-y="329" data-hue="238" title=""><span>add to album command — add the displayed item to an album</span></div>
+        <div class=el data-x="629" data-y="403" data-hue="220" title=""><span>adjust date and time command — change the item’s capture date metadata</span></div>
+        <div class=el data-x="629" data-y="451" data-hue="150" title=""><span>adjust location command — change the item’s location metadata</span></div>
+        <div class=el data-x="629" data-y="524" data-hue="94" title=""><span>delete command — delete the displayed item after confirmation</span></div>
+        <div class=el data-x="95" data-y="95" data-hue="159" title=""><span>back button — return to the presenting collection</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="266" title=""><span>more button — close the item actions menu</span></div>
+        <div class=el data-x="132" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="363" data-y="938" data-hue="277" title=""><span>favorite button — mark the item as a favorite</span></div>
+        <div class=el data-x="500" data-y="938" data-hue="126" title=""><span>info button — show item metadata</span></div>
+        <div class=el data-x="637" data-y="938" data-hue="64" title=""><span>edit button — open the item editor</span></div>
+        <div class=el data-x="868" data-y="938" data-hue="169" title=""><span>delete button — delete the displayed item after confirmation</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>copy command — copy the displayed item to the system clipboard and close the menu</td><td class=t>629, 106</td>          <td class=t>photo.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>duplicate command — create a copy of the displayed item</td><td class=t>629, 155</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>hide command — move the displayed item into the Hidden collection</td><td class=t>629, 204</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>slideshow command — play a slideshow beginning with the displayed item</td><td class=t>629, 253</td>          <td class=t>slideshow.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add to album command — add the displayed item to an album</td><td class=t>629, 329</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>adjust date and time command — change the item’s capture date metadata</td><td class=t>629, 403</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>adjust location command — change the item’s location metadata</td><td class=t>629, 451</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>delete command — delete the displayed item after confirmation</td><td class=t>629, 524</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting collection</td><td class=t>95, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — close the item actions menu</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>photo area — dismiss the open actions menu</td><td class=p>displayed photo outside the actions popover</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any thumbnail in the bottom filmstrip</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>132, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>favorite button — mark the item as a favorite</td><td class=t>363, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>info button — show item metadata</td><td class=t>500, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>edit button — open the item editor</td><td class=t>637, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete button — delete the displayed item after confirmation</td><td class=t>868, 938</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="collections">
+    <h2>collections</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#collections/normal">normal</a>
+      <a data-mode="reorder" href="#collections/reorder">reorder</a>
+      <a data-mode="pin-menu" href="#collections/pin-menu">pin-menu</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">A vertically scrollable dashboard of Memories, Pinned, Albums, People &amp; Pets, and additional collection sections.</p>
+      <div class=frame>
+        <div class=el data-x="750" data-y="95" data-hue="149" title=""><span>more button — open Collections options</span></div>
+        <div class=el data-x="895" data-y="95" data-hue="164" title=""><span>profile button — open account and Photos settings</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="218" title="search.normal"><span>Search button — open Photos search with the query field focused</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>more button — open Collections options</td><td class=t>750, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>profile button — open account and Photos settings</td><td class=t>895, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Memories section title — open the Memories collection</td><td class=p>Memories section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>section chevron — collapse or expand that Collections section</td><td class=p>blue collapse chevron beside any collection section; moves as the dashboard scrolls</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Pinned section title — open all pinned collections</td><td class=p>Pinned section title; moves as the dashboard scrolls</td>          <td class=t>pinned.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Pinned Edit button — choose and reorder pinned collections</td><td class=p>Pinned Edit button; moves as the dashboard scrolls</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>card — open that collection</td><td class=p>any card in the horizontally scrolling Pinned row</td>          <td class=t>collection.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Albums section title — open all albums</td><td class=p>Albums section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>card — open that collection</td><td class=p>any personal album card in the Albums row</td>          <td class=t>collection.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>People &amp; Pets section title — open recognized people and pets</td><td class=p>People &amp; Pets section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections dashboard — scroll vertically through all collection sections</td><td class=p>Collections dashboard; drag vertically to reveal more sections</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Featured Photos section title — open Featured Photos</td><td class=p>Featured Photos section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>card — open that collection</td><td class=p>any card in the Featured Photos row</td>          <td class=t>collection.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Shared Albums section title — open Shared Albums</td><td class=p>Shared Albums section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Start Sharing button — begin configuring shared albums</td><td class=p>Start Sharing button in the Shared Albums section</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Recent Days section title — open recent day collections</td><td class=p>Recent Days section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>card — open that collection</td><td class=p>any card in the Recent Days row</td>          <td class=t>collection.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Trips section title — open trip collections</td><td class=p>Trips section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Media Types section title — open media-type collections</td><td class=p>Media Types section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>row — open that collection</td><td class=p>any media-type row under Media Types</td>          <td class=t>collection.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Utilities section title — open all utility collections</td><td class=p>Utilities section title; moves as the dashboard scrolls</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Hidden utility — open the locked Hidden collection after device authentication</td><td class=p>Hidden utility row</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Recently Deleted utility — open the locked recently deleted collection after device authentication</td><td class=p>Recently Deleted utility row</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>row — open that collection</td><td class=p>any unlocked utility row such as Recently Viewed, Imports, Recently Saved, or Map</td>          <td class=t>collection.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>collection long press — open the Pin context menu</td><td class=p>any collection card or utility row; long press</td>          <td class=t>collections.pin-menu</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Wallpaper Suggestions section title — open wallpaper suggestions</td><td class=p>Wallpaper Suggestions section title near the bottom of Collections</td>          <td class=t>collection.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Reorder button — enter Collections section reordering mode</td><td class=p>Reorder button below the final Collections section</td>          <td class=t>collections.reorder</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search with the query field focused</td><td class=t>887, 940</td>          <td class=t>search.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="reorder">
+      <p class=content style="flex-basis:100%">A list of every Collections section with drag handles for changing their order.</p>
+      <div class=frame>
+        <div class=el data-x="903" data-y="95" data-hue="306" title=""><span>Done button — save the section order and leave reorder mode</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>Done button — save the section order and leave reorder mode</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>section drag handle — reorder a Collections section</td><td class=p>drag handle at the right edge of any Collections section row</td>          <td class=t></td>
+          <td class=f>mutating, repeating</td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="pin-menu">
+      <p class=content style="flex-basis:100%">A compact context menu over Collections offering to pin the pressed collection.</p>
+      <div class=frame>
+        <div class=el data-x="750" data-y="95" data-hue="149" title=""><span>more button — open Collections options</span></div>
+        <div class=el data-x="895" data-y="95" data-hue="164" title=""><span>profile button — open account and Photos settings</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>Pin command — add the pressed collection to Pinned</td><td class=p>Pin command in the context menu near the pressed collection</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>outside area — dismiss the Pin context menu</td><td class=p>area outside the Pin context menu</td>          <td class=t>collections.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — open Collections options</td><td class=t>750, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>profile button — open account and Photos settings</td><td class=t>895, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="search">
+    <h2>search</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#search/normal">normal</a>
+      <a data-mode="results-menu" href="#search/results-menu">results-menu</a>
+      <a data-mode="results-collections" href="#search/results-collections">results-collections</a>
+      <a data-mode="results" href="#search/results">results</a>
+      <a data-mode="info-popover" href="#search/info-popover">info-popover</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Photos search with a focused library query field, recent searches, and the software keyboard visible.</p>
+      <div class=frame>
+        <div class=el data-x="629" data-y="135" data-hue="319" title="search.info-popover"><span>information button — explain why some search results may not appear</span></div>
+        <div class=el data-x="794" data-y="600" data-hue="48" title=""><span>dictation button — enter a query by voice</span></div>
+        <div class=el data-x="919" data-y="600" data-hue="298" title=""><span>close search button — leave search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>information button — explain why some search results may not appear</td><td class=t>629, 135</td>          <td class=t>search.info-popover</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>card — open that collection</td><td class=p>any card in the Recents section</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>search field — type a query and show live photo and collection results</td><td class=p>Search your library field above the keyboard</td>          <td class=t>search.results</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — enter a query by voice</td><td class=t>794, 600</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close search button — leave search</td><td class=t>919, 600</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="results-menu">
+      <p class=content style="flex-basis:100%">Search results with a popover for result sort order and view options.</p>
+      <div class=frame>
+        <div class=el data-x="435" data-y="115" data-hue="22" title=""><span>sort by recently added option — order matching items by addition time</span></div>
+        <div class=el data-x="435" data-y="179" data-hue="19" title=""><span>sort by date captured option — order matching items by capture date</span></div>
+        <div class=el data-x="435" data-y="253" data-hue="147" title=""><span>view options submenu — open search result grid view controls</span></div>
+        <div class=el data-x="665" data-y="95" data-hue="141" title="search.results"><span>highlighted sort and view menu button — close the popover</span></div>
+        <div class=el data-x="856" data-y="95" data-hue="250" title=""><span>Select button — enter result selection mode when results exist</span></div>
+        <div class=el data-x="266" data-y="189" data-hue="287" title=""><span>Photos scope — show matching photos</span></div>
+        <div class=el data-x="726" data-y="189" data-hue="289" title="search.results-collections"><span>Collections scope — show collection matches and dismiss the keyboard</span></div>
+        <div class=el data-x="794" data-y="600" data-hue="48" title=""><span>dictation button — enter a query by voice</span></div>
+        <div class=el data-x="919" data-y="600" data-hue="298" title=""><span>close search button — leave search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort by recently added option — order matching items by addition time</td><td class=t>435, 115</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sort by date captured option — order matching items by capture date</td><td class=t>435, 179</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>view options submenu — open search result grid view controls</td><td class=t>435, 253</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>highlighted sort and view menu button — close the popover</td><td class=t>665, 95</td>          <td class=t>search.results</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Select button — enter result selection mode when results exist</td><td class=t>856, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Photos scope — show matching photos</td><td class=t>266, 189</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections scope — show collection matches and dismiss the keyboard</td><td class=t>726, 189</td>          <td class=t>search.results-collections</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>query field — edit the current search query</td><td class=p>query field above the keyboard</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — enter a query by voice</td><td class=t>794, 600</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close search button — leave search</td><td class=t>919, 600</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="results-collections">
+      <p class=content style="flex-basis:100%">Collection-scoped search results with the keyboard dismissed and a compact bottom query bar.</p>
+      <div class=frame>
+        <div class=el data-x="266" data-y="189" data-hue="287" title=""><span>Photos scope — show matching photos</span></div>
+        <div class=el data-x="726" data-y="189" data-hue="285" title=""><span>Collections scope — show matching collections</span></div>
+        <div class=el data-x="132" data-y="938" data-hue="92" title=""><span>share button — open sharing options</span></div>
+        <div class=el data-x="731" data-y="938" data-hue="174" title="search.normal"><span>clear query button — erase the query and return to empty search</span></div>
+        <div class=el data-x="868" data-y="938" data-hue="267" title=""><span>close search button — return to Collections</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>Photos scope — show matching photos</td><td class=t>266, 189</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections scope — show matching collections</td><td class=t>726, 189</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>share button — open sharing options</td><td class=t>132, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>query field — edit the current search query</td><td class=p>compact query field in the bottom bar</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>clear query button — erase the query and return to empty search</td><td class=t>731, 938</td>          <td class=t>search.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close search button — return to Collections</td><td class=t>868, 938</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="results">
+      <p class=content style="flex-basis:100%">Live search results for the entered query, with Photos and Collections scopes and a result grid above the focused query field.</p>
+      <div class=frame>
+        <div class=el data-x="665" data-y="95" data-hue="85" title="search.results-menu"><span>sort and view menu button — open search result sorting and view options</span></div>
+        <div class=el data-x="856" data-y="95" data-hue="250" title=""><span>Select button — enter result selection mode when results exist</span></div>
+        <div class=el data-x="266" data-y="189" data-hue="287" title=""><span>Photos scope — show matching photos</span></div>
+        <div class=el data-x="726" data-y="189" data-hue="285" title=""><span>Collections scope — show matching collections</span></div>
+        <div class=el data-x="794" data-y="600" data-hue="48" title=""><span>dictation button — enter a query by voice</span></div>
+        <div class=el data-x="919" data-y="600" data-hue="298" title=""><span>close search button — leave search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>sort and view menu button — open search result sorting and view options</td><td class=t>665, 95</td>          <td class=t>search.results-menu</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Select button — enter result selection mode when results exist</td><td class=t>856, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Photos scope — show matching photos</td><td class=t>266, 189</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections scope — show matching collections</td><td class=t>726, 189</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any photo thumbnail in the search result grid</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>query field — edit the current search query</td><td class=p>query field above the keyboard</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — enter a query by voice</td><td class=t>794, 600</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close search button — leave search</td><td class=t>919, 600</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="info-popover">
+      <p class=content style="flex-basis:100%">Search with a popover explaining that indexing occurs while the iPhone is locked, charging, and connected to Wi-Fi.</p>
+      <div class=frame>
+        <div class=el data-x="629" data-y="135" data-hue="177" title=""><span>information button — close the indexing explanation</span></div>
+        <div class=el data-x="794" data-y="600" data-hue="48" title=""><span>dictation button — enter a query by voice</span></div>
+        <div class=el data-x="919" data-y="600" data-hue="298" title=""><span>close search button — leave search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>information button — close the indexing explanation</td><td class=t>629, 135</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>outside area — dismiss the indexing explanation</td><td class=p>area outside the search indexing explanation popover</td>          <td class=t>search.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>card — open that collection</td><td class=p>any card in the Recents section</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>search field — enter a Photos query</td><td class=p>Search your library field above the keyboard</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dictation button — enter a query by voice</td><td class=t>794, 600</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close search button — leave search</td><td class=t>919, 600</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="pinned">
+    <h2>pinned</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">A vertically scrollable two-column grid of pinned collections such as Favorites, Recently Saved, Map, Videos, and Screenshots.</p>
+      <div class=frame>
+        <div class=el data-x="95" data-y="95" data-hue="0" title=""><span>back button — return to the presenting Collections screen</span></div>
+        <div class=el data-x="879" data-y="95" data-hue="119" title=""><span>Edit button — choose and reorder pinned collections</span></div>
+        <div class=el data-x="203" data-y="940" data-hue="18" title=""><span>Library button — open the Library screen</span></div>
+        <div class=el data-x="411" data-y="940" data-hue="210" title=""><span>Collections button — open the Collections screen</span></div>
+        <div class=el data-x="887" data-y="940" data-hue="56" title=""><span>Search button — open Photos search</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting Collections screen</td><td class=t>95, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Edit button — choose and reorder pinned collections</td><td class=t>879, 95</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>pinned collection card — open that collection</td><td class=p>any unlocked pinned collection card</td>          <td class=t>collection.normal</td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>Recently Deleted card — open the locked recently deleted collection after device authentication</td><td class=p>Recently Deleted pinned card</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>content area — scroll vertically</td><td class=p>Pinned grid; drag vertically when more cards exist</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Library button — open the Library screen</td><td class=t>203, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Collections button — open the Collections screen</td><td class=t>411, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Search button — open Photos search</td><td class=t>887, 940</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="collection">
+    <h2>collection</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">A named photo collection, empty here for Favorites, with Back and More controls and a photo grid when items exist.</p>
+      <div class=frame>
+        <div class=el data-x="95" data-y="95" data-hue="0" title=""><span>back button — return to the presenting Collections screen</span></div>
+        <div class=el data-x="903" data-y="95" data-hue="219" title=""><span>more button — inactive when the collection is empty</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>back button — return to the presenting Collections screen</td><td class=t>95, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>more button — inactive when the collection is empty</td><td class=t>903, 95</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>thumbnail — open or choose that item</td><td class=p>any photo thumbnail in the collection grid</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>content area — scroll vertically</td><td class=p>collection grid; drag vertically when content exceeds the screen</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+// Position fixed-element dots in the phone frame: data-x/data-y are on a
+// 1000x1000 grid, so percent = value / 10.
+document.querySelectorAll('.el').forEach(el => {
+  const h = el.dataset.hue;
+  el.style.left = (Number(el.dataset.x) / 10) + '%';
+  el.style.top = (Number(el.dataset.y) / 10) + '%';
+  el.style.borderColor = `hsl(${h},70%,40%)`;
+  el.style.background = `hsla(${h},70%,55%,.35)`;
+  el.style.color = `hsl(${h},70%,30%)`;
+});
+
+const sections = [...document.querySelectorAll('main > section')];
+const navlinks = [...document.querySelectorAll('nav a')];
+function route() {
+  const [s, m] = location.hash.slice(1).split('/');
+  const sec = sections.find(x => x.dataset.screen === s) || sections[0];
+  const modes = [...sec.querySelectorAll('.mode')];
+  const mode = modes.find(x => x.dataset.mode === m) || modes[0];
+  sections.forEach(x => x.hidden = x !== sec);
+  modes.forEach(x => x.hidden = x !== mode);
+  navlinks.forEach(a => a.classList.toggle('active', a.dataset.screen === sec.dataset.screen));
+  sec.querySelectorAll('.tabs a').forEach(a =>
+    a.classList.toggle('active', a.dataset.mode === mode.dataset.mode));
+  const want = `#${sec.dataset.screen}/${mode.dataset.mode}`;
+  if (location.hash !== want) history.replaceState(null, '', want);
+  window.scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+route();
+</script>

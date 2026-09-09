@@ -1,0 +1,1027 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>maps</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; }
+[hidden] { display: none !important; }
+body { font: 14px/1.45 -apple-system, system-ui, sans-serif; background: #f5f5f7; color: #1d1d1f; }
+nav { position: fixed; inset: 0 auto 0 0; width: 190px; padding: 24px 16px; overflow-y: auto; }
+nav .t { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #86868b; margin-bottom: 8px; }
+nav a { display: block; padding: 5px 10px; border-radius: 7px; color: #1d1d1f; text-decoration: none;
+        text-transform: capitalize; }
+nav a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+main { margin-left: 190px; padding: 28px 36px; }
+h2 { font-size: 20px; text-transform: capitalize; margin-bottom: 12px; }
+.tabs { display: inline-flex; gap: 2px; background: #e8e8ed; border-radius: 9px; padding: 2px; margin-bottom: 16px; }
+.tabs a { padding: 3px 14px; border-radius: 7px; font-size: 13px; color: #1d1d1f; text-decoration: none;
+          text-transform: capitalize; }
+.tabs a.active { background: #fff; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+p.content { max-width: 760px; color: #3a3a3c; margin-bottom: 16px; }
+.mode { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+.frame { position: relative; flex: none; width: 280px; aspect-ratio: 393/852; background: #fff;
+         border-radius: 36px; box-shadow: 0 1px 4px rgba(0,0,0,.25); overflow: hidden; }
+.el { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+      border: 1.5px solid; }
+.el span { position: absolute; left: 17px; top: 0; font-size: 9px; font-weight: 600; white-space: nowrap; }
+table { border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12); min-width: 420px; flex: 1; }
+th, td { text-align: left; padding: 6px 12px; vertical-align: top; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #6e6e73;
+     border-bottom: 1px solid #e5e5ea; }
+tr + tr td { border-top: 1px solid #f0f0f2; }
+td.d { font-weight: 600; white-space: nowrap; }
+td.d.unseen { color: #d70015; font-style: italic; }
+td.p, td.f { color: #86868b; }
+td.t { font-family: ui-monospace, monospace; font-size: 12px; }
+</style>
+
+<nav>
+  <div class=t>Screens</div>
+  <a data-screen="notifications-onboarding" href="#notifications-onboarding/location-alert">notifications onboarding</a>
+  <a data-screen="ads-onboarding" href="#ads-onboarding/normal">ads onboarding</a>
+  <a data-screen="map" href="#map/normal">map</a>
+  <a data-screen="places" href="#places/normal">places</a>
+  <a data-screen="pinned" href="#pinned/normal">pinned</a>
+  <a data-screen="map-search" href="#map-search/normal">map search</a>
+  <a data-screen="saved-places" href="#saved-places/normal">saved places</a>
+  <a data-screen="guides" href="#guides/normal">guides</a>
+  <a data-screen="favorite-guide" href="#favorite-guide/normal">favorite guide</a>
+  <a data-screen="routes" href="#routes/normal">routes</a>
+  <a data-screen="reports" href="#reports/normal">reports</a>
+  <a data-screen="offline-maps" href="#offline-maps/normal">offline maps</a>
+  <a data-screen="preferences" href="#preferences/normal">preferences</a>
+</nav>
+
+<main>
+  <section data-screen="notifications-onboarding">
+    <h2>notifications onboarding</h2>
+    <div class=tabs>
+      <a data-mode="location-alert" href="#notifications-onboarding/location-alert">location-alert</a>
+      <a data-mode="normal" href="#notifications-onboarding/normal">normal</a>
+    </div>
+    <div class=mode data-mode="location-alert">
+      <p class=content style="flex-basis:100%">The Maps notifications onboarding page is dimmed behind a system alert asking to turn on Location Services for Maps.</p>
+      <div class=frame>
+        <div class=el data-x="312" data-y="573" data-hue="21" title=""><span>settings button — would leave Maps to change the persistent Location Services setting</span></div>
+        <div class=el data-x="697" data-y="573" data-hue="207" title="notifications-onboarding.normal"><span>cancel button — dismiss the Location Services alert without changing authorization</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>settings button — would leave Maps to change the persistent Location Services setting</td><td class=t>312, 573</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>cancel button — dismiss the Location Services alert without changing authorization</td><td class=t>697, 573</td>          <td class=t>notifications-onboarding.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Maps onboarding page explains that notifications provide turn-by-turn directions, shared ETAs, and report updates.</p>
+      <div class=frame>
+        <div class=el data-x="500" data-y="881" data-hue="270" title=""><span>enable notifications button — would request or change persistent notification authorization</span></div>
+        <div class=el data-x="500" data-y="941" data-hue="330" title="ads-onboarding.normal"><span>not now button — continue without changing notification authorization</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>enable notifications button — would request or change persistent notification authorization</td><td class=t>500, 881</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>not now button — continue without changing notification authorization</td><td class=t>500, 941</td>          <td class=t>ads-onboarding.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="ads-onboarding">
+    <h2>ads onboarding</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">A privacy notice explains that Maps may show local ads based on approximate location, searches, or the visible map, without linking advertising information to the Apple Account.</p>
+      <div class=frame>
+        <div class=el data-x="500" data-y="886" data-hue="305" title=""><span>about Apple Advertising and Privacy link — attempt to open Apple's explanatory privacy page; the onboarding page remained visible on this phone</span></div>
+        <div class=el data-x="500" data-y="912" data-hue="109" title="map.normal"><span>continue button — acknowledge the advertising privacy notice and continue</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>about Apple Advertising and Privacy link — attempt to open Apple's explanatory privacy page; the onboarding page remained visible on this phone</td><td class=t>500, 886</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>continue button — acknowledge the advertising privacy notice and continue</td><td class=t>500, 912</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="map">
+    <h2>map</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#map/normal">normal</a>
+      <a data-mode="map-modes" href="#map/map-modes">map-modes</a>
+      <a data-mode="satellite-modes" href="#map/satellite-modes">satellite-modes</a>
+      <a data-mode="account" href="#map/account">account</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The main Maps globe view with Location Services off and a partially expanded bottom sheet containing search, account access, saved Places, and Guides.</p>
+      <div class=frame>
+        <div class=el data-x="500" data-y="61" data-hue="264" title=""><span>Location Services is Off banner — would offer a path to change persistent Location Services authorization</span></div>
+        <div class=el data-x="500" data-y="330" data-hue="66" title=""><span>map canvas — pan the globe without changing user data</span></div>
+        <div class=el data-x="897" data-y="462" data-hue="80" title="map.map-modes"><span>map options button — open map type and display controls</span></div>
+        <div class=el data-x="897" data-y="521" data-hue="248" title=""><span>current location button — ask Maps to locate the device; blocked because Location Services is off</span></div>
+        <div class=el data-x="500" data-y="571" data-hue="355" title=""><span>sheet handle — drag to resize the Maps bottom sheet</span></div>
+        <div class=el data-x="286" data-y="606" data-hue="59" title="map-search.normal"><span>search field — enter destination and place queries</span></div>
+        <div class=el data-x="752" data-y="606" data-hue="354" title=""><span>voice search button — would request microphone authorization and begin voice input</span></div>
+        <div class=el data-x="889" data-y="606" data-hue="264" title="map.account"><span>account button — open account, favorites, guides, and Maps settings</span></div>
+        <div class=el data-x="248" data-y="673" data-hue="195" title=""><span>Places disclosure — expand or collapse saved place shortcuts</span></div>
+        <div class=el data-x="162" data-y="752" data-hue="119" title=""><span>add Home button — would save a Home address</span></div>
+        <div class=el data-x="387" data-y="752" data-hue="135" title=""><span>add Work button — would save a Work address</span></div>
+        <div class=el data-x="613" data-y="752" data-hue="286" title=""><span>add place button — would add a saved place</span></div>
+        <div class=el data-x="320" data-y="886" data-hue="66" title=""><span>Your Guides disclosure — open the guides collection</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>Location Services is Off banner — would offer a path to change persistent Location Services authorization</td><td class=t>500, 61</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>map canvas — pan the globe without changing user data</td><td class=t>500, 330</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>map options button — open map type and display controls</td><td class=t>897, 462</td>          <td class=t>map.map-modes</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>current location button — ask Maps to locate the device; blocked because Location Services is off</td><td class=t>897, 521</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>sheet handle — drag to resize the Maps bottom sheet</td><td class=t>500, 571</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search field — enter destination and place queries</td><td class=t>286, 606</td>          <td class=t>map-search.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>voice search button — would request microphone authorization and begin voice input</td><td class=t>752, 606</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>account button — open account, favorites, guides, and Maps settings</td><td class=t>889, 606</td>          <td class=t>map.account</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Places disclosure — expand or collapse saved place shortcuts</td><td class=t>248, 673</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add Home button — would save a Home address</td><td class=t>162, 752</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add Work button — would save a Work address</td><td class=t>387, 752</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add place button — would add a saved place</td><td class=t>613, 752</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Your Guides disclosure — open the guides collection</td><td class=t>320, 886</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>guide card — open a curated guide</td><td class=p>any guide card in the horizontal carousel; moves as the sheet scrolls</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="map-modes">
+      <p class=content style="flex-basis:100%">A Map Modes sheet overlays the globe and offers Explore, Driving, Transit, and Satellite presentation choices; the selected choice has a blue outline.</p>
+      <div class=frame>
+        <div class=el data-x="885" data-y="738" data-hue="91" title="map.normal"><span>close button — dismiss Map Modes and return to the main map</span></div>
+        <div class=el data-x="162" data-y="818" data-hue="212" title=""><span>Explore map mode button — show the standard detailed map</span></div>
+        <div class=el data-x="389" data-y="818" data-hue="25" title=""><span>Driving map mode button — emphasize road conditions and driving information</span></div>
+        <div class=el data-x="611" data-y="818" data-hue="62" title=""><span>Transit map mode button — emphasize public-transit routes</span></div>
+        <div class=el data-x="825" data-y="818" data-hue="197" title="map.satellite-modes"><span>Satellite map mode button — show satellite imagery</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Map Modes and return to the main map</td><td class=t>885, 738</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Explore map mode button — show the standard detailed map</td><td class=t>162, 818</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Driving map mode button — emphasize road conditions and driving information</td><td class=t>389, 818</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Transit map mode button — emphasize public-transit routes</td><td class=t>611, 818</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Satellite map mode button — show satellite imagery</td><td class=t>825, 818</td>          <td class=t>map.satellite-modes</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="satellite-modes">
+      <p class=content style="flex-basis:100%">The Map Modes sheet with Satellite selected expands to include Traffic and Labels display toggles; these persistent presentation settings are left unchanged.</p>
+      <div class=frame>
+        <div class=el data-x="885" data-y="605" data-hue="22" title="map.normal"><span>close button — dismiss Map Modes and return to the main satellite map</span></div>
+        <div class=el data-x="162" data-y="676" data-hue="340" title="map.map-modes"><span>Explore map mode button — return to the standard detailed map</span></div>
+        <div class=el data-x="389" data-y="676" data-hue="25" title="map.map-modes"><span>Driving map mode button — emphasize road conditions and driving information</span></div>
+        <div class=el data-x="611" data-y="676" data-hue="62" title="map.map-modes"><span>Transit map mode button — emphasize public-transit routes</span></div>
+        <div class=el data-x="825" data-y="676" data-hue="314" title=""><span>Satellite map mode button — keep satellite imagery selected</span></div>
+        <div class=el data-x="827" data-y="818" data-hue="265" title=""><span>Traffic toggle — would change the persistent satellite traffic overlay setting</span></div>
+        <div class=el data-x="827" data-y="877" data-hue="263" title=""><span>Labels toggle — would change the persistent satellite labels setting</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Map Modes and return to the main satellite map</td><td class=t>885, 605</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Explore map mode button — return to the standard detailed map</td><td class=t>162, 676</td>          <td class=t>map.map-modes</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Driving map mode button — emphasize road conditions and driving information</td><td class=t>389, 676</td>          <td class=t>map.map-modes</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Transit map mode button — emphasize public-transit routes</td><td class=t>611, 676</td>          <td class=t>map.map-modes</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Satellite map mode button — keep satellite imagery selected</td><td class=t>825, 676</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Traffic toggle — would change the persistent satellite traffic overlay setting</td><td class=t>827, 818</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Labels toggle — would change the persistent satellite labels setting</td><td class=t>827, 877</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="account">
+      <p class=content style="flex-basis:100%">An account sheet overlays the map with sign-in, Places, Reports, Offline Maps, and Preferences rows.</p>
+      <div class=frame>
+        <div class=el data-x="885" data-y="482" data-hue="20" title="map.normal"><span>close button — dismiss the account sheet</span></div>
+        <div class=el data-x="500" data-y="646" data-hue="118" title=""><span>Apple Account sign-in button — would begin authentication and change account state</span></div>
+        <div class=el data-x="513" data-y="729" data-hue="150" title="places.normal"><span>Places row — open saved places</span></div>
+        <div class=el data-x="513" data-y="788" data-hue="169" title="reports.normal"><span>Reports row — open submitted Maps reports</span></div>
+        <div class=el data-x="513" data-y="847" data-hue="50" title="offline-maps.normal"><span>Offline Maps row — open downloaded-map management</span></div>
+        <div class=el data-x="513" data-y="906" data-hue="84" title="preferences.normal"><span>Preferences row — open Maps navigation and route preferences</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss the account sheet</td><td class=t>885, 482</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Apple Account sign-in button — would begin authentication and change account state</td><td class=t>500, 646</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Places row — open saved places</td><td class=t>513, 729</td>          <td class=t>places.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Reports row — open submitted Maps reports</td><td class=t>513, 788</td>          <td class=t>reports.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Offline Maps row — open downloaded-map management</td><td class=t>513, 847</td>          <td class=t>offline-maps.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Preferences row — open Maps navigation and route preferences</td><td class=t>513, 906</td>          <td class=t>preferences.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="places">
+    <h2>places</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Places sheet summarizes Pinned, Saved Places, Guides, and Routes, all empty on this phone, with an empty Recently Added section.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="290" title="map.normal"><span>close button — dismiss Places and return to the map</span></div>
+        <div class=el data-x="513" data-y="221" data-hue="145" title="pinned.normal"><span>Pinned row — open pinned places</span></div>
+        <div class=el data-x="513" data-y="284" data-hue="235" title="saved-places.normal"><span>Saved Places row — open saved places</span></div>
+        <div class=el data-x="513" data-y="346" data-hue="27" title="guides.normal"><span>Guides row — open personal guides</span></div>
+        <div class=el data-x="513" data-y="407" data-hue="42" title="routes.normal"><span>Routes row — open saved routes</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Places and return to the map</td><td class=t>897, 150</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Pinned row — open pinned places</td><td class=t>513, 221</td>          <td class=t>pinned.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Saved Places row — open saved places</td><td class=t>513, 284</td>          <td class=t>saved-places.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Guides row — open personal guides</td><td class=t>513, 346</td>          <td class=t>guides.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Routes row — open saved routes</td><td class=t>513, 407</td>          <td class=t>routes.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="pinned">
+    <h2>pinned</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#pinned/normal">normal</a>
+      <a data-mode="edit" href="#pinned/edit">edit</a>
+      <a data-mode="nearby-transit-pinned" href="#pinned/nearby-transit-pinned">nearby-transit-pinned</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Pinned sheet offers empty Home and Work shortcuts plus a Siri suggestion for Nearby Transit.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="200" title="map.normal"><span>close button — dismiss Pinned and return to the map</span></div>
+        <div class=el data-x="300" data-y="225" data-hue="69" title=""><span>add Home row — would save a Home address</span></div>
+        <div class=el data-x="300" data-y="300" data-hue="69" title=""><span>add Work row — would save a Work address</span></div>
+        <div class=el data-x="450" data-y="478" data-hue="232" title="pinned.nearby-transit-pinned"><span>Nearby Transit suggestion row — unexpectedly promoted the suggestion into Pinned when tapped; avoid during safe mapping</span></div>
+        <div class=el data-x="880" data-y="478" data-hue="220" title=""><span>pin Nearby Transit button — would add the suggestion to Pinned</span></div>
+        <div class=el data-x="430" data-y="950" data-hue="74" title=""><span>add pinned place button — would create a new pinned place</span></div>
+        <div class=el data-x="570" data-y="950" data-hue="338" title="pinned.edit"><span>edit pinned places button — enter editing; used only to undo an unintended Nearby Transit pin</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Pinned and return to the map</td><td class=t>897, 150</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add Home row — would save a Home address</td><td class=t>300, 225</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add Work row — would save a Work address</td><td class=t>300, 300</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Nearby Transit suggestion row — unexpectedly promoted the suggestion into Pinned when tapped; avoid during safe mapping</td><td class=t>450, 478</td>          <td class=t>pinned.nearby-transit-pinned</td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>pin Nearby Transit button — would add the suggestion to Pinned</td><td class=t>880, 478</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add pinned place button — would create a new pinned place</td><td class=t>430, 950</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>edit pinned places button — enter editing; used only to undo an unintended Nearby Transit pin</td><td class=t>570, 950</td>          <td class=t>pinned.edit</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="edit">
+      <p class=content style="flex-basis:100%">Pinned editing mode shows removal controls for Home, Work, and the accidentally pinned Nearby Transit item, reorder handles, and a completion checkmark.</p>
+      <div class=frame>
+        <div class=el data-x="110" data-y="225" data-hue="213" title=""><span>remove Home button — would remove the Home shortcut</span></div>
+        <div class=el data-x="110" data-y="300" data-hue="333" title=""><span>remove Work button — would remove the Work shortcut</span></div>
+        <div class=el data-x="110" data-y="407" data-hue="24" title=""><span>remove Nearby Transit button — remove the accidentally pinned suggestion to restore the initial state</span></div>
+        <div class=el data-x="880" data-y="407" data-hue="283" title=""><span>Nearby Transit reorder handle — would change pinned-item order</span></div>
+        <div class=el data-x="870" data-y="950" data-hue="40" title=""><span>done button — commit the restoration and exit editing</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>remove Home button — would remove the Home shortcut</td><td class=t>110, 225</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>remove Work button — would remove the Work shortcut</td><td class=t>110, 300</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>remove Nearby Transit button — remove the accidentally pinned suggestion to restore the initial state</td><td class=t>110, 407</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Nearby Transit reorder handle — would change pinned-item order</td><td class=t>880, 407</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>done button — commit the restoration and exit editing</td><td class=t>870, 950</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="nearby-transit-pinned">
+      <p class=content style="flex-basis:100%">Pinned after the Nearby Transit suggestion was unexpectedly promoted into the main list; this transient state is immediately reverted.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="200" title="map.normal"><span>close button — dismiss Pinned and return to the map</span></div>
+        <div class=el data-x="300" data-y="225" data-hue="69" title=""><span>add Home row — would save a Home address</span></div>
+        <div class=el data-x="300" data-y="300" data-hue="69" title=""><span>add Work row — would save a Work address</span></div>
+        <div class=el data-x="450" data-y="388" data-hue="206" title=""><span>Nearby Transit pinned row — open nearby departure options</span></div>
+        <div class=el data-x="430" data-y="950" data-hue="74" title=""><span>add pinned place button — would create a new pinned place</span></div>
+        <div class=el data-x="570" data-y="950" data-hue="18" title="pinned.edit"><span>edit pinned places button — enter editing to undo the unintended pin</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Pinned and return to the map</td><td class=t>897, 150</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add Home row — would save a Home address</td><td class=t>300, 225</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>add Work row — would save a Work address</td><td class=t>300, 300</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Nearby Transit pinned row — open nearby departure options</td><td class=t>450, 388</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add pinned place button — would create a new pinned place</td><td class=t>430, 950</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>edit pinned places button — enter editing to undo the unintended pin</td><td class=t>570, 950</td>          <td class=t>pinned.edit</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="map-search">
+    <h2>map search</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#map-search/normal">normal</a>
+      <a data-mode="query-location-alert" href="#map-search/query-location-alert">query-location-alert</a>
+      <a data-mode="query" href="#map-search/query">query</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The expanded Maps search sheet has the keyboard focused, a natural-language search tip, and nearby category shortcuts.</p>
+      <div class=frame>
+        <div class=el data-x="400" data-y="127" data-hue="19" title="map-search.query-location-alert"><span>focused search field — type a destination or place query</span></div>
+        <div class=el data-x="755" data-y="127" data-hue="354" title=""><span>voice search button — would request microphone authorization and begin voice input</span></div>
+        <div class=el data-x="900" data-y="127" data-hue="71" title="map.normal"><span>close button — cancel search and return to the main map</span></div>
+        <div class=el data-x="880" data-y="257" data-hue="319" title=""><span>dismiss search tip button — would persistently dismiss the natural-language search tip</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>focused search field — type a destination or place query</td><td class=t>400, 127</td>          <td class=t>map-search.query-location-alert</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>voice search button — would request microphone authorization and begin voice input</td><td class=t>755, 127</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>close button — cancel search and return to the main map</td><td class=t>900, 127</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>dismiss search tip button — would persistently dismiss the natural-language search tip</td><td class=t>880, 257</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>nearby category row — run a category search; not exercised because Location Services is off</td><td class=p>any Find Nearby category row, such as Gas Stations or Breakfast; moves as the sheet scrolls</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="query-location-alert">
+      <p class=content style="flex-basis:100%">A live text query has produced suggestions, but a Location Services system alert blocks the search sheet because location is off.</p>
+      <div class=frame>
+        <div class=el data-x="312" data-y="573" data-hue="349" title=""><span>settings button — would leave Maps to change persistent Location Services authorization</span></div>
+        <div class=el data-x="697" data-y="573" data-hue="89" title="map-search.query"><span>cancel button — dismiss the location alert without changing authorization</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>settings button — would leave Maps to change persistent Location Services authorization</td><td class=t>312, 573</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>cancel button — dismiss the location alert without changing authorization</td><td class=t>697, 573</td>          <td class=t>map-search.query</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="query">
+      <p class=content style="flex-basis:100%">The focused search sheet contains a partial query and live suggestions while Location Services remains off.</p>
+      <div class=frame>
+        <div class=el data-x="400" data-y="127" data-hue="70" title=""><span>query field — edit the current search text</span></div>
+        <div class=el data-x="755" data-y="127" data-hue="296" title="map-search.normal"><span>clear query button — clear the current search text</span></div>
+        <div class=el data-x="900" data-y="127" data-hue="71" title="map.normal"><span>close button — cancel search and return to the main map</span></div>
+        <div class=el data-x="870" data-y="712" data-hue="301" title=""><span>keyboard search button — submit the rendered query; not used because live suggestions already triggered the location alert</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>query field — edit the current search text</td><td class=t>400, 127</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>clear query button — clear the current search text</td><td class=t>755, 127</td>          <td class=t>map-search.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>close button — cancel search and return to the main map</td><td class=t>900, 127</td>          <td class=t>map.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>search suggestion row — open a matching place or region; not exercised because location is unavailable</td><td class=p>any live search suggestion row; moves with results</td>          <td class=t></td>
+          <td class=f>repeating</td>
+        </tr>
+        <tr>
+<td class=d>keyboard search button — submit the rendered query; not used because live suggestions already triggered the location alert</td><td class=t>870, 712</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="saved-places">
+    <h2>saved places</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">An empty Saved Places sheet invites the user to add a place.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="318" title=""><span>close button — dismiss Saved Places and return to Places</span></div>
+        <div class=el data-x="500" data-y="653" data-hue="338" title=""><span>add a place button — would create a saved place</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Saved Places and return to Places</td><td class=t>897, 150</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add a place button — would create a saved place</td><td class=t>500, 653</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="guides">
+    <h2>guides</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#guides/normal">normal</a>
+      <a data-mode="select" href="#guides/select">select</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The Guides sheet contains an empty Favorites guide and controls to create or select guides.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="138" title=""><span>close button — dismiss Guides and return to Places</span></div>
+        <div class=el data-x="500" data-y="195" data-hue="14" title="favorite-guide.normal"><span>Favorites guide row — open the Favorites guide</span></div>
+        <div class=el data-x="430" data-y="950" data-hue="132" title=""><span>add guide button — would create a new guide</span></div>
+        <div class=el data-x="570" data-y="950" data-hue="199" title="guides.select"><span>select guides button — enter guide selection mode</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Guides and return to Places</td><td class=t>897, 150</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Favorites guide row — open the Favorites guide</td><td class=t>500, 195</td>          <td class=t>favorite-guide.normal</td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add guide button — would create a new guide</td><td class=t>430, 950</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>select guides button — enter guide selection mode</td><td class=t>570, 950</td>          <td class=t>guides.select</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="select">
+      <p class=content style="flex-basis:100%">Guide selection mode for choosing guides to edit or delete; Favorites is the only guide and no selection is made.</p>
+      <div class=frame>
+        <div class=el data-x="500" data-y="195" data-hue="69" title=""><span>Favorites guide selection row — tapping the protected Favorites guide did not select it on this phone</span></div>
+        <div class=el data-x="130" data-y="950" data-hue="89" title=""><span>delete selected guides button — disabled until a guide is selected; would delete selected guides</span></div>
+        <div class=el data-x="870" data-y="950" data-hue="92" title="guides.normal"><span>done button — exit guide selection mode</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>Favorites guide selection row — tapping the protected Favorites guide did not select it on this phone</td><td class=t>500, 195</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>delete selected guides button — disabled until a guide is selected; would delete selected guides</td><td class=t>130, 950</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>done button — exit guide selection mode</td><td class=t>870, 950</td>          <td class=t>guides.normal</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="favorite-guide">
+    <h2>favorite guide</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">The empty Favorites guide appears as a bottom sheet over the globe and invites adding places.</p>
+      <div class=frame>
+        <div class=el data-x="885" data-y="604" data-hue="265" title=""><span>close button — dismiss the Favorites guide</span></div>
+        <div class=el data-x="500" data-y="571" data-hue="228" title=""><span>sheet handle — drag to resize the Favorites guide sheet</span></div>
+        <div class=el data-x="855" data-y="940" data-hue="47" title=""><span>add place button — would add a place to Favorites</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss the Favorites guide</td><td class=t>885, 604</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>sheet handle — drag to resize the Favorites guide sheet</td><td class=t>500, 571</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>add place button — would add a place to Favorites</td><td class=t>855, 940</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="routes">
+    <h2>routes</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">An empty Routes sheet explains custom walking routes and offers route creation.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="255" title=""><span>close button — dismiss Routes and return to Places</span></div>
+        <div class=el data-x="500" data-y="687" data-hue="349" title=""><span>create route button — would begin creating and saving a custom route</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Routes and return to Places</td><td class=t>897, 150</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>create route button — would begin creating and saving a custom route</td><td class=t>500, 687</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="reports">
+    <h2>reports</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">An empty Reports sheet explains that submitted street, place, and route issues would appear here.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="237" title=""><span>close button — dismiss Reports and return to the account sheet</span></div>
+        <div class=el data-x="500" data-y="950" data-hue="255" title=""><span>report a new issue button — would begin submitting a Maps report</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Reports and return to the account sheet</td><td class=t>897, 150</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>report a new issue button — would begin submitting a Maps report</td><td class=t>500, 950</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="offline-maps">
+    <h2>offline maps</h2>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">An empty Offline Maps sheet explains offline routing and offers downloading a new map.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="91" data-hue="22" title=""><span>close button — dismiss Offline Maps and return to the account sheet</span></div>
+        <div class=el data-x="500" data-y="350" data-hue="100" title=""><span>download new map button — would choose and download an offline region</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Offline Maps and return to the account sheet</td><td class=t>897, 91</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>download new map button — would choose and download an offline region</td><td class=t>500, 350</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section data-screen="preferences">
+    <h2>preferences</h2>
+    <div class=tabs>
+      <a data-mode="normal" href="#preferences/normal">normal</a>
+      <a data-mode="scrolled" href="#preferences/scrolled">scrolled</a>
+    </div>
+    <div class=mode data-mode="normal">
+      <p class=content style="flex-basis:100%">Maps Preferences with Driving selected and persistent route-avoidance settings for driving, walking, and cycling; settings are recorded but not changed.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="84" title=""><span>close button — dismiss Preferences and return to the account sheet</span></div>
+        <div class=el data-x="500" data-y="261" data-hue="226" title=""><span>Driving directions preference — currently selected; would change the persistent preferred travel mode</span></div>
+        <div class=el data-x="500" data-y="310" data-hue="178" title=""><span>Walking directions preference — would change the persistent preferred travel mode</span></div>
+        <div class=el data-x="500" data-y="363" data-hue="294" title=""><span>Transit directions preference — would change the persistent preferred travel mode</span></div>
+        <div class=el data-x="500" data-y="417" data-hue="112" title=""><span>Cycling directions preference — would change the persistent preferred travel mode</span></div>
+        <div class=el data-x="840" data-y="529" data-hue="101" title=""><span>Avoid Tolls toggle — would change a persistent driving preference</span></div>
+        <div class=el data-x="840" data-y="588" data-hue="223" title=""><span>Avoid Highways toggle — would change a persistent driving preference</span></div>
+        <div class=el data-x="840" data-y="707" data-hue="136" title=""><span>walking Avoid Hills toggle — would change a persistent walking preference</span></div>
+        <div class=el data-x="840" data-y="766" data-hue="9" title=""><span>Avoid Busy Roads toggle — would change a persistent walking preference</span></div>
+        <div class=el data-x="840" data-y="829" data-hue="357" title=""><span>Avoid Stairs toggle — would change a persistent walking preference</span></div>
+        <div class=el data-x="840" data-y="944" data-hue="152" title=""><span>cycling Avoid Hills toggle — would change a persistent cycling preference</span></div>
+        <div class=el data-x="500" data-y="760" data-hue="130" title="preferences.scrolled"><span>preferences list — scroll to additional settings without changing them</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Preferences and return to the account sheet</td><td class=t>897, 150</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Driving directions preference — currently selected; would change the persistent preferred travel mode</td><td class=t>500, 261</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Walking directions preference — would change the persistent preferred travel mode</td><td class=t>500, 310</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Transit directions preference — would change the persistent preferred travel mode</td><td class=t>500, 363</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Cycling directions preference — would change the persistent preferred travel mode</td><td class=t>500, 417</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Avoid Tolls toggle — would change a persistent driving preference</td><td class=t>840, 529</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Avoid Highways toggle — would change a persistent driving preference</td><td class=t>840, 588</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>walking Avoid Hills toggle — would change a persistent walking preference</td><td class=t>840, 707</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Avoid Busy Roads toggle — would change a persistent walking preference</td><td class=t>840, 766</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Avoid Stairs toggle — would change a persistent walking preference</td><td class=t>840, 829</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>cycling Avoid Hills toggle — would change a persistent cycling preference</td><td class=t>840, 944</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>preferences list — scroll to additional settings without changing them</td><td class=t>500, 760</td>          <td class=t>preferences.scrolled</td>
+          <td class=f></td>
+        </tr>
+      </table>
+    </div>
+    <div class=mode data-mode="scrolled">
+      <p class=content style="flex-basis:100%">Preferences scrolled to show cycling Avoid Busy Roads and persistent transit-mode choices in addition to the route-avoidance toggles.</p>
+      <div class=frame>
+        <div class=el data-x="897" data-y="150" data-hue="84" title=""><span>close button — dismiss Preferences and return to the account sheet</span></div>
+        <div class=el data-x="840" data-y="194" data-hue="101" title=""><span>Avoid Tolls toggle — would change a persistent driving preference</span></div>
+        <div class=el data-x="840" data-y="257" data-hue="223" title=""><span>Avoid Highways toggle — would change a persistent driving preference</span></div>
+        <div class=el data-x="840" data-y="375" data-hue="136" title=""><span>walking Avoid Hills toggle — would change a persistent walking preference</span></div>
+        <div class=el data-x="840" data-y="435" data-hue="9" title=""><span>Avoid Busy Roads toggle — would change a persistent walking preference</span></div>
+        <div class=el data-x="840" data-y="498" data-hue="357" title=""><span>Avoid Stairs toggle — would change a persistent walking preference</span></div>
+        <div class=el data-x="840" data-y="608" data-hue="152" title=""><span>cycling Avoid Hills toggle — would change a persistent cycling preference</span></div>
+        <div class=el data-x="840" data-y="671" data-hue="124" title=""><span>cycling Avoid Busy Roads toggle — would change a persistent cycling preference</span></div>
+        <div class=el data-x="500" data-y="786" data-hue="130" title=""><span>Bus transit preference — currently enabled; would change persistent transit-mode filtering</span></div>
+        <div class=el data-x="500" data-y="837" data-hue="188" title=""><span>Subway and Light Rail transit preference — currently enabled; would change persistent transit-mode filtering</span></div>
+        <div class=el data-x="500" data-y="891" data-hue="290" title=""><span>Commuter Rail transit preference — currently enabled; would change persistent transit-mode filtering</span></div>
+        <div class=el data-x="500" data-y="944" data-hue="236" title=""><span>Ferry transit preference — currently enabled; would change persistent transit-mode filtering</span></div>
+      </div>
+      <table>
+        <tr>
+          <th>Element</th>
+          <th>Position</th>
+          <th>Target</th>
+          <th>Flags</th>
+        </tr>
+        <tr>
+<td class=d>close button — dismiss Preferences and return to the account sheet</td><td class=t>897, 150</td>          <td class=t></td>
+          <td class=f></td>
+        </tr>
+        <tr>
+<td class=d>Avoid Tolls toggle — would change a persistent driving preference</td><td class=t>840, 194</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Avoid Highways toggle — would change a persistent driving preference</td><td class=t>840, 257</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>walking Avoid Hills toggle — would change a persistent walking preference</td><td class=t>840, 375</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Avoid Busy Roads toggle — would change a persistent walking preference</td><td class=t>840, 435</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Avoid Stairs toggle — would change a persistent walking preference</td><td class=t>840, 498</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>cycling Avoid Hills toggle — would change a persistent cycling preference</td><td class=t>840, 608</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>cycling Avoid Busy Roads toggle — would change a persistent cycling preference</td><td class=t>840, 671</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Bus transit preference — currently enabled; would change persistent transit-mode filtering</td><td class=t>500, 786</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Subway and Light Rail transit preference — currently enabled; would change persistent transit-mode filtering</td><td class=t>500, 837</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Commuter Rail transit preference — currently enabled; would change persistent transit-mode filtering</td><td class=t>500, 891</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+        <tr>
+<td class=d>Ferry transit preference — currently enabled; would change persistent transit-mode filtering</td><td class=t>500, 944</td>          <td class=t></td>
+          <td class=f>mutating</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+// Position fixed-element dots in the phone frame: data-x/data-y are on a
+// 1000x1000 grid, so percent = value / 10.
+document.querySelectorAll('.el').forEach(el => {
+  const h = el.dataset.hue;
+  el.style.left = (Number(el.dataset.x) / 10) + '%';
+  el.style.top = (Number(el.dataset.y) / 10) + '%';
+  el.style.borderColor = `hsl(${h},70%,40%)`;
+  el.style.background = `hsla(${h},70%,55%,.35)`;
+  el.style.color = `hsl(${h},70%,30%)`;
+});
+
+const sections = [...document.querySelectorAll('main > section')];
+const navlinks = [...document.querySelectorAll('nav a')];
+function route() {
+  const [s, m] = location.hash.slice(1).split('/');
+  const sec = sections.find(x => x.dataset.screen === s) || sections[0];
+  const modes = [...sec.querySelectorAll('.mode')];
+  const mode = modes.find(x => x.dataset.mode === m) || modes[0];
+  sections.forEach(x => x.hidden = x !== sec);
+  modes.forEach(x => x.hidden = x !== mode);
+  navlinks.forEach(a => a.classList.toggle('active', a.dataset.screen === sec.dataset.screen));
+  sec.querySelectorAll('.tabs a').forEach(a =>
+    a.classList.toggle('active', a.dataset.mode === mode.dataset.mode));
+  const want = `#${sec.dataset.screen}/${mode.dataset.mode}`;
+  if (location.hash !== want) history.replaceState(null, '', want);
+  window.scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+route();
+</script>
