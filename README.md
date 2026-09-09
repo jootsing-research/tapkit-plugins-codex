@@ -1,12 +1,12 @@
-# Tap Kit Plugins for Codex
+# TapKit Plugins for Codex
 
-This repository publishes the Tap Kit Codex plugin marketplace.
+This repository publishes the TapKit Codex plugin marketplace.
 
 The first plugin is `tapkit`, which connects Codex to a physical iPhone through the TapKit MCP server and ships reusable skill guidance for common iOS apps and workflows.
 
 ## Distribution Status
 
-Tap Kit is distributed as a GitHub-backed Codex plugin marketplace. You no longer need to clone this repository or hand-edit a personal `~/.agents/plugins/marketplace.json` file to install it.
+TapKit is distributed as a GitHub-backed Codex plugin marketplace. You no longer need to clone this repository or hand-edit a personal `~/.agents/plugins/marketplace.json` file to install it.
 
 Add the marketplace with the Codex CLI:
 
@@ -14,7 +14,7 @@ Add the marketplace with the Codex CLI:
 codex plugin marketplace add jootsing-research/tapkit-plugins-codex
 ```
 
-Then open the Codex plugin directory, choose the `Tap Kit Plugins` marketplace, and install the `tapkit` plugin.
+Then open the Codex plugin directory, choose the `TapKit Plugins` marketplace, and install the `tapkit` plugin.
 
 The marketplace name registered with Codex is `tapkit-plugins`, which comes from `.agents/plugins/marketplace.json`. Use that name when upgrading this marketplace directly:
 
@@ -39,7 +39,7 @@ After installing the plugin, Codex may prompt you to authenticate TapKit in your
 ## Structure
 
 - `.agents/plugins/marketplace.json`: Codex marketplace entry for this repository
-- `plugins/tapkit/.codex-plugin/plugin.json`: Tap Kit plugin manifest
+- `plugins/tapkit/.codex-plugin/plugin.json`: TapKit plugin manifest
 - `plugins/tapkit/.mcp.json`: TapKit MCP server configuration
 - `plugins/tapkit/skills/*/SKILL.md`: bundled skills for phone control and app-specific guidance
 
@@ -89,7 +89,7 @@ Use this flow when you want Codex to load the marketplace directly from this rep
 2. Confirm the repo-local marketplace file exists at `.agents/plugins/marketplace.json`.
 3. Confirm the plugin directory exists at `plugins/tapkit/`.
 4. Restart Codex so it re-reads the local marketplace.
-5. Open the plugin directory UI and look for the marketplace `Tap Kit Plugins`.
+5. Open the plugin directory UI and look for the marketplace `TapKit Plugins`.
 6. Install the `tapkit` plugin from that marketplace.
 7. Test with one of the verification prompts above.
 
