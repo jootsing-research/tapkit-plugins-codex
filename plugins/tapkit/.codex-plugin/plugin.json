@@ -21,7 +21,7 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "Tap Kit",
+    "displayName": "TapKit",
     "shortDescription": "Control a real iPhone from Codex.",
     "longDescription": "Bundle TapKit iPhone automation with reusable skills for common iOS apps and workflows.",
     "developerName": "Jootsing Research",
