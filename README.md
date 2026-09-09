@@ -61,7 +61,7 @@ If a phone is connected through the TapKit Mac app and TapKit authentication is 
 
 ## Development
 
-This repository still includes a repo-local marketplace at `.agents/plugins/marketplace.json` so contributors can test plugin changes from a checkout.
+This repository includes a repo-local marketplace at `.agents/plugins/marketplace.json` so contributors can test plugin changes from a checkout.
 
 Use this flow when you want Codex to load the marketplace directly from this repo:
 
