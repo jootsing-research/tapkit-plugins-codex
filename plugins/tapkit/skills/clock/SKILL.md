@@ -1,112 +1,192 @@
 ---
 name: clock
-description: Use the iPhone Clock app through TapKit to create, inspect, edit, enable, disable, or delete alarms and sleep schedules; start or manage timers and the stopwatch; or view and manage World Clock cities.
+description: Layout and navigation of the Clock iPhone app — its screens, modes, and where every control is located. Use when operating Clock and you cannot find a control or a screen.
 ---
 
-# iOS Clock
+# Clock app UI map
 
-## Safety and interaction contract
+Positions describe equal thirds of the screen in a 3×3 grid: upper left, upper center, upper right; middle left, center, middle right; lower left, lower center, lower right. Elements under **Fixed** — bars, popups, sheets — sit in the listed region whenever the mode is shown. Locate the described control visually within that region before tapping. Elements under **Variable position** move with scrolling content; scroll to reveal them.
 
-Start with `list_phones()` -> choose `phone_id` -> `get_phone_status(phone_id)`. Every phone-targeting call must include that `phone_id`.
+## World clock
 
-Use the visual loop for every action:
+### Normal mode
 
-1. Call `screenshot(phone_id)`.
-2. Identify the intended control from its current visible label, icon, and surrounding context.
-3. Act on the center of that currently observed control.
-4. Call `screenshot(phone_id)` again and verify the result.
+The World Clock tab lists saved cities and their current local times, with editing and add controls above and the four-section Clock tab bar below.
 
-Never reuse remembered tap points or assume the interface is unchanged.
+**Fixed:**
+- **Edit button — reveal world-clock delete and reorder controls** (upper left) → `world-clock.edit`
+- **add city button — open city search without creating a clock** (upper right) → `city-search.normal`
+- **World Clock tab — show saved world clocks** (lower left) → `world-clock.normal`
+- **Alarms tab — show alarms and sleep schedule** (lower center) → `alarms.normal`
+- **Stopwatch tab — show the stopwatch** (lower center) → `stopwatch.normal`
+- **Timers tab — show timer controls and recents** (lower right) → `timers.normal`
 
-For every text entry:
+**Variable position:**
+- **saved city row — displays its relative day, UTC offset, city, and current time** (any saved city row; moves with the list) — *one of many*
 
-1. Focus the correct field and verify focus with a screenshot.
-2. Call `type_text(phone_id, text)`.
-3. Take a screenshot and verify the complete rendered text in the intended field.
-4. Stop before submission.
-5. Use **Search**, **Save**, **Done**, Return, a checkmark, or an equivalent submission control only as a separate step that the user explicitly authorized after the rendered text was verified.
+### Edit mode
 
-### Existing alarm and schedule confirmation gate
+World Clock editing mode replaces Edit with a checkmark and adds delete and reorder controls to each saved city. Persistent removal and reordering are safety-blocked.
 
-Before deleting or materially changing an existing alarm or schedule:
+**Fixed:**
+- **done button — leave editing mode without changing clocks** (upper left) → `world-clock.normal`
+- **add city button — open city search without creating a clock** (upper right) → `city-search.normal`
+- **World Clock tab — remain on World Clock editing mode** (lower left) → `world-clock.edit`
+- **Alarms tab — show alarms and sleep schedule** (lower center) → `alarms.normal`
+- **Stopwatch tab — show the stopwatch** (lower center) → `stopwatch.normal`
+- **Timers tab — show timer controls and recents** (lower right) → `timers.normal`
 
-1. Take a current screenshot of the alarm or schedule list.
-2. Identify the exact target from what is visible: time, AM/PM, label, repeat days, and enabled state.
-3. Do not infer hidden, clipped, or ambiguous attributes. State which requested identity attribute is not visible and obtain a clearer view or user clarification.
-4. Present the full visible identity and the exact proposed change to the user. For example: `7:30 AM — Work — Mon–Fri — enabled; proposed change: disable`.
-5. Ask for confirmation and wait. The original request to edit or delete does not replace this confirmation.
-6. After confirmation, take another screenshot and ensure the same target and state are still visible. If anything changed or two alarms remain indistinguishable, stop and clarify.
-7. Make only the confirmed change, then screenshot and verify it.
+**Variable position:**
+- **delete city button — remove a saved world clock; safety-blocked** (delete button beside any saved city) — *mutates data* — *one of many*
+- **city reorder handle — persistently reorder saved world clocks; safety-blocked** (reorder handle beside any saved city) — *mutates data* — *one of many*
 
-Material changes include deletion, time, AM/PM, repeat days, label, sound, haptics, snooze, snooze duration, enabled state, and Sleep/Wake Up schedule changes. Merely opening an alarm to inspect it is not a material change.
+## City search
 
-## Open Clock
+### Normal mode
 
-1. Call `press_home(phone_id)` and take a screenshot.
-2. If **Clock** is visible, tap that currently observed icon and verify the app opened.
-3. Otherwise, navigate visually to App Library, focus its search field, and follow the text-entry contract with `Clock`.
-4. After verifying the rendered query and matching **Clock** result, tap that result only when opening Clock is authorized.
-5. Verify that Clock opened.
+A modal city chooser with a search field and alphabetical city list. Choosing a city would add a persistent world clock and is safety-blocked.
 
-Use the visible bottom-tab labels to navigate among **World Clock**, **Alarms**, **Stopwatch**, and **Timers**. Always locate the tab in the current screenshot.
+**Fixed:**
+- **close button — dismiss city search without adding a clock** (upper left)
+- **search field — focus city-name filtering** (lower center) → `city-search.search`
 
-## Alarm workflow
+**Variable position:**
+- **city result — add the city to World Clock; safety-blocked** (any city result row; moves with the list) — *mutates data* — *one of many*
 
-### Create an alarm
+### Search mode
 
-1. Open Clock, select **Alarms**, and verify the alarm list.
-2. Tap the visible add control and verify **Add Alarm** opened.
-3. Set the requested time and options from the current screen.
-4. If entering a label, follow the text-entry contract and stop before confirming or saving it.
-5. Review the complete proposed alarm in the current UI.
-6. Save only as a separate, authorized action.
-7. Verify the new alarm in the list, including time, AM/PM, label, repeat days, and enabled state as visible.
+City search with the search field focused and keyboard visible; matching city rows remain safety-blocked.
 
-### Inspect or change an existing alarm
+**Fixed:**
+- **cancel search button — dismiss the keyboard and clear the query** (middle right) → `city-search.normal`
+- **focused search field — filters city results as text is entered** (center)
+- **clear search button — remove the query** (middle right) → `city-search.search`
 
-1. Screenshot the alarm list and identify the exact target.
-2. Open that alarm without changing it, then inspect the requested settings.
-3. Return to the alarm list. Before any material change, complete the existing-alarm confirmation gate above from a new list screenshot.
-4. Apply only the confirmed edits.
-5. Save only as a separate, authorized action after verifying the proposed values.
-6. Verify the resulting alarm in the list.
+**Variable position:**
+- **matching city result — add the city to World Clock; safety-blocked** (any matching city result row; moves with results) — *mutates data* — *one of many*
 
-### Enable, disable, or delete an alarm
+## Alarms
 
-1. Screenshot the alarm list and identify the exact target.
-2. Complete the existing-alarm confirmation gate, naming the exact toggle or deletion.
-3. Re-verify the target after confirmation, perform only that action, and verify the result.
+The Alarms tab shows sleep schedule setup and saved alarms, with edit and add controls and the Clock tab bar.
 
-Read [Alarm UI and settings](references/alarms.md) when a task involves repeat days, labels, sounds, haptics, snooze, Sleep/Wake Up, picker behavior, editing, toggling, or deletion.
+**Fixed:**
+- **add alarm button — open creation of a persistent alarm; safety-blocked** (upper right) — *mutates data*
+- **World Clock tab — show saved world clocks** (lower left) → `world-clock.normal`
+- **Alarms tab — show alarms and sleep schedule** (lower center) → `alarms.normal`
+- **Stopwatch tab — show the stopwatch** (lower center) → `stopwatch.normal`
+- **Timers tab — show timer controls and recents** (lower right) → `timers.normal`
 
-## Timer workflow
+**Variable position:**
+- **sleep schedule setup — configure a persistent sleep schedule; safety-blocked** (sleep schedule setup row) — *mutates data*
+- **alarm enable switch — change an alarm's enabled state; safety-blocked** (any alarm enable switch; moves with the alarm list) — *mutates data* — *one of many*
+- **saved alarm row — open persistent alarm editing; safety-blocked** (any saved alarm row; moves with the alarm list) — *mutates data* — *one of many*
 
-1. Open Clock, select **Timers**, and verify the timer screen.
-2. Set the requested duration from the currently visible picker.
-3. Configure a label or end sound only if requested. Follow the text-entry contract for a label.
-4. Verify the duration and visible options.
-5. Start the timer only as a separate, authorized action.
-6. Screenshot and verify that the countdown is running.
+## Stopwatch
 
-For a running timer, identify it by its visible label and remaining duration before pausing, resuming, or canceling it. Perform only the requested action and verify the new state.
+### Normal mode
 
-Read [Timers and stopwatch UI](references/timers-and-stopwatch.md) when a task involves timer labels, end sounds, recent or multiple timers, pause/resume/cancel, stopwatch laps, reset, or display variants.
+The reset stopwatch shows 00:00.00 with inactive Lap and green Start controls and an empty lap table.
 
-## Stopwatch workflow
+**Fixed:**
+- **inactive Lap button — unavailable before the stopwatch starts** (middle left)
+- **Start button — start the ephemeral stopwatch** (middle right) → `stopwatch.running`
+- **World Clock tab — show saved world clocks** (lower left) → `world-clock.normal`
+- **Alarms tab — show alarms and sleep schedule** (lower center) → `alarms.normal`
+- **Stopwatch tab — show the stopwatch** (lower center) → `stopwatch.normal`
+- **Timers tab — show timer controls and recents** (lower right) → `timers.normal`
 
-1. Open Clock, select **Stopwatch**, and verify the stopwatch screen.
-2. Tap the currently visible **Start** control only when authorized, then verify the display is advancing.
-3. Use **Lap** only when requested and verify the recorded lap.
-4. Use **Stop** only when requested and verify timing paused.
-5. Use **Reset** only when requested and verify the cleared display.
+**Variable position:**
+- **stopwatch face page gesture — switch from the digital to analog dial** (stopwatch face; drag left) → `stopwatch.analog-normal`
 
-Read [Timers and stopwatch UI](references/timers-and-stopwatch.md) for detailed control states, lap behavior, and digital or analog display guidance.
+### Running mode
 
-## World Clock workflow
+The stopwatch is counting, with active Lap and red Stop controls. This timing state is ephemeral.
 
-1. Open Clock, select **World Clock**, and verify the city list.
-2. For a new city, tap the visible add control, focus the search field, and follow the text-entry contract.
-3. After verifying the query and intended result, add the city only as a separate, authorized action.
-4. Verify the city appears in the list.
+**Fixed:**
+- **Lap button — record an ephemeral lap** (middle left) → `stopwatch.running-with-lap`
+- **Stop button — pause the stopwatch** (middle right) → `stopwatch.paused`
 
-Read [World Clock UI](references/world-clock.md) when adding, removing, or reordering cities, or when interpreting offsets and day relationships.
+### Running with lap mode
+
+The stopwatch continues counting and shows one or more lap rows beneath the controls.
+
+**Fixed:**
+- **Lap button — record another ephemeral lap** (middle left) → `stopwatch.running-with-lap`
+- **Stop button — pause the stopwatch** (middle right) → `stopwatch.paused`
+
+**Variable position:**
+- **lap row — display a lap number and elapsed split** (any lap row; grows as laps are recorded) — *one of many*
+
+### Paused mode
+
+The stopwatch is paused, with white Reset and green Start controls and any recorded lap rows retained.
+
+**Fixed:**
+- **Reset button — clear ephemeral elapsed time and laps** (middle left) → `stopwatch.normal`
+- **Start button — resume the ephemeral stopwatch** (middle right) → `stopwatch.running-with-lap`
+
+**Variable position:**
+- **lap row — display a retained lap number and split while paused** (any lap row; present when laps were recorded) — *one of many*
+
+### Analog normal mode
+
+The reset analog stopwatch presents a sixty-second dial with an inset thirty-minute dial, inactive Lap, green Start, and the second page indicator selected.
+
+**Fixed:**
+- **inactive Lap button — unavailable before the analog stopwatch starts** (middle left)
+- **Start button — start the ephemeral analog stopwatch** (middle right) → `stopwatch.analog-running`
+
+**Variable position:**
+- **stopwatch face page gesture — switch back to the digital stopwatch** (analog stopwatch face; drag right) → `stopwatch.normal`
+
+### Analog running mode
+
+The analog stopwatch is running, with moving orange hands, active Lap, and red Stop controls.
+
+**Fixed:**
+- **Lap button — mark an ephemeral analog stopwatch lap** (middle left) → `stopwatch.analog-running`
+- **Stop button — pause the analog stopwatch** (middle right) → `stopwatch.analog-paused`
+
+### Analog paused mode
+
+The analog stopwatch is paused, retaining its hand positions with Reset and green Start controls.
+
+**Fixed:**
+- **Reset button — clear the ephemeral analog stopwatch** (middle left) → `stopwatch.analog-normal`
+- **Start button — resume the analog stopwatch** (middle right) → `stopwatch.analog-running`
+
+## Timers
+
+The Timers tab shows duration wheels, a When Timer Ends sound row, a green Start control, and recent timers when available.
+
+**Fixed:**
+- **When Timer Ends row — open timer alert-sound selection** (lower center) → `timer-sound.normal`
+- **Start timer button — begin a timer using the selected duration; safety-blocked** (middle right) — *mutates data*
+- **inactive Cancel button — unavailable until a timer is running** (middle left)
+- **timer Label field — edit the prospective timer label; safety-blocked** (lower center) — *mutates data*
+- **World Clock tab — show saved world clocks** (lower left) → `world-clock.normal`
+- **Alarms tab — show alarms and sleep schedule** (lower center) → `alarms.normal`
+- **Stopwatch tab — show the stopwatch** (lower center) → `stopwatch.normal`
+- **Timers tab — show timer controls and recents** (lower right) → `timers.normal`
+
+**Variable position:**
+- **hours wheel — adjust a prospective timer duration; not exercised** (hours duration wheel) — *mutates data*
+- **minutes wheel — adjust a prospective timer duration; not exercised** (minutes duration wheel) — *mutates data*
+- **seconds wheel — adjust a prospective timer duration; not exercised** (seconds duration wheel) — *mutates data*
+- **recent timer row — display a prior timer duration and label** (any recent timer row; moves with the recent list) — *one of many*
+- **recent timer start button — begin that timer; safety-blocked** (any recent timer start button; moves with the recent list) — *mutates data* — *one of many*
+
+## Timer sound
+
+The When Timer Ends chooser lists alert sounds and a Stop Playing option; selecting a value would change the prospective timer setting and is safety-blocked.
+
+**Fixed:**
+- **close button — discard sound-picker changes and return to Timers** (upper left) → `timers.normal`
+- **Set button — commit the selected timer sound; safety-blocked** (upper right) — *mutates data*
+
+**Variable position:**
+- **timer sound row — select the prospective alert sound; safety-blocked** (any sound row; moves with the sound list) — *mutates data* — *one of many*
+- **Stop Playing row — select silent timer completion behavior; safety-blocked** (Stop Playing row near the bottom of the sound list) — *mutates data*
+- **sound list — scroll through available alerts and reveal Stop Playing** (sound list content; moves while scrolling)
+- **Tone Store row — leave Clock to browse purchasable tones; safety-blocked** (Tone Store row near the top of the sound list) — *mutates data*
+- **Download All Purchased Tones row — download account purchases; safety-blocked** (Download All Purchased Tones row near the top of the sound list) — *mutates data*
