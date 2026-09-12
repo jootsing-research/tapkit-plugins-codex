@@ -32,6 +32,9 @@
       "Write"
     ],
     "websiteURL": "https://tapkit.ai",
+    "privacyPolicyURL": "https://www.tapkit.ai/privacy",
+    "termsOfServiceURL": "https://www.tapkit.ai/terms",
+    "supportURL": "https://www.tapkit.ai/support",
     "brandColor": "#4164DE",
     "composerIcon": "./assets/logo.png",
     "logo": "./assets/logo.png",
